@@ -154,16 +154,6 @@ function gotoPage(page) {
               //add localStorage
 
             case 6:
-            //  $('.calculated-result').css('width','0');
-            //  $('.calculated-result').animate({
-            //    width:'100%',
-            //  },900);
-            //  $('.calculated-result').show(1000);
-
-            // $('.calculated-result').css('transform','translateY(50%)');
-            // $('.calculated-result').hide();
-            // $('.calculated-result').fadeIn(1200);
-            // $('.calculated-result').fadeTo(1);
             $('.calculated-result').animate({
               opacity: 1,
             });

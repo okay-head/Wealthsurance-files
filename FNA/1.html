@@ -200,6 +200,8 @@
 
          function onChangeCallback() {
             console.log(`The index of current slide is: ${this.currentSlide}`)
+            // gotoPage(this.currentSlide+1)
+
             if (this.currentSlide == 4) {
                $('.next-btn').click(() => {
                   window.open("6.html","_self")
