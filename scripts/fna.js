@@ -11,12 +11,12 @@
 //       .fadeTo(1500, 1);
 // }
 
-
+function setValue(id, val) {
+   $(id).val(val);
+}
 function initLoader() {
-   $(".progress-bar").animate({ width: '0%' }, 1000);
-   $(".progress-percentage")
-      .text('0%')
-      .fadeTo(1500, 1);
+   $(".progress-bar").animate({ width: "0%" }, 1000);
+   $(".progress-percentage").text("0%").fadeTo(1500, 1);
 }
 
 function updateLoader(page, pages) {
@@ -38,7 +38,6 @@ let fna = {
    page3: [],
    page4: [],
    page5: [],
-   page6: [],
 };
 
 // global actions
@@ -54,7 +53,7 @@ function gotoPage(page) {
       // console.log(page);
 
       switch (page) {
-         // for page 1
+         // ________ page 1 ___________
          case 1:
             //initialize loader
             initLoader();
@@ -84,22 +83,11 @@ function gotoPage(page) {
                });
             });
 
-            // //loader
-            // $(".next-btn").click(() => {
-            //    initLoader(5);
-            // });
-
-            //on previous button return to original
-            // $(".prev-btn").click(() => {
-            //    // need to create the initial zero state
-            //    // initLoader(1);
-            // });
-
             break;
 
-         // for page 2
+         // ________ page 2 ___________
          case 2:
-            updateLoader(1,5);
+            updateLoader(1, 5);
 
             //check for existing localStorage on page load
             if (localStorage.getItem("fnapg2") != null) {
@@ -116,28 +104,17 @@ function gotoPage(page) {
                $(".next-btn").one("click", () => {
                   fna.page2 = [];
                   fna.page2.push($("#fnapg2e1").val());
-                  console.log($("#fnapg2e1").val());
+                  // console.log($("#fnapg2e1").val());
                   localStorage.setItem("fnapg2", JSON.stringify(fna.page2));
                });
             });
 
-            //loader
-            // $(".next-btn").click(() => {
-            // updateLoader(2,5);
-            // });
-            
-            // the loader 'jumps' to 40%
-            // //on previous button return to original
-            // $(".prev-btn").click(() => {
-            //    initLoader(5);
-            //    // need to create the initial zero state
-            //    // initLoader(0);
-            // });
-
             break;
 
+         // ________ page 3 ___________
+
          case 3:
-             updateLoader(2,5);
+            updateLoader(2, 5);
 
             //check for existing localStorage on page load
             if (localStorage.getItem("fnapg3") != null) {
@@ -165,8 +142,10 @@ function gotoPage(page) {
             });
             break;
 
+            
+         // ________ page 4 ___________
          case 4:
-             updateLoader(3,5);
+            updateLoader(3, 5);
             $("#fnapg4e1").keyup(() => {
                $(".table").slideDown(800);
             });
@@ -180,11 +159,100 @@ function gotoPage(page) {
                $(".table").slideUp();
             });
 
-            //add localStorage
+            // localStorage
+
+            //check for existing localStorage on page load
+            if (localStorage.getItem("fnapg4") != null) {
+               fna.page4 = JSON.parse(localStorage.getItem("fnapg4"));
+               // console.log(fna.page4)
+               let [z] = fna.page4;
+               // console.log(z)
+               setValue("#fnapg4e1", z.total);
+               setValue("#fnapg4e2c1", z.credit[0]);
+               setValue("#fnapg4e2c2", z.credit[1]);
+               setValue("#fnapg4e2c3", z.credit[2]);
+
+               setValue("#fnapg4e3c1", z.vehicle[0]);
+               setValue("#fnapg4e3c2", z.vehicle[1]);
+               setValue("#fnapg4e3c3", z.vehicle[2]);
+
+               setValue("#fnapg4e4c1", z.student[0]);
+               setValue("#fnapg4e4c2", z.student[1]);
+               setValue("#fnapg4e4c3", z.student[2]);
+
+               setValue("#fnapg4e5c1", z.bank[0]);
+               setValue("#fnapg4e5c2", z.bank[1]);
+               setValue("#fnapg4e5c3", z.bank[2]);
+
+               setValue("#fnapg4e6c1", z.personal[0]);
+               setValue("#fnapg4e6c2", z.personal[1]);
+               setValue("#fnapg4e6c3", z.personal[2]);
+
+               setValue("#fnapg4e7c1", z.others[0]);
+               setValue("#fnapg4e7c2", z.others[1]);
+               setValue("#fnapg4e7c3", z.others[2]);
+            }
+
+            //push to local storage
+            $(":input").change(() => {
+               if (localStorage.getItem("fnapg4") != null) {
+                  localStorage.removeItem("fnapg4");
+                  fna.page4 = [];
+               }
+
+               $(".next-btn").one("click", () => {
+                  fna.page4 = [];
+
+                  const obj = {
+                     total: $("#fnapg4e1").val(),
+                     credit: [
+                        $("#fnapg4e2c1").val(),
+                        $("#fnapg4e2c2").val(),
+                        $("#fnapg4e2c3").val(),
+                     ],
+
+                     vehicle: [
+                        $("#fnapg4e3c1").val(),
+                        $("#fnapg4e3c2").val(),
+                        $("#fnapg4e3c3").val(),
+                     ],
+
+                     student: [
+                        $("#fnapg4e4c1").val(),
+                        $("#fnapg4e4c2").val(),
+                        $("#fnapg4e4c3").val(),
+                     ],
+
+                     bank: [
+                        $("#fnapg4e5c1").val(),
+                        $("#fnapg4e5c2").val(),
+                        $("#fnapg4e5c3").val(),
+                     ],
+
+                     personal: [
+                        $("#fnapg4e6c1").val(),
+                        $("#fnapg4e6c2").val(),
+                        $("#fnapg4e6c3").val(),
+                     ],
+
+                     others: [
+                        $("#fnapg4e7c1").val(),
+                        $("#fnapg4e7c2").val(),
+                        $("#fnapg4e7c3").val(),
+                     ],
+                  };
+
+                  fna.page4.push(obj);
+
+                  localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
+               });
+            });
             break;
 
+            
+         // ________ page 5 ___________
          case 5:
-             updateLoader(4,5);
+            updateLoader(4, 5);
             $("#fnapg5e1").keyup(() => {
                $(".table").slideDown(800);
             });
@@ -197,21 +265,105 @@ function gotoPage(page) {
                $(".table").slideUp();
             });
 
+            // localStorage
+
+            //check for existing localStorage on page load
+            if (localStorage.getItem("fnapg5") != null) {
+               fna.page5 = JSON.parse(localStorage.getItem("fnapg5"));
+               // console.log(fna.page5)
+               let [y] = fna.page5;
+               // console.log(y)
+               setValue("#fnapg5e1", y.total);
+               setValue("#fnapg5e2c1", y.college[0]);
+               setValue("#fnapg5e2c2", y.college[1]);
+               setValue("#fnapg5e2c3", y.college[2]);
+
+               setValue("#fnapg5e3c1", y.medical[0]);
+               setValue("#fnapg5e3c2", y.medical[1]);
+               setValue("#fnapg5e3c3", y.medical[2]);
+
+               setValue("#fnapg5e4c1", y.planned[0]);
+               setValue("#fnapg5e4c2", y.planned[1]);
+               setValue("#fnapg5e4c3", y.planned[2]);
+
+               setValue("#fnapg5e5c1", y.financial[0]);
+               setValue("#fnapg5e5c2", y.financial[1]);
+               setValue("#fnapg5e5c3", y.financial[2]);
+
+               setValue("#fnapg5e6c1", y.others[0]);
+               setValue("#fnapg5e6c2", y.others[1]);
+               setValue("#fnapg5e6c3", y.others[2]);
+            }
+
+            //push to local storage
+            $(":input").change(() => {
+               if (localStorage.getItem("fnapg5") != null) {
+                  localStorage.removeItem("fnapg5");
+                  fna.page5 = [];
+               }
+
+               $(".next-btn").one("click", () => {
+                  fna.page5 = [];
+
+                  const obj = {
+                     total: $("#fnapg5e1").val(),
+                     college: [
+                        $("#fnapg5e2c1").val(),
+                        $("#fnapg5e2c2").val(),
+                        $("#fnapg5e2c3").val(),
+                     ],
+
+                     medical: [
+                        $("#fnapg5e3c1").val(),
+                        $("#fnapg5e3c2").val(),
+                        $("#fnapg5e3c3").val(),
+                     ],
+
+                     planned: [
+                        $("#fnapg5e4c1").val(),
+                        $("#fnapg5e4c2").val(),
+                        $("#fnapg5e4c3").val(),
+                     ],
+
+                     financial: [
+                        $("#fnapg5e5c1").val(),
+                        $("#fnapg5e5c2").val(),
+                        $("#fnapg5e5c3").val(),
+                     ],
+
+                     others: [
+                        $("#fnapg5e6c1").val(),
+                        $("#fnapg5e6c2").val(),
+                        $("#fnapg5e6c3").val(),
+                     ],
+                  };
+                  fna.page5.push(obj);
+
+                  localStorage.setItem("fnapg5", JSON.stringify(fna.page5));
+               });
+            });
+
             //  change next button's action
             $(".next-btn").on("click", () => {
                function loaderPromise() {
-                  let update = new Promise((resolve)=>{
-                        resolve(updateLoader(5,5));
-                  })               
-                  console.log(fna)  //rather make it pushing to the db
+                  let update = new Promise((resolve) => {
+                     resolve(updateLoader(5, 5));
+                  });
+
+                  //----- @prasad -----
+                  function pushToDatabase() {
+                     console.log(fna);
+                  }
+                  // ------------------
+
                   return update;
                }
-               
-               loaderPromise().then(()=>{
+
+               loaderPromise().then(() => {
                   setTimeout(() => {
                      window.open("6.html", "_self");
                   }, 1000);
-               })
+               });
             });
 
             //change the functionality back when back button is pressed
@@ -222,7 +374,8 @@ function gotoPage(page) {
                });
             });
 
-         //add localStorage
+            
+         // ________ page 6 ___________
 
          case 6:
             $(".calculated-result").animate({
@@ -230,20 +383,10 @@ function gotoPage(page) {
             });
             $(".calculated-result").css("transform", "translateY(0)");
 
-         // default:
-         //   console.log('Bad function call');
-         //    break;
+         default:
+            console.log("200");
+            break;
       }
    });
 }
 
-//_____push to localStorage
-
-/*   $('.next-btn').on('click', () => {
-    fna.page1.push($('#fnapg1e1').val())
-    fna.page1.push($('#fnapg1e2').val())
-    fna.page1.push($('#fnapg1e3').val())
-
-    localStorage.setItem('fna', JSON.stringify(fna))
-    $('.next-btn').off('click')
-  }) */
