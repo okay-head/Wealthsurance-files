@@ -52,7 +52,11 @@
                      years old,
                   </div>
                   <div>
-                     <input type="text" id="fnapg1e2" placeholder="Enter Status">
+                     <select id="fnapg1e2">
+                        <option value="married">married</option>
+                        <option value="unmarried">unmarried</option>
+                     </select>
+                     <!-- <input type="text" id="fnapg1e2" placeholder="Enter Status"> -->
                      and,
                   </div>
                   <div>I have
@@ -176,51 +180,42 @@
 
 
             <!-- <div class="page6">
-               //need to load this page I guess
+               //Will get loaded as a separate page
             </div> -->
-
 
          </div>
 
          <!-- dynamic content end -->
 
 
-         <!-- <div class="button"><span class="red-btn">Next</span></div> -->
          <div class="btn-group">
             <a href="#" class="red-btn prev-btn">Previous</a>
             <a href="#" class="red-btn next-btn">Next</a>
          </div>
 
       </div>
-      <!-- <script src="/scripts/fna.js"></script> -->
+
+      <script src="/scripts/fna.js"></script>
+
       <script src="/scripts/siema-1.5.1/dist/siema.min.js"></script>
+
       <script>
          'use strict'
 
+         gotoPage(1);
 
          function onChangeCallback() {
-            console.log(`The index of current slide is: ${this.currentSlide}`)
-            // gotoPage(this.currentSlide+1)
-
-            if (this.currentSlide == 4) {
-               $('.next-btn').click(() => {
-                  window.open("6.html","_self")
-                  console.log('aflkajkflajflfj');
-
-               });
-               }else{
-                  return;
-               }
-
-
+            // console.log(`The index of current slide is: ${this.currentSlide}`)
+            gotoPage(this.currentSlide + 1)
          }
 
          const mySiema = new Siema({
             onChange: onChangeCallback,
             selector: '.siema',
-            duration: 500,
+            duration: 900,
             easing: 'ease-in-out',
             perPage: 1,
+            // perPage: { 200:2,1250: 1,},
             startIndex: 0,
             draggable: false,
             multipleDrag: false,
@@ -232,19 +227,11 @@
 
 
          $('.prev-btn').click(() => mySiema.prev());
-            $('.next-btn').click(() => mySiema.next());
-
-
-
-
+         $('.next-btn').click(() => mySiema.next());
 
       </script>
 
-      <!-- <script>
-         // gotoPage(1);
 
-
-      </script> -->
 </body>
 
 </html>

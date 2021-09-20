@@ -2,12 +2,11 @@ font-sizes look a bit off
 drop-down menu?
 
 loaders
-should start with 0?
-should start with the val from the previous slide?
 
-table slide down at keyup? or down
 
 Also need to check and handle exceptions for user inputs
 
 
-How does the user get redirected to calculators, cause they are not interlinked
+- at the last slide, next should change to CALCULATE    
+
+- how do the boxes look when wraped to the next line?
