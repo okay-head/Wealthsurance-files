@@ -10,7 +10,7 @@
       crossorigin="anonymous"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="/stylesheets/main.css">
-   <title>Financial needs Analysis</title>
+   <title>Term Insurance Calculator</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 
       <div class="content-container">
          <div class="top">
-            <h1 class="page-heading">Financial Needs Analysis</h1>
+            <h1 class="page-heading">Term Insurance Calculator</h1>
             <div class="loader">
                <div class="progress-bar">
                   <span class="progress-percentage"></span>
@@ -48,19 +48,19 @@
             <div class="page1">
                <div class="input-fields">
                   <div>I am
-                     <input type="number" id="fnapg1e1" placeholder="Enter Age">
+                     <input type="number" id="tepg1e1" placeholder="Enter Age">
                      years old,
                   </div>
                   <div>
-                     <select id="fnapg1e2">
+                     <select id="tepg1e2">
                         <option value="married">married</option>
                         <option value="unmarried">unmarried</option>
                      </select>
-                     <!-- <input type="text" id="fnapg1e2" placeholder="Enter Status"> -->
+                     <!-- <input type="text" id="tepg1e2" placeholder="Enter Status"> -->
                      and,
                   </div>
                   <div>I have
-                     <input type="number" id="fnapg1e3" placeholder="Enter number">
+                     <input type="number" id="tepg1e3" placeholder="Enter number">
                      children under 18
                   </div>
                </div>
@@ -68,8 +68,54 @@
 
             <div class="page2">
                <div class="input-fields">
-                  <div>My Annual household income is $
-                     <input type="number" id="fnapg2e1" placeholder="Enter Amount">
+                  <div>I carry a total debt of $
+                     <input type="number" id="tepg2e1" placeholder="Enter Amount">
+                  </div>
+                  <div class="table">
+                     <table>
+                        <tr>
+                           <td>Mortgage:</td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg2e2c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg2e2c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg2e2c3"></td>
+                        </tr>
+                        <tr>
+                           <td>Credit Cards:</td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg2e3c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg2e3c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg2e3c3"></td>
+                        </tr>
+                        <tr>
+                           <td>Vehicle Loans:</td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg2e4c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg2e4c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg2e4c3"></td>
+                        </tr>
+                        <tr>
+                           <td>Student Loans:</td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg2e5c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg4e5c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg4e5c3"></td>
+                        </tr>
+                        <tr>
+                           <td>Bank Loans:</td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg4e6c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg4e6c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg4e6c3"></td>
+                        </tr>
+                        <tr>
+                           <td>Personal Loans:</td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg4e7c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg4e7c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg4e7c3"></td>
+                        </tr>
+                        <tr>
+                           <td>Others:</td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg4e8c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg4e8c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg4e8c3"></td>
+                        </tr>
+                     </table>
                   </div>
                </div>
             </div>
@@ -77,111 +123,46 @@
 
             <div class="page3">
                <div class="input-fields">
-                  <div>The mortgage on my house is
-                     <input type="number" id="fnapg3e1" placeholder="Enter Amount"><br>
-                     at <input type="number" id="fnapg3e2" placeholder="Enter Percentage"> % for
-                     <input type="number" id="fnapg3e3" placeholder="Enter Years"> years.
-                  </div>
-               </div>
-            </div>
-
-
-            <div class="page4">
-               <div class="input-fields">
-                  <div>I carry a total debt (other than mortgage) of $
-                     <input type="number" id="fnapg4e1" placeholder="Enter Amount">
-                  </div>
-                  <div class="table">
-                     <table>
-                        <tr>
-                           <td>Credit Cards:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg4e2c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg4e2c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg4e2c3"></td>
-                        </tr>
-                        <tr>
-                           <td>Vehicle Loans:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg4e3c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg4e3c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg4e3c3"></td>
-                        </tr>
-                        <tr>
-                           <td>Student Loans:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg4e4c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg4e4c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg4e4c3"></td>
-                        </tr>
-                        <tr>
-                           <td>Bank Loans:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg4e5c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg4e5c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg4e5c3"></td>
-                        </tr>
-                        <tr>
-                           <td>Personal Loans:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg4e6c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg4e6c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg4e6c3"></td>
-                        </tr>
-                        <tr>
-                           <td>Others:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg4e7c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg4e7c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg4e7c3"></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-            </div>
-
-
-            <div class="page5">
-               <div class="input-fields">
                   <div>I have major expenses ahead of $
-                     <input type="number" id="fnapg5e1" placeholder="Enter Amount">
+                     <input type="number" id="tepg3e1" placeholder="Enter Amount">
                   </div>
                   <div class="table">
                      <table>
                         <tr>
                            <td>College Education:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg5e2c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg5e2c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg5e2c3"></td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg3e2c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg3e2c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg3e2c3"></td>
                         </tr>
                         <tr>
                            <td>Medical Expenses:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg5e3c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg5e3c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg5e3c3"></td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg3e3c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg3e3c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg3e3c3"></td>
                         </tr>
                         <tr>
                            <td>Planned life events:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg5e4c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg5e4c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg5e4c3"></td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg3e4c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg3e4c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg3e4c3"></td>
                         </tr>
                         <tr>
                            <td>Financial Expenses:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg5e5c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg5e5c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg5e5c3"></td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg3e5c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg3e5c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg3e5c3"></td>
                         </tr>
                         <tr>
                            <td>Others:</td>
-                           <td><input type="number" placeholder="Enter Amount" id="fnapg5e6c1"></td>
-                           <td><input type="number" placeholder="Enter Interest" id="fnapg5e6c2"></td>
-                           <td><input type="number" placeholder="Enter Years to go" id="fnapg5e6c3"></td>
+                           <td><input type="number" placeholder="Enter Amount" id="tepg3e6c1"></td>
+                           <td><input type="number" placeholder="Enter Interest" id="tepg3e6c2"></td>
+                           <td><input type="number" placeholder="Enter Years to go" id="tepg3e6c3"></td>
                         </tr>
                      </table>
                   </div>
 
                </div>
-            </div>
-
-
-            <!-- <div class="page6">
-               //Will get loaded as a separate page
-            </div> -->
+            </div>   
 
          </div>
 
@@ -195,7 +176,7 @@
 
       </div>
 
-      <script src="/scripts/fna.js"></script>
+      <script src="/scripts/term.js"></script>
 
       <script src="/scripts/siema-1.5.1/dist/siema.min.js"></script>
 

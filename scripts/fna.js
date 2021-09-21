@@ -18,7 +18,6 @@ function initLoader() {
    $(".progress-bar").animate({ width: "0%" }, 1000);
    $(".progress-percentage").text("0%").fadeTo(1500, 1);
 }
-
 function updateLoader(page, pages) {
    let increment = 100 / pages;
    // $('.progress-bar').animate({width: `+=${increment}%`},1000); not working since the widths reset
@@ -40,7 +39,7 @@ let fna = {
    page5: [],
 };
 
-// global actions
+// ____ global actions
 
 $(".brand").click(() => {
    window.open("1.html");

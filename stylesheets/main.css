@@ -40,7 +40,14 @@ a {
    display: inline-block;
    text-decoration: none;
 }
-
+.initial{
+   color: initial;
+   font-size: initial;
+}
+.small-result{
+   font-size: 24px;
+   color: var(--text-primary1);
+}
 /*--- classes ---*/
 
 body,
