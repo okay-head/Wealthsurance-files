@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery cdn -->
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="/stylesheets/main.css">
+   <title>Annuity Calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="/media/images/wealthsurance-logo.png" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+         <div class="navigation">
+            <a href="#">Learning</a>
+            <a href="#">Know More</a>
+            <a href="#">Tools <span class="dropdown-arrow"><img src="/media/images/nav-dropdown-arrow.png"
+                     alt="dropdown-arrow"></span></a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <span role="button" class="red-btn">Get a Quote</span>
+         </div>
+      </nav>
+
+      <div class="content-container">
+         <div class="top">
+            <h1 class="page-heading">Annuity Calculator</h1>
+            <div class="loader">
+               <div class="progress-bar">
+                  <span class="progress-percentage"></span>
+               </div>
+            </div>
+         </div>
+
+         <div class="page1">
+            <div class="input-fields">
+               <div>I am
+                  <input type="number" id="annpg1e1" placeholder="Enter Age">
+                  years old,
+               </div>
+               <div>
+                  I would like to put in,
+                  <input type="number" id="annpg1e2" placeholder="Enter Amount">
+                  and would like to recieve
+               </div>
+               <div>monthy payments from the age of
+                  <input type="number" id="annpg1e3" placeholder="Enter years">,
+               </div>
+               <div>
+                  with a growth rate of
+                  <input type="number" id="annpg1e4" placeholder="Enter percentage">
+
+               </div>
+            </div>
+         </div>
+
+
+         <div class="btn-group">
+            <!-- <a href="#" class="red-btn prev-btn">Previous</a> -->
+            <a href="#" class="red-btn next-btn">Next</a>
+         </div>
+
+      </div>
+
+      <script src="/scripts/annuity.js"></script>
+
+      <script>
+         'use strict'
+         gotoPage(1);
+      </script>
+
+
+</body>
+
+</html>
