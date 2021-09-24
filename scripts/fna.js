@@ -153,7 +153,7 @@ function gotoPage(page) {
             $(".next-btn").on("click", () => {
                $(".table").slideUp();
             });
-            //multiple selectors not working ffs why jquery
+            //multiple selectors not working ffs why jquery // @refactor
             $(".prev-btn").on("click", () => {
                $(".table").slideUp();
             });
@@ -365,11 +365,11 @@ function gotoPage(page) {
                });
             });
 
-            //change the functionality back when back button is pressed
+            //change the functionality back when prev button is pressed
             $(".prev-btn").on("click", () => {
                $(".next-btn").off();
                $(".next-btn").on("click", () => {
-                  mySiema.next();
+                  mySiema.next();   //@new
                });
             });
 

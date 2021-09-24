@@ -1,12 +1,17 @@
+
+DESIGN TEAM - 
 font-sizes look a bit off
-drop-down menu?
-
-loaders
-
-
-Also need to check and handle exceptions for user inputs
+design team - 
+-- drop-down menu?
+-- hover behaviours?
 
 
-- at the last slide, next should change to CALCULATE    
 
-- how do the boxes look when wraped to the next line?
+
+
+ME - 
+Need to add monthly and yearly options in ammortization table
+at the last slide, next should change to CALCULATE    
+Need to integrate error checking
+
+

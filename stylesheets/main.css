@@ -40,13 +40,16 @@ a {
    display: inline-block;
    text-decoration: none;
 }
-.initial{
+.initial {
    color: initial;
    font-size: initial;
 }
-.small-result{
+.small-result {
    font-size: 24px;
    color: var(--text-primary1);
+}
+.container-lg{
+   min-height: 93vh!important;
 }
 /*--- classes ---*/
 
@@ -56,12 +59,12 @@ html {
    font-family: "Gilory-bold";
    color: var(--text-primary1);
 }
-body{
+body {
    /* background-color: var(--main-secondary2); */
-   background: var(--main-secondary2) url('/media/images/wealthsurance_bg.png') center center scroll;
+   background: var(--main-secondary2) url("/media/images/wealthsurance_bg.png")
+      center center scroll;
    background-size: cover;
    overflow-x: hidden;
-
 }
 
 /*--- container ---*/
@@ -107,7 +110,7 @@ nav {
    color: var(--text-primary1);
 }
 
-.navigation a:hover .dropdown-arrow img{
+.navigation a:hover .dropdown-arrow img {
    transform: translateY(20%);
 }
 .dropdown-arrow img {
@@ -164,9 +167,8 @@ nav {
    font-size: 36px;
    margin-top: 2%;
 }
-.btn-group{
+.btn-group {
    margin-bottom: 4%;
-
 }
 .next-btn {
    padding: 10px 49px;
@@ -178,19 +180,18 @@ nav {
 }
 .prev-btn:hover {
    background-color: rgba(255, 255, 255, 0.705);
-   
 }
 
 /* .loader{
 } */
 .input-fields {
-   line-height: 56px;
+   line-height: 63px;
    display: flex;
    flex-flow: column nowrap;
    align-items: center;
-
 }
-input, select {
+input,
+select {
    font-family: "Gilory-medium";
    border-radius: 4px;
    padding: 10px 3px;
@@ -200,9 +201,9 @@ input, select {
    /* outline: none; */
    /* border: 0.1px solid black; */
 }
-.page1 input, select{
+/* .page1 input, select{
    width: 30%;
-}
+} */
 
 input:focus {
    border: 1px solid var(--text-primary1);
@@ -211,11 +212,11 @@ input:focus {
    font-size: 14px;
    color: var(--text-secondary3);
 }
-select{
+select {
    width: initial;
-   padding: 10px 31px 10px 11px!important;
+   padding: 10px 31px 10px 11px !important;
 }
-option{
+option {
    border: none;
 }
 .loader {
@@ -226,7 +227,7 @@ option{
    border-radius: 24px;
 }
 .progress-bar {
-   width: 0;   /*initialisation to be done in js*/
+   width: 0; /*initialisation to be done in js*/
    background-color: var(--main-primary3);
    height: 12px;
    border-radius: 24px;
@@ -250,13 +251,13 @@ option{
    /* opacity: 0; */
 }
 
-.table{
+.table {
    font-size: 0.9em;
    margin: 1% 0 -0.5% 0;
    display: none;
 }
 
-.calculated-result{
+.calculated-result {
    font-size: 54px;
    color: var(--text-secondary1);
    margin-top: 10%;
@@ -265,39 +266,70 @@ option{
    opacity: 0;
 }
 
-.small{
+.small {
    font-size: 17px;
    color: var(--text-primary2);
-   font-family: 'Gilory-medium';
+   font-family: "Gilory-medium";
 }
 
-.schedule-call .small{
+.schedule-call .small {
    margin-bottom: 8%;
 }
-.schedule-call .red-btn{
-   padding: 10px 18px
+.schedule-call .red-btn {
+   padding: 10px 18px;
 }
-.know-more .small{
+.know-more .small {
    margin-bottom: 20%;
 }
-.know-more-btn{
+.know-more-btn {
    color: var(--main-primary2);
    text-decoration: underline;
 }
-.know-more-btn:hover{
+.know-more-btn:hover {
    text-decoration: none;
 }
 
-.slideshow-wrapper{
+.slideshow-wrapper {
    align-self: stretch;
    margin-bottom: 3.5%;
    /* margin-top: -15%; */
 }
 
+/* -- annuity --*/
+
+.result-table {
+   display: block;
+}
+/* .result-table table, */
+.result-table td,
+.result-table th {
+   padding: 9px 26px 9px 16px;
+   /* border: 2px solid red; */
+   border-radius: 4px;
+   background-color: white;
+}
+.result-table td:nth-child(2n){
+   color: var(--text-secondary1);
+}
+
+
+.result-table table {
+   /* border-collapse: collapse; */
+   text-align: left;
+   font-size: 0.82em;
+   border-spacing: 5px;
+}
+.result-table-header td{
+   color: white!important;
+   background-color: var(--main-primary3)!important;
+}
+
+
+
 
 /* ---breakpoints--- */
-@media screen and (max-width:1250px) {
-   .navigation{
+@media screen and (max-width: 1250px) {
+   .navigation {
       display: none;
    }
 }
