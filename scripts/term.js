@@ -1,31 +1,9 @@
 "use strict";
 
-// _____functions
-
-// update val
-function setValue(id, val) {
-   $(id).val(val);
-}
-
-// -- Loader
-function initLoader() {
-   $(".progress-bar").animate({ width: "0%" }, 1000);
-   $(".progress-percentage").text("0%").fadeTo(1500, 1);
-}
-function updateLoader(page, pages) {
-   let increment = (100 / pages);
-   let text = (page * Math.round(increment))==99 ? 100 :(page * Math.round(increment));
-   
-   $(".progress-percentage").hide();
-   $(".progress-bar").animate({ width: `${page * increment}%` }, 900);
-   $(".progress-percentage")
-      .fadeTo(900, 1)
-      .text(text+'%');
-}
-
 //____ Objects and collections
 
-let te = {     //te = term insurance
+let te = {
+   //te = term insurance
    page1: [],
    page2: [],
    page3: [],
@@ -34,7 +12,7 @@ let te = {     //te = term insurance
 // ____ global actions
 
 $(".brand").click(() => {
-   window.open("1.html","_self");
+   window.open("1.html", "_self");
 });
 
 // ____ on page load actions
@@ -74,7 +52,6 @@ function gotoPage(page) {
 
             break;
 
-            
          // ________ page 2 ___________
          case 2:
             updateLoader(1, 3);
@@ -190,7 +167,6 @@ function gotoPage(page) {
             });
             break;
 
-            
          // ________ page 5 ___________
          case 3:
             updateLoader(2, 3);
@@ -210,7 +186,7 @@ function gotoPage(page) {
 
             //check for existing localStorage on page load
             if (localStorage.getItem("tepg3") != null) {
-               te.page3= JSON.parse(localStorage.getItem("tepg3"));
+               te.page3 = JSON.parse(localStorage.getItem("tepg3"));
                // console.log(te.page3)
                let [y] = te.page3;
                // console.log(y)
@@ -288,7 +264,7 @@ function gotoPage(page) {
             $(".next-btn").on("click", () => {
                function loaderPromise() {
                   let update = new Promise((resolve) => {
-                     resolve(updateLoader(3,3));
+                     resolve(updateLoader(3, 3));
                   });
 
                   //----- @prasad -----
@@ -315,14 +291,12 @@ function gotoPage(page) {
                });
             });
 
-            
          // ________ page 4 ___________
 
          case 4:
-            $(".calculated-result").animate({
-               opacity: 1,
-            });
-            $(".calculated-result").css("transform", "translateY(0)");
+            $(".calculated-result")
+               .animate({ opacity: 1 })
+               .css("transform", "translateY(0)");
 
          default:
             console.log("200");
@@ -330,4 +304,3 @@ function gotoPage(page) {
       }
    });
 }
-

@@ -1,34 +1,5 @@
 "use strict";
 
-// _____functions
-
-// -- Loader
-
-// function initLoader(pages) {
-//    $(".progress-bar").animate({ width: `${100 / pages}%` }, 1000);
-//    $(".progress-percentage")
-//       .text(`${Math.round(100 / pages)}%`)
-//       .fadeTo(1500, 1);
-// }
-
-function setValue(id, val) {
-   $(id).val(val);
-}
-function initLoader() {
-   $(".progress-bar").animate({ width: "0%" }, 1000);
-   $(".progress-percentage").text("0%").fadeTo(1500, 1);
-}
-function updateLoader(page, pages) {
-   let increment = 100 / pages;
-   // $('.progress-bar').animate({width: `+=${increment}%`},1000); not working since the widths reset
-   $(".progress-percentage").hide();
-
-   $(".progress-bar").animate({ width: `${page * increment}%` }, 900);
-   $(".progress-percentage")
-      .fadeTo(900, 1)
-      .text(`${page * Math.round(increment)}%`);
-}
-
 //____ Objects and collections
 
 let fna = {
@@ -103,7 +74,6 @@ function gotoPage(page) {
                $(".next-btn").one("click", () => {
                   fna.page2 = [];
                   fna.page2.push($("#fnapg2e1").val());
-                  // console.log($("#fnapg2e1").val());
                   localStorage.setItem("fnapg2", JSON.stringify(fna.page2));
                });
             });
@@ -141,7 +111,6 @@ function gotoPage(page) {
             });
             break;
 
-            
          // ________ page 4 ___________
          case 4:
             updateLoader(3, 5);
@@ -150,11 +119,7 @@ function gotoPage(page) {
             });
 
             // table glitch
-            $(".next-btn").on("click", () => {
-               $(".table").slideUp();
-            });
-            //multiple selectors not working ffs why jquery // @refactor
-            $(".prev-btn").on("click", () => {
+            $(".next-btn,.prev-btn").on("click", () => {
                $(".table").slideUp();
             });
 
@@ -248,7 +213,6 @@ function gotoPage(page) {
             });
             break;
 
-            
          // ________ page 5 ___________
          case 5:
             updateLoader(4, 5);
@@ -257,13 +221,9 @@ function gotoPage(page) {
             });
 
             // table glitch
-            $(".next-btn").on("click", () => {
+            $(".next-btn,.prev-btn").on("click", () => {
                $(".table").slideUp();
             });
-            $(".prev-btn").on("click", () => {
-               $(".table").slideUp();
-            });
-
             // localStorage
 
             //check for existing localStorage on page load
@@ -361,7 +321,7 @@ function gotoPage(page) {
                loaderPromise().then(() => {
                   setTimeout(() => {
                      window.open("6.html", "_self");
-                  }, 1000);
+                  }, 2000);
                });
             });
 
@@ -369,18 +329,16 @@ function gotoPage(page) {
             $(".prev-btn").on("click", () => {
                $(".next-btn").off();
                $(".next-btn").on("click", () => {
-                  mySiema.next();   //@new
+                  mySiema.next();
                });
             });
 
-            
          // ________ page 6 ___________
 
          case 6:
-            $(".calculated-result").animate({
-               opacity: 1,
-            });
-            $(".calculated-result").css("transform", "translateY(0)");
+            $(".calculated-result")
+               .animate({ opacity: 1 })
+               .css("transform", "translateY(0)");
 
          default:
             console.log("200");
@@ -388,4 +346,3 @@ function gotoPage(page) {
       }
    });
 }
-

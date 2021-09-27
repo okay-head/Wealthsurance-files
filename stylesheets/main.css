@@ -48,8 +48,8 @@ a {
    font-size: 24px;
    color: var(--text-primary1);
 }
-.container-lg{
-   min-height: 93vh!important;
+.container-lg {
+   min-height: 93vh !important;
 }
 /*--- classes ---*/
 
@@ -60,7 +60,6 @@ html {
    color: var(--text-primary1);
 }
 body {
-   /* background-color: var(--main-secondary2); */
    background: var(--main-secondary2) url("/media/images/wealthsurance_bg.png")
       center center scroll;
    background-size: cover;
@@ -80,7 +79,6 @@ body {
 /* --- navigation --- */
 
 nav {
-   /* background-color: var(--text-primary3); */
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -109,35 +107,22 @@ nav {
    margin: 10px 12px;
    color: var(--text-primary1);
 }
-
-.navigation a:hover .dropdown-arrow img {
-   transform: translateY(20%);
-}
 .dropdown-arrow img {
    display: inline-block;
    width: 13px;
    margin: 1px 4px;
    transition: 0.2s ease all;
 }
-/* .navigation a:nth-child(1)::after,
-.navigation a:nth-child(2)::after,
-.navigation a:nth-child(3)::after{
-   content: url('/media/images/nav-dropdown-arrow.png');
-   display: inline-block;
-   height: 100%;
-} */
-/*button*/
 .red-btn {
    display: inline-block;
    background-color: var(--main-primary2);
    color: var(--text-primary4);
    font-size: 19px; /*-1*/
    border: none;
-   padding: 10px 32px;
+   padding: 10px 30px;
    margin-left: 10px;
    border-radius: 4px;
    cursor: pointer;
-   /* transition: 0.2s ease background; */
 
    /* prevent selection */
    user-select: none;
@@ -171,10 +156,11 @@ nav {
    margin-bottom: 4%;
 }
 .next-btn {
-   padding: 10px 49px;
+   padding: 9px 49px;
 }
 .prev-btn {
    border: 2px solid var(--main-primary2);
+   padding: 8px 33px;
    background-color: transparent;
    color: var(--main-primary2);
 }
@@ -186,9 +172,10 @@ nav {
 } */
 .input-fields {
    line-height: 63px;
-   display: flex;
+   display: block;
+   /* display: flex;
    flex-flow: column nowrap;
-   align-items: center;
+   align-items: center; */
 }
 input,
 select {
@@ -253,8 +240,22 @@ option {
 
 .table {
    font-size: 0.9em;
-   margin: 1% 0 -0.5% 0;
+   /* margin: 1% 0 -0.5% 0; */
+   overflow-x: auto;
    display: none;
+}
+
+table {
+   position: relative;
+   /* need to center?? use margins when flex/grid casues bugs */
+   width: 900px;
+   padding: 1.3em 0;
+   margin: 0 auto;
+}
+@media screen and (max-width: 920px) {
+   table {
+      margin: auto;
+   }
 }
 
 .calculated-result {
@@ -291,7 +292,7 @@ option {
 
 .slideshow-wrapper {
    align-self: stretch;
-   margin-bottom: 3.5%;
+   /* margin-bottom: 3.5%; */
    /* margin-top: -15%; */
 }
 
@@ -304,14 +305,12 @@ option {
 .result-table td,
 .result-table th {
    padding: 9px 26px 9px 16px;
-   /* border: 2px solid red; */
    border-radius: 4px;
    background-color: white;
 }
-.result-table td:nth-child(2n){
+.result-table td:nth-child(2n) {
    color: var(--text-secondary1);
 }
-
 
 .result-table table {
    /* border-collapse: collapse; */
@@ -319,13 +318,42 @@ option {
    font-size: 0.82em;
    border-spacing: 5px;
 }
-.result-table-header td{
-   color: white!important;
-   background-color: var(--main-primary3)!important;
+.result-table-header td {
+   color: white !important;
+   background-color: var(--main-primary3) !important;
 }
 
+/* ---flickty--- */
 
+.main-carousel {
+   position: relative;
+}
 
+.carousel-cell {
+   width: 100%;
+}
+
+.flickity-page-dots {
+   display: none;
+}
+
+/* no circle */
+.flickity-button {
+   background: transparent;
+}
+
+/* big previous & next buttons */
+.flickity-prev-next-button {
+   display: none;
+}
+
+/* the container for the slides */
+.flickity-slider {
+   display: flex;
+   align-items: center;
+   flex-flow: column;
+   justify-content: center;
+}
 
 /* ---breakpoints--- */
 @media screen and (max-width: 1340px) {
