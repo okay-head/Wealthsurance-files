@@ -23,3 +23,12 @@ function updateLoader(page, pages) {
       .fadeTo(800, 1)
       .text(text + "%");
 }
+
+$(".brand").on('click',() => {
+   window.open("1.html", "_self");
+   // @change
+});
+
+
+// initialize siema
+// function initSiema() {}    /*causing bugs*/

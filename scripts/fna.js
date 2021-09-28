@@ -298,12 +298,6 @@ function next() {
 }
 
 function fadeInResult() {
-   // window.setTimeout(()=>{
-   //    $(".calculated-result")
-   //       .animate({ opacity: 1 })
-   //       .css("transform", "translateY(0)");
-   //    },100)
-
    // animate on document.ready
    $(()=>{
       $(".calculated-result")
@@ -312,9 +306,6 @@ function fadeInResult() {
    })
 }
 
-// function getVal(id) {
-//    $(id).value();
-// }
 function storeRecalculate() {
    //not to be stored in local storage
    let debt = {
@@ -447,11 +438,6 @@ let fna = {
 };
 
 // ____ global actions
-
-$(".brand").click(() => {
-   window.open("1.html", "_self");
-   // @change
-});
 
 // ____ on page load actions
 
