@@ -38,6 +38,7 @@
 *::before {
    margin: 0;
    padding: 0;
+   /* didn't add border-box */
 }
 
 a {
@@ -62,6 +63,7 @@ html {
    height: 100%;
    font-family: "Gilroy-bold";
    color: var(--text-primary1);
+   scroll-behavior: smooth;
 }
 body {
    background: var(--main-secondary2) url("/media/images/wealthsurance_bg.png")
@@ -385,10 +387,11 @@ table {
    }
    section.output,
    section.input {
-      margin: 2em 0 0 0 !important;
+      margin: 0em 0 0 0 !important;
    }
    section.output {
       order: 1;
+      border: none!important;
    }
    section.input {
       order: 2;
@@ -408,8 +411,9 @@ section.input {
    margin-right: 2em;
 }
 section.output {
-   margin-left: 2em;
-   /* border-left: 2px solid #C4C4C4; */
+   padding-left: 1.8em;
+   /* box-shadow: -15px 0 0 1px 1px #C4C4C4; */
+   border-left: 2px solid #C4C4C4;
 }
 .results-table-container {
    /* text-align: left; */

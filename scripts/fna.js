@@ -297,6 +297,113 @@ function next() {
    });
 }
 
+function fadeInResult() {
+   $(".calculated-result")
+      .animate({ opacity: 1 })
+      .css("transform", "translateY(0)");
+}
+
+// function getVal(id) {
+//    $(id).value();
+// }
+function storeRecalculate() {
+   //not to be stored in local storage
+   let debt = {
+      label: "debt",
+      total: $("#fnaresultp1r0e1").val(),
+      credit: [
+         $("#fnaresultp1r1e1").val(), 
+         $("#fnaresultp1r1e2").val(),
+         $("#fnaresultp1r1e3").val(),
+      ],
+      vehicle: [
+         $("#fnaresultp1r2e1").val(),
+         $("#fnaresultp1r2e2").val(),
+         $("#fnaresultp1r2e3").val(),
+      ],
+      student: [
+         $("#fnaresultp1r3e1").val(),
+         $("#fnaresultp1r3e2").val(),
+         $("#fnaresultp1r3e3").val(),
+      ],
+      bank: [
+         $("#fnaresultp1r4e1").val(),
+         $("#fnaresultp1r4e2").val(),
+         $("#fnaresultp1r4e3").val(),
+      ],
+      personal: [
+         $("#fnaresultp1r5e1").val(),
+         $("#fnaresultp1r5e2").val(),
+         $("#fnaresultp1r5e3").val(),
+      ],
+      others: [
+         $("#fnaresultp1r6e1").val(),
+         $("#fnaresultp1r6e2").val(),
+         $("#fnaresultp1r6e3").val(),
+      ],
+   };
+
+   let expenses = {
+      label: "expenses",
+      total: $("#fnaresultp2r0e1").val(),
+      college: [
+         $("#fnaresultp2r1e1").val(), 
+         $("#fnaresultp2r1e2").val(),
+         $("#fnaresultp2r1e3").val(),
+      ],
+      medical: [
+         $("#fnaresultp2r2e1").val(),
+         $("#fnaresultp2r2e2").val(),
+         $("#fnaresultp2r2e3").val(),
+      ],
+      planned: [
+         $("#fnaresultp2r3e1").val(),
+         $("#fnaresultp2r3e2").val(),
+         $("#fnaresultp2r3e3").val(),
+      ],
+      financial: [
+         $("#fnaresultp2r4e1").val(),
+         $("#fnaresultp2r4e2").val(),
+         $("#fnaresultp2r4e3").val(),
+      ],
+      others: [
+         $("#fnaresultp2r5e1").val(),
+         $("#fnaresultp2r5e2").val(),
+         $("#fnaresultp2r5e3").val(),
+      ],
+   };
+
+   fna.results.push(debt);
+   fna.results.push(expenses);
+}
+
+function reCalculate() {
+   // ---@error ---
+   let flag = true;
+
+   if ($('#fnaresultp1r0e1').val()!=='') {
+      flag = false;
+   }
+   $(":input").on("change", () => {
+      // not working
+      if ($('#fnaresultp1r0e1').val()!=='') {
+         flag = false;
+      }
+   });
+
+
+   $("#re-calc").on("click", () => {
+      if (flag) {
+         window.alert("One or more of the input fields are empty!");
+      }else{
+         storeRecalculate();  
+         // @prasad push to database
+         console.log(fna.results)
+      }
+      // more actions
+   });
+}
+
 //____ Objects and collections
 
 let fna = {
@@ -305,12 +412,36 @@ let fna = {
    page3: [],
    page4: [],
    page5: [],
+   results: [
+      /* 
+      {
+         label: "debt",
+         total: 999,
+         credit: [amount,interest,years],
+         vehicle: [amount,interest,years],
+         student: [amount,interest,years],
+         bank: [amount,interest,years],
+         personal: [amount,interest,years],
+         others: [amount,interest,years],
+      },
+      {
+         label: "expenses",
+         total: 777,
+         college: [amount,interest,years],
+         medical: [amount,interest,years],
+         planned: [amount,interest,years],
+         financial: [amount,interest,years],
+         others: [amount,interest,years],
+      }, 
+      */
+   ],
 };
 
 // ____ global actions
 
 $(".brand").click(() => {
    window.open("1.html", "_self");
+   // @change
 });
 
 // ____ on page load actions

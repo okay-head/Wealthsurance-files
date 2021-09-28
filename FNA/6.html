@@ -142,14 +142,14 @@
                      </tr>
                      <tr>
                         <td>Others:</td>
-                        <td><input type="number" id="fnaresultp2r6e1" placeholder="Enter Amount"></td>
-                        <td><input type="number" id="fnaresultp2r6e2" placeholder="Enter Interest"></td>
-                        <td><input type="number" id="fnaresultp2r6e3" placeholder="Enter Years"></td>
+                        <td><input type="number" id="fnaresultp2r5e1" placeholder="Enter Amount"></td>
+                        <td><input type="number" id="fnaresultp2r5e2" placeholder="Enter Interest"></td>
+                        <td><input type="number" id="fnaresultp2r5e3" placeholder="Enter Years"></td>
                      </tr>
                   </table>
                </div>
 
-               <span class="red-btn re-calc-btn" role="button">Re-calculate</span>
+               <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>
 
                <div class="schedule-call">
                   <p class="small">Want to know more about Insurance?</p>
@@ -157,7 +157,7 @@
                </div>
 
                <div class="know-more">
-                  <p class="small">Know more about <a href="#" class="know-more-btn">Benifits of Insurance</a> <br>
+                  <p class="small">Know more about <a href="#" class="know-more-btn">Benefits of Insurance</a> <br>
                      <a href="#" class="privacy-btn know-more-btn">Privacy Policy</a>
                   </p>
                </div>
@@ -190,10 +190,12 @@
    </div>
    <script src="/scripts/fna.js"></script>
    <script>
-      $(".calculated-result")
-         .animate({ opacity: 1 })
-         .css("transform", "translateY(0)");
-   </script>
+      fadeInResult();
+      $('.re-enter').on('click',()=>{
+         window.open('1.html','_self');
+      })
+      reCalculate();
+</script>
 </body>
 
 </html>
