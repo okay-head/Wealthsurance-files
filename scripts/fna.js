@@ -298,9 +298,18 @@ function next() {
 }
 
 function fadeInResult() {
-   $(".calculated-result")
-      .animate({ opacity: 1 })
-      .css("transform", "translateY(0)");
+   // window.setTimeout(()=>{
+   //    $(".calculated-result")
+   //       .animate({ opacity: 1 })
+   //       .css("transform", "translateY(0)");
+   //    },100)
+
+   // animate on document.ready
+   $(()=>{
+      $(".calculated-result")
+         .animate({ opacity: 1 })
+         .css("transform", "translateY(0)");
+   })
 }
 
 // function getVal(id) {
