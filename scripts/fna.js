@@ -1,5 +1,302 @@
 "use strict";
 
+//_____ functions
+function page1LocalStorage() {
+   //check for existing localStorage on page load
+   if (localStorage.getItem("fnapg1") != null) {
+      fna.page1 = JSON.parse(localStorage.getItem("fnapg1"));
+      $("#fnapg1e1").val(fna.page1[0]);
+      $("#fnapg1e2").val(fna.page1[1]);
+      $("#fnapg1e3").val(fna.page1[2]);
+   }
+
+   //push to local storage
+   $(":input").change(() => {
+      if (localStorage.getItem("fnapg1") != null) {
+         localStorage.removeItem("fnapg1");
+         fna.page1 = [];
+      }
+
+      $(".next-btn").one("click", () => {
+         fna.page1 = [];
+         fna.page1.push($("#fnapg1e1").val());
+         fna.page1.push($("#fnapg1e2").val());
+         fna.page1.push($("#fnapg1e3").val());
+
+         localStorage.setItem("fnapg1", JSON.stringify(fna.page1));
+      });
+   });
+}
+
+// --page2--
+function page2LocalStorage() {
+   //check for existing localStorage on page load
+   if (localStorage.getItem("fnapg2") != null) {
+      fna.page2 = JSON.parse(localStorage.getItem("fnapg2"));
+      $("#fnapg2e1").val(fna.page2[0]);
+   }
+   //push to local storage
+   $(":input").change(() => {
+      if (localStorage.getItem("fnapg2") != null) {
+         localStorage.removeItem("fnapg2");
+         fna.page2 = [];
+      }
+
+      $(".next-btn").one("click", () => {
+         fna.page2 = [];
+         fna.page2.push($("#fnapg2e1").val());
+         localStorage.setItem("fnapg2", JSON.stringify(fna.page2));
+      });
+   });
+}
+
+//page3
+function page3LocalStorage() {
+   //check for existing localStorage on page load
+   if (localStorage.getItem("fnapg3") != null) {
+      fna.page3 = JSON.parse(localStorage.getItem("fnapg3"));
+      $("#fnapg3e1").val(fna.page3[0]);
+      $("#fnapg3e2").val(fna.page3[1]);
+      $("#fnapg3e3").val(fna.page3[2]);
+   }
+
+   //push to local storage
+   $(":input").change(() => {
+      if (localStorage.getItem("fnapg3") != null) {
+         localStorage.removeItem("fnapg3");
+         fna.page3 = [];
+      }
+
+      $(".next-btn").one("click", () => {
+         fna.page3 = [];
+         fna.page3.push($("#fnapg3e1").val());
+         fna.page3.push($("#fnapg3e2").val());
+         fna.page3.push($("#fnapg3e3").val());
+
+         localStorage.setItem("fnapg3", JSON.stringify(fna.page3));
+      });
+   });
+}
+
+//table
+function table() {
+   $("#fnapg4e1,#fnapg5e1").keyup(() => {
+      $(".table").slideDown(800);
+   });
+
+   // table glitch
+   $(".next-btn,.prev-btn").on("click", () => {
+      $(".table").slideUp();
+   });
+}
+
+function page4LocalStorage() {
+   // localStorage
+
+   //check for existing localStorage on page load
+   if (localStorage.getItem("fnapg4") != null) {
+      fna.page4 = JSON.parse(localStorage.getItem("fnapg4"));
+      // console.log(fna.page4)
+      let [z] = fna.page4;
+      // console.log(z)
+      setValue("#fnapg4e1", z.total);
+      setValue("#fnapg4e2c1", z.credit[0]);
+      setValue("#fnapg4e2c2", z.credit[1]);
+      setValue("#fnapg4e2c3", z.credit[2]);
+
+      setValue("#fnapg4e3c1", z.vehicle[0]);
+      setValue("#fnapg4e3c2", z.vehicle[1]);
+      setValue("#fnapg4e3c3", z.vehicle[2]);
+
+      setValue("#fnapg4e4c1", z.student[0]);
+      setValue("#fnapg4e4c2", z.student[1]);
+      setValue("#fnapg4e4c3", z.student[2]);
+
+      setValue("#fnapg4e5c1", z.bank[0]);
+      setValue("#fnapg4e5c2", z.bank[1]);
+      setValue("#fnapg4e5c3", z.bank[2]);
+
+      setValue("#fnapg4e6c1", z.personal[0]);
+      setValue("#fnapg4e6c2", z.personal[1]);
+      setValue("#fnapg4e6c3", z.personal[2]);
+
+      setValue("#fnapg4e7c1", z.others[0]);
+      setValue("#fnapg4e7c2", z.others[1]);
+      setValue("#fnapg4e7c3", z.others[2]);
+   }
+
+   //push to local storage
+   $(":input").change(() => {
+      if (localStorage.getItem("fnapg4") != null) {
+         localStorage.removeItem("fnapg4");
+         fna.page4 = [];
+      }
+
+      $(".next-btn").one("click", () => {
+         fna.page4 = [];
+
+         const obj = {
+            total: $("#fnapg4e1").val(),
+            credit: [
+               $("#fnapg4e2c1").val(),
+               $("#fnapg4e2c2").val(),
+               $("#fnapg4e2c3").val(),
+            ],
+
+            vehicle: [
+               $("#fnapg4e3c1").val(),
+               $("#fnapg4e3c2").val(),
+               $("#fnapg4e3c3").val(),
+            ],
+
+            student: [
+               $("#fnapg4e4c1").val(),
+               $("#fnapg4e4c2").val(),
+               $("#fnapg4e4c3").val(),
+            ],
+
+            bank: [
+               $("#fnapg4e5c1").val(),
+               $("#fnapg4e5c2").val(),
+               $("#fnapg4e5c3").val(),
+            ],
+
+            personal: [
+               $("#fnapg4e6c1").val(),
+               $("#fnapg4e6c2").val(),
+               $("#fnapg4e6c3").val(),
+            ],
+
+            others: [
+               $("#fnapg4e7c1").val(),
+               $("#fnapg4e7c2").val(),
+               $("#fnapg4e7c3").val(),
+            ],
+         };
+
+         fna.page4.push(obj);
+
+         localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
+      });
+   });
+}
+
+//page 5
+function page5LocalStorage() {
+   // localStorage
+
+   //check for existing localStorage on page load
+   if (localStorage.getItem("fnapg5") != null) {
+      fna.page5 = JSON.parse(localStorage.getItem("fnapg5"));
+      // console.log(fna.page5)
+      let [y] = fna.page5;
+      // console.log(y)
+      setValue("#fnapg5e1", y.total);
+      setValue("#fnapg5e2c1", y.college[0]);
+      setValue("#fnapg5e2c2", y.college[1]);
+      setValue("#fnapg5e2c3", y.college[2]);
+
+      setValue("#fnapg5e3c1", y.medical[0]);
+      setValue("#fnapg5e3c2", y.medical[1]);
+      setValue("#fnapg5e3c3", y.medical[2]);
+
+      setValue("#fnapg5e4c1", y.planned[0]);
+      setValue("#fnapg5e4c2", y.planned[1]);
+      setValue("#fnapg5e4c3", y.planned[2]);
+
+      setValue("#fnapg5e5c1", y.financial[0]);
+      setValue("#fnapg5e5c2", y.financial[1]);
+      setValue("#fnapg5e5c3", y.financial[2]);
+
+      setValue("#fnapg5e6c1", y.others[0]);
+      setValue("#fnapg5e6c2", y.others[1]);
+      setValue("#fnapg5e6c3", y.others[2]);
+   }
+
+   //push to local storage
+   $(":input").change(() => {
+      if (localStorage.getItem("fnapg5") != null) {
+         localStorage.removeItem("fnapg5");
+         fna.page5 = [];
+      }
+
+      $(".next-btn").one("click", () => {
+         fna.page5 = [];
+
+         const obj = {
+            total: $("#fnapg5e1").val(),
+            college: [
+               $("#fnapg5e2c1").val(),
+               $("#fnapg5e2c2").val(),
+               $("#fnapg5e2c3").val(),
+            ],
+
+            medical: [
+               $("#fnapg5e3c1").val(),
+               $("#fnapg5e3c2").val(),
+               $("#fnapg5e3c3").val(),
+            ],
+
+            planned: [
+               $("#fnapg5e4c1").val(),
+               $("#fnapg5e4c2").val(),
+               $("#fnapg5e4c3").val(),
+            ],
+
+            financial: [
+               $("#fnapg5e5c1").val(),
+               $("#fnapg5e5c2").val(),
+               $("#fnapg5e5c3").val(),
+            ],
+
+            others: [
+               $("#fnapg5e6c1").val(),
+               $("#fnapg5e6c2").val(),
+               $("#fnapg5e6c3").val(),
+            ],
+         };
+         fna.page5.push(obj);
+
+         localStorage.setItem("fnapg5", JSON.stringify(fna.page5));
+      });
+   });
+}
+
+function next() {
+   //  change next button's action
+   $(".next-btn").on("click", () => {
+      function loaderPromise() {
+         let update = new Promise((resolve) => {
+            resolve(updateLoader(5, 5));
+         });
+
+         //----- @prasad -----
+         function pushToDatabase() {
+            console.log(fna);
+         }
+         // ------------------
+
+         return update;
+      }
+
+      loaderPromise().then(() => {
+         setTimeout(() => {
+            window.open("6.html", "_self");
+         }, 1000);
+      });
+   });
+
+   //change the functionality back when prev button is pressed
+   $(".prev-btn").on("click", () => {
+      $(".next-btn")
+         .text("Next")
+         .off()
+         .on("click", () => {
+            mySiema.next();
+         });
+   });
+}
+
 //____ Objects and collections
 
 let fna = {
@@ -13,336 +310,337 @@ let fna = {
 // ____ global actions
 
 $(".brand").click(() => {
-   window.open("1.html");
+   window.open("1.html", "_self");
 });
 
 // ____ on page load actions
 
-function gotoPage(page) {
-   $(() => {
-      // console.log(page);
+// function gotoPage(page) {
+//    $(() => {
+//       // console.log(page);
 
-      switch (page) {
-         // ________ page 1 ___________
-         case 1:
-            //initialize loader
-            initLoader();
+//       switch (page) {
+//          // ________ page 1 ___________
+//          case 1:
+//             //initialize loader
+//             initLoader();
 
-            //check for existing localStorage on page load
-            if (localStorage.getItem("fnapg1") != null) {
-               fna.page1 = JSON.parse(localStorage.getItem("fnapg1"));
-               $("#fnapg1e1").val(fna.page1[0]);
-               $("#fnapg1e2").val(fna.page1[1]);
-               $("#fnapg1e3").val(fna.page1[2]);
-            }
+//             //check for existing localStorage on page load
+//             if (localStorage.getItem("fnapg1") != null) {
+//                fna.page1 = JSON.parse(localStorage.getItem("fnapg1"));
+//                $("#fnapg1e1").val(fna.page1[0]);
+//                $("#fnapg1e2").val(fna.page1[1]);
+//                $("#fnapg1e3").val(fna.page1[2]);
+//             }
 
-            //push to local storage
-            $(":input").change(() => {
-               if (localStorage.getItem("fnapg1") != null) {
-                  localStorage.removeItem("fnapg1");
-                  fna.page1 = [];
-               }
+//             //push to local storage
+//             $(":input").change(() => {
+//                if (localStorage.getItem("fnapg1") != null) {
+//                   localStorage.removeItem("fnapg1");
+//                   fna.page1 = [];
+//                }
 
-               $(".next-btn").one("click", () => {
-                  fna.page1 = [];
-                  fna.page1.push($("#fnapg1e1").val());
-                  fna.page1.push($("#fnapg1e2").val());
-                  fna.page1.push($("#fnapg1e3").val());
+//                $(".next-btn").one("click", () => {
+//                   fna.page1 = [];
+//                   fna.page1.push($("#fnapg1e1").val());
+//                   fna.page1.push($("#fnapg1e2").val());
+//                   fna.page1.push($("#fnapg1e3").val());
 
-                  localStorage.setItem("fnapg1", JSON.stringify(fna.page1));
-               });
-            });
+//                   localStorage.setItem("fnapg1", JSON.stringify(fna.page1));
+//                });
+//             });
 
-            break;
+//             break;
 
-         // ________ page 2 ___________
-         case 2:
-            updateLoader(1, 5);
+//          // ________ page 2 ___________
+//          case 2:
+//             updateLoader(1, 5);
 
-            //check for existing localStorage on page load
-            if (localStorage.getItem("fnapg2") != null) {
-               fna.page2 = JSON.parse(localStorage.getItem("fnapg2"));
-               $("#fnapg2e1").val(fna.page2[0]);
-            }
-            //push to local storage
-            $(":input").change(() => {
-               if (localStorage.getItem("fnapg2") != null) {
-                  localStorage.removeItem("fnapg2");
-                  fna.page2 = [];
-               }
+//             //check for existing localStorage on page load
+//             if (localStorage.getItem("fnapg2") != null) {
+//                fna.page2 = JSON.parse(localStorage.getItem("fnapg2"));
+//                $("#fnapg2e1").val(fna.page2[0]);
+//             }
+//             //push to local storage
+//             $(":input").change(() => {
+//                if (localStorage.getItem("fnapg2") != null) {
+//                   localStorage.removeItem("fnapg2");
+//                   fna.page2 = [];
+//                }
 
-               $(".next-btn").one("click", () => {
-                  fna.page2 = [];
-                  fna.page2.push($("#fnapg2e1").val());
-                  localStorage.setItem("fnapg2", JSON.stringify(fna.page2));
-               });
-            });
+//                $(".next-btn").one("click", () => {
+//                   fna.page2 = [];
+//                   fna.page2.push($("#fnapg2e1").val());
+//                   localStorage.setItem("fnapg2", JSON.stringify(fna.page2));
+//                });
+//             });
 
-            break;
+//             break;
 
-         // ________ page 3 ___________
+//          // ________ page 3 ___________
 
-         case 3:
-            updateLoader(2, 5);
+//          case 3:
+//             updateLoader(2, 5);
 
-            //check for existing localStorage on page load
-            if (localStorage.getItem("fnapg3") != null) {
-               fna.page3 = JSON.parse(localStorage.getItem("fnapg3"));
-               $("#fnapg3e1").val(fna.page3[0]);
-               $("#fnapg3e2").val(fna.page3[1]);
-               $("#fnapg3e3").val(fna.page3[2]);
-            }
+//             //check for existing localStorage on page load
+//             if (localStorage.getItem("fnapg3") != null) {
+//                fna.page3 = JSON.parse(localStorage.getItem("fnapg3"));
+//                $("#fnapg3e1").val(fna.page3[0]);
+//                $("#fnapg3e2").val(fna.page3[1]);
+//                $("#fnapg3e3").val(fna.page3[2]);
+//             }
 
-            //push to local storage
-            $(":input").change(() => {
-               if (localStorage.getItem("fnapg3") != null) {
-                  localStorage.removeItem("fnapg3");
-                  fna.page3 = [];
-               }
+//             //push to local storage
+//             $(":input").change(() => {
+//                if (localStorage.getItem("fnapg3") != null) {
+//                   localStorage.removeItem("fnapg3");
+//                   fna.page3 = [];
+//                }
 
-               $(".next-btn").one("click", () => {
-                  fna.page3 = [];
-                  fna.page3.push($("#fnapg3e1").val());
-                  fna.page3.push($("#fnapg3e2").val());
-                  fna.page3.push($("#fnapg3e3").val());
+//                $(".next-btn").one("click", () => {
+//                   fna.page3 = [];
+//                   fna.page3.push($("#fnapg3e1").val());
+//                   fna.page3.push($("#fnapg3e2").val());
+//                   fna.page3.push($("#fnapg3e3").val());
 
-                  localStorage.setItem("fnapg3", JSON.stringify(fna.page3));
-               });
-            });
-            break;
+//                   localStorage.setItem("fnapg3", JSON.stringify(fna.page3));
+//                });
+//             });
+//             break;
 
-         // ________ page 4 ___________
-         case 4:
-            updateLoader(3, 5);
-            $("#fnapg4e1").keyup(() => {
-               $(".table").slideDown(800);
-            });
+//          // ________ page 4 ___________
+//          case 4:
+//             updateLoader(3, 5);
 
-            // table glitch
-            $(".next-btn,.prev-btn").on("click", () => {
-               $(".table").slideUp();
-            });
+//             $("#fnapg4e1").keyup(() => {
+//                $(".table").slideDown(800);
+//             });
 
-            // localStorage
+//             // table glitch
+//             $(".next-btn,.prev-btn").on("click", () => {
+//                $(".table").slideUp();
+//             });
 
-            //check for existing localStorage on page load
-            if (localStorage.getItem("fnapg4") != null) {
-               fna.page4 = JSON.parse(localStorage.getItem("fnapg4"));
-               // console.log(fna.page4)
-               let [z] = fna.page4;
-               // console.log(z)
-               setValue("#fnapg4e1", z.total);
-               setValue("#fnapg4e2c1", z.credit[0]);
-               setValue("#fnapg4e2c2", z.credit[1]);
-               setValue("#fnapg4e2c3", z.credit[2]);
+//             // localStorage
 
-               setValue("#fnapg4e3c1", z.vehicle[0]);
-               setValue("#fnapg4e3c2", z.vehicle[1]);
-               setValue("#fnapg4e3c3", z.vehicle[2]);
+//             //check for existing localStorage on page load
+//             if (localStorage.getItem("fnapg4") != null) {
+//                fna.page4 = JSON.parse(localStorage.getItem("fnapg4"));
+//                // console.log(fna.page4)
+//                let [z] = fna.page4;
+//                // console.log(z)
+//                setValue("#fnapg4e1", z.total);
+//                setValue("#fnapg4e2c1", z.credit[0]);
+//                setValue("#fnapg4e2c2", z.credit[1]);
+//                setValue("#fnapg4e2c3", z.credit[2]);
 
-               setValue("#fnapg4e4c1", z.student[0]);
-               setValue("#fnapg4e4c2", z.student[1]);
-               setValue("#fnapg4e4c3", z.student[2]);
+//                setValue("#fnapg4e3c1", z.vehicle[0]);
+//                setValue("#fnapg4e3c2", z.vehicle[1]);
+//                setValue("#fnapg4e3c3", z.vehicle[2]);
 
-               setValue("#fnapg4e5c1", z.bank[0]);
-               setValue("#fnapg4e5c2", z.bank[1]);
-               setValue("#fnapg4e5c3", z.bank[2]);
+//                setValue("#fnapg4e4c1", z.student[0]);
+//                setValue("#fnapg4e4c2", z.student[1]);
+//                setValue("#fnapg4e4c3", z.student[2]);
 
-               setValue("#fnapg4e6c1", z.personal[0]);
-               setValue("#fnapg4e6c2", z.personal[1]);
-               setValue("#fnapg4e6c3", z.personal[2]);
+//                setValue("#fnapg4e5c1", z.bank[0]);
+//                setValue("#fnapg4e5c2", z.bank[1]);
+//                setValue("#fnapg4e5c3", z.bank[2]);
 
-               setValue("#fnapg4e7c1", z.others[0]);
-               setValue("#fnapg4e7c2", z.others[1]);
-               setValue("#fnapg4e7c3", z.others[2]);
-            }
+//                setValue("#fnapg4e6c1", z.personal[0]);
+//                setValue("#fnapg4e6c2", z.personal[1]);
+//                setValue("#fnapg4e6c3", z.personal[2]);
 
-            //push to local storage
-            $(":input").change(() => {
-               if (localStorage.getItem("fnapg4") != null) {
-                  localStorage.removeItem("fnapg4");
-                  fna.page4 = [];
-               }
+//                setValue("#fnapg4e7c1", z.others[0]);
+//                setValue("#fnapg4e7c2", z.others[1]);
+//                setValue("#fnapg4e7c3", z.others[2]);
+//             }
 
-               $(".next-btn").one("click", () => {
-                  fna.page4 = [];
+//             //push to local storage
+//             $(":input").change(() => {
+//                if (localStorage.getItem("fnapg4") != null) {
+//                   localStorage.removeItem("fnapg4");
+//                   fna.page4 = [];
+//                }
 
-                  const obj = {
-                     total: $("#fnapg4e1").val(),
-                     credit: [
-                        $("#fnapg4e2c1").val(),
-                        $("#fnapg4e2c2").val(),
-                        $("#fnapg4e2c3").val(),
-                     ],
+//                $(".next-btn").one("click", () => {
+//                   fna.page4 = [];
 
-                     vehicle: [
-                        $("#fnapg4e3c1").val(),
-                        $("#fnapg4e3c2").val(),
-                        $("#fnapg4e3c3").val(),
-                     ],
+//                   const obj = {
+//                      total: $("#fnapg4e1").val(),
+//                      credit: [
+//                         $("#fnapg4e2c1").val(),
+//                         $("#fnapg4e2c2").val(),
+//                         $("#fnapg4e2c3").val(),
+//                      ],
 
-                     student: [
-                        $("#fnapg4e4c1").val(),
-                        $("#fnapg4e4c2").val(),
-                        $("#fnapg4e4c3").val(),
-                     ],
+//                      vehicle: [
+//                         $("#fnapg4e3c1").val(),
+//                         $("#fnapg4e3c2").val(),
+//                         $("#fnapg4e3c3").val(),
+//                      ],
 
-                     bank: [
-                        $("#fnapg4e5c1").val(),
-                        $("#fnapg4e5c2").val(),
-                        $("#fnapg4e5c3").val(),
-                     ],
+//                      student: [
+//                         $("#fnapg4e4c1").val(),
+//                         $("#fnapg4e4c2").val(),
+//                         $("#fnapg4e4c3").val(),
+//                      ],
 
-                     personal: [
-                        $("#fnapg4e6c1").val(),
-                        $("#fnapg4e6c2").val(),
-                        $("#fnapg4e6c3").val(),
-                     ],
+//                      bank: [
+//                         $("#fnapg4e5c1").val(),
+//                         $("#fnapg4e5c2").val(),
+//                         $("#fnapg4e5c3").val(),
+//                      ],
 
-                     others: [
-                        $("#fnapg4e7c1").val(),
-                        $("#fnapg4e7c2").val(),
-                        $("#fnapg4e7c3").val(),
-                     ],
-                  };
+//                      personal: [
+//                         $("#fnapg4e6c1").val(),
+//                         $("#fnapg4e6c2").val(),
+//                         $("#fnapg4e6c3").val(),
+//                      ],
 
-                  fna.page4.push(obj);
+//                      others: [
+//                         $("#fnapg4e7c1").val(),
+//                         $("#fnapg4e7c2").val(),
+//                         $("#fnapg4e7c3").val(),
+//                      ],
+//                   };
 
-                  localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
-               });
-            });
-            break;
+//                   fna.page4.push(obj);
 
-         // ________ page 5 ___________
-         case 5:
-            updateLoader(4, 5);
-            $("#fnapg5e1").keyup(() => {
-               $(".table").slideDown(800);
-            });
+//                   localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
+//                });
+//             });
+//             break;
 
-            // table glitch
-            $(".next-btn,.prev-btn").on("click", () => {
-               $(".table").slideUp();
-            });
-            // localStorage
+//          // ________ page 5 ___________
+//          case 5:
+//             updateLoader(4, 5);
+//             $("#fnapg5e1").keyup(() => {
+//                $(".table").slideDown(800);
+//             });
 
-            //check for existing localStorage on page load
-            if (localStorage.getItem("fnapg5") != null) {
-               fna.page5 = JSON.parse(localStorage.getItem("fnapg5"));
-               // console.log(fna.page5)
-               let [y] = fna.page5;
-               // console.log(y)
-               setValue("#fnapg5e1", y.total);
-               setValue("#fnapg5e2c1", y.college[0]);
-               setValue("#fnapg5e2c2", y.college[1]);
-               setValue("#fnapg5e2c3", y.college[2]);
+//             // table glitch
+//             $(".next-btn,.prev-btn").on("click", () => {
+//                $(".table").slideUp();
+//             });
+//             // localStorage
 
-               setValue("#fnapg5e3c1", y.medical[0]);
-               setValue("#fnapg5e3c2", y.medical[1]);
-               setValue("#fnapg5e3c3", y.medical[2]);
+//             //check for existing localStorage on page load
+//             if (localStorage.getItem("fnapg5") != null) {
+//                fna.page5 = JSON.parse(localStorage.getItem("fnapg5"));
+//                // console.log(fna.page5)
+//                let [y] = fna.page5;
+//                // console.log(y)
+//                setValue("#fnapg5e1", y.total);
+//                setValue("#fnapg5e2c1", y.college[0]);
+//                setValue("#fnapg5e2c2", y.college[1]);
+//                setValue("#fnapg5e2c3", y.college[2]);
 
-               setValue("#fnapg5e4c1", y.planned[0]);
-               setValue("#fnapg5e4c2", y.planned[1]);
-               setValue("#fnapg5e4c3", y.planned[2]);
+//                setValue("#fnapg5e3c1", y.medical[0]);
+//                setValue("#fnapg5e3c2", y.medical[1]);
+//                setValue("#fnapg5e3c3", y.medical[2]);
 
-               setValue("#fnapg5e5c1", y.financial[0]);
-               setValue("#fnapg5e5c2", y.financial[1]);
-               setValue("#fnapg5e5c3", y.financial[2]);
+//                setValue("#fnapg5e4c1", y.planned[0]);
+//                setValue("#fnapg5e4c2", y.planned[1]);
+//                setValue("#fnapg5e4c3", y.planned[2]);
 
-               setValue("#fnapg5e6c1", y.others[0]);
-               setValue("#fnapg5e6c2", y.others[1]);
-               setValue("#fnapg5e6c3", y.others[2]);
-            }
+//                setValue("#fnapg5e5c1", y.financial[0]);
+//                setValue("#fnapg5e5c2", y.financial[1]);
+//                setValue("#fnapg5e5c3", y.financial[2]);
 
-            //push to local storage
-            $(":input").change(() => {
-               if (localStorage.getItem("fnapg5") != null) {
-                  localStorage.removeItem("fnapg5");
-                  fna.page5 = [];
-               }
+//                setValue("#fnapg5e6c1", y.others[0]);
+//                setValue("#fnapg5e6c2", y.others[1]);
+//                setValue("#fnapg5e6c3", y.others[2]);
+//             }
 
-               $(".next-btn").one("click", () => {
-                  fna.page5 = [];
+//             //push to local storage
+//             $(":input").change(() => {
+//                if (localStorage.getItem("fnapg5") != null) {
+//                   localStorage.removeItem("fnapg5");
+//                   fna.page5 = [];
+//                }
 
-                  const obj = {
-                     total: $("#fnapg5e1").val(),
-                     college: [
-                        $("#fnapg5e2c1").val(),
-                        $("#fnapg5e2c2").val(),
-                        $("#fnapg5e2c3").val(),
-                     ],
+//                $(".next-btn").one("click", () => {
+//                   fna.page5 = [];
 
-                     medical: [
-                        $("#fnapg5e3c1").val(),
-                        $("#fnapg5e3c2").val(),
-                        $("#fnapg5e3c3").val(),
-                     ],
+//                   const obj = {
+//                      total: $("#fnapg5e1").val(),
+//                      college: [
+//                         $("#fnapg5e2c1").val(),
+//                         $("#fnapg5e2c2").val(),
+//                         $("#fnapg5e2c3").val(),
+//                      ],
 
-                     planned: [
-                        $("#fnapg5e4c1").val(),
-                        $("#fnapg5e4c2").val(),
-                        $("#fnapg5e4c3").val(),
-                     ],
+//                      medical: [
+//                         $("#fnapg5e3c1").val(),
+//                         $("#fnapg5e3c2").val(),
+//                         $("#fnapg5e3c3").val(),
+//                      ],
 
-                     financial: [
-                        $("#fnapg5e5c1").val(),
-                        $("#fnapg5e5c2").val(),
-                        $("#fnapg5e5c3").val(),
-                     ],
+//                      planned: [
+//                         $("#fnapg5e4c1").val(),
+//                         $("#fnapg5e4c2").val(),
+//                         $("#fnapg5e4c3").val(),
+//                      ],
 
-                     others: [
-                        $("#fnapg5e6c1").val(),
-                        $("#fnapg5e6c2").val(),
-                        $("#fnapg5e6c3").val(),
-                     ],
-                  };
-                  fna.page5.push(obj);
+//                      financial: [
+//                         $("#fnapg5e5c1").val(),
+//                         $("#fnapg5e5c2").val(),
+//                         $("#fnapg5e5c3").val(),
+//                      ],
 
-                  localStorage.setItem("fnapg5", JSON.stringify(fna.page5));
-               });
-            });
+//                      others: [
+//                         $("#fnapg5e6c1").val(),
+//                         $("#fnapg5e6c2").val(),
+//                         $("#fnapg5e6c3").val(),
+//                      ],
+//                   };
+//                   fna.page5.push(obj);
 
-            //  change next button's action
-            $(".next-btn").on("click", () => {
-               function loaderPromise() {
-                  let update = new Promise((resolve) => {
-                     resolve(updateLoader(5, 5));
-                  });
+//                   localStorage.setItem("fnapg5", JSON.stringify(fna.page5));
+//                });
+//             });
 
-                  //----- @prasad -----
-                  function pushToDatabase() {
-                     console.log(fna);
-                  }
-                  // ------------------
+//             //  change next button's action
+//             $(".next-btn").on("click", () => {
+//                function loaderPromise() {
+//                   let update = new Promise((resolve) => {
+//                      resolve(updateLoader(5, 5));
+//                   });
 
-                  return update;
-               }
+//                   //----- @prasad -----
+//                   function pushToDatabase() {
+//                      console.log(fna);
+//                   }
+//                   // ------------------
 
-               loaderPromise().then(() => {
-                  setTimeout(() => {
-                     window.open("6.html", "_self");
-                  }, 2000);
-               });
-            });
+//                   return update;
+//                }
 
-            //change the functionality back when prev button is pressed
-            $(".prev-btn").on("click", () => {
-               $(".next-btn").off();
-               $(".next-btn").on("click", () => {
-                  mySiema.next();
-               });
-            });
+//                loaderPromise().then(() => {
+//                   setTimeout(() => {
+//                      window.open("6.html", "_self");
+//                   }, 2000);
+//                });
+//             });
 
-         // ________ page 6 ___________
+//             //change the functionality back when prev button is pressed
+//             $(".prev-btn").on("click", () => {
+//                $(".next-btn").off();
+//                $(".next-btn").on("click", () => {
+//                   mySiema.next();
+//                });
+//             });
 
-         case 6:
-            $(".calculated-result")
-               .animate({ opacity: 1 })
-               .css("transform", "translateY(0)");
+//          // ________ page 6 ___________
 
-         default:
-            console.log("200");
-            break;
-      }
-   });
-}
+//          case 6:
+//             $(".calculated-result")
+//                .animate({ opacity: 1 })
+//                .css("transform", "translateY(0)");
+
+//          default:
+//             console.log("200");
+//             break;
+//       }
+//    });
+// }
