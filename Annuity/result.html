@@ -21,24 +21,36 @@
             <span class="brand-text">Wealthsurance</span>
          </div>
          <div class="navigation">
-            <a href="#">Learning <span class="dropdown-arrow"><img src="/media/images/nav-dropdown-arrow.png"
-                     alt="dropdown-arrow"></span></a>
+            <a href="#">Learning</a>
+            <a href="#">Know More</a>
             <a href="#">Tools <span class="dropdown-arrow"><img src="/media/images/nav-dropdown-arrow.png"
                      alt="dropdown-arrow"></span></a>
-            <a href="#">Events <span class="dropdown-arrow"><img src="/media/images/nav-dropdown-arrow.png"
-                     alt="dropdown-arrow"></span></a>
-            <a href="#">About us</a>
-            <a href="#">Contact</a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
             <span role="button" class="red-btn">Get a Quote</span>
          </div>
+         <span class="hamburger" role="button"></span>
       </nav>
 
-      <div class="content-container container-lg">
+      <div class="content-container">
          <div class="top">
             <h1 class="page-heading">Annuity calculator</h1>
+            <div class="share-btn-grp ">
+               <span class="share-btns mail" role="button"></span>
+               <span class="share-btns share" role="button"></span>
+               <span class="share-btns download" role="button"></span>
+               <span class="share-btns print" role="button"></span>
+            </div>
+            <div class="share-btn-grp2">
+               <span class="share-btns mail" role="button"></span>
+               <span class="share-btns share" role="button"></span>
+               <span class="share-btns download" role="button"></span>
+               <span class="share-btns print" role="button"></span>
+            </div>
          </div>
 
-         <div class="result-table table">
+         <!-- <div class="result-table table">
             <table>
                <tr class="result-table-header">
                   <td>Parameters</td>
@@ -79,6 +91,77 @@
 
          <div class="know-more">
             <p class="small">Know more about <a href="#" class="know-more-btn">Why Annuity</a></p>
+         </div> -->
+
+         <div class="io-container annuity-io-container">
+
+            <section class="input">
+               <h4>Input</h4>
+
+               <div class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100">
+                     <tr class="result-table-header">
+                        <td>Parameters</td>
+                        <td>Values</td>
+                     </tr class="result-table-header">
+                     <tr>
+                        <td>Current Age:</td>
+                        <td id="orange-text">45 years</td>
+                     </tr>
+                     <tr>
+                        <td>Age to start payment:</td>
+                        <td>65 years </td>
+                     </tr>
+                     <tr>
+                        <td>Lenth of annuity:</td>
+                        <td>20 years</td>
+                     </tr>
+                     <tr>
+                        <td>Initial amount:</td>
+                        <td>$500,000</td>
+                     </tr>
+                     <tr>
+                        <td>Annual growth rate:</td>
+                        <td>6%</td>
+                     </tr>
+                  </table>
+               </div>
+
+               <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>
+
+               <div class="schedule-call">
+                  <p class="small">Want to know more about Insurance?</p>
+                  <a href="#" class="red-btn">Schedule a Call</a>
+               </div>
+
+               <div class="know-more">
+                  <p class="small">Know more about <a href="#" class="know-more-btn">Benefits of Insurance</a> <br>
+                     <a href="#" class="privacy-btn know-more-btn">Privacy Policy</a>
+                  </p>
+               </div>
+            </section>
+
+            <section class="output annuity-output">
+               <h4 class="output-header">Output</h4>
+               <div class="result">
+                  <p>Monthly payment</p>
+                  <p class="calculated-result">$4,250</p>
+               </div>
+
+               <div class="assumptions small">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+               <div>
+                  <span role="button" class="re-calc-btn re-enter red-btn">Re-enter</span>
+               </div>
+
+            </section>
          </div>
 
       </div>
@@ -87,7 +170,8 @@
    <script src="/scripts/shared.js"></script>
    <script src="/scripts/annuity.js"></script>
    <script>
-      gotoPage(2);
+      fadeInResult();
+// gotoPage(2);
    </script>
 </body>
 

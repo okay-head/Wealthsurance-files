@@ -30,6 +30,8 @@
             <a href="#">Contact Us</a>
             <span role="button" class="red-btn">Get a Quote</span>
          </div>
+
+         <span class="hamburger" role="button"></span>
       </nav>
 
       <div class="content-container">
@@ -67,7 +69,7 @@
 
          <div class="btn-group">
             <!-- <a href="#" class="red-btn prev-btn">Previous</a> -->
-            <span role="button" class="red-btn next-btn">Next</span>
+            <span role="button" class="red-btn next-btn">Finish</span>
          </div>
 
       </div>
@@ -76,7 +78,11 @@
 
       <script>
          'use strict'
-         gotoPage(1);
+         initLoader();
+         pgLocalStorage();
+         next();
+
+         // gotoPage(1);
       </script>
 
 

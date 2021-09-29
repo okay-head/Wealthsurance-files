@@ -297,14 +297,14 @@ function next() {
    });
 }
 
-function fadeInResult() {
-   // animate on document.ready
-   $(()=>{
-      $(".calculated-result")
-         .animate({ opacity: 1 })
-         .css("transform", "translateY(0)");
-   })
-}
+// function fadeInResult() {
+//    // animate on document.ready
+//    $(()=>{
+//       $(".calculated-result")
+//          .animate({ opacity: 1 })
+//          .css("transform", "translateY(0)");
+//    })
+// }
 
 function storeRecalculate() {
    //not to be stored in local storage

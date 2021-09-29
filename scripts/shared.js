@@ -24,10 +24,20 @@ function updateLoader(page, pages) {
       .text(text + "%");
 }
 
-$(".brand").on('click',() => {
+$(".brand,.re-enter").on('click',() => {
    window.open("1.html", "_self");
    // @change
 });
+
+function fadeInResult() {
+      // animate on document.ready
+      $(()=>{
+         $(".calculated-result")
+            .animate({ opacity: 1 })
+            .css("transform", "translateY(0)");
+      })
+   }
+   
 
 
 // initialize siema
