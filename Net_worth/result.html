@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery cdn -->
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="/stylesheets/main.css">
+   <title>Net Worth Calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="/media/images/wealthsurance-logo.png" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+         <div class="navigation">
+            <a href="#">Learning</a>
+            <a href="#">Know More</a>
+            <a href="#">Tools <span class="dropdown-arrow"><img src="/media/images/nav-dropdown-arrow.png"
+                     alt="dropdown-arrow"></span></a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <span role="button" class="red-btn">Get a Quote</span>
+         </div>
+         <span class="hamburger" role="button"></span>
+      </nav>
+
+      <div class="content-container">
+         <div class="top">
+            <h1 class="page-heading">Net Worth Calculator</h1>
+            <div class="share-btn-grp ">
+               <span class="share-btns mail" role="button"></span>
+               <span class="share-btns share" role="button"></span>
+               <span class="share-btns download" role="button"></span>
+               <span class="share-btns print" role="button"></span>
+            </div>
+            <div class="share-btn-grp2">
+               <span class="share-btns mail" role="button"></span>
+               <span class="share-btns share" role="button"></span>
+               <span class="share-btns download" role="button"></span>
+               <span class="share-btns print" role="button"></span>
+            </div>
+         </div>
+
+         <div class="io-container">
+
+            <section class="input">
+               <h4>Input</h4>
+
+               <div class="results-table-container">
+                  <table class="results-table nw-table nw-results-table w-100">
+                     <tr>
+                        <td>Assets</td>
+                        <td>Enter Amount</td>
+                        <td>Growth Rate</td>
+                     </tr>
+                     <tr>
+                        <td>Primary&nbspIncome:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r1c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r1c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Other&nbspReal&nbspEstate:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r2c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r2c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Vehicles:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r3c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r3c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Household&nbspItems:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r4c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r4c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Retirement&nbspAccounts:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r5c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r5c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Investment&nbspin&nbspStock:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r6c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r6c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Investment&nbspin&nbspBonds:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r7c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r7c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Life&nbspInsurance&nbspcash&nbspvalue:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r8c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r8c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Annuity:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r9c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r9c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Bank&nbspAccounts:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r10c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r10c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Cash:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r11c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r11c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Other:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r12c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp1r12c2"></td>
+                     </tr>
+                  </table>
+
+                  <table class="results-table nw-table nw-results-table w-100">
+                     <tr>
+                        <td>Liabilities</td>
+                        <td>Enter Amount</td>
+                        <td>Interest Rate</td>
+                     </tr>
+                     <tr>
+                        <td>Primary&nbspHome&nbspMortgage:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r1c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r1c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Other&nbspMortgage:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r2c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r2c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Vehicle&nbspLoans:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r3c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r3c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Student&nbspLoans:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r4c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r4c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Credit&nbspCard&nbspdebts:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r5c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r5c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Personal&nbspLoans:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r6c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r6c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Other&nbspLoans:</td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r7c1"></td>
+                        <td><input type="number" placeholder="Enter Amount" id="nwresultp2r7c2"></td>
+                     </tr>
+                  </table>
+
+               </div>
+
+               <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>
+
+               <div class="schedule-call">
+                  <p class="small">Want to know more about Insurance?</p>
+                  <a href="#" class="red-btn">Schedule a Call</a>
+               </div>
+
+               <div class="know-more">
+                  <p class="small">Know more about <a href="#" class="know-more-btn">Benefits of Insurance</a> <br>
+                     <a href="#" class="privacy-btn know-more-btn">Privacy Policy</a>
+                  </p>
+               </div>
+            </section>
+
+            <section class="output">
+               <h4 class="output-header">Output</h4>
+               <div class="result">
+                  <h1>Girraffe</h1>
+               </div>
+
+               <div class="assumptions small">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+               <div>
+                  <span role="button" class="re-calc-btn re-enter red-btn">Re-enter</span>
+               </div>
+
+            </section>
+         </div>
+
+
+      </div>
+
+   </div>
+   <script src="/scripts/shared.js"></script>
+   <script src="/scripts/nw.js"></script>
+   <script>
+      // fadeInResult();
+      reCalculate();
+   </script>
+</body>
+
+</html>
