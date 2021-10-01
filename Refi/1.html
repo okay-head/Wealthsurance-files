@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery cdn -->
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="/stylesheets/main.css">
+   <title>Refi Mortgage Calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="/media/images/wealthsurance-logo.png" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+         <div class="navigation">
+            <a href="#">Learning</a>
+            <a href="#">Know More</a>
+            <a href="#">Tools <span class="dropdown-arrow"><img src="/media/images/nav-dropdown-arrow.png"
+                     alt="dropdown-arrow"></span></a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <span role="button" class="red-btn">Get a Quote</span>
+         </div>
+
+         <span class="hamburger" role="button"></span>
+      </nav>
+
+      <div class="content-container">
+         <div class="top">
+            <h1 class="page-heading">Refi Mortgage Calculator</h1>
+            <div class="loader">
+               <div class="progress-bar">
+                  <span class="progress-percentage"></span>
+               </div>
+            </div>
+         </div>
+
+         <div class="page1">
+            <div class="input-fields">
+               <div>Current Mortgage $
+                  <input type="number" id="refipg1e1" placeholder="Enter Amount">
+                  at <input type="number" id="refipg1e2" placeholder="Enter Percentage">% for <input type="number" id="refipg1e3" placeholder="Enter Year">years
+               </div>
+               <div>
+                  It is
+                  <input type="number" id="refipg1e4" placeholder="Enter Number">
+                  years since I took the current mortgage on my house
+               </div>
+               <div>New Mortgage $
+                  <input type="number" id="refipg1e5" placeholder="Enter Amount"> at <input type="number" id="refipg1e6" placeholder="Enter Percentage">% for <input type="number" id="refipg1e7" placeholder="Enter Years">years
+               </div>
+               <div>
+                  Processing cost $
+                  <input type="number" id="refipg1e8" placeholder="Enter percentage">
+
+               </div>
+            </div>
+         </div>
+
+
+         <div class="btn-group">
+            <!-- <a href="#" class="red-btn prev-btn">Previous</a> -->
+            <span role="button" class="red-btn next-btn">Finish</span>
+         </div>
+
+      </div>
+      <script src="/scripts/shared.js"></script>
+      <script src="/scripts/refi.js"></script>
+
+      <script>
+         'use strict'
+         initLoader();
+         pgLocalStorage();
+         next();
+
+         // gotoPage(1);
+      </script>
+
+
+</body>
+
+</html>

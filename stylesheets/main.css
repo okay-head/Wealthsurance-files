@@ -152,7 +152,7 @@ nav {
 }
 
 .red-btn:hover {
-   background-color: #b10a2c;
+   background-color: #ad092a;
    /* background-color: #A80023; */
 }
 
@@ -388,7 +388,7 @@ table {
 }
 .result-table table {
    text-align: left;
-   font-size: 1.2em;
+   font-size: 1.1em;
    border-spacing: 5px;
 }
 .result-table-header td {
@@ -431,7 +431,9 @@ table {
    .nw-io-container {
       grid-template-rows: 0.54fr 1fr !important;
    }
-
+   .refi-io-container {
+      grid-template-rows: 1.3fr 1fr !important;
+   }
    section.output,
    section.input {
       margin: 0em 0 0 0 !important;
@@ -452,6 +454,9 @@ table {
    }
    .share-btn-grp2 {
       display: block;
+   }
+   .refi-assumptions{
+      margin-top: 3em!important;
    }
 }
 
@@ -622,6 +627,39 @@ input:focus {
    font-size: inherit;
 }
 
+.refi-output-table tr:first-child td {
+   background-color: var(--main-primary3) !important;
+   color: white !important;
+}
+
+.refi-output {
+   overflow: hidden;
+}
+.refi-io-container {
+   grid-template-columns: 1fr 1.2fr;
+}
+.refi-io-container .results-table tr td:first-child {
+	padding: 10px 0em 10px 0.9em;
+	text-align: left;
+}
+/* .ammortization-table{
+} */
+.ammortization-btn{
+   background-color: var(--main-primary1);
+   margin: 1.5em auto;
+}
+.ammortization-btn:hover{
+   background-color: #001455;
+}
+
+.ammortization-table td {
+   font-size: 0.84em;
+	padding: 9px 13px;
+}
+.ammortization-table td:not(:first-child){
+   color: var(--text-primary1)!important;
+}
+
 /* ---breakpoints--- */
 @media screen and (max-width: 1340px) {
    .navigation {
@@ -647,27 +685,27 @@ input:focus {
    nav {
       max-width: 100%;
    }
-   .brand-text{
+   .brand-text {
       font-size: 19.74px;
    }
-   .brand-image{
+   .brand-image {
       width: 34px;
    }
-   input{
+   input {
       width: 40%;
-      padding:8px 0px;
+      padding: 8px 0px;
       padding-left: 10px;
    }
-   .table input{
+   .table input {
       width: 100%;
    }
-   select{
+   select {
       padding: 8px 31px 8px 11px !important;
    }
-   .input-fields{
+   .input-fields {
       line-height: 50px; /*63px*/
    }
-   .progress-percentage{
+   .progress-percentage {
       width: 18px;
       height: 18px;
       left: 92%;
@@ -676,7 +714,7 @@ input:focus {
       font-size: 12px;
       color: var(--text-secondary3);
    }
-   .calculated-result{
+   .calculated-result {
       font-size: 33px; /*54px*/
    }
    :root {

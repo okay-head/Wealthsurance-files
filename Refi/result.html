@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery cdn -->
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="/stylesheets/main.css">
+   <title>Refi Calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="/media/images/wealthsurance-logo.png" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+         <div class="navigation">
+            <a href="#">Learning</a>
+            <a href="#">Know More</a>
+            <a href="#">Tools <span class="dropdown-arrow"><img src="/media/images/nav-dropdown-arrow.png"
+                     alt="dropdown-arrow"></span></a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <span role="button" class="red-btn">Get a Quote</span>
+         </div>
+         <span class="hamburger" role="button"></span>
+      </nav>
+
+      <div class="content-container">
+         <div class="top">
+            <h1 class="page-heading">Refi calculator</h1>
+            <div class="share-btn-grp ">
+               <span class="share-btns mail" role="button"></span>
+               <span class="share-btns share" role="button"></span>
+               <span class="share-btns download" role="button"></span>
+               <span class="share-btns print" role="button"></span>
+            </div>
+            <div class="share-btn-grp2">
+               <span class="share-btns mail" role="button"></span>
+               <span class="share-btns share" role="button"></span>
+               <span class="share-btns download" role="button"></span>
+               <span class="share-btns print" role="button"></span>
+            </div>
+         </div>
+
+         <div class="io-container refi-io-container">
+
+            <section class="input">
+               <h4>Input</h4>
+
+               <div class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100">
+                     <tr>
+                        <td>Original Loan Amount,$:</td>
+                        <td>500000</td>
+                     </tr>
+                     <tr>
+                        <td>Original Loan Duration,years:</td>
+                        <td id="orange-text">30 </td>
+                     </tr>
+                     <tr>
+                        <td>Original Loan Rate, %:</td>
+                        <td>3.500</td>
+                     </tr>
+                     <tr>
+                        <td>Years passed, years:</td>
+                        <td>10</td>
+                     </tr>
+                     <tr>
+                        <td>New Loan Rate, %:</td>
+                        <td>3.375</td>
+                     </tr>
+                     <tr>
+                        <td>New Loan Duration, years:</td>
+                        <td>15</td>
+                     </tr>
+                     <tr>
+                        <td>Processing Cost, $:</td>
+                        <td>3000</td>
+                     </tr>
+                     <tr>
+                        <td>Annual HOA dues, $</td>
+                        <td>2400</td>
+                     </tr>
+                     <tr>
+                        <td>Annual property Taxes, $:</td>
+                        <td>15000</td>
+                     </tr>
+                     <tr>
+                        <td>Annual property Insurance, $:</td>
+                        <td>1500</td>
+                     </tr>
+                  </table>
+               </div>
+
+               <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>
+
+               <div class="schedule-call">
+                  <p class="small">Want to know more about Insurance?</p>
+                  <a href="#" class="red-btn">Schedule a Call</a>
+               </div>
+
+               <div class="know-more">
+                  <p class="small">Know more about <a href="#" class="know-more-btn">Benefits of Insurance</a> <br>
+                     <a href="#" class="privacy-btn know-more-btn">Privacy Policy</a>
+                  </p>
+               </div>
+            </section>
+
+            <section class="output annuity-output refi-output">
+               <h4 class="output-header">Output</h4>
+               <div class="result">
+                  Refi graph
+               </div>
+
+               <div class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100 refi-output-table">
+                     <tr>
+                        <td>Output</td>
+                        <td>Current</td>
+                        <td>New</td>
+                     </tr>
+                     <tr>
+                        <td>Original Loan Amount,$:</td>
+                        <td id="orange-text">500000</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Original Loan Duration,years:</td>
+                        <td id="orange-text">30 </td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Original Loan Rate, %:</td>
+                        <td>3.500</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Years passed, years:</td>
+                        <td>10</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>New Loan Rate, %:</td>
+                        <td>3.375</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>New Loan Duration, years:</td>
+                        <td>15</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Processing Cost, $:</td>
+                        <td>3000</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Annual HOA dues, $</td>
+                        <td>2400</td>
+                        <td></td>
+                     </tr>
+                  </table>
+               </div>
+
+
+               <span class="red-btn ammortization-btn" role="button">Show Ammortization Schedule</span>
+
+               <div class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table">
+                     <tr>
+                        <td>Period</td>
+                        <td>Balance</td>
+                        <td>Principal</td>
+                        <td>Interest</td>
+                        <td>Payment</td>
+                        <td>PMI Pay</td>
+                        <td>Year</td>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>2</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>3</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>4</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>5</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>6</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>7</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>8</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>9</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>10</td>
+                        <td>$450000</td>
+                        <td>$708</td>
+                        <td>$1313</td>
+                        <td>$2021</td>
+                        <td>$375</td>
+                        <td>1</td>
+                     </tr>
+                  </table>
+               </div>
+
+
+               <div class="assumptions small refi-assumptions">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+
+               <div>
+                  <span role="button" class="re-calc-btn re-enter red-btn">Re-enter</span>
+               </div>
+
+            </section>
+         </div>
+
+      </div>
+
+   </div>
+   <script src="/scripts/shared.js"></script>
+   <script src="/scripts/annuity.js"></script>
+   <script>
+      fadeInResult();
+// gotoPage(2);
+   </script>
+</body>
+
+</html>
