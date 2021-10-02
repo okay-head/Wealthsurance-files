@@ -44,7 +44,10 @@
    padding: 0;
    /* didn't add border-box */
 }
-
+.fade{
+   opacity: 0;
+   height: 0;
+}
 a {
    display: inline-block;
    text-decoration: none;
@@ -456,7 +459,7 @@ table {
       display: block;
    }
    .refi-assumptions{
-      margin-top: 3em!important;
+      margin-top: 2em!important;
    }
 }
 
@@ -558,6 +561,8 @@ input:focus {
 
 .output-header {
    background-color: var(--main-primary3) !important;
+   width: 80%;
+   margin: 0 auto;
 }
 .re-enter {
    border-color: var(--main-primary3);
@@ -636,17 +641,24 @@ input:focus {
    overflow: hidden;
 }
 .refi-io-container {
-   grid-template-columns: 1fr 1.2fr;
+   grid-template-columns: 1fr 1.3fr;
+}
+.refi-io-container .w-100{
+   width: 86%;
 }
 .refi-io-container .results-table tr td:first-child {
-	padding: 10px 0em 10px 0.9em;
+	padding: 10px 0.5em 10px 0.9em;
 	text-align: left;
 }
 /* .ammortization-table{
 } */
+/* .ammortization-table-container{
+   margin-bottom: 0.8em;
+   transition: 1s ease all;
+} */
 .ammortization-btn{
    background-color: var(--main-primary1);
-   margin: 1.5em auto;
+   margin: 1.3em auto;
 }
 .ammortization-btn:hover{
    background-color: #001455;
@@ -658,6 +670,23 @@ input:focus {
 }
 .ammortization-table td:not(:first-child){
    color: var(--text-primary1)!important;
+}
+
+.editable-results-table tr td:nth-child(2){
+   width: 30%;
+   padding: 0;
+}
+.editable-results-table tr td:nth-child(2) input{
+      width: 90%;
+      padding: 8px 1em;
+}
+.editable-results-table tr td:nth-child(2) input::placeholder{
+   font-family: 'Gilroy-Bold';
+   font-size: 1.1em;
+   color: var(--text-secondary1);
+}
+.refi-assumptions{
+   margin-top: 1em;
 }
 
 /* ---breakpoints--- */
@@ -672,6 +701,9 @@ input:focus {
 
 /* mobile */
 @media screen and (max-width: 610px) {
+   .output-header{
+      width: 100%;
+   }
    .annuity-io-container {
       grid-template-rows: 1.1fr 1fr !important;
    }

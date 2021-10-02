@@ -5,9 +5,10 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- jquery cdn -->
-   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"></script>
+  <!-- jquery cdn -->
+   <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script> -->
+      <script src="/scripts/jquery/jquery-3.6.0.min.js"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="/stylesheets/main.css">
    <title>Refi Calculator</title>
@@ -56,46 +57,65 @@
                <h4>Input</h4>
 
                <div class="results-table-container result-table">
-                  <table class="annuity-results-table results-table w-100">
+                  <table class="annuity-results-table results-table w-100 editable-results-table">
                      <tr>
                         <td>Original Loan Amount,$:</td>
-                        <td>500000</td>
+                        <td><input type="number" id="refiresulte1" placeholder="50000"></td>
+                        <!-- <td>500000</td> -->
                      </tr>
                      <tr>
                         <td>Original Loan Duration,years:</td>
-                        <td id="orange-text">30 </td>
+                        <!-- <td id="orange-text">30 </td> -->
+                        <td id="orange-text"><input type="number" id="refiresulte2" placeholder="30"></td>
+
                      </tr>
                      <tr>
                         <td>Original Loan Rate, %:</td>
-                        <td>3.500</td>
+                        <!-- <td>3.500</td> -->
+                        <td><input type="number" id="refiresulte3" placeholder="3.500"></td>
+
                      </tr>
                      <tr>
                         <td>Years passed, years:</td>
-                        <td>10</td>
+                        <!-- <td>10</td> -->
+                        <td><input type="number" id="refiresulte4" placeholder="10"></td>
+
                      </tr>
                      <tr>
                         <td>New Loan Rate, %:</td>
-                        <td>3.375</td>
+                        <!-- <td>3.375</td> -->
+                        <td><input type="number" id="refiresulte5" placeholder="3.375"></td>
+
                      </tr>
                      <tr>
                         <td>New Loan Duration, years:</td>
-                        <td>15</td>
+                        <!-- <td>15</td> -->
+                        <td><input type="number" id="refiresulte6" placeholder="15"></td>
+
                      </tr>
                      <tr>
                         <td>Processing Cost, $:</td>
-                        <td>3000</td>
+                        <!-- <td>3000</td> -->
+                        <td><input type="number" id="refiresulte7" placeholder="3000"></td>
+
                      </tr>
                      <tr>
                         <td>Annual HOA dues, $</td>
-                        <td>2400</td>
+                        <!-- <td>2400</td> -->
+                        <td><input type="number" id="refiresulte8" placeholder="2400"></td>
+
                      </tr>
                      <tr>
                         <td>Annual property Taxes, $:</td>
-                        <td>15000</td>
+                        <!-- <td>15000</td> -->
+                        <td><input type="number" id="refiresulte9" placeholder="15000"></td>
+
                      </tr>
                      <tr>
                         <td>Annual property Insurance, $:</td>
-                        <td>1500</td>
+                        <!-- <td>1500</td> -->
+                        <td><input type="number" id="refiresulte10" placeholder="1500"></td>
+
                      </tr>
                   </table>
                </div>
@@ -171,9 +191,9 @@
                </div>
 
 
-               <span class="red-btn ammortization-btn" role="button">Show Ammortization Schedule</span>
+               <span class="red-btn ammortization-btn" role="button"><span id="show-table">Show</span> Ammortization Schedule</span>
 
-               <div class="results-table-container result-table">
+               <div class="results-table-container result-table ammortization-table-container">
                   <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table">
                      <tr>
                         <td>Period</td>
@@ -299,9 +319,9 @@
 
    </div>
    <script src="/scripts/shared.js"></script>
-   <script src="/scripts/annuity.js"></script>
+   <script src="/scripts/refi.js"></script>
    <script>
-      fadeInResult();
+      // fadeInResult();
 // gotoPage(2);
    </script>
 </body>
