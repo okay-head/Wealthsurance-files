@@ -44,7 +44,7 @@
    padding: 0;
    /* didn't add border-box */
 }
-.fade{
+.fade {
    opacity: 0;
    height: 0;
 }
@@ -73,8 +73,8 @@ html {
    scroll-behavior: smooth;
 }
 body {
-   background: var(--main-secondary2) url("../media/images/wealthsurance_bg.png")
-      center center scroll;
+   background: var(--main-secondary2)
+      url("../media/images/wealthsurance_bg.png") center center scroll;
    background-size: cover;
    overflow-x: hidden;
 }
@@ -244,6 +244,7 @@ select {
    padding-left: 13px;
    margin: 0 10px;
    border: none;
+   position: relative;
    /* outline: none; */
    /* border: 0.1px solid black; */
 }
@@ -411,6 +412,9 @@ table {
    margin: 1.5em 0;
 }
 @media screen and (max-width: 1215px) {
+   .bottom .assumptions {
+      width: 50% !important;
+   }
    .annuity-output {
       width: 100%;
    }
@@ -437,6 +441,9 @@ table {
    .refi-io-container {
       grid-template-rows: 1.3fr 1fr !important;
    }
+   .retirement-io-container {
+      grid-template-rows: 0.85fr 1fr !important;
+   }
    section.output,
    section.input {
       margin: 0em 0 0 0 !important;
@@ -458,8 +465,8 @@ table {
    .share-btn-grp2 {
       display: block;
    }
-   .refi-assumptions{
-      margin-top: 2em!important;
+   .refi-assumptions {
+      margin-top: 2em !important;
    }
 }
 
@@ -503,10 +510,17 @@ input:focus {
    border-radius: 4px;
    --backdrop-filter: blur(10px);
 }
-.results-table tr td:first-child {
+/* .results-table tr td:first-child {
    padding: 10px 2.5em 10px 1em;
    text-align: left;
-}
+} */
+/* .refi-io-container .results-table tr:first-child td {
+   padding: 0!important;
+} */
+/* .results-table tr:first-child td {
+   padding: 10px 2.5em 10px 1em!important;
+   text-align: left;
+} */
 .results-table tr:nth-child(2) {
    margin-top: 1em; /*not working*/
 }
@@ -527,6 +541,8 @@ input:focus {
 }
 
 /* schedule-call */
+.bottom .schedule-call .small,
+.bottom .know-more .small,
 .io-container .schedule-call .small,
 .io-container .know-more .small,
 .re-calc-btn {
@@ -551,10 +567,13 @@ input:focus {
    font-family: "Gilroy-regular", "Verdana", "Times new roman";
 }
 
+.bottom .schedule-call .small,
+.bottom .know-more-btn,
 .io-container .schedule-call .small,
 .io-container .know-more-btn {
    margin: 1.3em 0 0.5em 0;
 }
+.bottom .schedule-call .small,
 .io-container .schedule-call .small {
    margin-bottom: 1em;
 }
@@ -643,12 +662,12 @@ input:focus {
 .refi-io-container {
    grid-template-columns: 1fr 1.3fr;
 }
-.refi-io-container .w-100{
+.refi-io-container .w-100 {
    width: 86%;
 }
 .refi-io-container .results-table tr td:first-child {
-	padding: 10px 0.5em 10px 0.9em;
-	text-align: left;
+   padding: 10px 0.5em 10px 0.9em;
+   text-align: left;
 }
 /* .ammortization-table{
 } */
@@ -656,43 +675,73 @@ input:focus {
    margin-bottom: 0.8em;
    transition: 1s ease all;
 } */
-.ammortization-btn{
+.ammortization-btn {
    background-color: var(--main-primary1);
    margin: 1.3em auto;
 }
-.ammortization-btn:hover{
+.ammortization-btn:hover {
    background-color: #001455;
 }
 
 .ammortization-table td {
    font-size: 0.84em;
-	padding: 9px 13px;
+   padding: 9px 13px;
 }
-.ammortization-table td:not(:first-child){
-   color: var(--text-primary1)!important;
+.ammortization-table td:not(:first-child) {
+   color: var(--text-primary1) !important;
 }
 
-.editable-results-table tr td:nth-child(2){
+.editable-results-table tr td:nth-child(2) {
    width: 30%;
    padding: 0;
 }
-.editable-results-table tr td:nth-child(2) input{
-      width: 90%;
-      padding: 8px 1em;
+.editable-results-table tr td:nth-child(2) input {
+   width: 90%;
+   padding: 8px 1em;
 }
-.editable-results-table tr td:nth-child(2) input::placeholder{
-   font-family: 'Gilroy-Bold';
+.editable-results-table tr td:nth-child(2) input::placeholder {
+   font-family: "Gilroy-Bold";
    font-size: 1.1em;
    color: var(--text-secondary1);
 }
-.refi-assumptions{
+.refi-assumptions {
    margin-top: 1em;
 }
 
-
 /* index */
-.index-container{
+.index-container {
    background-color: var(--text-secondary3);
+}
+
+/* retirement */
+.orange-header td {
+   background-color: var(--main-primary3) !important;
+}
+.retirement-page4 .input-fields {
+   width: 60%;
+   margin: 0.5em auto 2.5em auto;
+   text-align: right;
+   margin-right: 26vw;
+}
+.retirement-page4 .input-fields > div {
+   position: relative;
+}
+.retirement-page4 .input-fields > div::after {
+   position: absolute;
+   content: url(../media/images/alert-circle2.svg);
+   top: 12%;
+   right: -3.5%;
+   /* transform: scale(0.8); */
+}
+.bottom {
+   text-align: center;
+   margin-bottom: 3em;
+}
+.bottom .schedule-call {
+   margin-top: 3em;
+}
+.bottom .assumptions {
+   width: 40%;
 }
 
 /* ---breakpoints--- */
@@ -707,7 +756,7 @@ input:focus {
 
 /* mobile */
 @media screen and (max-width: 610px) {
-   .output-header{
+   .output-header {
       width: 100%;
    }
    .annuity-io-container {
@@ -715,6 +764,9 @@ input:focus {
    }
    .nw-io-container {
       grid-template-rows: 0.54fr 1fr !important;
+   }
+   .retirement-io-container {
+      grid-template-rows: 0.75fr 1fr !important;
    }
    .loader {
       width: 95%;
@@ -754,6 +806,9 @@ input:focus {
    }
    .calculated-result {
       font-size: 33px; /*54px*/
+   }
+   .bottom .assumptions {
+      width: 60% !important;
    }
    :root {
       --font-main: 18px; /*24*/

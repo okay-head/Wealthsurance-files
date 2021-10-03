@@ -232,7 +232,7 @@ function next() {
 
       loaderPromise().then(() => {
          setTimeout(() => {
-            window.open("termInsurance_result.html", "_self");
+            window.open("result.html", "_self");
          }, 1000);
       });
    });

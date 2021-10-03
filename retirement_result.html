@@ -10,7 +10,7 @@
       crossorigin="anonymous"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
-   <title>Annuity Calculator</title>
+   <title>Retirement Calculator</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 
       <div class="content-container">
          <div class="top">
-            <h1 class="page-heading">Annuity calculator</h1>
+            <h1 class="page-heading">Retirement calculator</h1>
             <div class="share-btn-grp ">
                <span class="share-btns mail" role="button"></span>
                <span class="share-btns share" role="button"></span>
@@ -50,7 +50,7 @@
             </div>
          </div>
 
-         <div class="io-container annuity-io-container">
+         <div class="io-container annuity-io-container retirement-io-container">
 
             <section class="input">
                <h4>Input</h4>
@@ -58,35 +58,66 @@
                <div class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 editable-results-table">
                      <tr class="result-table-header">
-                        <td>Parameters</td>
+                        <td>Input</td>
                         <td>Values</td>
                      </tr>
                      <tr>
                         <td>Current Age,years:</td>
-                        <td id="orange-text"><input type="number" id="annresulte1" placeholder="45" inputmode="decimal"></td>
+                        <td id="orange-text"><input type="number" id="retireresulte1" placeholder="35" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Age to start payment,years:</td>
-                        <td><input type="number" id="annresulte2" placeholder="65" inputmode="decimal"></td>
+                        <td>Current household income, $:</td>
+                        <td><input type="number" id="retireresulte2" placeholder="100000" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Length of annuity,years:</td>
-                        <td><input type="number" id="annresulte3" placeholder="20" inputmode="decimal"></td>
+                        <td>Income growth rate, %:</td>
+                        <td><input type="number" id="retireresulte3" placeholder="4" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Initial amount,$:</td>
-                        <td><input type="number" id="annresulte4" placeholder="500000" inputmode="decimal"></td>
+                        <td>Current monthly saving,%:</td>
+                        <td><input type="number" id="retireresulte4" placeholder="500000" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Annual growth rate,%:</td>
-                        <td><input type="number" id="annresulte5" placeholder="6" inputmode="decimal"></td>
+                        <td>Savings so far,$:</td>
+                        <td><input type="number" id="retireresulte5" placeholder="200000" inputmode="decimal">
+                           </td>
                         </tr>
+                     <tr>
+                        <td>Growth rate,%:</td>
+                        <td><input type="number" id="retireresulte6" placeholder="9" inputmode="decimal">
+                           </td>
+                        </tr>
+                     <tr>
+                        <td>Retirement age,years:</td>
+                        <td><input type="number" id="retireresulte7" placeholder="65" inputmode="decimal">
+                           </td>
+                        </tr>
+                  </table>
+               </div>
+               <div class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100 editable-results-table">
+                     <tr class="result-table-header orange-header">
+                        <td>Output</td>
+                        <td>Values</td>
+                     </tr>
+                     <tr>
+                        <td>Retirement goal, $:</td>
+                        <td id="orange-text"><input type="number" id="retireresulte1" placeholder="36000000" inputmode="decimal"></td>
+                     </tr>
+                     <tr>
+                        <td>Potential nest egg, $:</td>
+                        <td><input type="number" id="retireresulte2" placeholder="26000000" inputmode="decimal"></td>
+                     </tr>
+                     <tr>
+                        <td>Surplus/(Shortfall), $:</td>
+                        <td><input type="number" id="retireresulte3" placeholder="-1000000" inputmode="decimal"></td>
+                     </tr>
                   </table>
                </div>
 
                <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>
 
-               <div class="schedule-call">
+               <!-- <div class="schedule-call">
                   <p class="small">Want to know more about Insurance?</p>
                   <a href="#" class="red-btn">Schedule a Call</a>
                </div>
@@ -95,7 +126,7 @@
                   <p class="small">Know more about <a href="#" class="know-more-btn">Benefits of Insurance</a> <br>
                      <a href="#" class="privacy-btn know-more-btn">Privacy Policy</a>
                   </p>
-               </div>
+               </div> -->
             </section>
 
             <section class="output annuity-output">
@@ -105,27 +136,41 @@
                   <p class="calculated-result">$4,250</p>
                </div>
 
-               <div class="assumptions small">
-                  <span>Assumptions</span>
-                  <ul>
-                     <li>Assumption 1</li>
-                     <li>Assumption 2</li>
-                     <li>Assumption 3</li>
-                  </ul>
-               </div>
-
                <div>
                   <span role="button" class="re-calc-btn re-enter red-btn">Re-enter</span>
                </div>
 
             </section>
          </div>
-
       </div>
 
+
+      <div class="bottom">
+
+         <div class="assumptions small">
+            <span>Assumptions</span>
+            <ul>
+               <li>Assumption 1</li>
+               <li>Assumption 2</li>
+               <li>Assumption 3</li>
+            </ul>
+         </div>
+
+         <div class="schedule-call">
+            <p class="small">Want to know more about Insurance?</p>
+            <a href="#" class="red-btn">Schedule a Call</a>
+         </div>
+
+         <div class="know-more">
+            <p class="small">Know more about <a href="#" class="know-more-btn">Benefits of Insurance</a> <br>
+               <a href="#" class="privacy-btn know-more-btn">Privacy Policy</a>
+            </p>
+         </div>
+
+      </div>
    </div>
    <script src="scripts/shared.js"></script>
-   <script src="scripts/annuity.js"></script>
+   <script src="scripts/retirement.js"></script>
    <script>
       fadeInResult();
 // gotoPage(2);

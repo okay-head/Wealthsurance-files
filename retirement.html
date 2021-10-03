@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery cdn -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <title>Retirement Calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="media/images/wealthsurance-logo.png" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+         <div class="navigation">
+            <a href="#">Learning</a>
+            <a href="#">Know More</a>
+            <a href="#">Tools <span class="dropdown-arrow"><img src="media/images/nav-dropdown-arrow.png"
+                     alt="dropdown-arrow"></span></a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <span role="button" class="red-btn">Get a Quote</span>
+         </div>
+         <span class="hamburger" role="button"></span>
+      </nav>
+
+      <div class="content-container">
+         <div class="top">
+            <h1 class="page-heading">Retirement Calculator</h1>
+            <div class="loader">
+               <div class="progress-bar">
+                  <span class="progress-percentage"></span>
+               </div>
+            </div>
+         </div>
+
+         <div class="slideshow-wrapper siema">
+            <div class="page1">
+               <div class="input-fields">
+                  <div>I am
+                     <input type="number" id="retirepg1e1" placeholder="Enter Age" inputmode="decimal">
+                     years old,
+                  </div>
+                  <div>
+                     I plan to retire at the age of 
+                     <input type="number"  id="retirepg1e2" placeholder="Enter Year" inputmode="decimal">years.
+                  </div>
+                  <div>
+                     My annual household income is $
+                     <input type="number" id="retirepg1e3" placeholder="Enter number" inputmode="decimal">.
+                  </div>
+                  <div>
+                    I save
+                     <input type="number" id="retirepg1e4" placeholder="Enter number" inputmode="decimal">% annually.
+                  </div>
+               </div>
+            </div>
+
+            <div class="page2">
+               <div class="input-fields">
+                  <div>My total savings including my retirement account,</div>
+                  <div>
+                     till today is $
+                     <input type="number" id="retirepg2e1" placeholder="Enter Amount" inputmode="decimal">
+                  </div>
+                  <div>After retirement, I need an income of</div>
+                  <div>
+                     $
+                     <input type="number" id="retirepg2e2" placeholder="Enter Amount" inputmode="decimal">
+                     for
+                     <input type="number" id="retirepg2e3" placeholder="Enter Amount" inputmode="decimal">
+                     years.
+                  </div>
+               </div>
+            </div>
+
+            <div class="page3">
+               <div class="input-fields">
+                  <div>My income will increase annually by
+                     <input type="number" id="retirepg3e1" placeholder="Enter percentage" inputmode="decimal">
+                     % till retirement.
+                  </div>
+                  <div>Pre-retirement investment return
+                     <input type="number" id="retirepg3e2" placeholder="Enter percentage" inputmode="decimal">
+                     %.
+                  </div>
+                  <div>Post-retirement investment return
+                     <input type="number" id="retirepg3e3" placeholder="Enter percentage" inputmode="decimal">
+                     %.
+                  </div>
+                  <div>Inflation is assumed at
+                     <input type="number" id="retirepg3e4" placeholder="Enter percentage" inputmode="decimal">
+                     %.
+                  </div>
+
+               </div>
+            </div>
+            <div class="page4 retirement-page4">
+               <div class="input-fields">
+                  <div>Current income:
+                     <input type="number" id="retirepg4e1" placeholder="Enter Amount" inputmode="decimal">
+                  </div>
+                  <div>Savings:
+                     <input type="number" id="retirepg4e2" placeholder="Enter percentage" inputmode="decimal">
+                  </div>
+                  <div>Net savings, including retirement account:
+                     <input type="number" id="retirepg4e3" placeholder="Enter Amount" inputmode="decimal">
+                  </div>
+                  <div>Current Age:
+                     <input type="number" id="retirepg4e4" placeholder="Enter no. of years" inputmode="decimal">
+                  </div>
+                  <div>Retirement Age:
+                     <input type="number" id="retirepg4e5" placeholder="Enter no. of years" inputmode="decimal">
+                  </div>
+                  <div>Expected annual increase in income:
+                     <input type="number" id="retirepg4e6" placeholder="Enter percentage" inputmode="decimal">
+                  </div>
+                  <div>Years of retirement income:
+                     <input type="number" id="retirepg4e7" placeholder="Enter no. of years" inputmode="decimal">
+                  </div>
+                  <div>Pre-retirement investment returns:
+                     <input type="number" id="retirepg4e8" placeholder="Enter percentage" inputmode="decimal">
+                  </div>
+                  <div>Post-retirement investment returns:
+                     <input type="number" id="retirepg4e9" placeholder="Enter percentage" inputmode="decimal">
+                  </div>
+                  <div>Rate of inflation:
+                     <input type="number" id="retirepg4e10" placeholder="Enter percentage" inputmode="decimal">
+                  </div>
+
+               </div>
+            </div>
+         
+         
+         </div>
+
+
+
+         <div class="btn-group">
+            <span role="button" class="red-btn prev-btn">Previous</span>
+            <span role="button" class="red-btn next-btn">Next</span>
+         </div>
+      </div>
+
+      <script src="scripts/shared.js"></script>
+      <!-- <script src="scripts/retirement.js"></script> -->
+      <script src="scripts/siema-1.5.1/dist/siema.min.js"></script>
+
+    <script>
+         'use strict'
+         // //for page 1
+         // initLoader();
+         // page1LocalStorage();
+
+         // function onChangeCallback() {
+         //    switch (this.currentSlide + 1) {
+         //       case 1:
+         //          initLoader();
+         //          page1LocalStorage();
+         //          break;
+         //       case 2:
+         //          updateLoader(1, 3);
+         //          table();
+         //          page2LocalStorage();
+         //          break;
+         //       case 3:
+         //          $('.next-btn').text('Finish');
+         //          updateLoader(2,3);
+         //          table();
+         //          page3LocalStorage();
+         //          next();
+         //          break;
+         //    }
+         // }
+
+         // --- slider ---
+         const mySiema = new Siema({
+            // onChange: onChangeCallback,
+            selector: '.siema',
+            duration: 900,
+            easing: 'ease-in-out',
+            perPage: 1,
+            startIndex: 0,
+            draggable: false,
+            multipleDrag: false,
+            threshold: 20,
+            loop: false,
+            rtl: false,
+         });
+         $('.prev-btn').click(() => mySiema.prev());
+         $('.next-btn').click(() => mySiema.next());
+
+      </script> 
+
+
+</body>
+
+</html>
