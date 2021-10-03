@@ -1,15 +1,15 @@
 /*--- fonts ---*/
 @font-face {
    font-family: "Gilroy-bold";
-   src: url("../media/fonts/Gilroy-Bold.woff");
+   src: url("/../media/fonts/Gilroy-Bold.woff");
 }
 @font-face {
    font-family: "Gilroy-medium";
-   src: url("../media/fonts/Gilroy-Medium.woff");
+   src: url("/../media/fonts/Gilroy-Medium.woff");
 }
 @font-face {
    font-family: "Gilroy-regular";
-   src: url("../media/fonts/Gilroy-Regular.woff");
+   src: url("/../media/fonts/Gilroy-Regular.woff");
 }
 
 /*--- global variables ---*/
