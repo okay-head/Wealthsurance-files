@@ -25,7 +25,7 @@ function updateLoader(page, pages) {
 }
 
 $(".brand,.re-enter").on('click',() => {
-   window.open("1.html", "_self");
+   window.open("index.html", "_self");
    // @change
 });
 

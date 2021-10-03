@@ -1,15 +1,15 @@
 /*--- fonts ---*/
 @font-face {
    font-family: "Gilroy-bold";
-   src: url("/media/fonts/Gilroy-Bold.woff");
+   src: url("media/fonts/Gilroy-Bold.woff");
 }
 @font-face {
    font-family: "Gilroy-medium";
-   src: url("/media/fonts/Gilroy-Medium.woff");
+   src: url("media/fonts/Gilroy-Medium.woff");
 }
 @font-face {
    font-family: "Gilroy-regular";
-   src: url("/media/fonts/Gilroy-Regular.woff");
+   src: url("media/fonts/Gilroy-Regular.woff");
 }
 
 /*--- global variables ---*/
@@ -73,7 +73,7 @@ html {
    scroll-behavior: smooth;
 }
 body {
-   background: var(--main-secondary2) url("/media/images/wealthsurance_bg.png")
+   background: var(--main-secondary2) url("media/images/wealthsurance_bg.png")
       center center scroll;
    background-size: cover;
    overflow-x: hidden;
@@ -127,7 +127,7 @@ nav {
    transition: 0.2s ease all;
 }
 .hamburger {
-   background: url("/media/images/hamburger.svg") no-repeat center;
+   background: url("media/images/hamburger.svg") no-repeat center;
    background-size: 100%;
    display: inline-block;
    width: 21px;
@@ -189,7 +189,7 @@ nav {
    display: none;
 }
 .share-btns {
-   background: url("/media/images/hamburger.png") no-repeat center;
+   background: url("media/images/hamburger.png") no-repeat center;
    background-size: 100%;
    display: inline-block;
    width: 27px;
@@ -197,17 +197,17 @@ nav {
    cursor: pointer;
 }
 .mail {
-   background-image: url("/media/images/mail.svg");
+   background-image: url("media/images/mail.svg");
 }
 .share {
-   background-image: url("/media/images/share.svg");
+   background-image: url("media/images/share.svg");
    margin: 0 0.5em;
 }
 .download {
-   background-image: url("/media/images/download.svg");
+   background-image: url("media/images/download.svg");
 }
 .print {
-   background-image: url("/media/images/print.svg");
+   background-image: url("media/images/print.svg");
    margin-left: 0.5em;
 }
 .btn-group {
@@ -618,7 +618,7 @@ input:focus {
 .nw-table tr:first-child td:nth-child(2)::after,
 .nw-table tr:first-child td:nth-child(3)::after {
    position: absolute;
-   content: url(/media/images/alert-circle.svg);
+   content: url(media/images/alert-circle.svg);
    top: 17%;
    right: 6%;
    transform: scale(0.8);

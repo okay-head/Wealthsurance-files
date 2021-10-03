@@ -281,7 +281,7 @@ function next() {
 
       loaderPromise().then(() => {
          setTimeout(() => {
-            window.open("6.html", "_self");
+            window.open("fna_result.html", "_self");
          }, 1000);
       });
    });

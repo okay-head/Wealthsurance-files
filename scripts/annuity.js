@@ -46,7 +46,7 @@ function next() {
       }
       loaderPromise().then(() => {
          setTimeout(() => {
-            window.open("result.html", "_self");
+            window.open("annuity_result.html", "_self");
          }, 1410);
       });
    });
