@@ -9,7 +9,7 @@
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
-   <title>Refi Mortgage Calculator</title>
+   <title>College Expenses Calculator</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 
       <div class="content-container">
          <div class="top">
-            <h1 class="page-heading">Refi Mortgage Calculator</h1>
+            <h1 class="page-heading">College Expenses Calculator</h1>
             <div class="loader">
                <div class="progress-bar">
                   <span class="progress-percentage"></span>
@@ -45,23 +45,34 @@
 
          <div class="page1">
             <div class="input-fields">
-               <div>Current Mortgage $
-                  <input type="number" id="refipg1e1" placeholder="Enter Amount">
-                  at <input type="number" id="refipg1e2" placeholder="Enter Percentage">% for <input type="number" id="refipg1e3" placeholder="Enter Year">years
+               <div>I want to save for college expenses for
+                  <input type="text" id="clgpg1e1" placeholder="Enter Name">
                </div>
                <div>
-                  It is
-                  <input type="number" id="refipg1e4" placeholder="Enter Number">
-                  years since I took the current mortgage on my house
+                  who is <input type="number" id="clgpg1e2" placeholder="Enter no of years">years old, and will go to college at the age of 
                </div>
-               <div>New Mortgage $
-                  <input type="number" id="refipg1e5" placeholder="Enter Amount"> at <input type="number" id="refipg1e6" placeholder="Enter Percentage">% for <input type="number" id="refipg1e7" placeholder="Enter Years">years
+                  <div>
+                     <input type="number" id="clgpg1e3" placeholder="Enter no of years">years, for
+                     <input type="number" id="clgpg1e4" placeholder="Enter Number">
+                     years.
+                  </div>
+               <div>
+                  I want to fund <input type="number" id="clgpg1e5" placeholder="Enter percentage">% of the annual college expenses of 
                </div>
                <div>
-                  Processing cost $
-                  <input type="number" id="refipg1e8" placeholder="Enter percentage">
+                  $ <input type="number" id="clgpg1e6" placeholder="Enter amount">, that are growing at an inflation rate of <input type="number" id="clgpg1e7" placeholder="Enter percentage">% per years.
+               </div>
+               <div>
+                 I have to put aside $
+                  <input type="number" id="clgpg1e8" placeholder="Enter amount"> so far towards college expenses.
+               </div>
+               <div>
+                  I will contribute $ <input type="number" id="clgpg1e9" placeholder="Enter amount"> each month,
+               </div>
+               <div>
+                  that will grow at<input type="number" id="clgpg1e10" placeholder="Enter percentage"> % annually each year.
+               </div>
 
-               </div>
             </div>
          </div>
 
@@ -72,7 +83,7 @@
 
       </div>
       <script src="scripts/shared.js"></script>
-      <script src="scripts/refi.js"></script>
+      <script src="scripts/college_expenses.js"></script>
 
       <script>
          'use strict'

@@ -9,7 +9,7 @@
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
-   <title>Retirement Calculator</title>
+   <title>College expenses Calculator</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 
       <div class="content-container">
          <div class="top">
-            <h1 class="page-heading">Retirement calculator</h1>
+            <h1 class="page-heading">College expenses calculator</h1>
             <div class="share-btn-grp ">
                <span class="share-btns mail" role="button"></span>
                <span class="share-btns share" role="button"></span>
@@ -56,76 +56,62 @@
 
                <div class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 editable-results-table">
-                     <tr class="result-table-header">
-                        <td>Input</td>
-                        <td>Values</td>
+                     <tr>
+                        <td>Name</td>
+                        <td id="orange-text"><input type="text" id="clgpg1resulte1" placeholder="John doe" inputmode="text"></td>
                      </tr>
                      <tr>
-                        <td>Current Age,years:</td>
-                        <td id="orange-text"><input type="number" id="retireresultpg1e1" placeholder="35" inputmode="decimal"></td>
+                        <td>Current age,years</td>
+                        <td><input type="number" id="clgpg1resulte2" placeholder="5" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Current household income, $:</td>
-                        <td><input type="number" id="retireresultpg1e2" placeholder="100000" inputmode="decimal"></td>
+                        <td>Age entering college, years</td>
+                        <td><input type="number" id="clgpg1resulte3" placeholder="18" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Income growth rate, %:</td>
-                        <td><input type="number" id="retireresultpg1e3" placeholder="4" inputmode="decimal"></td>
+                        <td>Years in college, years</td>
+                        <td><input type="number" id="clgpg1resulte4" placeholder="4" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Current monthly saving,%:</td>
-                        <td><input type="number" id="retireresultpg1e4" placeholder="500000" inputmode="decimal"></td>
-                     </tr>
-                     <tr>
-                        <td>Savings so far,$:</td>
-                        <td><input type="number" id="retireresultpg1e5" placeholder="200000" inputmode="decimal">
+                        <td>Annual college expenses, $</td>
+                        <td><input type="number" id="clgpg1resulte5" placeholder="45000" inputmode="decimal">
                            </td>
                         </tr>
                      <tr>
-                        <td>Growth rate,%:</td>
-                        <td><input type="number" id="retireresultpg1e6" placeholder="9" inputmode="decimal">
+                        <td>Portion to be funded, %</td>
+                        <td><input type="number" id="clgpg1resulte6" placeholder="40" inputmode="decimal">
                            </td>
                         </tr>
                      <tr>
-                        <td>Retirement age,years:</td>
-                        <td><input type="number" id="retireresultpg1e7" placeholder="65" inputmode="decimal">
+                        <td>Portion to be funded, $</td>
+                        <td><input type="number" id="clgpg1resulte7" placeholder="18000" inputmode="decimal">
+                           </td>
+                        </tr>
+                     <tr>
+                        <td>Saved so far, $</td>
+                        <td><input type="number" id="clgpg1resulte8" placeholder="20000" inputmode="decimal">
                            </td>
                         </tr>
                   </table>
                </div>
                <div class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 editable-results-table">
-                     <tr class="result-table-header orange-header">
-                        <td>Output</td>
-                        <td>Values</td>
+                     <tr>
+                        <td>Additional saving, $:</td>
+                        <td id="orange-text"><input type="number" id="clgpg2resulte1" placeholder="52000" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Retirement goal, $:</td>
-                        <td id="orange-text"><input type="number" id="retireresultpg2e1" placeholder="36000000" inputmode="decimal"></td>
+                        <td>Growth rate, %:</td>
+                        <td><input type="number" id="clgpg2resulte2" placeholder="4.5" inputmode="decimal"></td>
                      </tr>
                      <tr>
-                        <td>Potential nest egg, $:</td>
-                        <td><input type="number" id="retireresultpg2e2" placeholder="26000000" inputmode="decimal"></td>
-                     </tr>
-                     <tr>
-                        <td>Surplus/(Shortfall), $:</td>
-                        <td><input type="number" id="retireresultpg2e3" placeholder="-1000000" inputmode="decimal"></td>
+                        <td>Monthly saving, $:</td>
+                        <td><input type="number" id="clgpg2resulte3" placeholder="0" inputmode="decimal"></td>
                      </tr>
                   </table>
                </div>
 
                <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>
-
-               <!-- <div class="schedule-call">
-                  <p class="small">Want to know more about Insurance?</p>
-                  <a href="#" class="red-btn">Schedule a Call</a>
-               </div>
-
-               <div class="know-more">
-                  <p class="small">Know more about <a href="#" class="know-more-btn">Benefits of Insurance</a> <br>
-                     <a href="#" class="privacy-btn know-more-btn">Privacy Policy</a>
-                  </p>
-               </div> -->
             </section>
 
             <section class="output annuity-output">
@@ -134,6 +120,32 @@
                   <p>Monthly payment</p>
                   <p class="calculated-result">$4,250</p>
                </div>
+
+               <div class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100 refi-output-table">
+                     <tr>
+                        <td>Total Cost</td>
+                        <td>Amount</td>
+                     </tr>
+                     <tr>
+                        <td>Project college cost</td>
+                        <td id="orange-text">267360</td>
+                     </tr>
+                     <tr>
+                        <td>Planned funding</td>
+                        <td>160416</td>
+                     </tr>
+                     <tr>
+                        <td>Other funding</td>
+                        <td>106944</td>
+                     </tr>
+                     <tr>
+                        <td>Surplus/(Deficit)</td>
+                        <td>164210</td>
+                     </tr>
+                  </table>
+               </div>
+
 
                <div>
                   <span role="button" class="re-calc-btn re-enter red-btn">Re-enter</span>
@@ -169,7 +181,7 @@
       </div>
    </div>
    <script src="scripts/shared.js"></script>
-   <script src="scripts/retirement.js"></script>
+   <!-- <script src="scripts/college_expenses.js"></script> -->
    <script>
       fadeInResult();
 // gotoPage(2);

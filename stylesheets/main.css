@@ -231,6 +231,7 @@ nav {
 .input-fields {
    line-height: 63px;
    display: block;
+   margin: 0.4em auto 1.9em auto;
    /* display: flex;
    flex-flow: column nowrap;
    align-items: center; */
