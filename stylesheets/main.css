@@ -248,17 +248,16 @@ select {
    /* border: 0.1px solid black; */
 }
 
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-   /* display: none; <- Crashes Chrome on hover */
    -webkit-appearance: none;
    margin: 0;
 }
 
 input[type="number"] {
-   -moz-appearance: textfield; /* Firefox */
+   -moz-appearance: textfield;
 }
-
+ */
 /* input:focus {
    border: 1px solid var(--text-primary1);
 } */
