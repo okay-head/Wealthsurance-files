@@ -11,7 +11,8 @@ function page1LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(":input").change((event) => {
+      event.preventDefault();
       if (localStorage.getItem("fnapg1") != null) {
          localStorage.removeItem("fnapg1");
          fna.page1 = [];
@@ -36,7 +37,8 @@ function page2LocalStorage() {
       $("#fnapg2e1").val(fna.page2[0]);
    }
    //push to local storage
-   $(":input").change(() => {
+   $(":input").change((event) => {
+      event.preventDefault();
       if (localStorage.getItem("fnapg2") != null) {
          localStorage.removeItem("fnapg2");
          fna.page2 = [];
@@ -61,7 +63,8 @@ function page3LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(":input").change((event) => {
+      event.preventDefault();
       if (localStorage.getItem("fnapg3") != null) {
          localStorage.removeItem("fnapg3");
          fna.page3 = [];
@@ -126,7 +129,8 @@ function page4LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(":input").change((event) => {
+      event.preventDefault();
       if (localStorage.getItem("fnapg4") != null) {
          localStorage.removeItem("fnapg4");
          fna.page4 = [];
@@ -214,7 +218,8 @@ function page5LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(":input").change((event) => {
+      event.preventDefault();
       if (localStorage.getItem("fnapg5") != null) {
          localStorage.removeItem("fnapg5");
          fna.page5 = [];
@@ -297,15 +302,6 @@ function next() {
    });
 }
 
-// function fadeInResult() {
-//    // animate on document.ready
-//    $(()=>{
-//       $(".calculated-result")
-//          .animate({ opacity: 1 })
-//          .css("transform", "translateY(0)");
-//    })
-// }
-
 function storeRecalculate() {
    //not to be stored in local storage
    let debt = {
@@ -379,7 +375,7 @@ function storeRecalculate() {
 
 function reCalculate() {
    // ---@error ---
-   let flag = true;
+/*    let flag = true;
 
    if ($('#fnaresultp1r0e1').val()!=='') {
       flag = false;
@@ -390,16 +386,16 @@ function reCalculate() {
          flag = false;
       }
    });
-
+ */
 
    $("#re-calc").on("click", () => {
-      if (flag) {
-         window.alert("One or more of the input fields are empty!");
-      }else{
+      // if (flag) {
+         // window.alert("One or more of the input fields are empty!");
+      // }else{
          storeRecalculate();  
          // @prasad push to database
          console.log(fna.results)
-      }
+      // }
       // more actions
    });
 }
