@@ -400,6 +400,10 @@ table {
    color: white !important;
    background-color: var(--text-primary1) !important;
 }
+.result-table-header td:nth-child(2) {
+   padding: 10px 2.5em 10px 1em!important;
+}
+
 .result-table tr:nth-child(2) td {
    background-color: rgba(255, 255, 255, 0.74) !important;
    color: var(--text-primary1) !important;
