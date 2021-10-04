@@ -164,7 +164,8 @@ nav {
    padding: 2em 0em 1em 0em;
    /* @media */
    text-align: center;
-   min-height: 83vh;
+   /* min-height: 83vh; */
+   min-height: 133vh;
    font-size: var(--font-main);
    /* background-color: var(--text-primary3); */
    display: flex;
