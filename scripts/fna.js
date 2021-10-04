@@ -11,8 +11,7 @@ function page1LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change((event) => {
-      event.preventDefault();
+   $(":input").change(() => {
       if (localStorage.getItem("fnapg1") != null) {
          localStorage.removeItem("fnapg1");
          fna.page1 = [];
@@ -37,8 +36,7 @@ function page2LocalStorage() {
       $("#fnapg2e1").val(fna.page2[0]);
    }
    //push to local storage
-   $(":input").change((event) => {
-      event.preventDefault();
+   $(":input").change(() => {
       if (localStorage.getItem("fnapg2") != null) {
          localStorage.removeItem("fnapg2");
          fna.page2 = [];
@@ -63,8 +61,7 @@ function page3LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change((event) => {
-      event.preventDefault();
+   $(":input").change(() => {
       if (localStorage.getItem("fnapg3") != null) {
          localStorage.removeItem("fnapg3");
          fna.page3 = [];
@@ -129,8 +126,7 @@ function page4LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change((event) => {
-      event.preventDefault();
+   $(":input").change(() => {
       if (localStorage.getItem("fnapg4") != null) {
          localStorage.removeItem("fnapg4");
          fna.page4 = [];
@@ -218,8 +214,7 @@ function page5LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change((event) => {
-      event.preventDefault();
+   $(":input").change(() => {
       if (localStorage.getItem("fnapg5") != null) {
          localStorage.removeItem("fnapg5");
          fna.page5 = [];

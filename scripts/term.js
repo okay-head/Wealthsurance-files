@@ -232,7 +232,7 @@ function next() {
 
       loaderPromise().then(() => {
          setTimeout(() => {
-            window.open("result.html", "_self");
+            window.open("termInsurance_result.html", "_self");
          }, 1000);
       });
    });
@@ -240,11 +240,11 @@ function next() {
    //change the functionality back when back button is pressed
    $(".prev-btn").on("click", () => {
       $(".next-btn")
-      .text("Next")
-      .off()
-      .on("click", () => {
-         mySiema.next();
-      });
+         .text("Next")
+         .off()
+         .on("click", () => {
+            mySiema.next();
+         });
    });
 }
 
@@ -263,12 +263,12 @@ function storeRecalculate() {
       label: "debt",
       total: $("#teresultp1r0e1").val(),
       mortgage: [
-         $("#teresultp1r1e1").val(), 
+         $("#teresultp1r1e1").val(),
          $("#teresultp1r1e2").val(),
          $("#teresultp1r1e3").val(),
       ],
       credit: [
-         $("#teresultp1r2e1").val(), 
+         $("#teresultp1r2e1").val(),
          $("#teresultp1r2e2").val(),
          $("#teresultp1r2e3").val(),
       ],
@@ -303,7 +303,7 @@ function storeRecalculate() {
       label: "expenses",
       total: $("#teresultp2r0e1").val(),
       college: [
-         $("#teresultp2r1e1").val(), 
+         $("#teresultp2r1e1").val(),
          $("#teresultp2r1e2").val(),
          $("#teresultp2r1e3").val(),
       ],
@@ -334,32 +334,17 @@ function storeRecalculate() {
 }
 
 function reCalculate() {
-   // ---@error ---
-   let flag = true;
-
-   if ($('#teresultp1r0e1').val()!=='') {
-      flag = false;
-   }
-   $(":input").on("change", () => {
-      // not working
-      if ($('#teresultp1r0e1').val()!=='') {
-         flag = false;
-      }
-   });
-
+   // ---@error check ---
 
    $("#re-calc").on("click", () => {
-      if (flag) {
-         window.alert("One or more of the input fields are empty!");
-      }else{
-         storeRecalculate();  
-         // @prasad push to database
-         console.log(te.results)
-      }
+      storeRecalculate();
+
+      // @prasad push to database
+      console.log(te.results);
+
       // more actions
    });
 }
-
 
 //____ Objects and collections
 
@@ -368,11 +353,10 @@ let te = {
    page1: [],
    page2: [],
    page3: [],
-   results:[],
+   results: [],
 };
 
 //global actions
-
 
 // ____ on page load actions
 

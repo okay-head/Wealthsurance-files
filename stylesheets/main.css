@@ -676,6 +676,7 @@ input:focus {
 }
 
 .refi-output {
+   width: 100%;
    overflow: hidden;
 }
 .refi-io-container {
