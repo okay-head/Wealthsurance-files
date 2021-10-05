@@ -96,6 +96,9 @@ body {
    display: grid;
    place-items: center;
 }
+.splash-screen img{
+   margin-bottom: 5%;
+}
 
 /*--- container ---*/
 .container {
@@ -436,7 +439,7 @@ table {
 }
 @media screen and (max-width: 1215px) {
    .splash-screen img {
-      margin-bottom: 6%;
+      margin-bottom: 9%;
    }
    .bottom .assumptions {
       width: 50% !important;
@@ -804,7 +807,7 @@ input:focus {
 /* mobile */
 @media screen and (max-width: 610px) {
    .splash-screen img {
-      margin-bottom: 9%;
+      margin-bottom: 12%;
    }
    .content-container{
       min-height: 76vh;
