@@ -600,7 +600,7 @@ input:focus {
 
 .output-header {
    background-color: var(--main-primary3) !important;
-   width: 80%;
+   width: 90%;
    margin: 0 auto;
 }
 .re-enter {
@@ -763,6 +763,11 @@ input:focus {
 }
 .bottom .assumptions {
    width: 40%;
+}
+
+/* college */
+.college-output{
+   width: 105%;
 }
 
 /* ---breakpoints--- */

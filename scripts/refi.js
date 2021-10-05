@@ -25,6 +25,7 @@ function animateTable(val){
    }
 }
 
+// ----------- ⬆ for ammortization table -----------
 
 //functions
 function pgLocalStorage() {

@@ -24,7 +24,7 @@ function updateLoader(page, pages) {
       .text(text + "%");
 }
 
-$(".brand,.re-enter").on('click',() => {
+$(".brand").on('click',() => {
    window.open("index.html", "_self");
    // @change
 });
@@ -38,7 +38,11 @@ function fadeInResult() {
       })
    }
    
-
+function reEnter(page) {
+   $('.re-enter').on('click',()=>{
+      window.open(page,'_self');
+   })
+}
 
 // initialize siema
 // function initSiema() {}    /*causing bugs*/
