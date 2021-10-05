@@ -1,4 +1,10 @@
 "use strict";
+//global actions
+
+//splash-screen
+window.setTimeout(() => {
+   $(".splash-screen").fadeOut(400);
+}, 1500);
 
 // _____functions
 
@@ -24,24 +30,24 @@ function updateLoader(page, pages) {
       .text(text + "%");
 }
 
-$(".brand").on('click',() => {
+$(".brand").on("click", () => {
    window.open("index.html", "_self");
    // @change
 });
 
 function fadeInResult() {
-      // animate on document.ready
-      $(()=>{
-         $(".calculated-result")
-            .animate({ opacity: 1 })
-            .css("transform", "translateY(0)");
-      })
-   }
-   
+   // animate on document.ready
+   $(() => {
+      $(".calculated-result")
+         .animate({ opacity: 1 })
+         .css("transform", "translateY(0)");
+   });
+}
+
 function reEnter(page) {
-   $('.re-enter').on('click',()=>{
-      window.open(page,'_self');
-   })
+   $(".re-enter").on("click", () => {
+      window.open(page, "_self");
+   });
 }
 
 // initialize siema

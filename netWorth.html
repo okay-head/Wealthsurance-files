@@ -13,10 +13,12 @@
 </head>
 
 <body>
+   <div class="splash-screen"><img src="media/images/wealthsurance-logo.svg" alt="splash screen image"></div>
+
    <div class="container">
       <nav>
          <div class="brand">
-            <img src="media/images/wealthsurance-logo.png" alt="wealthsurance-logo" class="brand-image">
+            <img src="media/images/wealthsurance-logo.svg" alt="wealthsurance-logo" class="brand-image">
             <span class="brand-text">Wealthsurance</span>
          </div>
          <div class="navigation">
@@ -195,7 +197,7 @@
          initLoader();
          page1LocalStorage();
          hideTable();
-         
+
          function onChangeCallback() {
             console.log(this.currentSlide)
             switch (this.currentSlide + 1) {
@@ -221,7 +223,7 @@
                   break;
             }
          }
-      
+
 
          // --- slider ---
          const mySiema = new Siema({
