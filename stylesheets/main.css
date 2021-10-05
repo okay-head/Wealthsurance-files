@@ -783,7 +783,7 @@ input:focus {
 /* mobile */
 @media screen and (max-width: 610px) {
    .content-container{
-      min-height: 70vh;
+      min-height: 73vh;
    }
    .output-header {
       width: 100%;
@@ -800,6 +800,11 @@ input:focus {
    .loader {
       width: 99%;
       margin: 6% 0 7% 0%;
+   }
+   .progress-percentage {
+      width: 18px;
+      height: 18px;
+      left: 90%;
    }
    nav {
       max-width: 100%;
@@ -823,11 +828,6 @@ input:focus {
    }
    .input-fields {
       line-height: 50px; /*63px*/
-   }
-   .progress-percentage {
-      width: 18px;
-      height: 18px;
-      left: 92%;
    }
    ::placeholder {
       font-size: 12px;
