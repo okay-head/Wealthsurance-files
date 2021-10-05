@@ -52,15 +52,15 @@
                      years old,
                   </div>
                   <div>
-                     I plan to retire at the age of 
-                     <input type="number"  id="retirepg1e2" placeholder="Enter Year" inputmode="decimal">years.
+                     I plan to retire at the age of
+                     <input type="number" id="retirepg1e2" placeholder="Enter Year" inputmode="decimal">years.
                   </div>
                   <div>
                      My annual household income is $
                      <input type="number" id="retirepg1e3" placeholder="Enter number" inputmode="decimal">.
                   </div>
                   <div>
-                    I save
+                     I save
                      <input type="number" id="retirepg1e4" placeholder="Enter number" inputmode="decimal">% annually.
                   </div>
                </div>
@@ -140,8 +140,8 @@
 
                </div>
             </div>
-         
-         
+
+
          </div>
 
 
@@ -156,29 +156,34 @@
       <script src="scripts/retirement.js"></script>
       <script src="scripts/siema-1.5.1/dist/siema.min.js"></script>
 
-    <script>
+      <script>
          'use strict'
          //for page 1
+         hideTable();
          initLoader();
          page1LocalStorage();
 
          function onChangeCallback() {
             switch (this.currentSlide + 1) {
                case 1:
+                  hideTable();
                   initLoader();
                   page1LocalStorage();
                   break;
                case 2:
+                  hideTable();
                   updateLoader(1, 4);
                   page2LocalStorage();
                   break;
                case 3:
+                  hideTable();
                   updateLoader(2, 4);
                   page3LocalStorage();
                   break;
                case 4:
+                  showTable();
                   $('.next-btn').text('Finish');
-                  updateLoader(3,4);
+                  updateLoader(3, 4);
                   page4LocalStorage();
                   next();
                   break;
@@ -202,7 +207,7 @@
          $('.prev-btn').click(() => mySiema.prev());
          $('.next-btn').click(() => mySiema.next());
 
-      </script> 
+      </script>
 
 
 </body>

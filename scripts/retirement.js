@@ -108,6 +108,13 @@ function page4LocalStorage() {
    });
 }
 
+function hideTable() {
+   $(".retirement-page4 .input-fields").slideUp(800);
+}
+function showTable() {
+   $(".retirement-page4 .input-fields").slideDown(1200);
+}
+
 
 function next() {
    //  change next button's action
