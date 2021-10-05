@@ -97,10 +97,6 @@ body {
    place-items: center;
 }
 
-/* .splash-screen img {
-   width: 3%;
-} */
-
 /*--- container ---*/
 .container {
    overflow: hidden;
@@ -439,6 +435,9 @@ table {
    margin: 1.5em 0;
 }
 @media screen and (max-width: 1215px) {
+   .splash-screen img {
+      margin-bottom: 3%;
+   }
    .bottom .assumptions {
       width: 50% !important;
    }
@@ -804,6 +803,9 @@ input:focus {
 
 /* mobile */
 @media screen and (max-width: 610px) {
+   .splash-screen img {
+      margin-bottom: 6%;
+   }
    .content-container{
       min-height: 76vh;
    }
