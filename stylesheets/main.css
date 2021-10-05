@@ -783,7 +783,7 @@ input:focus {
 /* mobile */
 @media screen and (max-width: 610px) {
    .content-container{
-      min-height: 75vh;
+      min-height: 78vh;
    }
    .output-header {
       width: 100%;
