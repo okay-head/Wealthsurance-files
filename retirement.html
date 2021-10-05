@@ -151,39 +151,41 @@
       </div>
 
       <script src="scripts/shared.js"></script>
-      <!-- <script src="scripts/retirement.js"></script> -->
+      <script src="scripts/retirement.js"></script>
       <script src="scripts/siema-1.5.1/dist/siema.min.js"></script>
 
     <script>
          'use strict'
-         // //for page 1
-         // initLoader();
-         // page1LocalStorage();
+         //for page 1
+         initLoader();
+         page1LocalStorage();
 
-         // function onChangeCallback() {
-         //    switch (this.currentSlide + 1) {
-         //       case 1:
-         //          initLoader();
-         //          page1LocalStorage();
-         //          break;
-         //       case 2:
-         //          updateLoader(1, 3);
-         //          table();
-         //          page2LocalStorage();
-         //          break;
-         //       case 3:
-         //          $('.next-btn').text('Finish');
-         //          updateLoader(2,3);
-         //          table();
-         //          page3LocalStorage();
-         //          next();
-         //          break;
-         //    }
-         // }
+         function onChangeCallback() {
+            switch (this.currentSlide + 1) {
+               case 1:
+                  initLoader();
+                  page1LocalStorage();
+                  break;
+               case 2:
+                  updateLoader(1, 4);
+                  page2LocalStorage();
+                  break;
+               case 3:
+                  updateLoader(2, 4);
+                  page3LocalStorage();
+                  break;
+               case 4:
+                  $('.next-btn').text('Finish');
+                  updateLoader(3,4);
+                  page4LocalStorage();
+                  next();
+                  break;
+            }
+         }
 
          // --- slider ---
          const mySiema = new Siema({
-            // onChange: onChangeCallback,
+            onChange: onChangeCallback,
             selector: '.siema',
             duration: 900,
             easing: 'ease-in-out',

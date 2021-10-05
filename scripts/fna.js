@@ -282,7 +282,7 @@ function next() {
       loaderPromise().then(() => {
          setTimeout(() => {
             window.open("fna_result.html", "_self");
-         }, 1000);
+         }, 1410);
       });
    });
 

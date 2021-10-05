@@ -218,7 +218,7 @@ function next() {
       loaderPromise().then(() => {
          setTimeout(() => {
             window.open("netWorth_result.html", "_self");
-         }, 1000);
+         }, 1410);
       });
    });
 

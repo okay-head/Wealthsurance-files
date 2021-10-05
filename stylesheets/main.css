@@ -498,6 +498,7 @@ section.output {
 }
 input:focus {
    border: none;
+   border-radius: 4px;
 }
 .results-table-container input::placeholder {
    font-size: 0.9em;
@@ -789,7 +790,7 @@ input:focus {
       grid-template-rows: 0.75fr 1fr !important;
    }
    .loader {
-      width: 95%;
+      width: 99%;
       margin: 6% 0 7% 0%;
    }
    nav {

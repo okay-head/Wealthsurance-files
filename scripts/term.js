@@ -233,7 +233,7 @@ function next() {
       loaderPromise().then(() => {
          setTimeout(() => {
             window.open("termInsurance_result.html", "_self");
-         }, 1000);
+         }, 1410);
       });
    });
 
