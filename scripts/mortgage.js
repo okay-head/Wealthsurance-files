@@ -41,3 +41,24 @@ function animateTable(val){
 }
 
 
+function next() {
+   //  change next button's action
+   $(".next-btn").on("click", () => {
+      function loaderPromise() {
+         let update = new Promise((resolve) => {
+            resolve(updateLoader(1, 1));
+         });
+         //----- @prasad -----
+         function pushToDatabase() {
+            console.log(refi);
+         }
+         // ------------------
+         return update;
+      }
+      loaderPromise().then(() => {
+         setTimeout(() => {
+            window.open("mortgage_result.html", "_self");
+         }, 1410);
+      });
+   });
+}
