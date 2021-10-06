@@ -10,7 +10,7 @@
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
-   <title>Refi Mortgage Calculator</title>
+   <title>Mortgage Calculator</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 
       <div class="content-container">
          <div class="top">
-            <h1 class="page-heading">Refi Mortgage calculator</h1>
+            <h1 class="page-heading">Mortgage calculator</h1>
             <div class="share-btn-grp ">
                <span class="share-btns mail" role="button"></span>
                <span class="share-btns share" role="button"></span>
@@ -58,63 +58,50 @@
                <div class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 editable-results-table">
                      <tr>
-                        <td>Original Loan Amount,$:</td>
-                        <td><input type="number" id="refiresulte1" placeholder="50000"></td>
-                        <!-- <td>500000</td> -->
+                        <td>House price, </td>
+                        <td><input type="number" id="mortgresulte1" placeholder="500000"></td>
                      </tr>
                      <tr>
-                        <td>Original Loan Duration,years:</td>
-                        <!-- <td id="orange-text">30 </td> -->
-                        <td id="orange-text"><input type="number" id="refiresulte2" placeholder="30"></td>
+                        <td>Down payment, %:</td>
+                        <td id="orange-text"><input type="number" id="mortgresulte2" placeholder="10"></td>
 
                      </tr>
                      <tr>
-                        <td>Original Loan Rate, %:</td>
-                        <!-- <td>3.500</td> -->
-                        <td><input type="number" id="refiresulte3" placeholder="3.500"></td>
+                        <td>Down payment, $:</td>
+                        <td><input type="number" id="mortgresulte3" placeholder="50000"></td>
 
                      </tr>
                      <tr>
-                        <td>Years passed, years:</td>
-                        <!-- <td>10</td> -->
-                        <td><input type="number" id="refiresulte4" placeholder="10"></td>
-
+                        <td>PMI, %:</td>
+                        <td><input type="number" id="mortgresulte4" placeholder="1.00"></td>
                      </tr>
                      <tr>
-                        <td>New Loan Rate, %:</td>
-                        <!-- <td>3.375</td> -->
-                        <td><input type="number" id="refiresulte5" placeholder="3.375"></td>
-
+                        <td>PMI stops at, %:</td>
+                        <td><input type="number" id="mortgresulte5" placeholder="20"></td>
                      </tr>
                      <tr>
-                        <td>New Loan Duration, years:</td>
-                        <!-- <td>15</td> -->
-                        <td><input type="number" id="refiresulte6" placeholder="15"></td>
-
+                        <td>Loan amount, $:</td>
+                        <td><input type="number" id="mortgresulte6" placeholder="450000"></td>
                      </tr>
                      <tr>
-                        <td>Processing Cost, $:</td>
-                        <!-- <td>3000</td> -->
-                        <td><input type="number" id="refiresulte7" placeholder="3000"></td>
-
+                        <td>Interest rate, %:</td>
+                        <td><input type="number" id="mortgresulte7" placeholder="3.500"></td>
                      </tr>
                      <tr>
-                        <td>Annual HOA dues, $</td>
-                        <!-- <td>2400</td> -->
-                        <td><input type="number" id="refiresulte8" placeholder="2400"></td>
-
+                        <td>Loan duration, years</td>
+                        <td><input type="number" id="mortgresulte8" placeholder="30"></td>
                      </tr>
                      <tr>
-                        <td>Annual property Taxes, $:</td>
-                        <!-- <td>15000</td> -->
-                        <td><input type="number" id="refiresulte9" placeholder="15000"></td>
-
+                        <td>Annual HOA dues, $:</td>
+                        <td><input type="number" id="mortgresulte9" placeholder="2400"></td>
                      </tr>
                      <tr>
-                        <td>Annual property Insurance, $:</td>
-                        <!-- <td>1500</td> -->
-                        <td><input type="number" id="refiresulte10" placeholder="1500"></td>
-
+                        <td>Annual property taxes, $:</td>
+                        <td><input type="number" id="mortgresulte10" placeholder="15000"></td>
+                     </tr>
+                     <tr>
+                        <td>Annual property insurance, $:</td>
+                        <td><input type="number" id="mortgresulte11" placeholder="1500"></td>
                      </tr>
                   </table>
                </div>
@@ -135,56 +122,64 @@
 
             <section class="output annuity-output refi-output">
                <h4 class="output-header">Output</h4>
-               <div class="result">
-                  Refi graph
+
+               <div class="toggle-btn-grp">
+                  <span id="graph-btn" class="red-btn">Graph view</span><span id="table-btn" class="red-btn">Table view</span>
                </div>
 
-               <div class="results-table-container result-table">
-                  <table class="annuity-results-table results-table w-100 refi-output-table">
+               <p class="small-title">Your expenses will be</p>
+
+               <div class="result" id="graph">
+                  <h3>Graph</h3>
+               </div>
+
+               <div id="table" class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100 refi-output-table refi-output-table1">
                      <tr>
-                        <td>Output</td>
-                        <td>Current</td>
-                        <td>New</td>
+                        <td>Type</td>
+                        <td>Monthly</td>
+                        <td>Yearly</td>
                      </tr>
                      <tr>
-                        <td>Original Loan Amount,$:</td>
-                        <td id="orange-text">500000</td>
-                        <td></td>
+                        <td>Loan repayment</td>
+                        <td id="orange-text">2021</td>
+                        <td>24248</td>
                      </tr>
                      <tr>
-                        <td>Original Loan Duration,years:</td>
-                        <td id="orange-text">30 </td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>Original Loan Rate, %:</td>
-                        <td>3.500</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>Years passed, years:</td>
-                        <td>10</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>New Loan Rate, %:</td>
-                        <td>3.375</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>New Loan Duration, years:</td>
-                        <td>15</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>Processing Cost, $:</td>
-                        <td>3000</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>Annual HOA dues, $</td>
+                        <td>HOA dues</td>
+                        <td id="orange-text">200 </td>
                         <td>2400</td>
-                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>Property taxes</td>
+                        <td>1250</td>
+                        <td>15000</td>
+                     </tr>
+                     <tr>
+                        <td>Property insurance</td>
+                        <td>125</td>
+                        <td>1500</td>
+                     </tr>
+                     <tr>
+                        <td>Total</td>
+                        <td>3471</td>
+                        <td>41565</td>
+                     </tr>
+                     <tr></tr>
+                     <tr></tr>
+                     <tr></tr>
+                     <tr></tr>
+                     <tr>
+                        <td>First monthly PMI payment </td>
+                        <td>375</td>
+                     </tr>
+                     <tr>
+                        <td>Total PMI payment</td>
+                        <td>23069</td>
+                     </tr>
+                     <tr>
+                        <td>PMI duration, years</td>
+                        <td>6</td>
                      </tr>
                   </table>
                </div>
@@ -319,10 +314,10 @@
 
    </div>
    <script src="scripts/shared.js"></script>
-   <script src="scripts/refi.js"></script>
+   <script src="scripts/mortgage.js"></script>
    <script>
-      reCalculate();
-      reEnter('refi.html');
+      // reCalculate();
+      // reEnter('refi.html');
    </script>
 </body>
 

@@ -6,6 +6,13 @@ window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
 }, 1500);
 
+//brand
+$(".brand").on("click", () => {
+   window.open("index.html", "_self");
+   // @change
+});
+
+
 // _____functions
 
 // update val
@@ -18,6 +25,7 @@ function initLoader() {
    $(".progress-bar").animate({ width: "0%" }, 1000);
    $(".progress-percentage").text("0%").fadeTo(1500, 1);
 }
+
 function updateLoader(page, pages) {
    let increment = 100 / pages;
    let text =
@@ -29,11 +37,6 @@ function updateLoader(page, pages) {
       .fadeTo(800, 1)
       .text(text + "%");
 }
-
-$(".brand").on("click", () => {
-   window.open("index.html", "_self");
-   // @change
-});
 
 function fadeInResult() {
    // animate on document.ready

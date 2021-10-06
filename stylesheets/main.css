@@ -31,8 +31,10 @@
    --text-secondary3: #c4c4c4;
    --font-main: 24px;
    --font-buttons: 19px;
+   --toggle-font-buttons:21px;
    --font-headings: 36px;
    --font-17: 17px;
+   --font-18: 18px;
 }
 
 /*--- defaults ---*/
@@ -63,6 +65,10 @@ a {
 .container-lg {
    min-height: 93vh !important;
 }
+.d-none{
+   display: none;
+}
+
 /*--- classes ---*/
 
 body,
@@ -97,7 +103,7 @@ body {
    place-items: center;
 }
 .splash-screen img{
-   margin-bottom: 5%;
+   margin-bottom: 3%;
 }
 
 /*--- container ---*/
@@ -694,6 +700,9 @@ input:focus {
    width: 100%;
    font-size: inherit;
 }
+.nw-results-table tr:nth-child(2) td{
+   padding: 0;
+}
 
 .refi-output-table tr:first-child td {
    background-color: var(--main-primary3) !important;
@@ -707,8 +716,11 @@ input:focus {
 .refi-io-container {
    grid-template-columns: 1fr 1.3fr;
 }
-.refi-io-container .w-100 {
-   width: 86%;
+.refi-output .w-100 {
+   width: 91%;
+}
+.refi-output-table1 tr:not(tr:first-child) td:nth-child(3){
+   color: var(--text-secondary1)!important;
 }
 .refi-io-container .results-table tr td:first-child {
    padding: 10px 0.5em 10px 0.9em;
@@ -794,6 +806,37 @@ input:focus {
    width: 105%;
 }
 
+/* mortgage */
+.active-btn{
+   background-color: var(--main-primary1)!important;
+}
+.toggle-btn-grp{
+   width: 70%!important;
+   /* background-color: var(--text-primary3); */
+   margin: 1em auto;
+}
+.toggle-btn-grp span{
+   font-size: var(--toggle-font-buttons);
+   background-color: var(--text-secondary3);
+   padding: 0.4em 1.9em;
+   margin: 0;
+}
+.toggle-btn-grp span:hover{
+   background-color: var(--text-secondary3);
+}
+
+.small-title{
+   font-size: var(--font-18);
+   text-align: center;
+   margin: 2.5em auto 0 auto;
+}
+
+#graph{
+   box-sizing: border-box;
+   margin: 1em auto;
+   min-height: 416px;
+   min-width: 650px;
+}
 /* ---breakpoints--- */
 @media screen and (max-width: 1340px) {
    .navigation {

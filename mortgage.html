@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery cdn -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <title>Mortgage Calculator</title>
+</head>
+
+<body>
+   <div class="splash-screen"><img src="media/images/wealthsurance-logo.svg" alt="splash screen image"></div>
+
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="media/images/wealthsurance-logo.svg" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+         <div class="navigation">
+            <a href="#">Learning</a>
+            <a href="#">Know More</a>
+            <a href="#">Tools <span class="dropdown-arrow"><img src="media/images/nav-dropdown-arrow.png"
+                     alt="dropdown-arrow"></span></a>
+            <a href="#">Events</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <span role="button" class="red-btn">Get a Quote</span>
+         </div>
+
+         <span class="hamburger" role="button"></span>
+      </nav>
+
+      <div class="content-container">
+         <div class="top">
+            <h1 class="page-heading">Mortgage Calculator</h1>
+            <div class="loader">
+               <div class="progress-bar">
+                  <span class="progress-percentage"></span>
+               </div>
+            </div>
+         </div>
+
+         <div class="page1">
+            <div class="input-fields">
+               <div>I am looking to buy a house priced at $
+                  <input type="number" id="mortgpg1e1" placeholder="Enter Amount">
+               </div>
+               <div>
+                  Down payment <input type="number" id="mortgpg1e2" placeholder="Enter Percentage">% or $ <input
+                     type="number" id="mortgpg1e3" placeholder="Enter Amount">
+               </div>
+               <div>
+                  PMI
+                  <input type="number" id="mortgpg1e4" placeholder="Enter percentage"> % till <input type="number"
+                     id="mortgpg1e5" placeholder="Enter percentage">% is paid
+               </div>
+               <div>Loan at
+                  <input type="number" id="mortgpg1e6" placeholder="Enter Percentage">% rate $ <input type="number"
+                     id="mortgpg1e7" placeholder="Enter amount">
+               </div>
+               <div>
+                  for
+                  <input type="number" id="mortgpg1e8" placeholder="Enter percentage">years
+               </div>
+
+               <div class="mt-1">Annual HOA dues $ <input type="number" id="mortgpg1e9" placeholder="Enter amount"> per
+                  year</div>
+               <div>Annual property taxes $ <input type="number" id="mortgpg1e10" placeholder="Enter amount"> per year
+               </div>
+               <div>Annual property insurance $ <input type="number" id="mortgpg1e11" placeholder="Enter amount"> per year
+               </div>
+            </div>
+         </div>
+
+
+         <div class="btn-group">
+            <span role="button" class="red-btn next-btn">Finish</span>
+         </div>
+
+      </div>
+      <script src="scripts/shared.js"></script>
+      <script src="scripts/mortgage.js"></script>
+
+      <script>
+         'use strict'
+         // initLoader();
+         // pgLocalStorage();
+         // next();
+      </script>
+
+
+</body>
+
+</html>
