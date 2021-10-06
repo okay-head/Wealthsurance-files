@@ -31,7 +31,7 @@ function hideTable() {
    $(".nw-table-container").slideUp(800);
 }
 function showTable() {
-   $(".nw-table-container").slideDown(800);
+   $(".nw-table-container").slideDown(1000);
 }
 
 function page1LocalStorage() {
