@@ -103,6 +103,7 @@ body {
    place-items: center;
 }
 .splash-screen img {
+   transform: scale(0.8);
    margin-bottom: 3%;
 }
 
@@ -816,19 +817,19 @@ input:focus {
  .tooltip:hover .tooltiptext {
    visibility: visible;
  } */
- /* ------ */
- .required::after{
-    z-index: 20;
-    position: absolute;
-    top: 10%;
-    right: -3.5%;
-    content: 'required';
-    background-color: black;
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 2px;
-    color: white;
- }
+/* ------ */
+.required::after {
+   z-index: 20;
+   position: absolute;
+   top: 10%;
+   right: -3.5%;
+   content: "required";
+   background-color: black;
+   display: inline-block;
+   padding: 10px 20px;
+   border-radius: 2px;
+   color: white;
+}
 .required {
    position: absolute;
    display: inline-block;
@@ -848,13 +849,13 @@ input:focus {
 }
 
 /* college */
-.p-relative{
+.p-relative {
    position: relative;
 }
 .college-output {
    width: 105%;
 }
-.dropdown-menu{
+.dropdown-menu {
    position: absolute;
    display: none;
    top: 0;
@@ -865,8 +866,8 @@ input:focus {
    box-shadow: 1px 1px 1px var(--text-primary3);
    overflow: hidden;
 }
-.dropdown-menu a{
-   font-family: 'Gilroy-regular','Verdana';
+.dropdown-menu a {
+   font-family: "Gilroy-regular", "Verdana";
    font-size: var(--font-buttons);
    display: inline-block;
 }
@@ -876,8 +877,8 @@ input:focus {
    background-color: var(--main-primary1) !important;
 }
 .toggle-btn-grp {
+   min-width: 270px;
    width: 70% !important;
-   /* background-color: var(--text-primary3); */
    margin: 1em auto;
 }
 .toggle-btn-grp span {
@@ -974,10 +975,14 @@ input:focus {
    .bottom .assumptions {
       width: 60% !important;
    }
+   .toggle-btn-grp span {
+      padding: 0.4em 1.4em;
+   }
    :root {
       --font-main: 18px; /*24*/
       --font-buttons: 16px; /*19*/
       --font-headings: 24px; /*36*/
       --font-17: 14px;
+      --toggle-font-buttons: 17px; /*21*/
    }
 }

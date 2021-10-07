@@ -32,14 +32,9 @@ function pgLocalStorage() {
    //check for existing localStorage on page load
    if (localStorage.getItem("refipg1") != null) {
       refi.page1 = JSON.parse(localStorage.getItem("refipg1"));
-      $("#refipg1e1").val(refi.page1[0]);
-      $("#refipg1e2").val(refi.page1[1]);
-      $("#refipg1e3").val(refi.page1[2]);
-      $("#refipg1e4").val(refi.page1[3]);
-      $("#refipg1e5").val(refi.page1[4]);
-      $("#refipg1e6").val(refi.page1[5]);
-      $("#refipg1e7").val(refi.page1[6]);
-      $("#refipg1e8").val(refi.page1[7]);
+      for (let i = 0; i < 8; i++) {
+         $("#refipg1e"+(i+1)).val(refi.page1[i]);
+      }
    }
 
    //push to local storage
@@ -51,15 +46,9 @@ function pgLocalStorage() {
 
       $(".next-btn").one("click", () => {
          refi.page1 = [];
-         refi.page1.push($("#refipg1e1").val());
-         refi.page1.push($("#refipg1e2").val());
-         refi.page1.push($("#refipg1e3").val());
-         refi.page1.push($("#refipg1e4").val());
-         refi.page1.push($("#refipg1e5").val());
-         refi.page1.push($("#refipg1e6").val());
-         refi.page1.push($("#refipg1e7").val());
-         refi.page1.push($("#refipg1e8").val());
-
+         for (let i = 0; i < 8; i++) {
+            refi.page1.push($("#refipg1e"+(i+1)).val());
+         }
          localStorage.setItem("refipg1", JSON.stringify(refi.page1));
       });
    });
