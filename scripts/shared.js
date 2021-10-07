@@ -2,7 +2,7 @@
 //global actions
 
 //splash-screen
-$(".splash-screen").transition({scale:1.45},1700)
+$(".splash-screen").transition({scale:1.35},1700)
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
 
