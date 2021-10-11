@@ -28,9 +28,9 @@ function page1LocalStorage() {
 }
 
 function table() {
-   $("#tepg2e1,#tepg3e1").keyup(() => {
+   $("#tepg2e1,#tepg3e1").on('focus',()=>{
       $(".table").slideDown(800);
-   });
+   })
 
    // table glitch
    $(".next-btn,.prev-btn").on("click", () => {

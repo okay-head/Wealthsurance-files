@@ -35,6 +35,7 @@
    --font-headings: 36px;
    --font-17: 17px;
    --font-18: 18px;
+   --placeholder: 14px;
 }
 
 /*--- defaults ---*/
@@ -293,7 +294,7 @@ input[type="number"] {
    border: 1px solid var(--text-primary1);
 } */
 ::placeholder {
-   font-size: 14px;
+   font-size: var(--placeholder);
    color: var(--text-secondary3);
 }
 select {
@@ -531,9 +532,9 @@ input:focus {
    border: none;
    border-radius: 4px;
 }
-.results-table-container input::placeholder {
+/* .results-table-container input::placeholder {
    font-size: 0.9em;
-}
+} */
 .w-100 {
    width: 100%;
 }
@@ -965,10 +966,10 @@ input:focus {
    .input-fields {
       line-height: 50px; /*63px*/
    }
-   ::placeholder {
+   /* ::placeholder {
       font-size: 12px;
       color: var(--text-secondary3);
-   }
+   } */
    .calculated-result {
       font-size: 33px; /*54px*/
    }
@@ -984,5 +985,6 @@ input:focus {
       --font-headings: 24px; /*36*/
       --font-17: 14px;
       --toggle-font-buttons: 17px; /*21*/
+      --placeholder: 11px; /*14px*/
    }
 }

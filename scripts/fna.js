@@ -80,9 +80,9 @@ function page3LocalStorage() {
 
 //table
 function table() {
-   $("#fnapg4e1,#fnapg5e1").keyup(() => {
+   $("#fnapg4e1,#fnapg5e1").on('focus', ()=>{
       $(".table").slideDown(800);
-   });
+   })
 
    // table glitch
    $(".next-btn,.prev-btn").on("click", () => {
