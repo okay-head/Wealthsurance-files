@@ -709,6 +709,9 @@ input:focus {
    background-color: rgba(255, 255, 255, 0.74);
    color: var(--main-primary1);
 }
+.nw-table tr:nth-child(2) td:not(:first-child){
+   padding: 0;
+}
 .nw-results-table {
    width: 100%;
    font-size: inherit;
@@ -928,7 +931,7 @@ input:focus {
 /* mobile */
 @media screen and (max-width: 610px) {
    .w-100 {
-      width: 390px !important;
+      width: 400px !important;
    }
    .splash-screen img {
       margin-bottom: 12%;
@@ -961,7 +964,7 @@ input:focus {
    .progress-percentage {
       width: 18px;
       height: 18px;
-      left: 94%;
+      left: 93%;
    }
    nav {
       max-width: 100%;
