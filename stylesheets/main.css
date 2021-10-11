@@ -35,7 +35,7 @@
    --font-headings: 36px;
    --font-17: 17px;
    --font-18: 18px;
-   --placeholder: 14px;
+   --placeholder: 13.5px;
    --font-result: 28px;
 }
 
@@ -990,7 +990,7 @@ input:focus {
       --font-headings: 24px; /*36*/
       --font-17: 14px;
       --toggle-font-buttons: 17px; /*21*/
-      --placeholder: 11px; /*14px*/
+      --placeholder: 11.5px; /*14px*/
       --font-result: 22px;
    }
 }
