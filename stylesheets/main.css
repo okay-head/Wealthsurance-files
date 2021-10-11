@@ -996,7 +996,7 @@ input:focus {
    :root {
       --font-main: 18px; /*24*/
       --font-buttons: 16px; /*19*/
-      --font-headings: 24px; /*36*/
+      --font-headings: 26px; /*36*/
       --font-17: 14px;
       --toggle-font-buttons: 17px; /*21*/
       --placeholder: 11.5px; /*14px*/

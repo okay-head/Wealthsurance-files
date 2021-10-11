@@ -2,15 +2,21 @@
 //global actions
 
 //refresh the screen everytime on resize, to prevent slider glitch
+let flag = true;
 
-let resizeTimer = undefined;
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+   flag = false;
+}
+if (flag) {
+   let resizeTimer = undefined;
+   $(window).resize(()=> {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(()=>{
+         window.location.reload()
+      }, 100);
+   });
+}
 
-$(window).resize(()=> {
-   clearTimeout(resizeTimer);
-   resizeTimer = setTimeout(()=>{
-      window.location.reload()
-   }, 100);
-});
 
 
 //splash-screen
