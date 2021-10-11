@@ -1,6 +1,10 @@
 "use strict";
 //global actions
 
+$('.hamburger, .canvas-close-btn').on('click',()=>{
+   $('.offCanvasNav').toggleClass('offCanvasNav-visible')
+})
+
 //refresh the screen everytime on resize, to prevent slider glitch
 let flag = true;
 
@@ -17,8 +21,6 @@ if (flag) {
       }, 100);
    });
 }
-
-
 
 //splash-screen
 $(".splash-screen").transition({scale:1.35},1700)

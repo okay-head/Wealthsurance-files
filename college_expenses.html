@@ -5,9 +5,9 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
-   
+
    <!-- jquery transit -->
    <script src="scripts/jquery/jquery.transit.min.js"></script>
    <!-- stylesheet -->
@@ -27,19 +27,9 @@
          <div class="navigation">
             <a href="#">Home</a>
             <a href="#">Know More</a>
-            <a href="#" class="p-relative">Tools <span class="dropdown-arrow"><img src="media/images/nav-dropdown-arrow.png"
-                     alt="dropdown-arrow"></span>
-                   <!-- <div class="dropdown-menu">
-                     <a href="#">Financial Needs Analysis</a>
-                     <a href="#">Term Insurance</a>
-                     <a href="#">Annuity</a>
-                     <a href="#">Net Worth</a>
-                     <a href="#">Mortgage</a>
-                     <a href="#">Retirement</a>
-                     <a href="#">REFI</a>
-                     <a href="#">College Expenses</a>
-                  </div>  -->
-                  </a>
+            <a href="#" class="p-relative">Tools <span class="dropdown-arrow"><img
+                     src="media/images/nav-dropdown-arrow.png" alt="dropdown-arrow"></span>
+            </a>
             <a href="#">Events</a>
             <a href="#">About Us</a>
             <a href="#">Contact Us</a>
@@ -48,6 +38,23 @@
 
          <span class="hamburger" role="button"></span>
       </nav>
+
+      <aside class="offCanvasNav">
+         <div class="offCanvasNav-container">
+            <p><span class="canvas-close-btn"><img src="media/images/close-svgrepo-com(1).svg" alt=""></span></p>
+            <ul>
+               <li><a href="#">Home</a></li>
+               <li><a href="#">Know More</a></li>
+               <li><a href="#">Tools 🔽</a></li>
+               <li><a href="#">Events</a></li>
+               <li><a href="#">About us</a></li>
+               <li><a href="#">Contact us</a></li>
+            </ul>
+            <p>
+               <span role="button" class="red-btn">Get a Quote</span>
+            </p>
+         </div>
+      </aside>
 
       <div class="content-container">
          <div class="top">
@@ -65,28 +72,32 @@
                   <input type="text" id="clgpg1e1" placeholder="Enter Name">
                </div>
                <div>
-                  who is <input type="number" id="clgpg1e2" placeholder="Enter no of years">years old, and will go to college at the age of 
-               </div>
-                  <div>
-                     <input type="number" id="clgpg1e3" placeholder="Enter no of years">years, for
-                     <input type="number" id="clgpg1e4" placeholder="Enter Number">
-                     years.
-                  </div>
-               <div>
-                  I want to fund <input type="number" id="clgpg1e5" placeholder="Enter percentage">% of the annual college expenses of 
+                  who is <input type="number" id="clgpg1e2" placeholder="Enter no of years">years old, and will go to
+                  college at the age of
                </div>
                <div>
-                  $ <input type="number" id="clgpg1e6" placeholder="Enter amount">, that are growing at an inflation rate of <input type="number" id="clgpg1e7" placeholder="Enter percentage">% per years.
+                  <input type="number" id="clgpg1e3" placeholder="Enter no of years">years, for
+                  <input type="number" id="clgpg1e4" placeholder="Enter Number">
+                  years.
                </div>
                <div>
-                 I have to put aside $
+                  I want to fund <input type="number" id="clgpg1e5" placeholder="Enter percentage">% of the annual
+                  college expenses of
+               </div>
+               <div>
+                  $ <input type="number" id="clgpg1e6" placeholder="Enter amount">, that are growing at an inflation
+                  rate of <input type="number" id="clgpg1e7" placeholder="Enter percentage">% per years.
+               </div>
+               <div>
+                  I have to put aside $
                   <input type="number" id="clgpg1e8" placeholder="Enter amount"> so far towards college expenses.
                </div>
                <div>
                   I will contribute $ <input type="number" id="clgpg1e9" placeholder="Enter amount"> each month,
                </div>
                <div>
-                  that will grow at<input type="number" id="clgpg1e10" placeholder="Enter percentage"> % annually each year.
+                  that will grow at<input type="number" id="clgpg1e10" placeholder="Enter percentage"> % annually each
+                  year.
                </div>
 
             </div>
@@ -98,15 +109,16 @@
          </div>
 
       </div>
-      <script src="scripts/shared.js"></script>
-      <script src="scripts/college.js"></script>
+   </div>
+   <script src="scripts/shared.js"></script>
+   <script src="scripts/college.js"></script>
 
-      <script>
-         'use strict'
-         initLoader();
-         pgLocalStorage();
-         next();
-      </script>
+   <script>
+      'use strict'
+      initLoader();
+      pgLocalStorage();
+      next();
+   </script>
 
 
 </body>

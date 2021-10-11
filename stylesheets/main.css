@@ -93,7 +93,7 @@ body {
    top: 0;
    left: 0;
    width: 100%;
-   height: 100vh;
+   height: 100%;
    /* background-color: black; */
    background-color: #e5e5e5;
    /* background-color: white; */
@@ -119,6 +119,66 @@ body {
    padding: 0 1.5em;
 }
 
+/* --- offcanvas --- */
+.offCanvasNav, .offCanvasNav-container{
+   box-sizing: border-box;
+}
+.offCanvasNav{
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 26%;
+   height: 100%;
+   z-index: 80;
+   background-color: var(--main-primary1);
+   transition: 0.4s ease-in-out transform;
+   transform: translateX(100%);
+   /* display: none; */
+}
+
+.offCanvasNav-visible{
+   transform: translateX(0);
+   /* display: block; */
+}  
+.canvas-close-btn{
+   cursor: pointer;
+   /* prevent selection */
+   user-select: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -ms-user-select: none;
+}
+
+.offCanvasNav-container{
+   font-size: var(--font-17);
+   height: 100%;
+   padding: 4em 2em 2em 2em;
+   display: flex;
+   flex-flow: column nowrap;
+}
+.offCanvasNav-container p:first-child{
+   position: relative;
+   /* right: -90%; */
+   left: -2%;
+   top: -6%;
+   /* top: -5%; */
+}
+.offCanvasNav-container p:first-child img{
+   width: 15%;
+}
+.offCanvasNav-container p:last-child{
+   margin-top: auto  ;
+   text-align: center;
+}
+.offCanvasNav-container ul{
+   line-height: 52px;
+}
+.offCanvasNav-container ul li a{
+   display: block;
+   font-family: 'Gilroy-medium', 'Verdana' ;
+   color: white;
+}
 /* --- navigation --- */
 
 nav {
@@ -947,7 +1007,7 @@ input:focus {
       grid-template-rows: 1.1fr 1fr !important;
    }
    .nw-io-container {
-      grid-template-rows: 0.54fr 1fr !important;
+      grid-template-rows: 0.5fr 1fr !important;
    }
    .mortg-io-container {
       grid-template-rows: 1.14fr 1fr !important;
