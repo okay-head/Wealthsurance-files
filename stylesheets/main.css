@@ -36,6 +36,7 @@
    --font-17: 17px;
    --font-18: 18px;
    --placeholder: 14px;
+   --font-result: 28px;
 }
 
 /*--- defaults ---*/
@@ -359,7 +360,7 @@ table {
 }
 
 .calculated-result {
-   font-size: 54px;
+   font-size: 48px;
    color: var(--text-secondary1);
    margin-top: 8%;
    transform: translateY(70%);
@@ -653,6 +654,7 @@ input:focus {
    margin: 2em auto;
    width: 65%;
    padding: 5em 2em;
+   font-size: var(--font-result);
    /* border: 1px solid brown; */
 }
 
@@ -979,6 +981,9 @@ input:focus {
    .toggle-btn-grp span {
       padding: 0.4em 1.4em;
    }
+   .results-table-container {
+      font-size: 0.75em;
+   }
    :root {
       --font-main: 18px; /*24*/
       --font-buttons: 16px; /*19*/
@@ -986,5 +991,6 @@ input:focus {
       --font-17: 14px;
       --toggle-font-buttons: 17px; /*21*/
       --placeholder: 11px; /*14px*/
+      --font-result: 22px;
    }
 }
