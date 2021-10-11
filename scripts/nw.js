@@ -10,23 +10,13 @@ let nw = {
 
 //defaults
 
-// function buttonsReset() {
-//    $(".next-btn,.prev-btn")
-//    .off()
-
-// }
-
-/* function changeButtonFunction() {
-   $(".next-btn,.prev-btn").on("click", () => {
-      $(".nw-table").slideUp();
-   });
-   $('.prev-btn').click(() => mySiema.prev());
-   $('.next-btn').click(() => mySiema.next());
-}
- */
 
 //functions
 
+function populateTable(){
+   $('.nw-table input, nw-results-table input').val(0);
+   return;
+}
 function hideTable() {
    $(".nw-table-container").slideUp(800);
 }
@@ -60,6 +50,7 @@ function page1LocalStorage() {
 }
 
 function page2LocalStorage() {
+   populateTable()
    //check for existing localStorage on page load
    if (localStorage.getItem("nwpg2") != null) {
       nw.page2 = JSON.parse(localStorage.getItem("nwpg2"));
@@ -100,6 +91,9 @@ function page2LocalStorage() {
       $("#nwpg2r12c1").val(z.other[0]);
       $("#nwpg2r12c2").val(z.other[1]);
    }
+   // else{
+   //    populateTable()
+   // }
 
    //push to local storage
    $(":input").change(() => {
@@ -141,6 +135,7 @@ function page2LocalStorage() {
 
 function page3LocalStorage() {
    //check for existing localStorage on page load
+   // populateTable()
    if (localStorage.getItem("nwpg3") != null) {
       nw.page3 = JSON.parse(localStorage.getItem("nwpg3"));
       let [z] = nw.page3;
@@ -165,6 +160,9 @@ function page3LocalStorage() {
       $("#nwpg3r7c1").val(z.other_loans[0]);
       $("#nwpg3r7c2").val(z.other_loans[1]);
    }
+   // else{
+   //    populateTable()
+   // }
 
    //push to local storage
    $(":input").change(() => {

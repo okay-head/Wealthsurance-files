@@ -686,6 +686,7 @@ input:focus {
 }
 /* net worth */
 .nw-table-container {
+   margin-bottom: 1.2em;
    display: block;
 }
 .nw-table {
