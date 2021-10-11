@@ -945,6 +945,9 @@ input:focus {
    .nw-io-container {
       grid-template-rows: 0.54fr 1fr !important;
    }
+   .mortg-io-container {
+      grid-template-rows: 1.14fr 1fr !important;
+   }
    .retirement-io-container {
       grid-template-rows: 0.7fr 1fr !important;
    }
