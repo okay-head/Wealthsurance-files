@@ -592,6 +592,9 @@ input:focus {
    padding: 0.4em 0;
    font-weight: 300;
 }
+.input h4{
+   margin-bottom: 1.5em;
+}
 
 /* schedule-call */
 .bottom .schedule-call .small,
@@ -959,8 +962,11 @@ input:focus {
       padding: 8px 0px;
       padding-left: 10px;
    }
+   table{
+      width: 740px;
+   }
    .table input {
-      width: 100%;
+      width: 80%;
    }
    select {
       padding: 8px 31px 8px 11px !important;
@@ -983,6 +989,9 @@ input:focus {
    }
    .results-table-container {
       font-size: 0.75em;
+   }
+   .page-heading{
+      font-weight: 300;
    }
    :root {
       --font-main: 18px; /*24*/

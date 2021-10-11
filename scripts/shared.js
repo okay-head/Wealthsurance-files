@@ -1,6 +1,18 @@
 "use strict";
 //global actions
 
+//refresh the screen everytime on resize, to prevent slider glitch
+
+let resizeTimer = undefined;
+
+$(window).resize(()=> {
+   clearTimeout(resizeTimer);
+   resizeTimer = setTimeout(()=>{
+      window.location.reload()
+   }, 100);
+});
+
+
 //splash-screen
 $(".splash-screen").transition({scale:1.35},1700)
 window.setTimeout(() => {
