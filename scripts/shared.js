@@ -1,19 +1,25 @@
 "use strict";
-const [root] =  document.getElementsByTagName('html');
+const [root] = document.getElementsByTagName("html");
+
 //global actions
-$('.shadow-element').addClass('hidden')
+$(".shadow-element,.hide-hamburger-component").addClass("hidden");
+
+
 // $('html,body,.container').addClass('hide-scroll')
 // $('html,body,.container').addClass('overflow-h')
 
 //hamburger
-$('.hamburger, .canvas-close-btn').on('click',()=>{
-   $('.offCanvasNav').toggleClass('offCanvasNav-visible')
-   $('.shadow-element').toggleClass('hidden')
-   $('html,body,.container').toggleClass('hide-scroll')
-   if(! (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )) {
-      $('html,body,.container').toggleClass('mr-7')
+$(".hamburger, .canvas-close-btn,.hide-hamburger-component").on("click", () => {
+   $(".offCanvasNav").toggleClass("offCanvasNav-visible");
+   $(".shadow-element,.hide-hamburger-component").toggleClass("hidden");
+   $("html,body,.container").toggleClass("hide-scroll");
+   if (
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+   ) {
+      $("html,body,.container").toggleClass("mr-7");
    }
-})
+   resizeComponent()
+});
 
 // $('body').on('click',()=>{
 //    $('.offCanvasNav').removeClass('offCanvasNav-visible')
@@ -22,21 +28,25 @@ $('.hamburger, .canvas-close-btn').on('click',()=>{
 let flag = true;
 
 //prevent resize on mobile devices
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+if (
+   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+   )
+) {
    flag = false;
 }
 if (flag) {
    let resizeTimer = undefined;
-   $(window).resize(()=> {
+   $(window).resize(() => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(()=>{
-         window.location.reload()
+      resizeTimer = setTimeout(() => {
+         window.location.reload();
       }, 100);
    });
 }
 
 //splash-screen
-$(".splash-screen").transition({scale:1.35},1700)
+$(".splash-screen").transition({ scale: 1.35 }, 1700);
 root.scrollTop = 0;
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
@@ -45,16 +55,18 @@ window.setTimeout(() => {
    // }, 0)
 }, 1500);
 
-
-
 //brand
 $(".brand").on("click", () => {
    window.open("index.html", "_self");
    // @change
 });
 
-
 // _____functions
+
+function resizeComponent() {
+   $(".hide-hamburger-component")
+   .width($(window).width() - $(".offCanvasNav").width())
+}
 
 // update val
 function setValue(id, val) {

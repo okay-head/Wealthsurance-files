@@ -141,14 +141,20 @@ body {
 }
 
 /* --- offcanvas --- */
-.shadow-element{
-   height: 100vh;
+.shadow-element,.hide-hamburger-component{
+   height: 100%;
    width: 100%;
    top: 0;
    left: 0;
    right: 0;
    bottom: 0;
    position: fixed;
+}
+.hide-hamburger-component{
+   z-index: 75;
+   /* background-color: rgb(131, 124, 62); */
+}
+.shadow-element{
    z-index: 70;
    background-color: rgba(0, 0, 0, 0.493);
 }
