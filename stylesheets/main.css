@@ -122,6 +122,23 @@ html,body,.container,.offCanvasNav,.offCanvasNav-container{
 }
 
 /* --- offcanvas --- */
+.shadow-element{
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   position: absolute;
+   z-index: 70;
+   background-color: rgba(0, 0, 0, 0.493);
+}
+.hidden{
+   visibility: hidden;
+}
+/* .visibile{
+   visibility: visible!important;
+} */
 .offCanvasNav, .offCanvasNav-container{
    box-sizing: border-box;
 }
@@ -133,7 +150,8 @@ html,body,.container,.offCanvasNav,.offCanvasNav-container{
    min-width: 290px;
    height: 100%;
    z-index: 80;
-   background-color: var(--main-primary1);
+   /* background-color: var(--main-primary1); */
+   background-color: var(--text-secondary3);
    transition: 0.4s ease-in-out all;
    transform: translateX(100%);
    visibility: hidden;
@@ -177,12 +195,14 @@ html,body,.container,.offCanvasNav,.offCanvasNav-container{
    text-align: center;
 }
 .offCanvasNav-container ul{
+   list-style-type: none;
    line-height: 52px;
 }
 .offCanvasNav-container ul li a{
    display: block;
    font-family: 'Gilroy-medium', 'Verdana' ;
-   color: white;
+   /* color: white; */
+   color: var(--text-primary3);
 }
 /* --- navigation --- */
 
@@ -512,6 +532,9 @@ table {
    margin: 1.5em 0;
 }
 @media screen and (max-width: 1215px) {
+   .offCanvasNav-container p:first-child{
+      top: -5%;
+   }
    .splash-screen img {
       margin-bottom: 9%;
    }
@@ -998,6 +1021,9 @@ input:focus {
 @media screen and (max-width: 610px) {
    .offCanvasNav{
       min-width: 220px;
+   }
+   .offCanvasNav-container p:first-child{
+      top: -4%;
    }
    .w-100 {
       width: 400px !important;

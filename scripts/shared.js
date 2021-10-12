@@ -1,10 +1,15 @@
 "use strict";
 //global actions
+$('.shadow-element').addClass('hidden')
 
 $('.hamburger, .canvas-close-btn').on('click',()=>{
    $('.offCanvasNav').toggleClass('offCanvasNav-visible')
+   $('.shadow-element').toggleClass('hidden')
 })
 
+// $('body').on('click',()=>{
+//    $('.offCanvasNav').removeClass('offCanvasNav-visible')
+// })
 //refresh the screen everytime on resize, to prevent slider glitch
 let flag = true;
 
