@@ -86,7 +86,7 @@ body {
    background-size: cover;
 }
 html,body,.container{
-   overflow-x: hidden;
+   overflow-x: hidden!important;
 }
 
 /* splash screen */
