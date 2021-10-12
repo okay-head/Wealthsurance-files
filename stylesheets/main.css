@@ -201,8 +201,8 @@ html,body,.container,.offCanvasNav,.offCanvasNav-container{
 .offCanvasNav-container ul li a{
    display: block;
    font-family: 'Gilroy-medium', 'Verdana' ;
-   /* color: white; */
-   color: var(--text-primary3);
+   color: white;
+   /* color: var(--text-primary3); */
 }
 /* --- navigation --- */
 
