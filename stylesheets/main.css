@@ -85,8 +85,8 @@ body {
       url("../media/images/wealthsurance_bg.png") center center scroll;
    background-size: cover;
 }
-html,body,.container{
-   overflow-x: hidden!important;
+html,body,.container,.offCanvasNav,.offCanvasNav-container{
+   overflow-x: hidden;
 }
 
 /* splash screen */
@@ -126,7 +126,7 @@ html,body,.container{
    box-sizing: border-box;
 }
 .offCanvasNav{
-   position: absolute;
+   position: fixed;
    right: 0;
    top: 0;
    width: 26%;
