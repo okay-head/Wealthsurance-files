@@ -1,7 +1,8 @@
 "use strict";
+const [root] =  document.getElementsByTagName('html');
 //global actions
 $('.shadow-element').addClass('hidden')
-$('html,body,.container').addClass('hide-scroll')
+// $('html,body,.container').addClass('hide-scroll')
 // $('html,body,.container').addClass('overflow-h')
 
 //hamburger
@@ -32,11 +33,12 @@ if (flag) {
 
 //splash-screen
 $(".splash-screen").transition({scale:1.35},1700)
+root.scrollTop = 0;
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
-   window.setTimeout(()=>{
-      $('html,body,.container').removeClass('overflow-h')
-   }, 0)
+   // window.setTimeout(()=>{
+   //    $('html,body,.container').removeClass('hide-scroll')
+   // }, 0)
 }, 1500);
 
 

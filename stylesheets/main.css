@@ -105,7 +105,7 @@ body {
 
 /* splash screen */
 .splash-screen {
-   position: absolute;
+   position: fixed;
    top: 0;
    left: 0;
    width: 100%;
@@ -113,7 +113,7 @@ body {
    /* background-color: black; */
    background-color: #e5e5e5;
    /* background-color: white; */
-   z-index: 20;
+   z-index: 120;
 }
 
 .splash-screen {
@@ -164,8 +164,8 @@ body {
    min-width: 290px;
    height: 100%;
    z-index: 80;
-   background-color: var(--main-primary1);
-   /* background-color: var(--text-secondary3); */
+   /* background-color: var(--main-primary1); */
+   background-color: var(--text-secondary3);
    transition: 0.4s ease-in-out all;
    transform: translateX(100%);
    visibility: hidden;
@@ -215,8 +215,8 @@ body {
 .offCanvasNav-container ul li a{
    display: block;
    font-family: 'Gilroy-medium', 'Verdana' ;
-   color: white;
-   /* color: var(--text-primary3); */
+   /* color: white; */
+   color: var(--text-primary3);
 }
 /* --- navigation --- */
 
