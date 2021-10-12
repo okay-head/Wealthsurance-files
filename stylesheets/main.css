@@ -85,7 +85,7 @@ body {
       url("../media/images/wealthsurance_bg.png") center center scroll;
    background-size: cover;
 }
-html,body,.container,.offCanvasNav,.offCanvasNav-container{
+html,body{
    overflow-x: hidden;
 }
 
