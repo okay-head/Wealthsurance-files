@@ -150,8 +150,8 @@ html,body,.container,.offCanvasNav,.offCanvasNav-container{
    min-width: 290px;
    height: 100%;
    z-index: 80;
-   /* background-color: var(--main-primary1); */
-   background-color: var(--text-secondary3);
+   background-color: var(--main-primary1);
+   /* background-color: var(--text-secondary3); */
    transition: 0.4s ease-in-out all;
    transform: translateX(100%);
    visibility: hidden;
