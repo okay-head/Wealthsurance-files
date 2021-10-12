@@ -9,6 +9,7 @@ $('.shadow-element').addClass('hidden')
 $('.hamburger, .canvas-close-btn').on('click',()=>{
    $('.offCanvasNav').toggleClass('offCanvasNav-visible')
    $('.shadow-element').toggleClass('hidden')
+   $('html,body,.container').toggleClass('hide-scroll')
 })
 
 // $('body').on('click',()=>{

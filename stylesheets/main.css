@@ -83,6 +83,7 @@ a {
  .hide-scroll{
    -ms-overflow-style: none;  /* IE and Edge */
    scrollbar-width: none;  /* Firefox */
+   margin-right: 7px;
  } 
 /*--- classes ---*/
 
@@ -137,13 +138,13 @@ body {
 
 /* --- offcanvas --- */
 .shadow-element{
-   height: 100%;
+   height: 100vh;
    width: 100%;
    top: 0;
    left: 0;
    right: 0;
    bottom: 0;
-   position: absolute;
+   position: fixed;
    z-index: 70;
    background-color: rgba(0, 0, 0, 0.493);
 }
@@ -165,7 +166,8 @@ body {
    height: 100%;
    z-index: 80;
    /* background-color: var(--main-primary1); */
-   background-color: var(--text-secondary3);
+   /* background-color: var(--text-secondary3); */
+   background-color: var(--main-secondary2);
    transition: 0.4s ease-in-out all;
    transform: translateX(100%);
    visibility: hidden;
@@ -190,19 +192,19 @@ body {
 .offCanvasNav-container{
    font-size: var(--font-17);
    height: 100%;
-   padding: 4em 2em 2em 2em;
+   padding: 4em 0 2em 0;
    display: flex;
    flex-flow: column nowrap;
 }
 .offCanvasNav-container p:first-child{
    position: relative;
    /* right: -90%; */
-   left: -2%;
+   left: 9%;
    top: -6%;
    /* top: -5%; */
 }
 .offCanvasNav-container p:first-child img{
-   width: 15%;
+   width: 13%;
 }
 .offCanvasNav-container p:last-child{
    margin-top: auto  ;
@@ -215,8 +217,13 @@ body {
 .offCanvasNav-container ul li a{
    display: block;
    font-family: 'Gilroy-medium', 'Verdana' ;
-   /* color: white; */
-   color: var(--text-primary3);
+   color: var(--text-primary1);
+   padding: 0 2em;
+   transition: 0.25s ease background;
+}
+.offCanvasNav-container ul li a:hover{
+   /* background-color: #eeeaea; */
+   background-color: #e5e5e5f5;
 }
 /* --- navigation --- */
 
