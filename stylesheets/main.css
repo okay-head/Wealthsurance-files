@@ -71,6 +71,19 @@ a {
    display: none;
 }
 
+.overflow-h{
+   overflow: hidden!important;
+}
+ /* Hide scrollbar for Chrome, Safari and Opera */
+ .hide-scroll::-webkit-scrollbar {
+   display: none;
+ }
+ 
+ /* Hide scrollbar for IE, Edge and Firefox */
+ .hide-scroll{
+   -ms-overflow-style: none;  /* IE and Edge */
+   scrollbar-width: none;  /* Firefox */
+ } 
 /*--- classes ---*/
 
 body,
@@ -85,9 +98,10 @@ body {
       url("../media/images/wealthsurance_bg.png") center center scroll;
    background-size: cover;
 }
-html,body{
-   overflow-x: hidden;
-}
+/* html,body,.container{
+   overflow: hidden!important;
+} */
+
 
 /* splash screen */
 .splash-screen {

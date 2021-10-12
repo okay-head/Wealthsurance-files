@@ -1,7 +1,10 @@
 "use strict";
 //global actions
 $('.shadow-element').addClass('hidden')
+$('html,body,.container').addClass('hide-scroll')
+// $('html,body,.container').addClass('overflow-h')
 
+//hamburger
 $('.hamburger, .canvas-close-btn').on('click',()=>{
    $('.offCanvasNav').toggleClass('offCanvasNav-visible')
    $('.shadow-element').toggleClass('hidden')
@@ -31,8 +34,12 @@ if (flag) {
 $(".splash-screen").transition({scale:1.35},1700)
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
-
+   window.setTimeout(()=>{
+      $('html,body,.container').removeClass('overflow-h')
+   }, 0)
 }, 1500);
+
+
 
 //brand
 $(".brand").on("click", () => {
