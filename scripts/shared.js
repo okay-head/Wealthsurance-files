@@ -10,6 +10,9 @@ $('.hamburger, .canvas-close-btn').on('click',()=>{
    $('.offCanvasNav').toggleClass('offCanvasNav-visible')
    $('.shadow-element').toggleClass('hidden')
    $('html,body,.container').toggleClass('hide-scroll')
+   if(! (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )) {
+      $('html,body,.container').toggleClass('mr-7')
+   }
 })
 
 // $('body').on('click',()=>{
