@@ -71,24 +71,24 @@ a {
    display: none;
 }
 
-.overflow-h{
-   overflow: hidden!important;
+.overflow-h {
+   overflow: hidden !important;
 }
- /*for Chrome, Safari and Opera */
- .hide-scroll::-webkit-scrollbar {
+/*for Chrome, Safari and Opera */
+.hide-scroll::-webkit-scrollbar {
    display: none;
- }
- 
- /*for IE, Edge and Firefox */
- .hide-scroll{
-   -ms-overflow-style: none;  /* IE and Edge */
-   scrollbar-width: none;  /* Firefox */
+}
+
+/*for IE, Edge and Firefox */
+.hide-scroll {
+   -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-width: none; /* Firefox */
    /* margin-right: 7px; */
-} 
+}
 /* to prevent the jump */
-.mr-7{
-    margin-right: 7px;
- }
+.mr-7 {
+   margin-right: 7px;
+}
 /*--- classes ---*/
 
 body,
@@ -107,7 +107,6 @@ body {
    overflow: hidden!important;
 } */
 
-
 /* splash screen */
 .splash-screen {
    position: fixed;
@@ -118,7 +117,7 @@ body {
    /* background-color: black; */
    background-color: #e5e5e5;
    /* background-color: white; */
-   z-index: 120;
+   z-index: 200;
 }
 
 .splash-screen {
@@ -141,7 +140,8 @@ body {
 }
 
 /* --- offcanvas --- */
-.shadow-element,.hide-hamburger-component{
+.shadow-element,
+.hide-hamburger-component {
    height: 100%;
    width: 100%;
    top: 0;
@@ -150,24 +150,25 @@ body {
    bottom: 0;
    position: fixed;
 }
-.hide-hamburger-component{
+.hide-hamburger-component {
    z-index: 75;
    /* background-color: rgb(131, 124, 62); */
 }
-.shadow-element{
+.shadow-element {
    z-index: 70;
    background-color: rgba(0, 0, 0, 0.493);
 }
-.hidden{
+.hidden {
    visibility: hidden;
 }
 /* .visibile{
    visibility: visible!important;
 } */
-.offCanvasNav, .offCanvasNav-container{
+.offCanvasNav,
+.offCanvasNav-container {
    box-sizing: border-box;
 }
-.offCanvasNav{
+.offCanvasNav {
    position: fixed;
    right: 0;
    top: 0;
@@ -184,12 +185,12 @@ body {
    /* display: none; */
 }
 
-.offCanvasNav-visible{
+.offCanvasNav-visible {
    transform: translateX(0);
    visibility: visible;
    /* display: block; */
-}  
-.canvas-close-btn{
+}
+.canvas-close-btn {
    cursor: pointer;
    /* prevent selection */
    user-select: none;
@@ -199,39 +200,39 @@ body {
    -ms-user-select: none;
 }
 
-.offCanvasNav-container{
+.offCanvasNav-container {
    font-size: var(--font-17);
    height: 100%;
    padding: 4em 0 2em 0;
    display: flex;
    flex-flow: column nowrap;
 }
-.offCanvasNav-container p:first-child{
+.offCanvasNav-container p:first-child {
    position: relative;
    /* right: -90%; */
    left: 9%;
    top: -6%;
    /* top: -5%; */
 }
-.offCanvasNav-container p:first-child img{
+.offCanvasNav-container p:first-child img {
    width: 13%;
 }
-.offCanvasNav-container p:last-child{
-   margin-top: auto  ;
+.offCanvasNav-container p:last-child {
+   margin-top: auto;
    text-align: center;
 }
-.offCanvasNav-container ul{
+.offCanvasNav-container ul {
    list-style-type: none;
    line-height: 52px;
 }
-.offCanvasNav-container ul li a{
+.offCanvasNav-container ul li a {
    display: block;
-   font-family: 'Gilroy-medium', 'Verdana' ;
+   font-family: "Gilroy-medium", "Verdana";
    color: var(--text-primary1);
    padding: 0 2em;
    transition: 0.25s ease background;
 }
-.offCanvasNav-container ul li a:hover{
+.offCanvasNav-container ul li a:hover {
    /* background-color: #eeeaea; */
    background-color: #e5e5e5f5;
 }
@@ -259,6 +260,13 @@ nav {
 .brand-text {
    font-size: 24.74px;
 }
+.navigation-ul {
+   list-style-type: none;
+   display: flex;
+}
+.navigation-ul>li:last-child {
+   margin-top: 8px;
+}
 .navigation a {
    font-family: "Gilroy-medium";
    font-size: var(--font-17); /*-1*/
@@ -271,6 +279,49 @@ nav {
    width: 13px;
    margin: 1px 4px;
    transition: 0.2s ease all;
+}
+.dropdown-menu {
+   position: absolute;
+   width: 235px;
+   top: 90%;
+   left: -5%;
+   border-radius: 4px;
+   z-index: 100;
+   display: flex;
+   flex-direction: column;
+   background-color: var(--main-primary4);
+   box-shadow: 0px 0px 3px #7070705b;
+   overflow: hidden;
+   padding: 1em 0;
+   transition: 0.3s ease all;
+   transform: scale(0.9);
+   /* transform: translateY(20px); */
+   visibility: hidden;
+   opacity: 0;
+}
+li.p-relative:hover .dropdown-menu{
+   transform: scale(1);
+   /* transform: translateY(0); */
+   visibility: visible;
+   opacity: 1;
+}
+
+
+
+.dropdown-menu a {
+   color: var(--text-primary3);
+   font-family: "Gilroy-Medium", Verdana, sans-serif;
+   font-size: 16px;
+   width: 100%;
+   margin: 0;
+   padding-left: 1.5em;
+   transition: .2s ease all;
+   /* padding: 10px 12px; */
+   /* margin: 10px 12px; */
+}
+.dropdown-menu a:hover {
+   background-color: var(--main-secondary2);
+   color: var(--text-primary1);
 }
 .hamburger {
    background: url("../media/images/hamburger.svg") no-repeat center;
@@ -563,7 +614,7 @@ table {
    margin: 1.5em 0;
 }
 @media screen and (max-width: 1215px) {
-   .offCanvasNav-container p:first-child{
+   .offCanvasNav-container p:first-child {
       top: -5%;
    }
    .splash-screen img {
@@ -717,7 +768,7 @@ input:focus {
    padding: 0.4em 0;
    font-weight: 300;
 }
-.input h4{
+.input h4 {
    margin-bottom: 1em;
 }
 
@@ -829,7 +880,7 @@ input:focus {
    background-color: rgba(255, 255, 255, 0.74);
    color: var(--main-primary1);
 }
-.nw-table tr:nth-child(2) td:not(:first-child){
+.nw-table tr:nth-child(2) td:not(:first-child) {
    padding: 0;
 }
 .nw-results-table {
@@ -990,22 +1041,6 @@ input:focus {
 .college-output {
    width: 105%;
 }
-.dropdown-menu {
-   position: absolute;
-   display: none;
-   top: 0;
-   z-index: 500;
-   display: flex;
-   flex-direction: column;
-   background-color: var(--main-primary4);
-   box-shadow: 1px 1px 1px var(--text-primary3);
-   overflow: hidden;
-}
-.dropdown-menu a {
-   font-family: "Gilroy-regular", "Verdana";
-   font-size: var(--font-buttons);
-   display: inline-block;
-}
 
 /* mortgage */
 .active-btn {
@@ -1050,10 +1085,10 @@ input:focus {
 
 /* mobile */
 @media screen and (max-width: 610px) {
-   .offCanvasNav{
+   .offCanvasNav {
       min-width: 240px;
    }
-   .offCanvasNav-container p:first-child{
+   .offCanvasNav-container p:first-child {
       top: -4%;
    }
    .w-100 {
@@ -1106,7 +1141,7 @@ input:focus {
       padding: 8px 0px;
       padding-left: 10px;
    }
-   table{
+   table {
       width: 740px;
    }
    .table input {
@@ -1134,7 +1169,7 @@ input:focus {
    .results-table-container {
       font-size: 0.75em;
    }
-   .page-heading{
+   .page-heading {
       font-weight: 300;
    }
    :root {
