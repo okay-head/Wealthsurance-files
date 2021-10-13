@@ -1071,7 +1071,7 @@ input:focus {
    box-sizing: border-box;
    margin: 1em auto;
    min-height: 416px;
-   min-width: 650px;
+   min-width: 350px;
 }
 /* ---breakpoints--- */
 @media screen and (max-width: 1340px) {
@@ -1090,6 +1090,9 @@ input:focus {
    }
    .offCanvasNav-container p:first-child {
       top: -4%;
+   }
+   .ammortization-table-container .w-100{
+      width: 550px !important;
    }
    .w-100 {
       width: 400px !important;
