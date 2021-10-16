@@ -25,6 +25,7 @@ $(".hamburger, .canvas-close-btn,.hide-hamburger-component").on("click", () => {
 //    $('.offCanvasNav').removeClass('offCanvasNav-visible')
 // })
 //refresh the screen everytime on resize, to prevent slider glitch
+
 let flag = true;
 
 //prevent resize on mobile devices
@@ -62,6 +63,29 @@ $(".brand").on("click", () => {
 });
 
 // _____functions
+
+let session_id = "aaabbb000000";
+let ip = '139.5.30.66';
+
+//functions
+
+function createSessionId() {
+   const length = 6; //length of the alphabet part of session id
+   // let number = Math.round(      Math.random().toFixed(length / 2) * Math.pow(10, length / 2)
+   // ).toString(); //8
+
+   let number =  Math.round((Date.now())/1000) 
+
+   const arr = "abcdefghijklmnopqrstuvwxyz";
+   let string = "";
+   for (let i = 0; i < length; i++) {
+      let x = Math.random().toFixed(1) * 10;
+      string += arr[x];
+   }
+   session_id = string + number;
+
+}
+
 
 function resizeComponent() {
    $(".hide-hamburger-component")
@@ -105,6 +129,3 @@ function reEnter(page) {
       window.open(page, "_self");
    });
 }
-
-// initialize siema
-// function initSiema() {}    /*causing bugs*/

@@ -120,17 +120,17 @@
                         <td>Age to start payment,years:</td>
                         <td><input type="number" id="annresulte2" placeholder="65" inputmode="decimal"></td>
                      </tr>
-                     <tr>
+                     <!-- <tr>
                         <td>Length of annuity,years:</td>
                         <td><input type="number" id="annresulte3" placeholder="20" inputmode="decimal"></td>
-                     </tr>
+                     </tr> -->
                      <tr>
                         <td>Initial amount,$:</td>
-                        <td><input type="number" id="annresulte4" placeholder="500000" inputmode="decimal"></td>
+                        <td><input type="number" id="annresulte3" placeholder="500000" inputmode="decimal"></td>
                      </tr>
                      <tr>
                         <td>Annual growth rate,%:</td>
-                        <td><input type="number" id="annresulte5" placeholder="6" inputmode="decimal"></td>
+                        <td><input type="number" id="annresulte4" placeholder="6" inputmode="decimal"></td>
                      </tr>
                   </table>
                </div>
@@ -178,9 +178,11 @@
    <script src="scripts/shared.js"></script>
    <script src="scripts/annuity.js"></script>
    <script>
+      updateResult(1);
       fadeInResult();
-      reCalculate();
+      updatePlaceholders(1);
       reEnter('annuity.html');
+      reCalculate();
 // gotoPage(2);
    </script>
 </body>

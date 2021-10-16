@@ -1,6 +1,77 @@
 "use strict";
+//____ Objects and collections
 
-//functions
+let ann = {
+   page1: [],
+   results: [],
+};
+
+let a = [];
+let b = [];
+
+function pushToDatabase1(ann) {
+   let [a, b, c, d] = ann.page1;
+   $.ajax({
+      type: "POST",
+      url: `http://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${a}&pay_year=${c}&amount=${b}&growth_rate=${d}`,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result.success) {
+            // localStorage.removeItem('ann_result')
+            localStorage.setItem("ann_result", JSON.stringify(result.data));
+
+            // console.log(result)
+         } else {
+            console.log(result + "request not successful");
+         }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+}
+
+function pushToDatabase2(ann) {
+   // Create session id only when the user decides to recalculate
+   createSessionId();
+   [{ current_age: b[0],
+      ageToStart_payment: b[1],
+      initial_amount: b[2],
+      growth_rate: b[3],}] = ann.results;
+
+   $.ajax({
+      type: "POST",
+      url: `http://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${b[0]}&pay_year=${b[1]}&amount=${b[2]}&growth_rate=${b[3]}`,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result.success) {
+            updateResult(2,result.data)
+         } else {
+            console.log(result + "request not successful");
+         }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+}
+
+function updateResult(x,y=undefined) {
+   switch (x) {
+      case 1:
+         $(".calculated-result").text(
+            "$" + JSON.parse(localStorage.getItem("ann_result"))
+         );
+         break;
+      case 2:
+         $(".calculated-result").text('$'+y)
+         break;
+   }
+   // console.log(JSON.parse(localStorage.getItem('ann_result')))
+}
+
 function pgLocalStorage() {
    //check for existing localStorage on page load
    if (localStorage.getItem("annpg1") != null) {
@@ -26,6 +97,8 @@ function pgLocalStorage() {
          ann.page1.push($("#annpg1e4").val());
 
          localStorage.setItem("annpg1", JSON.stringify(ann.page1));
+
+         // pushToDatabase1(ann)
       });
    });
 }
@@ -37,25 +110,17 @@ function next() {
          let update = new Promise((resolve) => {
             resolve(updateLoader(1, 1));
          });
-         //----- @prasad -----
-         function pushToDatabase() {
-            console.log(ann);
-         }
-         // ------------------
          return update;
       }
       loaderPromise().then(() => {
+         //----- @ajax -----
+         pushToDatabase1(ann);
+         // ------------------
          setTimeout(() => {
             window.open("annuity_result.html", "_self");
          }, 1410);
       });
    });
-}
-
-function showResult() {
-   $(".calculated-result")
-      .animate({ opacity: 1 })
-      .css("transform", "translateY(0)");
 }
 
 function reCalculate() {
@@ -66,34 +131,59 @@ function reCalculate() {
 
               - - - 
       */
-     storeRecalculate();
+      storeRecalculate();
 
-   // ----------  
-   // @prasad
-   // Push to database and calculate results
-     console.log(ann.results)
-   //   ----------
-   
+      updatePlaceholders(2);
+
+      // ----------
+      // Push to database and calculate results
+      // console.log(ann.results);
+      //   ----------
    });
 }
 
 function storeRecalculate() {
    //not to be stored in local storage
    let obj = {
-      label:'annuity-result input',
-      current_age: $('#annresulte1').val(),
-      ageToStart_payment: $('#annresulte2').val(),
-      annuity_length: $('#annresulte3').val(),
-      initial_amount: $('#annresulte4').val(),
-      growth_rate: $('#annresulte5').val(),
+      label: "annuity-result input",
+      current_age: $("#annresulte1").val(),
+      ageToStart_payment: $("#annresulte2").val(),
+      initial_amount: $("#annresulte3").val(),
+      growth_rate: $("#annresulte4").val(),
    };
 
+   ann.results = [];
    ann.results.push(obj);
+
+   pushToDatabase2(ann)
 }
-//____ Objects and collections
 
-let ann = {
-   page1: [],
-   results:[],
-};
+function updatePlaceholders(x) {
+   // can't use a loop because of just one element bleh
+   switch (x) {
+      case 1:
+         const z = JSON.parse(localStorage.getItem("annpg1"));
+         $("#annresulte1").attr("placeholder", z[0]);
+         $("#annresulte2").attr("placeholder", z[2]);
+         $("#annresulte3").attr("placeholder", z[1]);
+         $("#annresulte4").attr("placeholder", z[3]);
+         break;
 
+      //recalculate
+      case 2:
+         // let a = []
+         [
+            {
+               current_age: a[0],
+               ageToStart_payment: a[1],
+               initial_amount: a[2],
+               growth_rate: a[3],
+            },
+         ] = ann.results;
+
+         for (let i = 0; i < 4; i++) {
+            $("#annresulte" + (i + 1)).attr("placeholder", a[i]);
+         }
+         break;
+   }
+}
