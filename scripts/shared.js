@@ -16,7 +16,7 @@ $(".hamburger, .canvas-close-btn,.hide-hamburger-component").on("click", () => {
    if (
       !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
    ) {
-      $("html,body,.container").toggleClass("mr-7");
+      $("html,body,.container").toggleClass("mr-8");
    }
    resizeComponent()
 });

@@ -86,8 +86,8 @@ a {
    /* margin-right: 7px; */
 }
 /* to prevent the jump */
-.mr-7 {
-   margin-right: 7px;
+.mr-8 {
+   margin-right: 8px;
 }
 /*--- classes ---*/
 
@@ -1079,7 +1079,7 @@ input:focus {
       display: none;
    }
    .hamburger {
-      display: inline-block;
+      display: block;
    }
 }
 
