@@ -83,7 +83,6 @@ a {
 .hide-scroll {
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
-   /* margin-right: 7px; */
 }
 /* to prevent the jump */
 .mr-8 {

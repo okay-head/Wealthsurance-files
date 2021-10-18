@@ -125,11 +125,8 @@ function next() {
 
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
-      /*      - - -
-      
+      /*     
       some error checking
-
-              - - - 
       */
       storeRecalculate();
 
