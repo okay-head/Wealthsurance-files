@@ -31,7 +31,7 @@ function pgLocalStorage() {
    //check for existing localStorage on page load
    if (localStorage.getItem("refipg1") != null) {
       refi.page1 = JSON.parse(localStorage.getItem("refipg1"));
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 9; i++) {
          $("#refipg1e"+(i+1)).val(refi.page1[i]);
       }
    }
@@ -45,7 +45,7 @@ function pgLocalStorage() {
 
       $(".next-btn").one("click", () => {
          refi.page1 = [];
-         for (let i = 0; i < 8; i++) {
+         for (let i = 0; i < 9; i++) {
             refi.page1.push($("#refipg1e"+(i+1)).val());
          }
          localStorage.setItem("refipg1", JSON.stringify(refi.page1));
@@ -105,7 +105,7 @@ function storeRecalculate() {
       new_loan_rate: $('#refiresulte5').val(),
       new_loan_duration: $('#refiresulte6').val(),
       processing_cost: $('#refiresulte7').val(),
-      annual_dues: $('#refiresulte8').val(),
+      annual_dues: $('#refiresulte9').val(),
       annual_property_taxes: $('#refiresulte9').val(),
       annual_property_insurance: $('#refiresulte10').val(),
    };

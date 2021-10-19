@@ -960,8 +960,12 @@ input:focus {
 .orange-header td {
    background-color: var(--main-primary3) !important;
 }
+.retirement-page4{
+   overflow-x: auto;
+}
 .retirement-page4 .input-fields {
-   width: 60%;
+   /* width: 60%; */
+   min-width: 680px;
    margin: 0.5em auto 2.5em auto;
    text-align: right;
    margin-right: 26vw;
@@ -1174,6 +1178,12 @@ input:focus {
    .page-heading {
       font-weight: 300;
    }
+   .retirement-page4 .input-fields {
+      min-width: 530px;
+   }   
+   .retirement-page4 .input-fields input{
+      width: 25%;
+   }   
    :root {
       --font-main: 18px; /*24*/
       --font-buttons: 16px; /*19*/
