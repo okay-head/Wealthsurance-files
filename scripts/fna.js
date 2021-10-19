@@ -33,8 +33,6 @@ let fna = {
    ],
 };
 
-// let a,b,c,d
-
 //_____ functions
 
 function pushToDatabase1(fna) {
@@ -100,12 +98,13 @@ function pushToDatabase2(fna) {
 
    $.ajax({
       type: "POST",
+      //add here, (url)
       url: `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}`,
 
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            updateResult(2,result.data)
+            updateResult(2,result.data);
          } else {
             console.log(result + "request not successful");
          }
@@ -403,7 +402,7 @@ function next() {
             // console.log(fna);
             // ------------------
 
-            // window.open("fna_result.html", "_self");
+            window.open("fna_result.html", "_self");
          }, 1410);
       });
    });
@@ -496,10 +495,6 @@ function reCalculate() {
    $("#re-calc").on("click", () => {
 
       storeRecalculate();
-
-      // @prasad push to database
-      console.log(fna.results);
-      // }
-      // more actions
+      console.log(fna.results)
    });
 }

@@ -31,7 +31,6 @@ function changeText() {
 }
 
 function animateTable(val){
-   console.log(val)
    if (val=='Hide') {
       $('.ammortization-table-container').animate({'opacity':1},400)
    }else{
