@@ -405,6 +405,7 @@ li.p-relative:hover .dropdown-menu {
    margin-left: 0.5em;
 }
 .btn-group {
+   min-width: max-content;
    margin-bottom: 4%;
 }
 .next-btn {
