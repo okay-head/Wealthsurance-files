@@ -272,7 +272,7 @@ function next() {
             pushToDatabase1(nw);
             console.log(nw);
             // ------------------
-            // window.open("netWorth_result.html", "_self");
+            window.open("netWorth_result.html", "_self");
          }, 1410);
       });
    });

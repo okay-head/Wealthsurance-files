@@ -117,7 +117,7 @@ function next() {
          pushToDatabase1(ann);
          // ------------------
          setTimeout(() => {
-            window.open("annuit  y_result.html", "_self");
+            window.open("annuity_result.html", "_self");
          }, 1410);
       });
    });
