@@ -8,29 +8,7 @@ let fna = {
    page3: [],
    page4: [],
    page5: [],
-   results: [
-      /* 
-      {
-         label: "debt",
-         total: 999,
-         credit: [amount,interest,years],
-         vehicle: [amount,interest,years],
-         student: [amount,interest,years],
-         bank: [amount,interest,years],
-         personal: [amount,interest,years],
-         others: [amount,interest,years],
-      },
-      {
-         label: "expenses",
-         total: 777,
-         college: [amount,interest,years],
-         medical: [amount,interest,years],
-         planned: [amount,interest,years],
-         financial: [amount,interest,years],
-         others: [amount,interest,years],
-      }, 
-      */
-   ],
+   results: [],
 };
 
 //_____ functions
@@ -38,6 +16,7 @@ let fna = {
 function pushToDatabase1(fna) {
    createSessionId();
    let [a, b, c] = fna.page1;
+   b = b=='married'?1:2;
    let [d] = fna.page2;
    let [e, f, g] = fna.page3;
    let [h1, h2, h3] = fna.page4[0].credit;
@@ -47,31 +26,31 @@ function pushToDatabase1(fna) {
    let [l1, l2, l3] = fna.page4[0].personal;
    let [m1, m2, m3] = fna.page4[0].others;
 
-   let [n1, n2, n3] = fna.page5[0].college;
-   let [o1, o2, o3] = fna.page5[0].medical;
-   let [p1, p2, p3] = fna.page5[0].planned;
-   let [q1, q2, q3] = fna.page5[0].financial;
-   let [r1, r2, r3] = fna.page5[0].others;
+   let [n1, n2] = fna.page5[0].college;
+   let [o1, o2] = fna.page5[0].medical;
+   let [p1, p2] = fna.page5[0].planned;
+   let [q1, q2] = fna.page5[0].financial;
+   let [r1, r2] = fna.page5[0].others;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt={0:{'type':1,'amount':${h1},'interest':${h2},'years':${h3}},1:{'type':2,'amount':${i1},'interest':${i2},'years':${i3}},2:{'type':3,'amount':${j1},'interest':${j2},'years':${j3}},3:{'type':4,'amount':${k1},'interest':${k2},'years':${k3}},4:{'type':5,'amount':${l1},'interest':${l2},'years':${l3}},5:{'type':6,'amount':${m1},'interest':${m2},'years':${m3}},}&expense={0:{'type':1,'amount':${n1},'interest':${n2},'years':${n3}},1:{'type':2,'amount':${o1},'interest':${o2},'years':${o3}},2:{'type':3,'amount':${p1},'interest':${p2},'years':${p3}},3:{'type':4,'amount':${q1},'interest':${q2},'years':${q3}},4:{'type':5,'amount':${r1},'interest':${r2},'years':${r3}},}`
+
+   let url_debt = {"0":{"type":1,"amount":h1,"interest":h2,"years":h3},"1":{"type":2,"amount":i1,"interest":i2,"years":i3},"2":{"type":3,"amount":j1,"interest":j2,"years":j3},"3":{"type":4,"amount":k1,"interest":k2,"years":k3},"4":{"type":5,"amount":l1,"interest":l2,"years":l3},"5":{"type":6,"amount":m1,"interest":m2,"years":m3}}
+
+   let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
+
+   
+   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
 
    $.ajax({
       type: "POST",
-      // url: url_string ,
-      url:`http://wealthsurance.com/calculators/ ?calculator=fna&session_id=prasad123&ip_address=139.5.30.68&age=35&status=1&child_count=1&annual_income=10000&mortgage={"amount" : 450000,"interest" : 30,"years" : 3.5}&debt={"0" : {"type" : 1,"amount" : 10000,"interest" : 5,"years" : 10} , "1" : {"type" :2 ,"amount" : 10000,"interest" : 5,"years" : 10} , "2" :{"type" :3 ,"amount" : 10000,"interest" : 5,"years" : 10}}&expense={"0" : {"type" 1: ,"amount" : 10000,"years" : 5},"1" : {"type" :2 ,"amount" : 10000,"years" : 5},"2" : {"type" :3 ,"amount" : 10000,"years" : 5}}`,
-
+      url: url_string ,
 
       success: (x) => {
-         // console.log(url_string)
-         console.log(x)
-         // let result = JSON.parse(x);
-         // if (result.success) {
-         //    // localStorage.setItem("ann_result", JSON.stringify(result.data));
-
-         //    console.log(result)
-         // } else {
-         //    console.log(result + "request not successful");
-         // }
+         let result = JSON.parse(x);
+         if (result.success) {
+            localStorage.setItem("fna_result", JSON.stringify(result.amount));
+         } else {
+            console.log(result + "request not successful");
+         }
       },
       error: (error) => {
          console.log(error);
@@ -83,30 +62,42 @@ function pushToDatabase1(fna) {
 function pushToDatabase2(fna) {
    createSessionId();
    // get a-g from localstorage
+   let [a, b, c] = JSON.parse(localStorage.getItem("fnapg1"));
+   b = b=='married'?1:2;
+   let [d] =  JSON.parse(localStorage.getItem("fnapg2"));
+   let [e, f, g] =  JSON.parse(localStorage.getItem("fnapg3"));
+
    //debt
-   let [h1, h2, h3] = fna.results[0].credit;
-   let [i1, i2, i3] = fna.results[0].vehicle;
-   let [j1, j2, j3] = fna.results[0].student;
-   let [k1, k2, k3] = fna.results[0].bank;
-   let [l1, l2, l3] = fna.results[0].personal;
-   let [m1, m2, m3] = fna.results[0].others;
+   let x1 = fna.results[0];
+   let x2 = fna.results[1];
+   let [h1, h2, h3] = x1.credit;
+   let [i1, i2, i3] = x1.vehicle;
+   let [j1, j2, j3] = x1.student;
+   let [k1, k2, k3] = x1.bank;
+   let [l1, l2, l3] = x1.personal;
+   let [m1, m2, m3] = x1.others;
 
    //expenses
-   let [n1, n2, n3] = fna.results[1].college;
-   let [o1, o2, o3] = fna.results[1].medical;
-   let [p1, p2, p3] = fna.results[1].planned;
-   let [q1, q2, q3] = fna.results[1].financial;
-   let [r1, r2, r3] = fna.results[1].others;
+   let [n1, n2] = x2.college;
+   let [o1, o2] = x2.medical;
+   let [p1, p2] = x2.planned;
+   let [q1, q2] = x2.financial;
+   let [r1, r2] = x2.others;
+
+   let url_debt = {"0":{"type":1,"amount":h1,"interest":h2,"years":h3},"1":{"type":2,"amount":i1,"interest":i2,"years":i3},"2":{"type":3,"amount":j1,"interest":j2,"years":j3},"3":{"type":4,"amount":k1,"interest":k2,"years":k3},"4":{"type":5,"amount":l1,"interest":l2,"years":l3},"5":{"type":6,"amount":m1,"interest":m2,"years":m3}}
+
+   let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
 
    $.ajax({
       type: "POST",
-      //add here, (url)
-      url: `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}`,
+      url: url_string,
 
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            updateResult(2,result.data);
+            updateResult(2,result.amount);
          } else {
             console.log(result + "request not successful");
          }
@@ -128,7 +119,6 @@ function updateResult(x,y=undefined) {
          $(".calculated-result").text('$'+y)
          break;
    }
-   // console.log(JSON.parse(localStorage.getItem('ann_result')))
 }
 
 
@@ -440,13 +430,9 @@ function next() {
       }
 
       loaderPromise().then(() => {
+         pushToDatabase1(fna);
          setTimeout(() => {
-            //----- @ajax -----
-            pushToDatabase1(fna);
-            // console.log(fna);
-            // ------------------
-
-            // window.open("fna_result.html", "_self");
+            window.open("fna_result.html", "_self");
          }, 1410);
       });
    });
@@ -532,13 +518,13 @@ function storeRecalculate() {
    fna.results.push(debt);
    fna.results.push(expenses);
 
-   // pushToDatabase2(fna)
+   pushToDatabase2(fna)
 }
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
 
       storeRecalculate();
-      console.log(fna.results)
+      // console.log(fna.results)
    });
 }
