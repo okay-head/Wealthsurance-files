@@ -53,14 +53,16 @@ function pushToDatabase1(fna) {
    let [q1, q2, q3] = fna.page5[0].financial;
    let [r1, r2, r3] = fna.page5[0].others;
 
+   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt={0:{'type':1,'amount':${h1},'interest':${h2},'years':${h3}},1:{'type':2,'amount':${i1},'interest':${i2},'years':${i3}},2:{'type':3,'amount':${j1},'interest':${j2},'years':${j3}},3:{'type':4,'amount':${k1},'interest':${k2},'years':${k3}},4:{'type':5,'amount':${l1},'interest':${l2},'years':${l3}},5:{'type':6,'amount':${m1},'interest':${m2},'years':${m3}},}&expense={0:{'type':1,'amount':${n1},'interest':${n2},'years':${n3}},1:{'type':2,'amount':${o1},'interest':${o2},'years':${o3}},2:{'type':3,'amount':${p1},'interest':${p2},'years':${p3}},3:{'type':4,'amount':${q1},'interest':${q2},'years':${q3}},4:{'type':5,'amount':${r1},'interest':${r2},'years':${r3}},}`
+
    $.ajax({
       type: "POST",
-      url: `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt={0:{type:1,amount:${h1},interest:${h2},years:${h3}},1:{type:2,amount:${i1},interest:${i2},years:${i3}},2:{type:3,amount:${j1},interest:${j2},years:${j3}},3:{type:4,amount:${k1},interest:${k2},years:${k3}},4:{type:5,amount:${l1},interest:${l2},years:${l3}},5:{type:6,amount:${m1},interest:${m2},years:${m3}},}&expense={0:{type:1,amount:${n1},interest:${n2},years:${n3}},1:{type:2,amount:${o1},interest:${o2},years:${o3}},2:{type:3,amount:${p1},interest:${p2},years:${p3}},3:{type:4,amount:${q1},interest:${q2},years:${q3}},4:{type:5,amount:${r1},interest:${r2},years:${r3}},}`,
+      // url: url_string ,
+      url:`http://wealthsurance.com/calculators/ ?calculator=fna&session_id=prasad123&ip_address=139.5.30.68&age=35&status=1&child_count=1&annual_income=10000&mortgage={"amount" : 450000,"interest" : 30,"years" : 3.5}&debt={"0" : {"type" : 1,"amount" : 10000,"interest" : 5,"years" : 10} , "1" : {"type" :2 ,"amount" : 10000,"interest" : 5,"years" : 10} , "2" :{"type" :3 ,"amount" : 10000,"interest" : 5,"years" : 10}}&expense={"0" : {"type" 1: ,"amount" : 10000,"years" : 5},"1" : {"type" :2 ,"amount" : 10000,"years" : 5},"2" : {"type" :3 ,"amount" : 10000,"years" : 5}}`,
+
 
       success: (x) => {
-         console.log(
-            `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt={0:{type:1,amount:${h1},interest:${h2},years:${h3}},1:{type:2,amount:${i1},interest:${i2},years:${i3}},2:{type:3,amount:${j1},interest:${j2},years:${j3}},3:{type:4,amount:${k1},interest:${k2},years:${k3}},4:{type:5,amount:${l1},interest:${l2},years:${l3}},5:{type:6,amount:${m1},interest:${m2},years:${m3}},}&expense={0:{type:1,amount:${n1},interest:${n2},years:${n3}},1:{type:2,amount:${o1},interest:${o2},years:${o3}},2:{type:3,amount:${p1},interest:${p2},years:${p3}},3:{type:4,amount:${q1},interest:${q2},years:${q3}},4:{type:5,amount:${r1},interest:${r2},years:${r3}},}`
-         )
+         // console.log(url_string)
          console.log(x)
          // let result = JSON.parse(x);
          // if (result.success) {
@@ -146,7 +148,7 @@ function page1LocalStorage() {
          fna.page1 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn").on("click", () => {
          fna.page1 = [];
          fna.page1.push($("#fnapg1e1").val());
          fna.page1.push($("#fnapg1e2").val());
@@ -171,7 +173,7 @@ function page2LocalStorage() {
          fna.page2 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn").on("click", () => {
          fna.page2 = [];
          fna.page2.push($("#fnapg2e1").val());
          localStorage.setItem("fnapg2", JSON.stringify(fna.page2));
@@ -196,7 +198,7 @@ function page3LocalStorage() {
          fna.page3 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn").on("click", () => {
          fna.page3 = [];
          fna.page3.push($("#fnapg3e1").val());
          fna.page3.push($("#fnapg3e2").val());
@@ -259,7 +261,7 @@ function page4LocalStorage() {
          fna.page4 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn").on("click", () => {
          fna.page4 = [];
 
          const obj = {
@@ -306,6 +308,58 @@ function page4LocalStorage() {
          localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
       });
    });
+
+   //glitch push to local storage even when the input fields do not change, but are prefilled
+
+   if ($(':input').val()!=0) {
+      $(".next-btn").on("click", () => {
+         fna.page4 = [];
+
+         const obj = {
+            total: $("#fnapg4e1").val(),
+            credit: [
+               $("#fnapg4e2c1").val(),
+               $("#fnapg4e2c2").val(),
+               $("#fnapg4e2c3").val(),
+            ],
+
+            vehicle: [
+               $("#fnapg4e3c1").val(),
+               $("#fnapg4e3c2").val(),
+               $("#fnapg4e3c3").val(),
+            ],
+
+            student: [
+               $("#fnapg4e4c1").val(),
+               $("#fnapg4e4c2").val(),
+               $("#fnapg4e4c3").val(),
+            ],
+
+            bank: [
+               $("#fnapg4e5c1").val(),
+               $("#fnapg4e5c2").val(),
+               $("#fnapg4e5c3").val(),
+            ],
+
+            personal: [
+               $("#fnapg4e6c1").val(),
+               $("#fnapg4e6c2").val(),
+               $("#fnapg4e6c3").val(),
+            ],
+
+            others: [
+               $("#fnapg4e7c1").val(),
+               $("#fnapg4e7c2").val(),
+               $("#fnapg4e7c3").val(),
+            ],
+         };
+
+         fna.page4.push(obj);
+
+         localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
+      });
+
+   }
 }
 
 //page 5
@@ -316,24 +370,19 @@ function page5LocalStorage() {
       let [y] = fna.page5;
       setValue("#fnapg5e1", y.total);
       setValue("#fnapg5e2c1", y.college[0]);
-      setValue("#fnapg5e2c2", y.college[1]);
-      setValue("#fnapg5e2c3", y.college[2]);
+      setValue("#fnapg5e2c3", y.college[1]);
 
       setValue("#fnapg5e3c1", y.medical[0]);
-      setValue("#fnapg5e3c2", y.medical[1]);
-      setValue("#fnapg5e3c3", y.medical[2]);
+      setValue("#fnapg5e3c3", y.medical[1]);
 
       setValue("#fnapg5e4c1", y.planned[0]);
-      setValue("#fnapg5e4c2", y.planned[1]);
-      setValue("#fnapg5e4c3", y.planned[2]);
+      setValue("#fnapg5e4c3", y.planned[1]);
 
       setValue("#fnapg5e5c1", y.financial[0]);
-      setValue("#fnapg5e5c2", y.financial[1]);
-      setValue("#fnapg5e5c3", y.financial[2]);
+      setValue("#fnapg5e5c3", y.financial[1]);
 
       setValue("#fnapg5e6c1", y.others[0]);
-      setValue("#fnapg5e6c2", y.others[1]);
-      setValue("#fnapg5e6c3", y.others[2]);
+      setValue("#fnapg5e6c3", y.others[1]);
    }
 
    //push to local storage
@@ -343,38 +392,33 @@ function page5LocalStorage() {
          fna.page5 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn").on("click", () => {
          fna.page5 = [];
 
          const obj = {
             total: $("#fnapg5e1").val(),
             college: [
                $("#fnapg5e2c1").val(),
-               $("#fnapg5e2c2").val(),
                $("#fnapg5e2c3").val(),
             ],
 
             medical: [
                $("#fnapg5e3c1").val(),
-               $("#fnapg5e3c2").val(),
                $("#fnapg5e3c3").val(),
             ],
 
             planned: [
                $("#fnapg5e4c1").val(),
-               $("#fnapg5e4c2").val(),
                $("#fnapg5e4c3").val(),
             ],
 
             financial: [
                $("#fnapg5e5c1").val(),
-               $("#fnapg5e5c2").val(),
                $("#fnapg5e5c3").val(),
             ],
 
             others: [
                $("#fnapg5e6c1").val(),
-               $("#fnapg5e6c2").val(),
                $("#fnapg5e6c3").val(),
             ],
          };
@@ -398,11 +442,11 @@ function next() {
       loaderPromise().then(() => {
          setTimeout(() => {
             //----- @ajax -----
-            // pushToDatabase1(fna);
+            pushToDatabase1(fna);
             // console.log(fna);
             // ------------------
 
-            window.open("fna_result.html", "_self");
+            // window.open("fna_result.html", "_self");
          }, 1410);
       });
    });

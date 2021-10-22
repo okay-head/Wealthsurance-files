@@ -1,5 +1,12 @@
 'use strict'
 
+//____ Objects and collections
+
+let mortg = {
+   page1: [],
+   results: [],
+};
+
 // Graph/Table toggler (for ammortization schedule)
 $('#graph-btn').addClass('active-btn');
 $('#table').addClass('d-none');
@@ -97,16 +104,12 @@ function next() {
          let update = new Promise((resolve) => {
             resolve(updateLoader(1, 1));
          });
-         //----- @prasad -----
-         function pushToDatabase() {
-            console.log(mortg);
-         }
-         // ------------------
          return update;
       }
       loaderPromise().then(() => {
          setTimeout(() => {
-            window.open("mortgage_result.html", "_self");
+            console.log(mortg)
+            // window.open("mortgage_result.html", "_self");
          }, 1410);
       });
    });
@@ -151,11 +154,4 @@ function storeRecalculate() {
    mortg.results.push(obj);
 }
 
-
-//____ Objects and collections
-
-let mortg = {
-   page1: [],
-   results: [],
-};
 

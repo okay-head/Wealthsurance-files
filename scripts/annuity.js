@@ -117,7 +117,7 @@ function next() {
          pushToDatabase1(ann);
          // ------------------
          setTimeout(() => {
-            window.open("annuity_result.html", "_self");
+            window.open("annuit  y_result.html", "_self");
          }, 1410);
       });
    });
@@ -125,17 +125,9 @@ function next() {
 
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
-      /*     
-      some error checking
-      */
       storeRecalculate();
 
       updatePlaceholders(2);
-
-      // ----------
-      // Push to database and calculate results
-      // console.log(ann.results);
-      //   ----------
    });
 }
 

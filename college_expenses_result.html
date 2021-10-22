@@ -141,13 +141,18 @@
                         </td>
                      </tr>
                      <tr>
+                        <td>Investment rate, %</td>
+                        <td><input type="number" id="clgpg1resulte8" placeholder="8" inputmode="decimal">
+                        </td>
+                     </tr>
+                     <!-- <tr>
                         <td>Saved so far, $</td>
                         <td><input type="number" id="clgpg1resulte8" placeholder="20000" inputmode="decimal">
                         </td>
-                     </tr>
+                     </tr> -->
                   </table>
                </div>
-               <div class="results-table-container result-table">
+               <!-- <div class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 editable-results-table">
                      <tr>
                         <td>Additional saving, $:</td>
@@ -163,7 +168,7 @@
                         <td><input type="number" id="clgpg2resulte3" placeholder="0" inputmode="decimal"></td>
                      </tr>
                   </table>
-               </div>
+               </div> -->
 
                <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>
             </section>
@@ -171,11 +176,11 @@
             <section class="output annuity-output refi-output">
                <h4 class="output-header">Output</h4>
                <div class="result">
-                  <p>Monthly payment</p>
+                  <p>Monthly contribution</p>
                   <p class="calculated-result">$4,250</p>
                </div>
 
-               <div class="results-table-container result-table">
+               <!-- <div class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 refi-output-table">
                      <tr>
                         <td>Total Cost</td>
@@ -198,7 +203,7 @@
                         <td>164210</td>
                      </tr>
                   </table>
-               </div>
+               </div> -->
 
 
                <div>
@@ -237,7 +242,9 @@
    <script src="scripts/shared.js"></script>
    <script src="scripts/college.js"></script>
    <script>
+      updateResult(1);
       fadeInResult();
+      updatePlaceholders(1);
       reCalculate();
       reEnter('college_expenses.html');
    </script>
