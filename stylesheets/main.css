@@ -532,6 +532,15 @@ table {
    transition: 0.95s ease transform;
    opacity: 0;
 }
+.calculated-result-2 {
+   display: inline-block;
+   font-size: 48px;
+   color: var(--text-secondary1);
+   margin-top: 8%;
+   transform: translateY(50%);
+   transition: 0.95s ease transform;
+   opacity: 0;
+}
 
 .small {
    font-size: var(--font-17);
@@ -1168,7 +1177,8 @@ input:focus {
       font-size: 12px;
       color: var(--text-secondary3);
    } */
-   .calculated-result {
+   .calculated-result,
+   .calculated-result-2 {
       font-size: 33px; /*54px*/
    }
    .bottom .assumptions {

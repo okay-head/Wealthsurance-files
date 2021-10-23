@@ -167,38 +167,32 @@
                      <tr>
                         <td>Values</td>
                         <td>Enter Amount</td>
-                        <td>Enter Interest</td>
                         <td>Enter Years to go</td>
                      </tr>
                      <tr>
                         <td>College&nbspEducation:</td>
                         <td><input type="number" id="teresultp2r1e1" placeholder="Enter Amount"></td>
-                        <td><input type="number" id="teresultp2r1e2" placeholder="Enter Interest"></td>
-                        <td><input type="number" id="teresultp2r1e3" placeholder="Enter Years"></td>
+                        <td><input type="number" id="teresultp2r1e2" placeholder="Enter Years"></td>
                      </tr>
                      <tr>
                         <td>Medical&nbspExpenses:</td>
                         <td><input type="number" id="teresultp2r2e1" placeholder="Enter Amount"></td>
-                        <td><input type="number" id="teresultp2r2e2" placeholder="Enter Interest"></td>
-                        <td><input type="number" id="teresultp2r2e3" placeholder="Enter Years"></td>
+                        <td><input type="number" id="teresultp2r2e2" placeholder="Enter Years"></td>
                      </tr>
                      <tr>
                         <td>Planned&nbspLife&nbspEvents:</td>
                         <td><input type="number" id="teresultp2r3e1" placeholder="Enter Amount"></td>
-                        <td><input type="number" id="teresultp2r3e2" placeholder="Enter Interest"></td>
-                        <td><input type="number" id="teresultp2r3e3" placeholder="Enter Years"></td>
+                        <td><input type="number" id="teresultp2r3e2" placeholder="Enter Years"></td>
                      </tr>
                      <tr>
                         <td>Financial&nbspExpenses:</td>
                         <td><input type="number" id="teresultp2r4e1" placeholder="Enter Amount"></td>
-                        <td><input type="number" id="teresultp2r4e2" placeholder="Enter Interest"></td>
-                        <td><input type="number" id="teresultp2r4e3" placeholder="Enter Years"></td>
+                        <td><input type="number" id="teresultp2r4e2" placeholder="Enter Years"></td>
                      </tr>
                      <tr>
                         <td>Others:</td>
                         <td><input type="number" id="teresultp2r5e1" placeholder="Enter Amount"></td>
-                        <td><input type="number" id="teresultp2r5e2" placeholder="Enter Interest"></td>
-                        <td><input type="number" id="teresultp2r5e3" placeholder="Enter Years"></td>
+                        <td><input type="number" id="teresultp2r5e2" placeholder="Enter Years"></td>
                      </tr>
                   </table>
                </div>
@@ -222,6 +216,9 @@
                <div class="result">
                   <p>Insurance Coverage Needed</p>
                   <p class="calculated-result">$470,000</p>
+                  <p style="
+                  margin-top: 1em";>for</p>
+                  <p class="calculated-result-2">20</p><span> years</span>
                </div>
 
                <div class="assumptions small">
@@ -247,6 +244,7 @@
    <script src="scripts/shared.js"></script>
    <script src="scripts/term.js"></script>
    <script>
+      updateResult(1);
       fadeInResult();
       reCalculate();
       reEnter('termInsurance.html');

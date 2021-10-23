@@ -121,6 +121,12 @@ function fadeInResult() {
       $(".calculated-result")
          .animate({ opacity: 1 })
          .css("transform", "translateY(0)");
+
+         window.setTimeout(() => {
+            $(".calculated-result-2")
+            .animate({ opacity: 1 })
+            .css("transform", "translateY(15%)");
+         }, 800);
    });
 }
 

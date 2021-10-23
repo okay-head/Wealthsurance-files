@@ -15,6 +15,7 @@ let te = {
 function pushToDatabase1(te) {
    createSessionId();
    let [a, b, c] = te.page1;
+   b = b=='married'?1:2;
    let d = 500000; //annual income, what if directly the user goes to the term calc
    // let [d] = te.page2;
    // let [e, f, g] = te.page3;
@@ -26,27 +27,25 @@ function pushToDatabase1(te) {
    let [l1, l2, l3] = te.page2[0].personal;
    let [m1, m2, m3] = te.page2[0].others;
 
-   let [n1, n2, n3] = te.page3[0].college;
-   let [o1, o2, o3] = te.page3[0].medical;
-   let [p1, p2, p3] = te.page3[0].planned;
-   let [q1, q2, q3] = te.page3[0].financial;
-   let [r1, r2, r3] = te.page3[0].others;
+   let [n1, n2] = te.page3[0].college;
+   let [o1, o2] = te.page3[0].medical;
+   let [p1, p2] = te.page3[0].planned;
+   let [q1, q2] = te.page3[0].financial;
+   let [r1, r2] = te.page3[0].others;
+
+   let url_debt = {"0":{"type":1,"amount":g1,"interest":g2,"years":g3},"1":{"type":2,"amount":h1,"interest":h2,"years":h3},"2":{"type":3,"amount":i1,"interest":i2,"years":i3},"3":{"type":4,"amount":j1,"interest":j2,"years":j3},"4":{"type":5,"amount":k1,"interest":k2,"years":k3},"5":{"type":6,"amount":l1,"interest":l2,"years":l3},"6":{"type":7,"amount":m1,"interest":m2,"years":m3}}
+
+   let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
 
    $.ajax({
       type: "POST",
-      url: `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt={0:{type:1,amount:${g1},interest:${g1},years:${g1}},1:{type:2,amount:${h1},interest:${h1},years:${h1}},2:{type:3,amount:${i1},interest:${i1},years:${i1}},3:{type:4,amount:${j1},interest:${j1},years:${j1}},4:{type:5,amount:${k1},interest:${k1},years:${k1}},5:{type:6,amount:${l1},interest:${l1},years:${l1}},6:{type:7,amount:${m1},interest:${m1},years:${m1}}}&expense={0:{type:1,amount:${n1},interest:${n1},years:${n1}},1:{type:2,amount:${o1},interest:${o1},years:${o1}},2:{type:3,amount:${p1},interest:${p1},years:${p1}},3:{type:4,amount:${q1},interest:${q1},years:${q1}},4:{type:5,amount:${r1},interest:${r1},years:${r1}}}`,
+      url: url_string,
 
-      success: (x) => {
-         // console.log(url)
-         console.log(x);
-         // let result = JSON.parse(x);
-         // if (result.success) {
-         //    // localStorage.setItem("ann_result", JSON.stringify(result.data));
-
-         //    console.log(result)
-         // } else {
-         //    console.log(result + "request not successful");
-         // }
+         success: (x) => {
+            let result = JSON.parse(x);
+            localStorage.setItem("te_result",JSON.stringify(result))
       },
       error: (error) => {
          console.log(error);
@@ -56,7 +55,10 @@ function pushToDatabase1(te) {
 
 function pushToDatabase2(te) {
    createSessionId();
-   // get a-g from localstorage
+   // get a-d from localstorage
+   let [a, b, c] = JSON.parse(localStorage.getItem("tepg1"));
+   b = b=='married'?1:2;
+   let d = 500000;
    //debt
    let [g1, g2, g3] = te.results[0].mortgage;
    let [h1, h2, h3] = te.results[0].credit;
@@ -73,34 +75,40 @@ function pushToDatabase2(te) {
    let [q1, q2, q3] = te.results[1].financial;
    let [r1, r2, r3] = te.results[1].others;
 
+   let url_debt = {"0":{"type":1,"amount":g1,"interest":g2,"years":g3},"1":{"type":2,"amount":h1,"interest":h2,"years":h3},"2":{"type":3,"amount":i1,"interest":i2,"years":i3},"3":{"type":4,"amount":j1,"interest":j2,"years":j3},"4":{"type":5,"amount":k1,"interest":k2,"years":k3},"5":{"type":6,"amount":l1,"interest":l2,"years":l3},"6":{"type":7,"amount":m1,"interest":m2,"years":m3}}
+
+   let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
+
    $.ajax({
       type: "POST",
-      //add here, (url)
-      url: `http://wealthsurance.com/calculators/?calculator=te&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}`,
+      url: url_string,
 
       success: (x) => {
          let result = JSON.parse(x);
-         if (result.success) {
-            updateResult(2,result.data);
-         } else {
-            console.log(result + "request not successful");
-         }
+         updateResult(2,result.amount,result.years);
       },
       error: (error) => {
          console.log(error);
       },
+      
    });
 }
 
-function updateResult(x, y = undefined) {
+function updateResult(x, y = undefined,z=undefined) {
    switch (x) {
       case 1:
          $(".calculated-result").text(
-            "$" + JSON.parse(localStorage.getItem("te_result"))
+            "$" + JSON.parse(localStorage.getItem("te_result")).amount
+         );
+         $(".calculated-result-2").text(
+            JSON.parse(localStorage.getItem("te_result")).years
          );
          break;
       case 2:
          $(".calculated-result").text("$" + y);
+         $(".calculated-result-2").text(z);
          break;
    }
    // console.log(JSON.parse(localStorage.getItem('ann_result')))
@@ -251,23 +259,18 @@ function page3LocalStorage() {
       setValue("#tepg3e1", y.total);
       setValue("#tepg3e2c1", y.college[0]);
       setValue("#tepg3e2c2", y.college[1]);
-      setValue("#tepg3e2c3", y.college[2]);
 
       setValue("#tepg3e3c1", y.medical[0]);
       setValue("#tepg3e3c2", y.medical[1]);
-      setValue("#tepg3e3c3", y.medical[2]);
 
       setValue("#tepg3e4c1", y.planned[0]);
       setValue("#tepg3e4c2", y.planned[1]);
-      setValue("#tepg3e4c3", y.planned[2]);
 
       setValue("#tepg3e5c1", y.financial[0]);
       setValue("#tepg3e5c2", y.financial[1]);
-      setValue("#tepg3e5c3", y.financial[2]);
 
       setValue("#tepg3e6c1", y.others[0]);
       setValue("#tepg3e6c2", y.others[1]);
-      setValue("#tepg3e6c3", y.others[2]);
    }
 
    //push to local storage
@@ -285,31 +288,26 @@ function page3LocalStorage() {
             college: [
                $("#tepg3e2c1").val(),
                $("#tepg3e2c2").val(),
-               $("#tepg3e2c3").val(),
             ],
 
             medical: [
                $("#tepg3e3c1").val(),
                $("#tepg3e3c2").val(),
-               $("#tepg3e3c3").val(),
             ],
 
             planned: [
                $("#tepg3e4c1").val(),
                $("#tepg3e4c2").val(),
-               $("#tepg3e4c3").val(),
             ],
 
             financial: [
                $("#tepg3e5c1").val(),
                $("#tepg3e5c2").val(),
-               $("#tepg3e5c3").val(),
             ],
 
             others: [
                $("#tepg3e6c1").val(),
                $("#tepg3e6c2").val(),
-               $("#tepg3e6c3").val(),
             ],
          };
          te.page3.push(obj);
@@ -330,12 +328,8 @@ function next() {
       }
 
       loaderPromise().then(() => {
+         pushToDatabase1(te);
          setTimeout(() => {
-            //----- @ajax -----
-            // pushToDatabase1(te);
-            // console.log(te);
-            // ------------------
-
             window.open("termInsurance_result.html", "_self");
          }, 1410);
       });
@@ -400,33 +394,28 @@ function storeRecalculate() {
       college: [
          $("#teresultp2r1e1").val(),
          $("#teresultp2r1e2").val(),
-         $("#teresultp2r1e3").val(),
       ],
       medical: [
          $("#teresultp2r2e1").val(),
          $("#teresultp2r2e2").val(),
-         $("#teresultp2r2e3").val(),
       ],
       planned: [
          $("#teresultp2r3e1").val(),
          $("#teresultp2r3e2").val(),
-         $("#teresultp2r3e3").val(),
       ],
       financial: [
          $("#teresultp2r4e1").val(),
          $("#teresultp2r4e2").val(),
-         $("#teresultp2r4e3").val(),
       ],
       others: [
          $("#teresultp2r5e1").val(),
          $("#teresultp2r5e2").val(),
-         $("#teresultp2r5e3").val(),
       ],
    };
-
+   te.results = [];
    te.results.push(debt);
    te.results.push(expenses);
-   // pushToDatabase2(te)
+   pushToDatabase2(te);
 }
 
 function reCalculate() {
@@ -434,7 +423,7 @@ function reCalculate() {
 
       storeRecalculate();
 
-      console.log(te.results);
+      // console.log(te.results);
 
    });
 }

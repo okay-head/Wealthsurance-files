@@ -491,27 +491,22 @@ function storeRecalculate() {
       college: [
          $("#fnaresultp2r1e1").val(),
          $("#fnaresultp2r1e2").val(),
-         $("#fnaresultp2r1e3").val(),
       ],
       medical: [
          $("#fnaresultp2r2e1").val(),
          $("#fnaresultp2r2e2").val(),
-         $("#fnaresultp2r2e3").val(),
       ],
       planned: [
          $("#fnaresultp2r3e1").val(),
          $("#fnaresultp2r3e2").val(),
-         $("#fnaresultp2r3e3").val(),
       ],
       financial: [
          $("#fnaresultp2r4e1").val(),
          $("#fnaresultp2r4e2").val(),
-         $("#fnaresultp2r4e3").val(),
       ],
       others: [
          $("#fnaresultp2r5e1").val(),
          $("#fnaresultp2r5e2").val(),
-         $("#fnaresultp2r5e3").val(),
       ],
    };
    fna.results = []
