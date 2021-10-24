@@ -130,12 +130,12 @@
                         <td><input type="number" id="mortgresulte5" placeholder="20"></td>
                      </tr>
                      <tr>
-                        <td>Loan amount, $:</td>
-                        <td><input type="number" id="mortgresulte6" placeholder="450000"></td>
+                        <td>Interest rate, %:</td>
+                        <td><input type="number" id="mortgresulte6" placeholder="3.500"></td>
                      </tr>
                      <tr>
-                        <td>Interest rate, %:</td>
-                        <td><input type="number" id="mortgresulte7" placeholder="3.500"></td>
+                        <td>Loan amount, $:</td>
+                        <td><input type="number" id="mortgresulte7" placeholder="450000"></td>
                      </tr>
                      <tr>
                         <td>Loan duration, years</td>
@@ -364,6 +364,7 @@
    <script src="scripts/shared.js"></script>
    <script src="scripts/mortgage.js"></script>
    <script>
+      updatePlaceholders(1);
       reCalculate();
       reEnter('mortgage.html');
    </script>

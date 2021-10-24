@@ -1,4 +1,15 @@
 "use strict";
+
+//____ Objects and collections
+
+let retire = {
+   page1: [],
+   page2: [],
+   page3: [],
+   page4:[],
+   results: [],
+};
+
 //functions
 function page1LocalStorage() {
    //check for existing localStorage on page load
@@ -123,19 +134,12 @@ function next() {
          let update = new Promise((resolve) => {
             resolve(updateLoader(4,4));
          });
-
-         //----- @prasad -----
-         function pushToDatabase() {
-            console.log(retire);
-         }
-         // ------------------
-
          return update;
       }
 
       loaderPromise().then(() => {
          setTimeout(() => {
-            window.open("retirement_result.html", "_self");
+            // window.open("retirement_result.html", "_self");
          }, 1410);
       });
    });
@@ -151,14 +155,6 @@ function next() {
    });
 }
 
-// function fadeInResult() {
-//    // animate on document.ready
-//    $(()=>{
-//       $(".calculated-result")
-//          .animate({ opacity: 1 })
-//          .css("transform", "translateY(0)");
-//    })
-// }
 
 function storeRecalculate() {
    //not to be stored in local storage
@@ -197,13 +193,5 @@ function reCalculate() {
    });
 }
 
-//____ Objects and collections
 
-let retire = {
-   page1: [],
-   page2: [],
-   page3: [],
-   page4:[],
-   results: [],
-};
 

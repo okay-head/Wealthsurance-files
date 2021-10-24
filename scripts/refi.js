@@ -1,3 +1,13 @@
+
+//____ Objects and collections
+
+let refi = {
+   page1: [],
+   results: [],
+};
+
+let a = []
+
 $(".ammortization-table-container")
 .slideUp()
 .css('opacity','0');
@@ -113,12 +123,40 @@ function storeRecalculate() {
    refi.results.push(obj);
 }
 
+function updatePlaceholders(x) {
+   switch (x) {
+      case 1:
+         const z = JSON.parse(localStorage.getItem("mortgpg1"));
+         $("#mortgresulte1").attr("placeholder", z[0]);
+         for (let i = 2; i <= 11; i++) {
+            $("#mortgresulte" + i).attr("placeholder", z[i]);
+         }
+         break;
 
-//____ Objects and collections
+      //recalculate
+      case 2:
+         [
+            {
+               house_price: a[0],
+               "down_payment%": a[1],
+               down_payment$: a[2],
+               pmi: a[3],
+               pmi_stops_at: a[4],
+               interest_rate: a[5],
+               loan_amount: a[6],
+               loan_duration: a[7],
+               annual_hoa_dues: a[8],
+               annual_property_taxes: a[9],
+               annual_property_insurance: a[10],
+            },
+         ] = mortg.results;
 
-let refi = {
-   page1: [],
-   results: [],
-};
+         for (let i = 0; i < 11; i++) {
+            $("#mortgresulte" + (i + 1)).attr("placeholder", a[i]);
+         }
+         break;
+   }
+}
+
 
 
