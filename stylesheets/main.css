@@ -88,6 +88,19 @@ a {
 .mr-8 {
    margin-right: 8px;
 }
+
+/* modal chart */
+.element-focus{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 80%;
+   height: 100vh;
+   /* right: 0; */
+   /* bottom: 0; */
+   margin: 0 auto;
+   /* transform: translate(-50%,-50%); */
+}
 /*--- classes ---*/
 
 body,
@@ -620,6 +633,9 @@ table {
    grid-template-columns: 1.3fr 1fr;
    margin: 1.5em 0;
 }
+.nw-io-container {
+   grid-template-columns: 0.3fr 1.7fr;
+}
 @media screen and (max-width: 1215px) {
    .offCanvasNav-container p:first-child {
       top: -5%;
@@ -766,6 +782,9 @@ input:focus {
 .results-table tr td:first-child:not(tr:first-child) {
    padding: 10px 2.5em 10px 1em;
 }
+.ammortization-table tr td:first-child:not(tr:first-child) {
+   padding: 7px 2.5em 7px 1em;
+}
 .results-table tr:nth-child(2) td {
    padding: 0 1em 0 1em;
 }
@@ -843,6 +862,22 @@ input:focus {
    font-size: var(--font-result);
    /* border: 1px solid brown; */
 }
+
+#nw-result-container{
+   padding: 0;
+   width: 100%;
+   min-height:400px ;
+   display: grid;
+   place-items: center;
+   /* overflow-x: auto; */
+   /* max-width: 315px; */
+}
+
+/* #nw-chart_div { */
+   /* width: 900px; */
+   /* height: 30px; */
+/* } */
+
 
 /* .output .calculated-result {
    transform: none;

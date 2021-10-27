@@ -9,8 +9,15 @@ let nw = {
 };
 
 //defaults
+$('#modal_chart').on('click',()=>{
+   modalChart()
+})
 
 //functions
+
+function modalChart() {
+   $('.result').addClass('element-focus')
+}
 function pushToDatabase1(nw) {
    createSessionId();
    let [a, b] = nw.page1;
@@ -37,34 +44,26 @@ function pushToDatabase1(nw) {
    let [t1, t2] = pg3.personal_loans;
    let [u1, u2] = pg3.other_loans;
 
-   // let url_asset = `asset={"0":{"amount":${c1},"growth_rate":${c2},"type":1},
-   // "1":{"amount":${d1},"growth_rate":${d2},"type":2},"2":{"amount":${e1},"growth_rate":${e2},"type":3},"3":{"amount":${f1},"growth_rate":${f2},"type":4},`
-
 
    let url_liablity1 = {"0":{"amount":o1,"interest_rate":o2,"type":1},"1":{"amount":p1,"interest_rate":p2,"type":2},"2":{"amount":q1,"interest_rate":q2,"type":3},"3":{"amount":r1,"interest_rate":r2,"type":4},"4":{"amount":s1,"interest_rate":s2,"type":5},"5":{"amount":t1,"interest_rate":t2,"type":6},"6":{"amount":u1,"interest_rate":u2,"type":7}}
 
    let url_asset1 ={"0":{"amount":c1,"growth_rate":c2,"type":1},"1":{"amount":d1,"growth_rate":d2,"type":2},"2":{"amount":e1,"growth_rate":e2,"type":3},"3":{"amount":f1,"growth_rate":f2,"type":4},"4":{"amount":g1,"growth_rate":g2,"type":5},"5":{"amount":h1,"growth_rate":h2,"type":6},"6":{"amount":i1,"growth_rate":i2,"type":7},"7":{"amount":j1,"growth_rate":j2,"type":8},"8":{"amount":k1,"growth_rate":k2,"type":9},"9":{"amount":l1,"growth_rate":l2,"type":10},"10":{"amount":m1,"growth_rate":m2,"type":11},"11":{"amount":n1,"growth_rate":n2,"type":12}}
 
-   let url_string =  `http://wealthsurance.com/calculators/?calculator=net&session_id=prasad123&ip_address=139.5.30.66&current_age=${a}&retirement_age=${b}&asset=${JSON.stringify(url_asset1)}&liablity=${JSON.stringify(url_liablity1)}`
-   // let url_string = `http://wealthsurance.com/calculators/?calculator=net&session_id=prasad123&ip_address=139.5.30.66&current_age=${a}&retirement_age=${b}&asset={"0":{"amount":${c1},"growth_rate":${c2},"type":1},"1":{"amount":${d1},"growth_rate":${d2},"type":2},"2":{"amount":${e1},"growth_rate":${e2},"type":3},"3":{"amount":${f1},"growth_rate":${f2},"type":4},"4":{"amount":${g1},"growth_rate":${g2},"type":5},"5":{"amount":${h1},"growth_rate":${h2},"type":6},"6":{"amount":${i1},"growth_rate":${i2},"type":7},"7":{"amount":${j1},"growth_rate":${j2},"type":8},"8":{"amount":${k1},"growth_rate":${k2},"type":9},"9":{"amount":${l1},"growth_rate":${l2},"type":10},"10":{"amount":${m1},"growth_rate":${m2},"type":11},"11":{"amount":${n1},"growth_rate":${n2},"type":12}}&liablity={"0":{"amount":${o1},"interest_rate":${o2},"type":1},"1":{"amount":${p1},"interest_rate":${p2},"type":2},"2":{"amount":${q1},"interest_rate":${q2},"type":3},"3":{"amount":${r1},"interest_rate":${r2},"type":4},"4":{"amount":${s1},"interest_rate":${s2},"type":5},"5":{"amount":${t1},"interest_rate":${t2},"type":6},"6":{"amount":${u1},"interest_rate":${u2},"type":7}}`
-
+   let url_string =  `http://wealthsurance.com/calculators/?calculator=net&session_id=${session_id}&ip_address=${ip}&current_age=${a}&retirement_age=${b}&asset=${JSON.stringify(url_asset1)}&liablity=${JSON.stringify(url_liablity1)}`
    $.ajax({
       type: "POST",
       url: url_string,
-      // url: `http://wealthsurance.com/calculators/?calculator=net&session_id=prasad123&ip_address=139.5.30.66&current_age=35&retirement_age=65&asset={"0" : {"amount" : 500000, "growth_rate" : 2, "type" : 0}}&liablity={"0" : {"amount" : 400000, "interest_rate" : 10, "type" : 1}, "1" : {"amount" : 30000, "interest_rate" : 20, "type" : 2}}`,
-      // url: `http://wealthsurance.com/calculators/?calculator=net&session_id=prasad123&ip_address=139.5.30.66&current_age=${a}&retirement_age=${b}&asset={'0':{'amount':${c1},'growth_rate':${c2},'type':1},'1':{'amount':${d1},'growth_rate':${d2},'type':2},'2':{'amount':${e1},'growth_rate':${e2},'type':3},'3':{'amount':${f1},'growth_rate':${f2},'type':4},'4':{'amount':${g1},'growth_rate':${g2},'type':5},'5':{'amount':${h1},'growth_rate':${h2},'type':6},'6':{'amount':${i1},'growth_rate':${i2},'type':7},'7':{'amount':${j1},'growth_rate':${j2},'type':8},'8':{'amount':${k1},'growth_rate':${k2},'type':9},'9':{'amount':${l1},'growth_rate':${l2},'type':10},'10':{'amount':${m1},'growth_rate':${m2},'type':11},'11':{'amount':${n1},'growth_rate':${n2},'type':12},}&liablity={'0':{'amount':${o1},'interest_rate':${o2},'type':1},'1':{'amount':${p1},'interest_rate':${p2},'type':2},'2':{'amount':${q1},'interest_rate':${q2},'type':3},'3':{'amount':${r1},'interest_rate':${r2},'type':4},'4':{'amount':${s1},'interest_rate':${s2},'type':5},'5':{'amount':${t1},'interest_rate':${t2},'type':6},'6':{'amount':${u1},'interest_rate':${u2},'type':7},}`,      
+          
 
       success: (x) => {
-         console.log(url_string)
-         console.log(x);
-         // let result = JSON.parse(x);
-         // if (result.success) {
-         //    // localStorage.setItem("ann_result", JSON.stringify(result.data));
+         let result = JSON.parse(x);
+         if (result.success) {
+            localStorage.setItem("nw_result", JSON.stringify(result.data));
 
-         //    console.log(result)
-         // } else {
-         //    console.log(result + "request not successful");
-         // }
+            // console.log(result)
+         } else {
+            console.log(result + "request not successful");
+         }
       },
       error: (error) => {
          console.log(error);
@@ -267,11 +266,8 @@ function next() {
       }
 
       loaderPromise().then(() => {
+         pushToDatabase1(nw);
          setTimeout(() => {
-            //----- @ajax -----
-            pushToDatabase1(nw);
-            console.log(nw);
-            // ------------------
             window.open("netWorth_result.html", "_self");
          }, 1410);
       });
@@ -290,19 +286,9 @@ function next() {
 
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
-      /*      - - -
-      
-      some error checking
-
-              - - - 
-      */
       storeRecalculate();
 
-      // ----------
-      // @prasad
-      // Push to database and calculate results
       console.log(nw.results);
-      //   ----------
    });
 }
 
@@ -347,6 +333,9 @@ function storeRecalculate() {
       other_loans: [$("#nwresultp2r7c1").val(), $("#nwresultp2r5c2").val()],
    };
 
+   nw.results = []
    nw.results.push(assets);
    nw.results.push(liabilities);
+
+   // pushToDatabase2(nw)
 }

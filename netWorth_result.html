@@ -12,6 +12,10 @@
    <script src="scripts/jquery/jquery.transit.min.js"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
+
+   <!-- google charts -->
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
+
    <title>Net Worth Calculator</title>
 </head>
 
@@ -32,18 +36,18 @@
                   <a href="#">Know More</a>
                </li>
                <li class="p-relative">
-                  <a href="#">Tools <span class="dropdown-arrow"><img
-                           src="media/images/nav-dropdown-arrow.png" alt="dropdown-arrow"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="fna.html">Financial Needs Analysis</a></li>
-                              <li><a href="termInsurance.html">Term Insurance</a></li>
-                              <li><a href="annuity.html">Annuity</a></li>
-                              <li><a href="netWorth.html">Net worth</a></li>
-                              <li><a href="mortgage.html">Mortgage</a></li>
-                              <li><a href="retirement.html">Retirement</a></li>
-                              <li><a href="refi.html">Refi</a></li>
-                              <li><a href="college_expenses.html">College Expenses</a></li>
-                           </ul>
+                  <a href="#">Tools <span class="dropdown-arrow"><img src="media/images/nav-dropdown-arrow.png"
+                           alt="dropdown-arrow"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="fna.html">Financial Needs Analysis</a></li>
+                     <li><a href="termInsurance.html">Term Insurance</a></li>
+                     <li><a href="annuity.html">Annuity</a></li>
+                     <li><a href="netWorth.html">Net worth</a></li>
+                     <li><a href="mortgage.html">Mortgage</a></li>
+                     <li><a href="retirement.html">Retirement</a></li>
+                     <li><a href="refi.html">Refi</a></li>
+                     <li><a href="college_expenses.html">College Expenses</a></li>
+                  </ul>
                </li>
                <li>
                   <a href="#">Events</a>
@@ -235,9 +239,12 @@
 
             <section class="output">
                <h4 class="output-header">Output</h4>
-               <div class="result">
-                  <h1>Graph</h1>
+
+               <div class="result" id="nw-result-container">
+                  <div id="nw-chart_div"></div>
                </div>
+               <button id="modal_chart">See enlarged</button>
+               <!-- <div id="nw-chart_div"></div> -->
 
                <div class="assumptions small">
                   <span>Assumptions</span>
@@ -261,6 +268,7 @@
    </div>
    <script src="scripts/shared.js"></script>
    <script src="scripts/nw.js"></script>
+   <script src="scripts/nw-graph.js"></script>
    <script>
       // fadeInResult();
       populateTable();
