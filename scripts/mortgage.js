@@ -78,14 +78,13 @@ function next() {
          return update;
       }
       loaderPromise().then(() => {
-         pushToDatabase1(mortg)
+         pushToDatabase1(mortg);
          setTimeout(() => {
             // console.log(mortg);
-
-            // window.open("mortgage_result.html", "_self");
+            window.open("mortgage_result.html", "_self");
          }, 1410);
       });
-   });
+   });   
 }
 
 function reCalculate() {
@@ -116,60 +115,17 @@ function storeRecalculate() {
 
    updatePlaceholders(2);
 
-   // pushToDatabase2(mortg);
+   pushToDatabase2(mortg);
 }
 
 function pushToDatabase1(mortg) {
    createSessionId();
-   let [a, b, c, d, e, f, g] = mortg.page1;
+   let z = [];
+   for (let i = 0; i < 12; i++) {
+      z[i] = mortg.page1[i];
+   }
 
-   // let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${f}&to_fund_percent=${e}&to_fund_amnt=${
-   //    ((f * e) / 100).toFixed(2)
-   // }&inv_rate=${g}`;
-
-   let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=prasad123&ip_address=139.5.30.66&data={"price" : 500000,"amount" : 450000 ,"down" : 50000,"interest" : 3.5,"duration" : 5,"hoaDue" : 2400,"propTax" : 15000,"propIns" : 1500,"stPmi" : 1,"fnPmi" : 20}&type=1
-   `;
-
-   $.ajax({
-      type: "POST",
-      url: url_string,
-
-      success: (x) => {
-         console.log(x);
-         //    let result = JSON.parse(x);
-         //    console.log(result.amount);
-         //    console.log(url_string);
-
-         //    if (result.success) {
-         //       localStorage.setItem("mortg_result", JSON.stringify(result.amount));
-         //    } else {
-         //       console.log(result + "request not successful");
-         //    }
-         // },
-         // error: (error) => {
-         //    console.log(error);
-      },
-   });
-}
-
-function pushToDatabase2(mortg) {
-   createSessionId();
-   let [
-      {
-         name: a,
-         current_age: b,
-         age_entering_mortg: c,
-         mortg_years: d,
-         annual_mortg_expenses: e,
-         "portion_funded%": f,
-         investment_rate: g,
-      },
-   ] = mortg.results;
-
-   let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${e}&to_fund_percent=${f}&to_fund_amnt=${(
-      (f * e) /
-      100
-   ).toFixed(2)}&inv_rate=${g}`;
+   let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=2&zipcode=${z[1]}`;
 
    $.ajax({
       type: "POST",
@@ -178,7 +134,7 @@ function pushToDatabase2(mortg) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            updateResult(2, result.amount);
+            localStorage.setItem("mortg_result", JSON.stringify(result.data));
          } else {
             console.log(result + "request not successful");
          }
@@ -189,17 +145,36 @@ function pushToDatabase2(mortg) {
    });
 }
 
-function updateResult(x, y = undefined) {
-   switch (x) {
-      case 1:
-         $(".calculated-result").text(
-            "$" + JSON.parse(localStorage.getItem("mortg_result"))
-         );
-         break;
-      case 2:
-         $(".calculated-result").text("$" + y);
-         break;
-   }
+function pushToDatabase2(mortg) {
+   createSessionId();
+   let zip = (JSON.parse(localStorage.getItem('mortgpg1')))[1]
+   let z = []
+    for (let i = 0; i < 11; i++) {
+       z[i] = Object.values(mortg.results[0])[i+1]
+    }
+
+    let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[6]} ,"down" : ${z[2]},"interest" : ${z[5]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=2&zipcode=${zip}`
+    
+
+    $.ajax({
+      type: "POST",
+      url: url_string,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result.success) {
+            updateTables(2,result.data)
+            createAmmortizationTable(2)
+            localStorage.setItem("mortg_result", JSON.stringify(result.data));
+         } else {
+            console.log(result + "request not successful");
+         }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+
 }
 
 function updatePlaceholders(x) {
@@ -235,4 +210,90 @@ function updatePlaceholders(x) {
          }
          break;
    }
+}
+
+function updateTables(x,y=undefined) {
+   let data=  ''
+   if (x==1) {
+      data = JSON.parse(localStorage.getItem('mortg_result'))
+  }else{
+      data = y;
+  }
+   let dataM = Object.values(data.dataM)
+   let dataY = Object.values(data.dataY)
+
+   for (let i = 0; i <5; i++) {
+      $('#mortgresult1c1r'+(i+1)).text(dataM[i])
+   }
+   for (let i = 0; i <5; i++) {
+      $('#mortgresult1c2r'+(i+1)).text(dataY[i])
+   }
+   $('#mortgresult2c1r1').text(data.payFirstM)
+   $('#mortgresult2c1r2').text(data.totalPmiPayment)
+   $('#mortgresult2c1r3').text(data.pmiDuration)
+}
+// ammortization table
+function updateAmmortizationTable(x,years) {
+   let data = undefined
+   let nYears = years;
+   // if (x==1) {
+   //    data =JSON.parse(localStorage.getItem('mortg_result'))
+   // }else{
+      //    data =JSON.parse(localStorage.getItem('mortg_result'))
+      // }
+   data =JSON.parse(localStorage.getItem('mortg_result'))
+
+
+   //for c1-5
+   for (let j = 1; j <= nYears; j++) {
+      for (let i = 0; i <5; i++) {
+         $(`#ayr${j}c${i+2}`).text(
+            Object.values(data.amortizationSc[12*j])[i]
+         )
+      }
+   }
+   // for c1 and c7
+   for (let i = 1; i <= nYears; i++) {
+      $(`#ayr${i}c1`).text(i)
+   }
+   for (let i = 1; i <= nYears; i++) {
+      $(`#ayr${i}c7`).text(1)
+   }
+   
+}
+function createAmmortizationTable(x) {
+   let nYears = undefined;
+   if (x==1) {
+      nYears = JSON.parse(localStorage.getItem("mortgpg1"))[8];
+   }else{
+      nYears = mortg.results[0].loan_duration;
+   }
+   
+   let str = ''
+   let yearStr = ''
+   for (let i = 1; i <= nYears; i++) {
+      for (let j = 1; j <= 7; j++) {         
+         str+=`<td id="ayr${i}c${j}">0</td>`
+      }
+      yearStr+=`<tr> ${str} </tr>`
+      str=''
+
+   }
+   let initialStr = `<tr>
+          <td>Period</td>
+          <td>Balance</td>
+          <td>Principal</td>
+          <td>Interest</td>
+          <td>Payment</td>
+          <td>PMI Pay</td>
+          <td>Year</td>
+     </tr> `
+
+   let finalStr = initialStr+ `<tr>${yearStr}</tr>`
+   // console.log(finalStr)
+
+   $(".ammortization-table").html(finalStr);
+
+   // console.log(x,nYears)
+   updateAmmortizationTable(x,nYears)
 }
