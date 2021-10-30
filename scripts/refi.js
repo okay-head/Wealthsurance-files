@@ -41,7 +41,7 @@ function pgLocalStorage() {
    //check for existing localStorage on page load
    if (localStorage.getItem("refipg1") != null) {
       refi.page1 = JSON.parse(localStorage.getItem("refipg1"));
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 12; i++) {
          $("#refipg1e"+(i+1)).val(refi.page1[i]);
       }
    }
@@ -55,7 +55,7 @@ function pgLocalStorage() {
 
       $(".next-btn").one("click", () => {
          refi.page1 = [];
-         for (let i = 0; i < 9; i++) {
+         for (let i = 0; i < 12; i++) {
             refi.page1.push($("#refipg1e"+(i+1)).val());
          }
          localStorage.setItem("refipg1", JSON.stringify(refi.page1));
@@ -70,16 +70,12 @@ function next() {
          let update = new Promise((resolve) => {
             resolve(updateLoader(1, 1));
          });
-         //----- @prasad -----
-         function pushToDatabase() {
-            console.log(refi);
-         }
-         // ------------------
          return update;
       }
       loaderPromise().then(() => {
+         pushToDatabase1(refi)
          setTimeout(() => {
-            window.open("refi_result.html", "_self");
+            // window.open("refi_result.html", "_self");
          }, 1410);
       });
    });
@@ -87,20 +83,7 @@ function next() {
 
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
-      /*      - - -
-      
-      some error checking
-
-              - - - 
-      */
      storeRecalculate();
-
-   // ----------  
-   // @prasad
-   // Push to database and calculate results
-     console.log(refi.results)
-   //   ----------
-   
    });
 }
 
@@ -112,51 +95,105 @@ function storeRecalculate() {
       original_loan_duration: $('#refiresulte2').val(),
       original_loan_rate: $('#refiresulte3').val(),
       years_passed: $('#refiresulte4').val(),
-      new_loan_rate: $('#refiresulte5').val(),
-      new_loan_duration: $('#refiresulte6').val(),
-      processing_cost: $('#refiresulte7').val(),
+      new_loan_rate: $('#refiresulte6').val(),
+      new_loan_duration: $('#refiresulte7').val(),
+      processing_cost: $('#refiresulte8').val(),
       annual_dues: $('#refiresulte9').val(),
-      annual_property_taxes: $('#refiresulte9').val(),
-      annual_property_insurance: $('#refiresulte10').val(),
+      annual_property_taxes: $('#refiresulte10').val(),
+      annual_property_insurance: $('#refiresulte11').val(),
    };
 
+   refi.results = [];
    refi.results.push(obj);
+
+   
+   updatePlaceholders(2);
+
+   updateTables(2);
+
+   // pushToDatabase2(refi);
+
 }
 
 function updatePlaceholders(x) {
    switch (x) {
       case 1:
-         const z = JSON.parse(localStorage.getItem("mortgpg1"));
-         $("#mortgresulte1").attr("placeholder", z[0]);
-         for (let i = 2; i <= 11; i++) {
-            $("#mortgresulte" + i).attr("placeholder", z[i]);
+         const z = JSON.parse(localStorage.getItem("refipg1"));
+
+         for (let i = 0; i <11; i++) {
+            if (i==4) {
+               continue;
+            }else{
+               $("#refiresulte" + (i+1)).attr("placeholder", z[i]);
+            }
          }
          break;
 
       //recalculate
       case 2:
-         [
-            {
-               house_price: a[0],
-               "down_payment%": a[1],
-               down_payment$: a[2],
-               pmi: a[3],
-               pmi_stops_at: a[4],
-               interest_rate: a[5],
-               loan_amount: a[6],
-               loan_duration: a[7],
-               annual_hoa_dues: a[8],
-               annual_property_taxes: a[9],
-               annual_property_insurance: a[10],
-            },
-         ] = mortg.results;
-
-         for (let i = 0; i < 11; i++) {
-            $("#mortgresulte" + (i + 1)).attr("placeholder", a[i]);
+         for (let i = 1; i <= 4; i++) {
+            $("#refiresulte"+i).attr("placeholder", (Object.values(refi.results[0]))[i]);
+         }
+         for (let i = 5; i <= 10; i++) {
+            $("#refiresulte"+(i+1)).attr("placeholder", (Object.values(refi.results[0]))[i]);
          }
          break;
    }
 }
 
+
+function updateTables(x) {
+   switch (x) {
+      case 1:
+         const z = JSON.parse(localStorage.getItem("refipg1"));
+
+         for (let i = 0; i <9; i++) {
+            if (i==4) {
+               continue;
+            }else{
+               $(`#refiresultr${i+1}c1`).text(z[i]);
+            }
+         }
+         break;
+
+      //recalculate
+      case 2:
+         for (let i = 1; i <= 4; i++) {
+            $(`#refiresultr${i}c1`).text((Object.values(refi.results[0]))[i]);
+         }
+         for (let i = 5; i <= 8; i++) {
+            $(`#refiresultr${i+1}c1`).text((Object.values(refi.results[0]))[i]);
+         }
+         break;
+   }
+}
+
+function pushToDatabase1(refi) {
+   createSessionId();
+   let z = [];
+   for (let i = 0; i < 12; i++) {
+      z[i] = refi.page1[i];
+   }
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=2`;
+
+   $.ajax({
+      type: "POST",
+      url: url_string,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         console.log(result)
+         // if (result.success) {
+         //    localStorage.setItem("refi_result", JSON.stringify(result.data));
+         // } else {
+         //    console.log(result + "request not successful");
+         // }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+}
 
 

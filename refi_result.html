@@ -125,34 +125,35 @@
                         <td><input type="number" id="refiresulte4" placeholder="10"></td>
 
                      </tr>
+                     <!-- refiresulte5"  -->
                      <tr>
                         <td>New Loan Rate, %:</td>
-                        <td><input type="number" id="refiresulte5" placeholder="3.375"></td>
+                        <td><input type="number" id="refiresulte6" placeholder="3.375"></td>
 
                      </tr>
                      <tr>
                         <td>New Loan Duration, years:</td>
-                        <td><input type="number" id="refiresulte6" placeholder="15"></td>
+                        <td><input type="number" id="refiresulte7" placeholder="15"></td>
 
                      </tr>
                      <tr>
                         <td>Processing Cost, $:</td>
-                        <td><input type="number" id="refiresulte7" placeholder="3000"></td>
+                        <td><input type="number" id="refiresulte8" placeholder="3000"></td>
 
                      </tr>
                      <tr>
                         <td>Annual HOA dues, $</td>
-                        <td><input type="number" id="refiresulte8" placeholder="2400"></td>
+                        <td><input type="number" id="refiresulte9" placeholder="2400"></td>
 
                      </tr>
                      <tr>
                         <td>Annual property Taxes, $:</td>
-                        <td><input type="number" id="refiresulte9" placeholder="15000"></td>
+                        <td><input type="number" id="refiresulte10" placeholder="15000"></td>
 
                      </tr>
                      <tr>
                         <td>Annual property Insurance, $:</td>
-                        <td><input type="number" id="refiresulte10" placeholder="1500"></td>
+                        <td><input type="number" id="refiresulte11" placeholder="1500"></td>
 
                      </tr>
                   </table>
@@ -187,43 +188,43 @@
                      </tr>
                      <tr>
                         <td>Original Loan Amount,$:</td>
-                        <td id="orange-text">500000</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>Original Loan Duration,years:</td>
-                        <td id="orange-text">30 </td>
-                        <td></td>
+                        <td id="refiresultr1c1" style="color: #ffa114!important;">500000</td>
+                        <td id="refiresultr1c2"></td>
                      </tr>
                      <tr>
                         <td>Original Loan Rate, %:</td>
-                        <td>3.500</td>
-                        <td></td>
+                        <td id="refiresultr2c1">3.500</td>
+                        <td id="refiresultr2c2"></td>
+                     </tr>
+                     <tr>
+                        <td>Original Loan Duration,years:</td>
+                        <td id="refiresultr3c1">30 </td>
+                        <td id="refiresultr3c2"></td>
                      </tr>
                      <tr>
                         <td>Years passed, years:</td>
-                        <td>10</td>
-                        <td></td>
+                        <td id="refiresultr4c1">10</td>
+                        <td id="refiresultr4c2"></td>
                      </tr>
                      <tr>
                         <td>New Loan Rate, %:</td>
-                        <td>3.375</td>
-                        <td></td>
+                        <td id="refiresultr6c1">3.375</td>
+                        <td id="refiresultr6c2"></td>
                      </tr>
                      <tr>
                         <td>New Loan Duration, years:</td>
-                        <td>15</td>
-                        <td></td>
+                        <td id="refiresultr7c1">15</td>
+                        <td id="refiresultr7c2"></td>
                      </tr>
                      <tr>
                         <td>Processing Cost, $:</td>
-                        <td>3000</td>
-                        <td></td>
+                        <td id="refiresultr8c1">3000</td>
+                        <td id="refiresultr8c2"></td>
                      </tr>
                      <tr>
                         <td>Annual HOA dues, $</td>
-                        <td>2400</td>
-                        <td></td>
+                        <td id="refiresultr9c1">2400</td>
+                        <td id="refiresultr9c2"></td>
                      </tr>
                   </table>
                </div>
@@ -358,6 +359,8 @@
    <script src="scripts/shared.js"></script>
    <script src="scripts/refi.js"></script>
    <script>
+      updateTables(1)
+      updatePlaceholders(1);
       reCalculate();
       reEnter('refi.html');
    </script>

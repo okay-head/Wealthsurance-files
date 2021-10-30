@@ -712,6 +712,7 @@ table {
    overflow-x: auto;
 } */
 section.input {
+   overflow-y: hidden;
    margin-right: 2em;
 }
 section.output {
