@@ -47,6 +47,9 @@ function pgLocalStorage() {
    if (localStorage.getItem("mortgpg1") != null) {
       mortg.page1 = JSON.parse(localStorage.getItem("mortgpg1"));
       for (let i = 0; i < 12; i++) {
+         if (i==2 || i==3) {
+            continue;
+         }
          $("#mortgpg1e" + (i + 1)).val(mortg.page1[i]);
       }
    }
@@ -125,6 +128,10 @@ function pushToDatabase1(mortg) {
       z[i] = mortg.page1[i];
    }
 
+   if (z[3]=='') {
+      z[3] = ((Number(z[0])*Number(z[2]))/100).toFixed(2)
+   }
+
    let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=2&zipcode=${z[1]}`;
 
    $.ajax({
@@ -133,6 +140,9 @@ function pushToDatabase1(mortg) {
 
       success: (x) => {
          let result = JSON.parse(x);
+         console.log(url_string)
+         console.log(result)
+
          if (result.success) {
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
          } else {
@@ -297,3 +307,26 @@ function createAmmortizationTable(x) {
    // console.log(x,nYears)
    updateAmmortizationTable(x,nYears)
 }
+
+
+function detectChange1() {
+   let z = $('#mortgpg1e3').val()
+   if (z == '') {
+      $('#mortgpg1e4').prop('disabled',false)
+      $('#mortgpg1e4').attr('placeholder','Enter amount')
+   } else {
+      $('#mortgpg1e4').prop('disabled',true)
+      let down_amount= (Number($('#mortgpg1e1').val())*Number($('#mortgpg1e3').val())/100).toFixed(2)
+      $('#mortgpg1e4').attr('placeholder',down_amount)
+   }
+}  
+function detectChange2() {
+   let z = $('#mortgpg1e4').val()
+   if (z == '') {
+      $('#mortgpg1e3').prop('disabled',false)
+   } else {
+      $('#mortgpg1e3').prop('disabled',true)
+   }
+}
+const t1 = window.setInterval(detectChange1,10)
+const t2 = window.setInterval(detectChange2,10)

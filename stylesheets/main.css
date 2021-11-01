@@ -46,7 +46,7 @@
 *::before {
    margin: 0;
    padding: 0;
-   /* didn't add border-box */
+   /* !no border-box */
 }
 .fade {
    opacity: 0;
@@ -87,6 +87,9 @@ a {
 /* to prevent the jump */
 .mr-8 {
    margin-right: 8px;
+}
+mt-4{
+   margin-top: 4px;
 }
 
 /* modal chart */
@@ -465,7 +468,7 @@ input::-webkit-inner-spin-button {
    margin: 0;
 }
 
-input[type="number"] {
+input[type="decimal"] {
    -moz-appearance: textfield; /* Firefox */
 }
 
@@ -937,6 +940,10 @@ input:focus {
 .refi-output-table tr:first-child td {
    background-color: var(--main-primary3) !important;
    color: white !important;
+}
+table.mt-4 tr:not(:first-child) td:nth-child(3) {
+   background-color: white !important;
+   color: var(--main-primary3)!important;
 }
 
 .refi-output {

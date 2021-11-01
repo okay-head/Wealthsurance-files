@@ -75,7 +75,7 @@ function next() {
       loaderPromise().then(() => {
          pushToDatabase1(refi)
          setTimeout(() => {
-            // window.open("refi_result.html", "_self");
+            window.open("refi_result.html", "_self");
          }, 1410);
       });
    });
@@ -106,12 +106,9 @@ function storeRecalculate() {
    refi.results = [];
    refi.results.push(obj);
 
-   
    updatePlaceholders(2);
 
-   updateTables(2);
-
-   // pushToDatabase2(refi);
+   pushToDatabase2(refi);
 
 }
 
@@ -145,26 +142,31 @@ function updatePlaceholders(x) {
 function updateTables(x) {
    switch (x) {
       case 1:
-         const z = JSON.parse(localStorage.getItem("refipg1"));
-
-         for (let i = 0; i <9; i++) {
-            if (i==4) {
-               continue;
-            }else{
-               $(`#refiresultr${i+1}c1`).text(z[i]);
-            }
+         const z = JSON.parse(localStorage.getItem("refi_result"));
+         
+         $('#refiresultr1c1').text(z.out_interest)
+         $('#refiresultr2c1').text(z.new_interest)
+         $('#refiresultr3c1').text(z.cost_saved)
+         
+         let old_d = Object.values(z.old_data)
+         for (let i = 0; i < 5; i++) {
+            $(`#refiresultr${i+4}c1`).text(old_d[i])
+         }
+         let new_d = Object.values(z.new_data)
+         for (let i = 0; i < 5; i++) {
+            $(`#refiresultr${i+4}c2`).text(new_d[i])
          }
          break;
 
       //recalculate
-      case 2:
-         for (let i = 1; i <= 4; i++) {
-            $(`#refiresultr${i}c1`).text((Object.values(refi.results[0]))[i]);
-         }
-         for (let i = 5; i <= 8; i++) {
-            $(`#refiresultr${i+1}c1`).text((Object.values(refi.results[0]))[i]);
-         }
-         break;
+      // case 2:
+      //    for (let i = 1; i <= 4; i++) {
+      //       $(`#refiresultr${i}c1`).text((Object.values(refi.results[0]))[i]);
+      //    }
+      //    for (let i = 5; i <= 8; i++) {
+      //       $(`#refiresultr${i+1}c1`).text((Object.values(refi.results[0]))[i]);
+      //    }
+      //    break;
    }
 }
 
@@ -183,17 +185,49 @@ function pushToDatabase1(refi) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         console.log(result)
-         // if (result.success) {
-         //    localStorage.setItem("refi_result", JSON.stringify(result.data));
-         // } else {
-         //    console.log(result + "request not successful");
-         // }
+         // console.log(Object.values(result.data.old_data))
+         if (result.success) {
+            localStorage.setItem("refi_result", JSON.stringify(result.data));
+         } else {
+            console.log(result + "request not successful");
+         }
       },
       error: (error) => {
          console.log(error);
       },
    });
 }
+function pushToDatabase2(refi) {
+   createSessionId();
+   let zip = (JSON.parse(localStorage.getItem('refipg1')))[11]
+   let z = []
+    for (let i = 0; i < 10; i++) {
+       z[i] = (Object.values(refi.results[0]))[i+1]
+    }
+
+    let url_string = `http://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=2`;
+    
+
+    $.ajax({
+      type: "POST",
+      url: url_string,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result.success) {
+            // createAmmortizationTable(2)
+            localStorage.setItem("refi_result", JSON.stringify(result.data));
+            updateTables(1)
+         } else {
+            console.log(result + "request not successful");
+         }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+
+}
+
 
 
