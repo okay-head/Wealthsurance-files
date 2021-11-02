@@ -32,13 +32,22 @@ function pushToDatabase1(fna) {
    let [q1, q2] = fna.page5[0].financial;
    let [r1, r2] = fna.page5[0].others;
 
+   let debt_input_total = fna.page4[0].total
+   let expense_input_total = fna.page5[0].total
+
 
    let url_debt = {"0":{"type":1,"amount":h1,"interest":h2,"years":h3},"1":{"type":2,"amount":i1,"interest":i2,"years":i3},"2":{"type":3,"amount":j1,"interest":j2,"years":j3},"3":{"type":4,"amount":k1,"interest":k2,"years":k3},"4":{"type":5,"amount":l1,"interest":l2,"years":l3},"5":{"type":6,"amount":m1,"interest":m2,"years":m3}}
 
    let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
 
+   let debt_calc = Number(h1)+ Number(i1)+ Number(j1)+ Number(k1)+ Number(l1)+ Number(m1)
+   let expense_calc = Number(n1)+ Number(o1)+ Number(p1)+ Number(q1)+ Number(r1)
+
+   let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
+   let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
    
-   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}&debt_amount=${debt_total}&expense_amount=${expense_total}`
 
    $.ajax({
       type: "POST",
@@ -84,11 +93,21 @@ function pushToDatabase2(fna) {
    let [q1, q2] = x2.financial;
    let [r1, r2] = x2.others;
 
+   let debt_input_total = x1.total
+   let expense_input_total = x2.total
+
    let url_debt = {"0":{"type":1,"amount":h1,"interest":h2,"years":h3},"1":{"type":2,"amount":i1,"interest":i2,"years":i3},"2":{"type":3,"amount":j1,"interest":j2,"years":j3},"3":{"type":4,"amount":k1,"interest":k2,"years":k3},"4":{"type":5,"amount":l1,"interest":l2,"years":l3},"5":{"type":6,"amount":m1,"interest":m2,"years":m3}}
 
    let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
+   let debt_calc = h1+ i1+ j1+ k1+ l1+ m1
+   let expense_calc = n1+ o1+ p1+ q1+ r1
+
+   let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
+   let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
+   
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}&debt_amount=${debt_total}&expense_amount=${expense_total}`
 
    $.ajax({
       type: "POST",

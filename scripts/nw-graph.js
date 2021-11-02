@@ -1,26 +1,27 @@
 "use strict";
+
+// $(".shadow-element").removeClass("hidden");
+
 function updateResultArray(data) {
    let max = Object.values(data).length;
-   for (let i = 1; i <=max; i++) {
-      let y = Object.values(data[i])
-      y.unshift(`${i}`)
+   for (let i = 1; i <= max; i++) {
+      let y = Object.values(data[i]);
+      y.unshift(`${i}`);
       result_array.push(y);
    }
    console.log(result_array);
 }
 
-let result_array = [["Parameter", "Asset", "Liability", "Net worth"]];
+let result_array = [["Parameter", "Assets", "Liabilities", "Net worth"]];
 
 let x = JSON.parse(localStorage.getItem("nw_result"));
-updateResultArray(x)  
-
+updateResultArray(x);
 
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
-
 function drawChart() {
-   var data = google.visualization.arrayToDataTable(result_array)
+   var data = google.visualization.arrayToDataTable(result_array);
    //    [
    //    ["Parameter", "Asset", "Liability", "Net worth"],
    //    ["1", 100000, 240000, 150000],
@@ -60,7 +61,18 @@ function drawChart() {
          { color: "#FFA114" },
          { color: "#707070" },
       ],
-      chartArea: { width: "70%", height: "80%" },
+
+      // chartArea: { width: "70%", height: "80%" },
+      chartArea: {
+         height: "80%",
+         width: "100%",
+         // top: 0,
+         // left: 0,
+         // right:0,
+         // bottom: 0,
+      },
+      height: "100%",
+      width: "100%",
       isStacked: true,
       // width: 500,
       // height: 300,
@@ -71,6 +83,50 @@ function drawChart() {
       vAxis: {
          format: "currency",
          // gridlines: { count: 4 },
+         title: "Thousands of dollars",
+         baselineColor: "black",
+         textStyle: {
+            bold: true,
+         }
+      },
+      hAxis: {
+         gridlines: { count: 4 },
+         baselineColor: "red",
+         title: "No of years",
+         // textStyle: {
+         //    bold: true,
+         // }
+      },
+   };
+   var options2 = {
+      series: [
+         { color: "#00196C" },
+         { color: "#FFA114" },
+         { color: "#707070" },
+      ],
+
+      backgroundColor: { fill:'transparent' },
+      chartArea: {
+         height: "60%",
+         width: "60%",
+         // top: 0,
+         // left: 0,
+         // right:0,
+         // bottom: 0,
+      },
+      height: "100%",
+      width: "100%",
+      isStacked: true,
+      // width: 500,
+      // height: 300,
+      legend: {
+         position: "bottom",
+      },
+      bar: { groupWidth: "70%" },
+      vAxis: {
+         format: "currency",
+         // gridlines: { count: 4 },
+         // title: "Thousands of dollars",
          baselineColor: "black",
          // textStyle: {
          //    bold: true,
@@ -79,6 +135,7 @@ function drawChart() {
       hAxis: {
          gridlines: { count: 4 },
          baselineColor: "red",
+         title: "No of years",
          // textStyle: {
          //    bold: true,
          // }
@@ -88,5 +145,9 @@ function drawChart() {
    var chart = new google.visualization.ColumnChart(
       document.getElementById("nw-chart_div")
    );
+   var chart2 = new google.visualization.ColumnChart(
+      document.getElementById("nw_enlarged_chart")
+   );
    chart.draw(data, options);
+   chart2.draw(data, options2);
 }

@@ -106,8 +106,8 @@ function storeRecalculate() {
       down_payment$: $("#mortgresulte3").val(),
       pmi: $("#mortgresulte4").val(),
       pmi_stops_at: $("#mortgresulte5").val(),
-      loan_amount: $("#mortgresulte6").val(),
-      interest_rate: $("#mortgresulte7").val(),
+      loan_amount: $("#mortgresulte7").val(),
+      interest_rate: $("#mortgresulte6").val(),
       loan_duration: $("#mortgresulte8").val(),
       annual_hoa_dues: $("#mortgresulte9").val(),
       annual_property_taxes: $("#mortgresulte10").val(),
@@ -140,9 +140,6 @@ function pushToDatabase1(mortg) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         console.log(url_string)
-         console.log(result)
-
          if (result.success) {
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
          } else {
@@ -159,12 +156,18 @@ function pushToDatabase2(mortg) {
    createSessionId();
    let zip = (JSON.parse(localStorage.getItem('mortgpg1')))[1]
    let z = []
-    for (let i = 0; i < 11; i++) {
-       z[i] = Object.values(mortg.results[0])[i+1]
-    }
+   for (let i = 0; i < 11; i++) {
+      z[i] = (Object.values(mortg.results[0]))[i+1]
+   }
+   // Assign the greater value to down_payment$
+   let calc_down = ((Number(z[0])*Number(z[1]))/100).toFixed(2)
+   z[2] = Number(z[2])>Number(calc_down)? z[2]: calc_down
 
-    let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[6]} ,"down" : ${z[2]},"interest" : ${z[5]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=2&zipcode=${zip}`
-    
+   $('#mortgresulte3')
+   .attr('placeholder',z[2])
+   .val(z[2])
+
+    let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=2&zipcode=${zip}`
 
     $.ajax({
       type: "POST",
@@ -173,9 +176,9 @@ function pushToDatabase2(mortg) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
+            localStorage.setItem("mortg_result", JSON.stringify(result.data));
             updateTables(2,result.data)
             createAmmortizationTable(2)
-            localStorage.setItem("mortg_result", JSON.stringify(result.data));
          } else {
             console.log(result + "request not successful");
          }
@@ -191,6 +194,9 @@ function updatePlaceholders(x) {
    switch (x) {
       case 1:
          const z = JSON.parse(localStorage.getItem("mortgpg1"));
+         if (z[3]=='') {
+            z[3] = ((Number(z[0])*Number(z[2]))/100).toFixed(2)
+         }
          $("#mortgresulte1").attr("placeholder", z[0]);
          for (let i = 2; i <= 11; i++) {
             $("#mortgresulte" + i).attr("placeholder", z[i]);
@@ -223,7 +229,7 @@ function updatePlaceholders(x) {
 }
 
 function updateTables(x,y=undefined) {
-   let data=  ''
+   let data = undefined
    if (x==1) {
       data = JSON.parse(localStorage.getItem('mortg_result'))
   }else{
@@ -243,7 +249,7 @@ function updateTables(x,y=undefined) {
    $('#mortgresult2c1r3').text(data.pmiDuration)
 }
 // ammortization table
-function updateAmmortizationTable(x,years) {
+function updateAmmortizationTable(years) {
    let data = undefined
    let nYears = years;
    // if (x==1) {
@@ -274,7 +280,7 @@ function updateAmmortizationTable(x,years) {
 function createAmmortizationTable(x) {
    let nYears = undefined;
    if (x==1) {
-      nYears = JSON.parse(localStorage.getItem("mortgpg1"))[8];
+      nYears = (JSON.parse(localStorage.getItem("mortgpg1")))[8];
    }else{
       nYears = mortg.results[0].loan_duration;
    }
@@ -305,7 +311,7 @@ function createAmmortizationTable(x) {
    $(".ammortization-table").html(finalStr);
 
    // console.log(x,nYears)
-   updateAmmortizationTable(x,nYears)
+   updateAmmortizationTable(nYears)
 }
 
 

@@ -9,15 +9,24 @@ let nw = {
 };
 
 //defaults
-$('#modal_chart').on('click',()=>{
-   modalChart()
+// $('#modal_chart').on('click',()=>{
+//    modalChart()
+// })
+
+$('#toggle_modal_chart').on('click',()=>{
+   $('#nw_enlarged_chart,.shadow-element').toggleClass("hidden");
 })
 
+$('body').on('keydown',(e)=>{
+   if (e.key=='Escape') {
+      $('#nw_enlarged_chart,.shadow-element').addClass("hidden");
+   }
+})
 //functions
 
-function modalChart() {
-   $('.result').addClass('element-focus')
-}
+// function modalChart() {
+//    $('.result').addClass('element-focus')
+// }
 function pushToDatabase1(nw) {
    createSessionId();
    let [a, b] = nw.page1;

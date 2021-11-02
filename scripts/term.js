@@ -14,7 +14,7 @@ let te = {
 
 function pushToDatabase1(te) {
    createSessionId();
-   let [a, b, c] = te.page1;
+   let [a=28, b='married', c=1] = te.page1;
    b = b=='married'?1:2;
    let d = 500000; //annual income, what if directly the user goes to the term calc
    // let [d] = te.page2;
@@ -33,11 +33,33 @@ function pushToDatabase1(te) {
    let [q1, q2] = te.page3[0].financial;
    let [r1, r2] = te.page3[0].others;
 
+   let debt_input_total = te.page2[0].total
+   let expense_input_total = te.page3[0].total
+   
+   let max_years = undefined
+
+   let arr = [Number(g3),Number(h3),Number(i3),Number(j3),Number(k3),Number(l3),Number(m3)]
+   let largest_no = arr[0]
+   arr.forEach(x => {
+      if (x>largest_no) {
+         largest_no = x
+      }
+   });
+   max_years = largest_no
+
    let url_debt = {"0":{"type":1,"amount":g1,"interest":g2,"years":g3},"1":{"type":2,"amount":h1,"interest":h2,"years":h3},"2":{"type":3,"amount":i1,"interest":i2,"years":i3},"3":{"type":4,"amount":j1,"interest":j2,"years":j3},"4":{"type":5,"amount":k1,"interest":k2,"years":k3},"5":{"type":6,"amount":l1,"interest":l2,"years":l3},"6":{"type":7,"amount":m1,"interest":m2,"years":m3}}
 
    let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
+   let debt_calc = g1+ h1+ i1+ j1+ k1+ l1+ m1
+   let expense_calc = n1+ o1+ p1+ q1+ r1
+
+   let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
+   let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
+
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}&debt_amount=${debt_total}&expense_amount=${expense_total}&year=${max_years}`
+
 
    $.ajax({
       type: "POST",
@@ -69,17 +91,38 @@ function pushToDatabase2(te) {
    let [m1, m2, m3] = te.results[0].others;
 
    //expenses
-   let [n1, n2, n3] = te.results[1].college;
-   let [o1, o2, o3] = te.results[1].medical;
-   let [p1, p2, p3] = te.results[1].planned;
-   let [q1, q2, q3] = te.results[1].financial;
-   let [r1, r2, r3] = te.results[1].others;
+   let [n1, n2] = te.results[1].college;
+   let [o1, o2] = te.results[1].medical;
+   let [p1, p2] = te.results[1].planned;
+   let [q1, q2] = te.results[1].financial;
+   let [r1, r2] = te.results[1].others;
+
+   let debt_input_total = te.results[0].total
+   let expense_input_total = te.results[1].total
+   
+   let max_years = undefined
+
+   let arr = [Number(g3),Number(h3),Number(i3),Number(j3),Number(k3),Number(l3),Number(m3)]
+   let largest_no = arr[0]
+   arr.forEach(x => {
+      if (x>largest_no) {
+         largest_no = x
+      }
+   });
+   max_years = largest_no
+
 
    let url_debt = {"0":{"type":1,"amount":g1,"interest":g2,"years":g3},"1":{"type":2,"amount":h1,"interest":h2,"years":h3},"2":{"type":3,"amount":i1,"interest":i2,"years":i3},"3":{"type":4,"amount":j1,"interest":j2,"years":j3},"4":{"type":5,"amount":k1,"interest":k2,"years":k3},"5":{"type":6,"amount":l1,"interest":l2,"years":l3},"6":{"type":7,"amount":m1,"interest":m2,"years":m3}}
 
    let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}`
+   let debt_calc = g1+ h1+ i1+ j1+ k1+ l1+ m1
+   let expense_calc = n1+ o1+ p1+ q1+ r1
+
+   let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
+   let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
+
+   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}&debt_amount=${debt_total}&expense_amount=${expense_total}&year=${max_years}`
 
    $.ajax({
       type: "POST",
@@ -87,7 +130,7 @@ function pushToDatabase2(te) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         updateResult(2,result.amount,result.years);
+         updateResult(2,result.amount,result.year);
       },
       error: (error) => {
          console.log(error);
@@ -103,7 +146,7 @@ function updateResult(x, y = undefined,z=undefined) {
             "$" + JSON.parse(localStorage.getItem("te_result")).amount
          );
          $(".calculated-result-2").text(
-            JSON.parse(localStorage.getItem("te_result")).years
+            JSON.parse(localStorage.getItem("te_result")).year
          );
          break;
       case 2:
