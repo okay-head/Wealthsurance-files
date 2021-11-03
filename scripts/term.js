@@ -51,8 +51,8 @@ function pushToDatabase1(te) {
 
    let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
 
-   let debt_calc = g1+ h1+ i1+ j1+ k1+ l1+ m1
-   let expense_calc = n1+ o1+ p1+ q1+ r1
+   let debt_calc = Number(g1)+ Number(h1)+ Number(i1)+ Number(j1)+ Number(k1)+ Number(l1)+ Number(m1)
+   let expense_calc = Number(n1)+ Number(o1)+ Number(p1)+ Number(q1)+ Number(r1)
 
    let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
    let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
@@ -60,7 +60,7 @@ function pushToDatabase1(te) {
 
    let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}&debt_amount=${debt_total}&expense_amount=${expense_total}&year=${max_years}`
 
-
+console.log(url_string)
    $.ajax({
       type: "POST",
       url: url_string,
