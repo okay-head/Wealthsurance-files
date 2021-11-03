@@ -12,14 +12,18 @@ let nw = {
 // $('#modal_chart').on('click',()=>{
 //    modalChart()
 // })
+// $('#nw_enlarged_chart').addClass("shrink");
 
 $('#toggle_modal_chart').on('click',()=>{
+   root.scrollTop = 209
    $('#nw_enlarged_chart,.shadow-element').toggleClass("hidden");
+   // $('#nw_enlarged_chart').removeClass("shrink");
 })
 
 $('body').on('keydown',(e)=>{
    if (e.key=='Escape') {
       $('#nw_enlarged_chart,.shadow-element').addClass("hidden");
+      // $('#nw_enlarged_chart').removeClass("shrink");
    }
 })
 //functions
@@ -27,6 +31,39 @@ $('body').on('keydown',(e)=>{
 // function modalChart() {
 //    $('.result').addClass('element-focus')
 // }
+function updatePlaceholders(x) {
+   switch (x) {
+      case 1:
+         const pg2= JSON.parse(localStorage.getItem('nwpg2'))
+         const pg3= JSON.parse(localStorage.getItem('nwpg3'))
+
+         let y = Object.values(pg2[0])
+         for (let i = 0; i < 12; i++) {
+            $(`#nwresultp1r${i+1}c1`).val(y[i][0])
+            $(`#nwresultp1r${i+1}c2`).val(y[i][1])
+         }
+         
+         let x = Object.values(pg3[0])
+         for (let i = 0; i < 7; i++) {
+            $(`#nwresultp2r${i+1}c1`).val(x[i][0])
+            $(`#nwresultp2r${i+1}c2`).val(x[i][1])
+         }
+
+
+         break;
+
+      //recalculate
+      case 2:
+         for (let i = 1; i <= 4; i++) {
+            $("#refiresulte"+i).attr("placeholder", (Object.values(refi.results[0]))[i]);
+         }
+         for (let i = 5; i <= 10; i++) {
+            $("#refiresulte"+(i+1)).attr("placeholder", (Object.values(refi.results[0]))[i]);
+         }
+         break;
+   }
+}
+
 function pushToDatabase1(nw) {
    createSessionId();
    let [a, b] = nw.page1;
@@ -67,7 +104,8 @@ function pushToDatabase1(nw) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            localStorage.setItem("nw_result", JSON.stringify(result.data));
+            console.log(result)
+            // localStorage.setItem("nw_result", JSON.stringify(result.data));
 
             // console.log(result)
          } else {
@@ -277,7 +315,7 @@ function next() {
       loaderPromise().then(() => {
          pushToDatabase1(nw);
          setTimeout(() => {
-            window.open("netWorth_result.html", "_self");
+            // window.open("netWorth_result.html", "_self");
          }, 1410);
       });
    });

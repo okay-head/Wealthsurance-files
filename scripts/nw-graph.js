@@ -9,7 +9,7 @@ function updateResultArray(data) {
       y.unshift(`${i}`);
       result_array.push(y);
    }
-   console.log(result_array);
+   // console.log(result_array);
 }
 
 let result_array = [["Parameter", "Assets", "Liabilities", "Net worth"]];

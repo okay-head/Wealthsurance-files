@@ -9,6 +9,11 @@ let mortg = {
 
 let a = [];
 
+// prefill
+
+//pmi
+$('#mortgpg1e5').val(20)
+
 // Graph/Table toggler (for ammortization schedule)
 $("#graph-btn").addClass("active-btn");
 $("#table").addClass("d-none");
@@ -197,6 +202,9 @@ function updatePlaceholders(x) {
          if (z[3]=='') {
             z[3] = ((Number(z[0])*Number(z[2]))/100).toFixed(2)
          }
+         if (z[2]=='') {
+           z[2]=Number(z[3])*100/ Number(z[0])
+         }
          $("#mortgresulte1").attr("placeholder", z[0]);
          for (let i = 2; i <= 11; i++) {
             $("#mortgresulte" + i).attr("placeholder", z[i]);
@@ -330,8 +338,11 @@ function detectChange2() {
    let z = $('#mortgpg1e4').val()
    if (z == '') {
       $('#mortgpg1e3').prop('disabled',false)
+      $('#mortgpg1e3').attr('placeholder','Enter Percentage')
    } else {
       $('#mortgpg1e3').prop('disabled',true)
+      let down_percentage =Number(z)*100/ Number($('#mortgpg1e1').val())
+      $('#mortgpg1e3').attr('placeholder',down_percentage)
    }
 }
 const t1 = window.setInterval(detectChange1,10)
