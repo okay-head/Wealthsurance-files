@@ -30,8 +30,8 @@ function pushToDatabase1(clg) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         console.log(result.amount);
-         console.log(url_string);
+         // console.log(result.amount);
+         // console.log(url_string);
 
          if (result.success) {
             localStorage.setItem("clg_result", JSON.stringify(result.amount));
