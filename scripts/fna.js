@@ -66,12 +66,61 @@ function pushToDatabase1(fna) {
       },
    });
 }
+function updatePlaceholders(x) {
+   switch (x) {
+      case 1:
+         const pg4 = JSON.parse(localStorage.getItem("fnapg4"));
+         const pg5 = JSON.parse(localStorage.getItem("fnapg5"));
+
+         let y = Object.values(pg4[0]);
+         
+         $(`#fnaresultp1r0e1`).val(y[0]);
+         for (let i = 1; i <= 6; i++) {
+            $(`#fnaresultp1r${i}e1`).val(y[i][0]);
+            $(`#fnaresultp1r${i}e2`).val(y[i][1]);
+            $(`#fnaresultp1r${i}e3`).val(y[i][2]);
+         }
+
+         let x = Object.values(pg5[0]);
+
+         $(`#fnaresultp2r0e1`).val(x[0]);
+         for (let i = 1; i <= 5; i++) {
+            $(`#fnaresultp2r${i}e1`).val(x[i][0]);
+            $(`#fnaresultp2r${i}e2`).val(x[i][1]);
+         }
+
+         break;
+
+      //recalculate
+      case 2:
+         const debt = fna.results[0]
+         const exp = fna.results[1]
+
+         let a = Object.values(debt);
+         
+         $(`#fnaresultp1r0e1`).val(a[1]);
+         for (let i = 1; i < 7; i++) {
+            $(`#fnaresultp1r${i}e1`).val(a[i+1][0]);
+            $(`#fnaresultp1r${i}e2`).val(a[i+1][1]);
+            $(`#fnaresultp1r${i}e3`).val(a[i+1][2]);
+         }
+
+         let b = Object.values(exp);
+         
+         $(`#fnaresultp2r0e1`).val(b[1]);
+         for (let i = 1; i < 6; i++) {
+            $(`#fnaresultp2r${i}e1`).val(b[i+1][0]);
+            $(`#fnaresultp2r${i}e2`).val(b[i+1][1]);
+         }
+         break;
+   }
+}
 
 
 function pushToDatabase2(fna) {
    createSessionId();
    // get a-g from localstorage
-   let [a, b, c] = JSON.parse(localStorage.getItem("fnapg1"));
+   let [a=28, b="married", c=1] = JSON.parse(localStorage.getItem("fnapg1"));
    b = b=='married'?1:2;
    let [d] =  JSON.parse(localStorage.getItem("fnapg2"));
    let [e, f, g] =  JSON.parse(localStorage.getItem("fnapg3"));
@@ -100,8 +149,8 @@ function pushToDatabase2(fna) {
 
    let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
 
-   let debt_calc = h1+ i1+ j1+ k1+ l1+ m1
-   let expense_calc = n1+ o1+ p1+ q1+ r1
+   let debt_calc = Number(h1)+ Number(i1)+ Number(j1)+ Number(k1)+ Number(l1)+ Number(m1)
+   let expense_calc = Number(n1)+ Number(o1)+ Number(p1)+ Number(q1)+ Number(r1)
 
    let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
    let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
@@ -130,12 +179,14 @@ function pushToDatabase2(fna) {
 function updateResult(x,y=undefined) {
    switch (x) {
       case 1:
+         let amount1 = $.number((JSON.parse(localStorage.getItem("fna_result"))) , 2 )
          $(".calculated-result").text(
-            "$" + JSON.parse(localStorage.getItem("fna_result"))
-         );
+            "$" + amount1)
+         ;
          break;
       case 2:
-         $(".calculated-result").text('$'+y)
+         let amount2 = $.number( y, 2 )
+         $(".calculated-result").text('$'+amount2)
          break;
    }
 }
@@ -533,6 +584,8 @@ function storeRecalculate() {
    fna.results.push(expenses);
 
    pushToDatabase2(fna)
+   // there's actually no need
+   // updatePlaceholders(2)
 }
 
 function reCalculate() {
