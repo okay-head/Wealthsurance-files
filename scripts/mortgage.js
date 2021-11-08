@@ -98,7 +98,6 @@ function next() {
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
       storeRecalculate();
-      // console.log(mortg.results);
    });
 }
 

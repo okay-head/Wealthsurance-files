@@ -20,9 +20,10 @@ function pushToDatabase1(clg) {
    createSessionId();
    let [a, b, c, d, e, f, g] = clg.page1;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${f}&to_fund_percent=${e}&to_fund_amnt=${
-      ((f * e) / 100).toFixed(2)
-   }&inv_rate=${g}`;
+   let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${f}&to_fund_percent=${e}&to_fund_amnt=${(
+      (f * e) /
+      100
+   ).toFixed(2)}&inv_rate=${g}`;
 
    $.ajax({
       type: "POST",
@@ -46,20 +47,23 @@ function pushToDatabase1(clg) {
 }
 
 function pushToDatabase2(clg) {
-   createSessionId()
-   let [{ 
-      'name': a,
-      'current_age': b,
-      'age_entering_clg': c,
-      'clg_years': d,
-      'annual_clg_expenses': e,
-      'portion_funded%': f,
-      'investment_rate': g,
-   }] = clg.results
+   createSessionId();
+   let [
+      {
+         name: a,
+         current_age: b,
+         age_entering_clg: c,
+         clg_years: d,
+         annual_clg_expenses: e,
+         "portion_funded%": f,
+         investment_rate: g,
+      },
+   ] = clg.results;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${e}&to_fund_percent=${f}&to_fund_amnt=${
-      ((f * e) / 100).toFixed(2)
-   }&inv_rate=${g}`;
+   let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${e}&to_fund_percent=${f}&to_fund_amnt=${(
+      (f * e) /
+      100
+   ).toFixed(2)}&inv_rate=${g}`;
 
    $.ajax({
       type: "POST",
@@ -68,7 +72,7 @@ function pushToDatabase2(clg) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            updateResult(2,result.amount)
+            updateResult(2, result.amount);
          } else {
             console.log(result + "request not successful");
          }
@@ -77,18 +81,20 @@ function pushToDatabase2(clg) {
          console.log(error);
       },
    });
-
 }
 
 function updateResult(x, y = undefined) {
    switch (x) {
       case 1:
-         $(".calculated-result").text(
-            "$" + JSON.parse(localStorage.getItem("clg_result"))
+         let amount1 = $.number(
+            JSON.parse(localStorage.getItem("clg_result")),
+            2
          );
+         $(".calculated-result").text("$" + amount1);
          break;
       case 2:
-         $(".calculated-result").text("$" + y);
+         let amount2 = $.number( y, 2 )
+         $(".calculated-result").text("$" + amount2);
          break;
    }
 }
@@ -106,7 +112,7 @@ function updatePlaceholders(x) {
             "placeholder",
             z[5] * (z[4] / 100).toFixed(2)
          );
-         $("#clgpg1resulte8").attr("placeholder",z[6])
+         $("#clgpg1resulte8").attr("placeholder", z[6]);
 
          break;
 
@@ -114,13 +120,13 @@ function updatePlaceholders(x) {
       case 2:
          [
             {
-               "name": a[0],
-               "current_age": a[1],
-               "age_entering_clg": a[2],
-               "clg_years": a[3],
-               "annual_clg_expenses": a[4],
+               name: a[0],
+               current_age: a[1],
+               age_entering_clg: a[2],
+               clg_years: a[3],
+               annual_clg_expenses: a[4],
                "portion_funded%": a[5],
-               "investment_rate":a[6],
+               investment_rate: a[6],
             },
          ] = clg.results;
 
@@ -191,15 +197,15 @@ function reCalculate() {
 function storeRecalculate() {
    //not to be stored in local storage
    let obj = {
-      "label": "clg-result input",
-      "name": $("#clgpg1resulte1").val(),
-      "current_age": $("#clgpg1resulte2").val(),
-      "age_entering_clg": $("#clgpg1resulte3").val(),
-      "clg_years": $("#clgpg1resulte4").val(),
-      "annual_clg_expenses": $("#clgpg1resulte5").val(),
+      label: "clg-result input",
+      name: $("#clgpg1resulte1").val(),
+      current_age: $("#clgpg1resulte2").val(),
+      age_entering_clg: $("#clgpg1resulte3").val(),
+      clg_years: $("#clgpg1resulte4").val(),
+      annual_clg_expenses: $("#clgpg1resulte5").val(),
       "portion_funded%": $("#clgpg1resulte6").val(),
-      "portion_funded$": $("#clgpg1resulte7").val(),
-      "investment_rate": $("#clgpg1resulte8").val(),
+      portion_funded$: $("#clgpg1resulte7").val(),
+      investment_rate: $("#clgpg1resulte8").val(),
       // 'saved': $('#clgpg1resulte8').val(),
 
       // 'additional_saving': $('#clgpg2resulte1').val(),
@@ -207,10 +213,9 @@ function storeRecalculate() {
       // 'saving_monthly': $('#clgpg2resulte3').val(),
    };
 
-   clg.results = []
+   clg.results = [];
    clg.results.push(obj);
-   pushToDatabase2(clg)
+   pushToDatabase2(clg);
 
-   updatePlaceholders(2)
-
+   updatePlaceholders(2);
 }

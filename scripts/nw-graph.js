@@ -2,6 +2,8 @@
 
 // $(".shadow-element").removeClass("hidden");
 
+function drawGraph() {
+   
 function updateResultArray(data) {
    let max = Object.values(data).length;
    for (let i = 1; i <= max; i++) {
@@ -17,43 +19,33 @@ let result_array = [["Parameter", "Assets", "Liabilities", "Net worth"]];
 let x = JSON.parse(localStorage.getItem("nw_result"));
 updateResultArray(x);
 
+let new_array = []
+let new_array_length = Math.round(result_array.length/2)
+
+for (let i = 0; i <= new_array_length; i++) {
+   new_array.push(result_array[i])
+}
+
+
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-   var data = google.visualization.arrayToDataTable(result_array);
-   //    [
-   //    ["Parameter", "Asset", "Liability", "Net worth"],
-   //    ["1", 100000, 240000, 150000],
-   //    ["2", 140000, 220000, 150000],
-   //    ["3", 110000, 190000, 150000],
-   //    ["4", 130000, 170000, 150000],
-   //    ["5", 170000, 130000, 150000],
-   //    ["6", 150000, 150000, 150000],
-   //    ["7", 140000, 190000, 150000],
-   //    ["8", 110000, 180000, 150000],
-   //    ["9", 170000, 130000, 150000],
-   //    ["10", 180000, 120000, 150000],
-   //    ["11", 190000, 110000, 150000],
-   //    ["12", 180000, 100000, 150000],
-   //    ["13", 140000, 160000, 150000],
-   //    ["14", 130000, 170000, 150000],
-   //    ["15", 150000, 150000, 150000],
-   //    ["16", 130000, 170000, 150000],
-   //    ["17", 110000, 190000, 150000],
-   //    ["18", 160000, 140000, 150000],
-   //    ["19", 100000, 180000, 150000],
-   //    ["20", 110000, 190000, 150000],
-   // ]);
+   var data2 = google.visualization.arrayToDataTable(result_array);
+   var data1 = google.visualization.arrayToDataTable(new_array)
 
    var formatter = new google.visualization.NumberFormat({
       prefix: "$",
-      negativeColor: "red",
-      negativeParens: true,
+      // negativeColor: "red",
+      // negativeParens: true,
+      pattern:'#,###',
    });
-   formatter.format(data, 1);
-   formatter.format(data, 2);
-   formatter.format(data, 3);
+   formatter.format(data1, 1);
+   formatter.format(data1, 2);
+   formatter.format(data1, 3);
+   formatter.format(data2, 1);
+   formatter.format(data2, 2);
+   formatter.format(data2, 3);
 
    var options = {
       series: [
@@ -61,15 +53,21 @@ function drawChart() {
          { color: "#FFA114" },
          { color: "#707070" },
       ],
+      animation:{
+         duration: 1000,
+         easing: 'out',
+         startup: true,
+       },
+      //  vAxis: {minValue:0, maxValue:1000}
 
       // chartArea: { width: "70%", height: "80%" },
       chartArea: {
-         height: "80%",
-         width: "100%",
-         // top: 0,
-         // left: 0,
+         height: "100%",
+         width: "58%",
+         top: "9%",
+         bottom: "8%",
+         // left: "13%",
          // right:0,
-         // bottom: 0,
       },
       height: "100%",
       width: "100%",
@@ -77,22 +75,23 @@ function drawChart() {
       // width: 500,
       // height: 300,
       legend: {
-         position: "bottom",
+         position: "none",
       },
-      bar: { groupWidth: "70%" },
+      bar: { groupWidth: "55%" },
       vAxis: {
-         format: "currency",
+         format: "$#,###",
+         // maxValue: 600000,
          // gridlines: { count: 4 },
-         title: "Thousands of dollars",
+         // title: "Thousands of dollars",
          baselineColor: "black",
          textStyle: {
-            bold: true,
+            // bold: true,
          }
       },
       hAxis: {
          gridlines: { count: 4 },
          baselineColor: "red",
-         title: "No of years",
+         // title: "No of years",
          // textStyle: {
          //    bold: true,
          // }
@@ -105,6 +104,11 @@ function drawChart() {
          { color: "#707070" },
       ],
 
+      animation:{
+         duration: 1000,
+         easing: 'out',
+         startup: true,
+       },
       backgroundColor: { fill:'transparent' },
       chartArea: {
          height: "60%",
@@ -125,6 +129,7 @@ function drawChart() {
       bar: { groupWidth: "70%" },
       vAxis: {
          format: "currency",
+         // format: "$#,###",
          // gridlines: { count: 4 },
          // title: "Thousands of dollars",
          baselineColor: "black",
@@ -148,6 +153,10 @@ function drawChart() {
    var chart2 = new google.visualization.ColumnChart(
       document.getElementById("nw_enlarged_chart")
    );
-   chart.draw(data, options);
-   chart2.draw(data, options2);
+   chart.draw(data1, options);
+   $('#toggle_modal_chart').one('click',()=>{
+      chart2.draw(data2, options2);
+   })
+}
+
 }

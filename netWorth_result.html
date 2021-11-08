@@ -246,14 +246,18 @@
                <h4 class="output-header">Output</h4>
 
                <div class="result" id="nw-result-container">
+                  <div class="legend"><img src="/media/images/nw-label.png" alt="legend"></div>
                   <div id="nw-chart_div"></div>
-                  <button id="toggle_modal_chart">See enlarged</button>
+                  <div id="hAxis-label">No. of years</div>
+                  <button id="toggle_modal_chart">See complete graph</button>
                </div>
                <!-- <div id="nw-chart_div"></div> -->
 
                <div id="nw_enlarged_chart" class="hidden shrink">
                </div>
-               <span id="close_chart"><img src="media/images/x.svg" alt="close button"></span>
+               <span id="close_chart" class="hidden">
+                  <!-- <img src="media/images/x.svg" alt="close button"> -->
+               </span>
                <div class="assumptions small">
                   <span>Assumptions</span>
                   <ul>
@@ -280,6 +284,7 @@
    <script>
       // fadeInResult();
       // populateTable();
+      drawGraph();
       updatePlaceholders(1);
       reCalculate();
       reEnter('netWorth.html');

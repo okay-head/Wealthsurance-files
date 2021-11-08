@@ -15,22 +15,24 @@ let nw = {
 // $('#nw_enlarged_chart').addClass("shrink");
 
 $('#toggle_modal_chart').on('click',()=>{
-   root.scrollTop = 209
-   $('#nw_enlarged_chart,.shadow-element').toggleClass("hidden");
+   root.scrollTop = 170
+   $('#nw_enlarged_chart,.shadow-element,#close_chart').toggleClass("hidden");
    // $('#nw_enlarged_chart').removeClass("shrink");
 })
 
 $('body').on('keydown',(e)=>{
    if (e.key=='Escape') {
-      $('#nw_enlarged_chart,.shadow-element').addClass("hidden");
+      $('#nw_enlarged_chart,.shadow-element,#close_chart').addClass("hidden");
       // $('#nw_enlarged_chart').removeClass("shrink");
    }
 })
+
+$('#close_chart').on('click',()=>{
+   $('#nw_enlarged_chart,.shadow-element,#close_chart').addClass("hidden");
+})
+
 //functions
 
-// function modalChart() {
-//    $('.result').addClass('element-focus')
-// }
 function updatePlaceholders(x) {
    switch (x) {
       case 1:
@@ -53,14 +55,14 @@ function updatePlaceholders(x) {
          break;
 
       //recalculate
-      case 2:
-         for (let i = 1; i <= 4; i++) {
-            $("#refiresulte"+i).attr("placeholder", (Object.values(refi.results[0]))[i]);
-         }
-         for (let i = 5; i <= 10; i++) {
-            $("#refiresulte"+(i+1)).attr("placeholder", (Object.values(refi.results[0]))[i]);
-         }
-         break;
+   //    case 2:
+   //       for (let i = 1; i <= 4; i++) {
+   //          $("#refiresulte"+i).attr("placeholder", (Object.values(refi.results[0]))[i]);
+   //       }
+   //       for (let i = 5; i <= 10; i++) {
+   //          $("#refiresulte"+(i+1)).attr("placeholder", (Object.values(refi.results[0]))[i]);
+   //       }
+   //       break;
    }
 }
 
@@ -68,6 +70,7 @@ function pushToDatabase1(nw) {
    createSessionId();
    let [a, b] = nw.page1;
    let pg2 = nw.page2[0];
+   let pg3 = nw.page3[0];
    let [c1, c2] = pg2.primary_income;
    let [d1, d2] = pg2.real_estate;
    let [e1, e2] = pg2.vehicles;
@@ -81,7 +84,6 @@ function pushToDatabase1(nw) {
    let [m1, m2] = pg2.cash;
    let [n1, n2] = pg2.other;
 
-   let pg3 = nw.page3[0];
    let [o1, o2] = pg3.primary_mortgage;
    let [p1, p2] = pg3.other_mortgage;
    let [q1, q2] = pg3.vehicle_loans;
@@ -104,8 +106,7 @@ function pushToDatabase1(nw) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            console.log(result)
-            // localStorage.setItem("nw_result", JSON.stringify(result.data));
+            localStorage.setItem("nw_result", JSON.stringify(result.data));
 
             // console.log(result)
          } else {
@@ -315,7 +316,7 @@ function next() {
       loaderPromise().then(() => {
          pushToDatabase1(nw);
          setTimeout(() => {
-            // window.open("netWorth_result.html", "_self");
+            window.open("netWorth_result.html", "_self");
          }, 1410);
       });
    });
@@ -331,11 +332,67 @@ function next() {
    });
 }
 
+function pushToDatabase2(arr) {
+   createSessionId();
+   let [a, b] = JSON.parse(localStorage.getItem('nwpg1'))
+   let ast = arr[0];
+   let lbt = arr[1];
+   let [c1, c2] = ast.primary_income;
+   let [d1, d2] = ast.real_estate;
+   let [e1, e2] = ast.vehicles;
+   let [f1, f2] = ast.household;
+   let [g1, g2] = ast.retirement_accounts;
+   let [h1, h2] = ast.stock;
+   let [i1, i2] = ast.bonds;
+   let [j1, j2] = ast.life_insurance_cash;
+   let [k1, k2] = ast.annuity;
+   let [l1, l2] = ast.bank_accounts;
+   let [m1, m2] = ast.cash;
+   let [n1, n2] = ast.other;
+
+   let [o1, o2] = lbt.primary_mortgage;
+   let [p1, p2] = lbt.other_mortgage;
+   let [q1, q2] = lbt.vehicle_loans;
+   let [r1, r2] = lbt.student_loans;
+   let [s1, s2] = lbt.creditCard_debts;
+   let [t1, t2] = lbt.personal_loans;
+   let [u1, u2] = lbt.other_loans;
+
+
+   let url_liablity1 = {"0":{"amount":o1,"interest_rate":o2,"type":1},"1":{"amount":p1,"interest_rate":p2,"type":2},"2":{"amount":q1,"interest_rate":q2,"type":3},"3":{"amount":r1,"interest_rate":r2,"type":4},"4":{"amount":s1,"interest_rate":s2,"type":5},"5":{"amount":t1,"interest_rate":t2,"type":6},"6":{"amount":u1,"interest_rate":u2,"type":7}}
+
+   let url_asset1 ={"0":{"amount":c1,"growth_rate":c2,"type":1},"1":{"amount":d1,"growth_rate":d2,"type":2},"2":{"amount":e1,"growth_rate":e2,"type":3},"3":{"amount":f1,"growth_rate":f2,"type":4},"4":{"amount":g1,"growth_rate":g2,"type":5},"5":{"amount":h1,"growth_rate":h2,"type":6},"6":{"amount":i1,"growth_rate":i2,"type":7},"7":{"amount":j1,"growth_rate":j2,"type":8},"8":{"amount":k1,"growth_rate":k2,"type":9},"9":{"amount":l1,"growth_rate":l2,"type":10},"10":{"amount":m1,"growth_rate":m2,"type":11},"11":{"amount":n1,"growth_rate":n2,"type":12}}
+
+   let url_string =  `http://wealthsurance.com/calculators/?calculator=net&session_id=${session_id}&ip_address=${ip}&current_age=${a}&retirement_age=${b}&asset=${JSON.stringify(url_asset1)}&liablity=${JSON.stringify(url_liablity1)}`
+
+   // console.log(url_string)
+
+   $.ajax({
+      type: "POST",
+      url: url_string,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result.success) {
+            localStorage.setItem("nw_result", JSON.stringify(result.data));
+
+            drawGraph();
+            // console.log(result)
+         } else {
+            console.log(result + "request not successful");
+         }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+}
+
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
       storeRecalculate();
 
-      console.log(nw.results);
+      // console.log(nw.results);
    });
 }
 
@@ -384,5 +441,5 @@ function storeRecalculate() {
    nw.results.push(assets);
    nw.results.push(liabilities);
 
-   // pushToDatabase2(nw)
+   pushToDatabase2(nw.results)
 }
