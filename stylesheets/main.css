@@ -1039,10 +1039,10 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 /* .ammortization-table{
 } */
-/* .ammortization-table-container{
-   margin-bottom: 0.8em;
-   transition: 1s ease all;
-} */
+.ammortization-table-container{
+   overflow-y: auto;
+   max-height: 630px;
+}
 .ammortization-btn {
    background-color: var(--main-primary1);
    margin: 1.3em auto;
@@ -1171,9 +1171,17 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 
 /* mortgage */
+
+.small-toggle{
+   font-size: var(--font-buttons)!important;
+   margin: auto -1px!important;
+}
 .active-btn {
    background-color: var(--main-primary1) !important;
 }
+/* #slide-toggle-btn-grp{
+   transition: 0.001s ease opacity;
+} */
 .toggle-btn-grp {
    min-width: 270px;
    width: 70% !important;

@@ -252,9 +252,17 @@
 
                <span class="red-btn ammortization-btn" role="button"><span id="show-table">Show</span> Ammortization
                   Schedule</span>
+                  <div class="toggle-btn-grp" id="slide-toggle-btn-grp">
+                     <span id="year-btn" class="red-btn small-toggle">&nbspYearly&nbsp</span>
+                     <span id="month-btn" class="red-btn small-toggle">Monthly</span>
+                  </div>
 
                <div class="results-table-container result-table ammortization-table-container">
-                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table">
+                  <!-- Yearly -->
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table" id="amm-yearly">
+
+
+   
                      <tr>
                         <td>Period</td>
                         <td>Balance</td>
@@ -263,6 +271,82 @@
                         <td>Payment</td>
                         <td>PMI Pay</td>
                         <td>Year</td>
+                     </tr>
+                     <tr>
+                        <td id="ayr1c1">1</td>
+                        <td id="ayr1c2">$450000</td>
+                        <td id="ayr1c3">$708</td>
+                        <td id="ayr1c4">$1313</td>
+                        <td id="ayr1c5">$2021</td>
+                        <td id="ayr1c6">$375</td>
+                        <td id="ayr1c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="ayr2c1">2</td>
+                        <td id="ayr2c2">$450000</td>
+                        <td id="ayr2c3">$708</td>
+                        <td id="ayr2c4">$1313</td>
+                        <td id="ayr2c5">$2021</td>
+                        <td id="ayr2c6">$375</td>
+                        <td id="ayr2c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="ayr3c1">3</td>
+                        <td id="ayr3c2">$450000</td>
+                        <td id="ayr3c3">$708</td>
+                        <td id="ayr3c4">$1313</td>
+                        <td id="ayr3c5">$2021</td>
+                        <td id="ayr3c6">$375</td>
+                        <td id="ayr3c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="ayr4c1">4</td>
+                        <td id="ayr4c2">$450000</td>
+                        <td id="ayr4c3">$708</td>
+                        <td id="ayr4c4">$1313</td>
+                        <td id="ayr4c5">$2021</td>
+                        <td id="ayr4c6">$375</td>
+                        <td id="ayr4c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="ayr5c1">5</td>
+                        <td id="ayr5c2">$450000</td>
+                        <td id="ayr5c3">$708</td>
+                        <td id="ayr5c4">$1313</td>
+                        <td id="ayr5c5">$2021</td>
+                        <td id="ayr5c6">$375</td>
+                        <td id="ayr5c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="ayr6c1">6</td>
+                        <td id="ayr6c2">$450000</td>
+                        <td id="ayr6c3">$708</td>
+                        <td id="ayr6c4">$1313</td>
+                        <td id="ayr6c5">$2021</td>
+                        <td id="ayr6c6">$375</td>
+                        <td id="ayr6c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="ayr7c1">7</td>
+                        <td id="ayr7c2">$450000</td>
+                        <td id="ayr7c3">$708</td>
+                        <td id="ayr7c4">$1313</td>
+                        <td id="ayr7c5">$2021</td>
+                        <td id="ayr7c6">$375</td>
+                        <td id="ayr7c7">1</td>
+                     </tr>
+                  </table>
+
+                  <!-- monthly -->
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table" id="amm-monthly">
+                     <tr>
+                        <td>Period</td>
+                        <td>Balance</td>
+                        <td>Principal</td>
+                        <td>Interest</td>
+                        <td>Payment</td>
+                        <td>PMI Pay</td>
+                        <td>Month</td>
                      </tr>
                      <tr>
                         <td id="ayr1c1">1</td>
@@ -345,6 +429,7 @@
    <script>
       updateTables(1);
       createAmmortizationTable(1);
+      createAmmortizationTable2(1);
       updatePlaceholders(1);
       reCalculate();
       reEnter('mortgage.html');

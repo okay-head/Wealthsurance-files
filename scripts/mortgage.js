@@ -18,18 +18,32 @@ $('#mortgpg1e5').val(20)
 $("#graph-btn").addClass("active-btn");
 $("#table").addClass("d-none");
 
-$(".ammortization-table-container").slideUp().css("opacity", "0");
 
 $("#graph-btn,#table-btn").on("click", () => {
    $("#graph,#table").toggleClass("d-none");
    $("#graph-btn,#table-btn").toggleClass("active-btn");
 });
 
+//yearly/monthly toggler for ammortization schedule
+$("#year-btn").addClass("active-btn");
+$("#amm-monthly").addClass("d-none");
+
+$("#year-btn,#month-btn").on("click", () => {
+   $("#amm-yearly,#amm-monthly").toggleClass("d-none");
+   $("#year-btn,#month-btn").toggleClass("active-btn");
+});
+
+
 //For ammortization table
+$(".ammortization-table-container,#slide-toggle-btn-grp").slideUp()
+.css("opacity", "0");
 
 $(".ammortization-btn").on("click", () => {
    changeText();
-   $(".ammortization-table-container").slideToggle(700);
+   $(".ammortization-table-container,#slide-toggle-btn-grp").slideToggle(700);
+   $("#slide-toggle-btn-grp").animate({
+      opacity:1
+   },500)
    animateTable($("#show-table").text());
 });
 
@@ -51,8 +65,14 @@ function pgLocalStorage() {
    //check for existing localStorage on page load
    if (localStorage.getItem("mortgpg1") != null) {
       mortg.page1 = JSON.parse(localStorage.getItem("mortgpg1"));
+
       for (let i = 0; i < 12; i++) {
          if (i==2 || i==3) {
+            if (i==2 && mortg.page1[i]==0) {
+               $("#mortgpg1e4").val(mortg.page1[3]);
+            }else{
+               $("#mortgpg1e3").val(mortg.page1[2]);
+            }
             continue;
          }
          $("#mortgpg1e" + (i + 1)).val(mortg.page1[i]);
@@ -137,6 +157,8 @@ function pushToDatabase1(mortg) {
    }
 
    let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=2&zipcode=${z[1]}`;
+   // monthly
+   let url_string2 = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=1&zipcode=${z[1]}`;
 
    $.ajax({
       type: "POST",
@@ -146,6 +168,22 @@ function pushToDatabase1(mortg) {
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
+         } else {
+            console.log(result + "request not successful");
+         }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+   $.ajax({
+      type: "POST",
+      url: url_string2,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result.success) {
+            localStorage.setItem("mortg_result2", JSON.stringify(result.data));
          } else {
             console.log(result + "request not successful");
          }
@@ -172,6 +210,7 @@ function pushToDatabase2(mortg) {
    .val(z[2])
 
     let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=2&zipcode=${zip}`
+    let url_string2 = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=1&zipcode=${zip}`
 
     $.ajax({
       type: "POST",
@@ -182,6 +221,24 @@ function pushToDatabase2(mortg) {
          if (result.success) {
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
             updateTables(2,result.data)
+            createAmmortizationTable(2)
+         } else {
+            console.log(result + "request not successful");
+         }
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   });
+   // monthly
+    $.ajax({
+      type: "POST",
+      url: url_string2,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result.success) {
+            localStorage.setItem("mortg_result2", JSON.stringify(result.data));
             createAmmortizationTable(2)
          } else {
             console.log(result + "request not successful");
@@ -259,11 +316,6 @@ function updateTables(x,y=undefined) {
 function updateAmmortizationTable(years) {
    let data = undefined
    let nYears = years;
-   // if (x==1) {
-   //    data =JSON.parse(localStorage.getItem('mortg_result'))
-   // }else{
-      //    data =JSON.parse(localStorage.getItem('mortg_result'))
-      // }
    data =JSON.parse(localStorage.getItem('mortg_result'))
 
 
@@ -280,7 +332,7 @@ function updateAmmortizationTable(years) {
       $(`#ayr${i}c1`).text(i)
    }
    for (let i = 1; i <= nYears; i++) {
-      $(`#ayr${i}c7`).text(1)
+      $(`#ayr${i}c7`).text(i)
    }
    
 }
@@ -315,10 +367,69 @@ function createAmmortizationTable(x) {
    let finalStr = initialStr+ `<tr>${yearStr}</tr>`
    // console.log(finalStr)
 
-   $(".ammortization-table").html(finalStr);
+   $("#amm-yearly").html(finalStr);
 
    // console.log(x,nYears)
    updateAmmortizationTable(nYears)
+}
+// monthly 
+function updateAmmortizationTable2(months) {
+   let data = undefined
+   let nMonths = months;
+   data =JSON.parse(localStorage.getItem('mortg_result2'))
+
+
+   //for c1-5
+   for (let j = 1; j <= nMonths; j++) {
+      for (let i = 0; i <5; i++) {
+         $(`#amr${j}c${i+2}`).text(
+            Object.values(data.amortizationSc[j])[i]
+         )
+      }
+   }
+   // for c1 and c7
+   for (let i = 1; i <= nMonths; i++) {
+      $(`#amr${i}c1`).text(i)
+   }
+   for (let i = 1; i <= nMonths; i++) {
+      $(`#amr${i}c7`).text(i)
+   }
+   
+}
+function createAmmortizationTable2(x) {
+   let nMonths = undefined;
+   if (x==1) {
+      nMonths = ((JSON.parse(localStorage.getItem("mortgpg1")))[8])*12;
+   }else{
+      nMonths = (mortg.results[0].loan_duration)*12;
+   }
+   
+   let str = ''
+   let yearStr = ''
+   for (let i = 1; i <= nMonths; i++) {
+      for (let j = 1; j <= 7; j++) {         
+         str+=`<td id="amr${i}c${j}">0</td>`
+      }
+      yearStr+=`<tr> ${str} </tr>`
+      str=''
+
+   }
+   let initialStr = `<tr>
+          <td>Period</td>
+          <td>Balance</td>
+          <td>Principal</td>
+          <td>Interest</td>
+          <td>Payment</td>
+          <td>PMI Pay</td>
+          <td>Month</td>
+     </tr> `
+
+   let finalStr = initialStr+ `<tr>${yearStr}</tr>`
+   // console.log(finalStr)
+
+   $("#amm-monthly").html(finalStr);
+
+   updateAmmortizationTable2(nMonths)
 }
 
 
