@@ -24,7 +24,7 @@ $("#graph-btn,#table-btn").on("click", () => {
    $("#graph-btn,#table-btn").toggleClass("active-btn");
 });
 
-//yearly/monthly toggler for ammortization schedule
+//Yearly/Monthly toggler for ammortization schedule
 $("#year-btn").addClass("active-btn");
 $("#amm-monthly").addClass("d-none");
 
@@ -239,7 +239,7 @@ function pushToDatabase2(mortg) {
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("mortg_result2", JSON.stringify(result.data));
-            createAmmortizationTable(2)
+            createAmmortizationTable2(2)
          } else {
             console.log(result + "request not successful");
          }
@@ -312,6 +312,7 @@ function updateTables(x,y=undefined) {
    $('#mortgresult2c1r2').text(data.totalPmiPayment)
    $('#mortgresult2c1r3').text(data.pmiDuration)
 }
+
 // ammortization table
 function updateAmmortizationTable(years) {
    let data = undefined

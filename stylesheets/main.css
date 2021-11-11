@@ -37,6 +37,7 @@
    --font-18: 18px;
    --placeholder: 13px;
    --font-result: 28px;
+   --input-text: 14.8px; /*browser 13.3*/
 }
 
 /*--- defaults ---*/
@@ -254,6 +255,16 @@ body {
    /* background-color: #eeeaea; */
    background-color: #e5e5e5f5;
 }
+
+/*
+//To hide the scrollbars
+.ammortization-table-container {
+   -ms-overflow-style: none;   Internet Explorer 10+ 
+   scrollbar-width: none;   Firefox 
+}
+.ammortization-table-container::-webkit-scrollbar { 
+   display: none;   Safari and Chrome 
+} */
 /* --- navigation --- */
 
 nav {
@@ -452,6 +463,7 @@ li.p-relative:hover .dropdown-menu {
 }
 input,
 select {
+   font-size: var(--input-text);
    box-sizing: border-box;
    font-family: "Gilroy-medium";
    border-radius: 4px;
@@ -1327,10 +1339,12 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    :root {
       --font-main: 18px; /*24*/
       --font-buttons: 16px; /*19*/
+      --toggle-font-buttons: 17px; /*21*/
       --font-headings: 26px; /*36*/
       --font-17: 14px;
-      --toggle-font-buttons: 17px; /*21*/
-      --placeholder: 11.5px; /*14px*/
+      --placeholder: 11.5px; /*13px*/
       --font-result: 22px;
+      --input-text: 13.3px; /*14.8px*/
+
    }
 }

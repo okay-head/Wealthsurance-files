@@ -5,11 +5,11 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
    <!-- number format -->
-    <script src="scripts/jquery/jquery.number.min.js"></script>
+   <script src="scripts/jquery/jquery.number.min.js"></script>
 
 
    <!-- jquery transit -->
@@ -117,7 +117,8 @@
                      </tr>
                      <tr>
                         <td>Original Loan Rate, %:</td>
-                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="refiresulte2" placeholder="3.500"></td>
+                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="refiresulte2"
+                              placeholder="3.500"></td>
 
                      </tr>
                      <tr>
@@ -251,8 +252,14 @@
                <span class="red-btn ammortization-btn" role="button"><span id="show-table">Show</span> Ammortization
                   Schedule</span>
 
+               <div class="toggle-btn-grp" id="slide-toggle-btn-grp">
+                  <span id="year-btn" class="red-btn small-toggle">&nbspYearly&nbsp</span>
+                  <span id="month-btn" class="red-btn small-toggle">Monthly</span>
+               </div>
+
+
                <div class="results-table-container result-table ammortization-table-container">
-                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table">
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table" id="amm-yearly">
                      <tr>
                         <td>Period</td>
                         <td>Balance</td>
@@ -353,6 +360,82 @@
                         <td>1</td>
                      </tr>
                   </table>
+
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table" id="amm-monthly">
+                     <tr>
+                        <td>Period</td>
+                        <td>Balance</td>
+                        <td>Principal</td>
+                        <td>Interest</td>
+                        <td>Payment</td>
+                        <td>PMI Pay</td>
+                        <td>Month</td>
+                     </tr>
+                     <tr>
+                        <td id="amr1c1">1</td>
+                        <td id="amr1c2">$450000</td>
+                        <td id="amr1c3">$708</td>
+                        <td id="amr1c4">$1313</td>
+                        <td id="amr1c5">$2021</td>
+                        <td id="amr1c6">$375</td>
+                        <td id="amr1c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="amr2c1">2</td>
+                        <td id="amr2c2">$450000</td>
+                        <td id="amr2c3">$708</td>
+                        <td id="amr2c4">$1313</td>
+                        <td id="amr2c5">$2021</td>
+                        <td id="amr2c6">$375</td>
+                        <td id="amr2c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="amr3c1">3</td>
+                        <td id="amr3c2">$450000</td>
+                        <td id="amr3c3">$708</td>
+                        <td id="amr3c4">$1313</td>
+                        <td id="amr3c5">$2021</td>
+                        <td id="amr3c6">$375</td>
+                        <td id="amr3c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="amr4c1">4</td>
+                        <td id="amr4c2">$450000</td>
+                        <td id="amr4c3">$708</td>
+                        <td id="amr4c4">$1313</td>
+                        <td id="amr4c5">$2021</td>
+                        <td id="amr4c6">$375</td>
+                        <td id="amr4c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="amr5c1">5</td>
+                        <td id="amr5c2">$450000</td>
+                        <td id="amr5c3">$708</td>
+                        <td id="amr5c4">$1313</td>
+                        <td id="amr5c5">$2021</td>
+                        <td id="amr5c6">$375</td>
+                        <td id="amr5c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="amr6c1">6</td>
+                        <td id="amr6c2">$450000</td>
+                        <td id="amr6c3">$708</td>
+                        <td id="amr6c4">$1313</td>
+                        <td id="amr6c5">$2021</td>
+                        <td id="amr6c6">$375</td>
+                        <td id="amr6c7">1</td>
+                     </tr>
+                     <tr>
+                        <td id="amr7c1">7</td>
+                        <td id="amr7c2">$450000</td>
+                        <td id="amr7c3">$708</td>
+                        <td id="amr7c4">$1313</td>
+                        <td id="amr7c5">$2021</td>
+                        <td id="amr7c6">$375</td>
+                        <td id="amr7c7">1</td>
+                     </tr>
+                  </table>
+
                </div>
 
                <div>
@@ -370,6 +453,8 @@
    <script>
       updateTables(1)
       updatePlaceholders(1);
+      createAmmortizationTable(1);
+      // createAmmortizationTable2(1);
       reCalculate();
       reEnter('refi.html');
    </script>
