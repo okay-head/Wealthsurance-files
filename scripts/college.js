@@ -64,11 +64,11 @@ function pushToDatabase2(clg) {
       (f * e) /
       100
    ).toFixed(2)}&inv_rate=${g}`;
+   console.log(url_string);
 
    $.ajax({
       type: "POST",
       url: url_string,
-
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
@@ -87,13 +87,12 @@ function updateResult(x, y = undefined) {
    switch (x) {
       case 1:
          let amount1 = $.number(
-            JSON.parse(localStorage.getItem("clg_result")),
-            2
+            JSON.parse(localStorage.getItem("clg_result"))
          );
          $(".calculated-result").text("$" + amount1);
          break;
       case 2:
-         let amount2 = $.number( y, 2 )
+         let amount2 = $.number( y )
          $(".calculated-result").text("$" + amount2);
          break;
    }

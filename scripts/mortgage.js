@@ -12,7 +12,9 @@ let a = [];
 // prefill
 
 //pmi
-$('#mortgpg1e5').val(20)
+$('#mortgpg1e6').val(20)
+//disabling loan amount
+$('#mortgpg1e8').prop('disabled',true)
 
 // Graph/Table toggler (for ammortization schedule)
 $("#graph-btn").addClass("active-btn");
@@ -89,6 +91,9 @@ function pgLocalStorage() {
       $(".next-btn").one("click", () => {
          mortg.page1 = [];
          for (let i = 0; i < 12; i++) {
+            if (i==7) {
+               continue;
+            }
             mortg.page1.push($("#mortgpg1e" + (i + 1)).val());
          }
          localStorage.setItem("mortgpg1", JSON.stringify(mortg.page1));
@@ -149,8 +154,14 @@ function pushToDatabase1(mortg) {
    createSessionId();
    let z = [];
    for (let i = 0; i < 12; i++) {
-      z[i] = mortg.page1[i];
+      if (i==7) {
+         continue
+      }else{
+         z[i] = mortg.page1[i];
+      }
    }
+
+   z[7] = $('#mortgpg1e8').attr('placeholder')
 
    if (z[3]=='') {
       z[3] = ((Number(z[0])*Number(z[2]))/100).toFixed(2)
@@ -201,13 +212,16 @@ function pushToDatabase2(mortg) {
    for (let i = 0; i < 11; i++) {
       z[i] = (Object.values(mortg.results[0]))[i+1]
    }
+/*    
    // Assign the greater value to down_payment$
    let calc_down = ((Number(z[0])*Number(z[1]))/100).toFixed(2)
    z[2] = Number(z[2])>Number(calc_down)? z[2]: calc_down
+ */
+   z[2] = $('#mortgresulte3').val() || $('#mortgresulte3').attr('placeholder')
+   
+   // $('#mortgresulte3')
+   // .attr('placeholder',z[2])
 
-   $('#mortgresulte3')
-   .attr('placeholder',z[2])
-   .val(z[2])
 
     let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=2&zipcode=${zip}`
     let url_string2 = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=1&zipcode=${zip}`
@@ -265,6 +279,7 @@ function updatePlaceholders(x) {
          for (let i = 2; i <= 11; i++) {
             $("#mortgresulte" + i).attr("placeholder", z[i]);
          }
+
          break;
 
       //recalculate
@@ -286,7 +301,11 @@ function updatePlaceholders(x) {
          ] = mortg.results;
 
          for (let i = 0; i < 11; i++) {
-            $("#mortgresulte" + (i + 1)).attr("placeholder", a[i]);
+            if (i==2) {
+               continue
+            }else{
+               $("#mortgresulte" + (i + 1)).attr("placeholder", a[i]);
+            }
          }
          break;
    }
@@ -433,7 +452,7 @@ function createAmmortizationTable2(x) {
    updateAmmortizationTable2(nMonths)
 }
 
-
+//down payment
 function detectChange1() {
    let z = $('#mortgpg1e3').val()
    if (z == '') {
@@ -453,8 +472,73 @@ function detectChange2() {
    } else {
       $('#mortgpg1e3').prop('disabled',true)
       let down_percentage =Number(z)*100/ Number($('#mortgpg1e1').val())
-      $('#mortgpg1e3').attr('placeholder',down_percentage)
+      $('#mortgpg1e3').attr('placeholder',down_percentage.toFixed(2))
    }
 }
-const t1 = window.setInterval(detectChange1,10)
-const t2 = window.setInterval(detectChange2,10)
+// reCalculate
+
+function detectChange3() {
+   let z = $('#mortgresulte2').val()
+   if (z == '') {
+      $('#mortgresulte3').prop('disabled',false)
+      $('#mortgresulte3').attr('placeholder','Enter amount')
+   } else {
+      $('#mortgresulte3').prop('disabled',true)
+      let down_amount= (Number($('#mortgresulte1').val())*Number($('#mortgresulte2').val())/100).toFixed(2)
+      $('#mortgresulte3').attr('placeholder',down_amount)
+   }
+}  
+function detectChange4() {
+   let z = $('#mortgresulte3').val()
+   if (z == '') {
+      $('#mortgresulte2').prop('disabled',false)
+      $('#mortgresulte2').attr('placeholder','Enter Percentage')
+   } else {
+      $('#mortgresulte2').prop('disabled',true)
+      let down_percentage =Number(z)*100/ Number($('#mortgresulte1').val())
+      $('#mortgresulte2').attr('placeholder',down_percentage.toFixed(2))
+   }
+}
+
+//loan amount
+function detectChange5() {
+   let loan = undefined;
+   let down_payment = undefined;
+   if ($('#mortgpg1e1').val() ==''
+   ||$('#mortgpg1e3').val() ==''
+   &&$('#mortgpg1e4').val() ==''
+   // ||$('#mortgpg1e4').attr('placeholder') ==''
+   ){
+      $('#mortgpg1e8').attr('placeholder','Loan amount')
+      return
+   }else{
+      down_payment = $('#mortgpg1e4').val() || $('#mortgpg1e4').attr('placeholder')
+      loan = Number($('#mortgpg1e1').val())-Number(down_payment)
+      $('#mortgpg1e8').attr('placeholder',loan.toFixed(2))
+   }
+}
+// reCalculate
+function detectChange6() {
+   let loan = undefined;
+   let down_payment = undefined;
+   if ($('#mortgresulte1').val() ==''
+   ||$('#mortgresulte2').val() ==''
+   &&$('#mortgresulte3').val() ==''
+   ){
+      $('#mortgresulte7').val('')
+      return
+   }else{
+      down_payment = $('#mortgresulte3').val() || $('#mortgresulte3').attr('placeholder')
+      loan = Number($('#mortgresulte1').val())-Number(down_payment)
+      $('#mortgresulte7').val(loan.toFixed(2))
+   }
+}
+
+// Timers
+const t1 = window.setInterval(detectChange1,100)
+const t2 = window.setInterval(detectChange2,100)
+const t3 = window.setInterval(detectChange3,100)
+const t4 = window.setInterval(detectChange4,100)
+const t5 = window.setInterval(detectChange5,100)
+const t6 = window.setInterval(detectChange6,100)
+

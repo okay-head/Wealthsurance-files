@@ -61,12 +61,12 @@ function pushToDatabase2(ann) {
 function updateResult(x,y=undefined) {
    switch (x) {
       case 1:
-         let amount1 = $.number((JSON.parse(localStorage.getItem("ann_result"))) , 2 )
+         let amount1 = $.number((JSON.parse(localStorage.getItem("ann_result"))) )
          $(".calculated-result").text(
             "$" + amount1);
          break;
       case 2:
-         let amount2 = $.number( y, 2 )
+         let amount2 = $.number( y)
          $(".calculated-result").text('$'+amount2)
          break;
    }

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- jquery -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+
+   <!-- number format -->
+    <script src="scripts/jquery/jquery.number.min.js"></script>
+
+
+
+   <!-- jquery transit -->
+   <script src="scripts/jquery/jquery.transit.min.js"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <link rel="stylesheet" href="stylesheets/print.css">
+   <title>Financial needs Analysis</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="content-container">
+         <div class="pdf-io-container io-container">
+            
+            <section class="input">
+               <h3 class="wealthsurance-header"><img src="/media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+
+               <h1 class="page-heading calculator-title">Financial Needs Analysis</h1>
+               <h4>Input</h4>
+
+               <div class="results-table-container">
+                  <table class="results-table fna-results-table w-100">
+                     <tr>
+                        <td>Debt(other than mortgage)</td>
+                        <td colspan="3"><input type="decimal" inputmode="decimal" id="fnaresultp1r0e1" placeholder="Enter Amount"></td>
+                     </tr>
+                     <tr>
+                        <td>Values</td>
+                        <td>Enter Amount</td>
+                        <td>Enter Interest</td>
+                        <td>Enter Years to go</td>
+                     </tr>
+                     <tr>
+                        <td>Credit&nbspCards:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r1e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r1e2" placeholder="Enter Interest"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r1e3" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Vehicle&nbspLoans:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r2e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r2e2" placeholder="Enter Interest"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r2e3" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Student&nbspLoans:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r3e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r3e2" placeholder="Enter Interest"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r3e3" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Bank&nbspLoans:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r4e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r4e2" placeholder="Enter Interest"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r4e3" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Personal&nbspLoans:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r5e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r5e2" placeholder="Enter Interest"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r5e3" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Others:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r6e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r6e2" placeholder="Enter Interest"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp1r6e3" placeholder="Enter Years"></td>
+                     </tr>
+                  </table>
+                  <table class="results-table fna-results-table w-100">
+                     <tr>
+                        <td>Major expenses</td>
+                        <td colspan="3"><input type="decimal" inputmode="decimal" id="fnaresultp2r0e1" placeholder="Enter Amount"></td>
+                     </tr>
+                     <tr>
+                        <td>Values</td>
+                        <td>Enter Amount</td>
+                        <td>Enter Years to go</td>
+                     </tr>
+                     <tr>
+                        <td>College&nbspEducation:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r1e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r1e2" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Medical&nbspExpenses:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r2e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r2e2" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Planned&nbspLife&nbspEvents:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r3e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r3e2" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Financial&nbspExpenses:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r4e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r4e2" placeholder="Enter Years"></td>
+                     </tr>
+                     <tr>
+                        <td>Others:</td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r5e1" placeholder="Enter Amount"></td>
+                        <td><input type="decimal" inputmode="decimal" id="fnaresultp2r5e2" placeholder="Enter Years"></td>
+                     </tr>
+                  </table>
+               </div>
+
+</section>
+            <footer>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+                  <section>
+                     <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+                     <div class="a-right">FNA | 1</div>
+                  </section>
+            </footer>
+            <section class="output">
+               <h3 class="wealthsurance-header"><img src="/media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+            <h1 class="page-heading calculator-title">Financial Needs Analysis</h1>
+
+               <h4 class="output-header">Output</h4>
+               <div class="result">
+                  <p>Insurance Coverage Needed</p>
+                  <p class="calculated-result">$470,000</p>
+               </div>
+
+               <div class="assumptions small">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+            </section>
+            <div class="wealthsurance-header"></div>
+            <footer>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+                  <section>
+               <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+               <div class="a-right">FNA | 2</div>
+            </section>
+            </footer>
+
+         </div>
+         <!-- outside io -->
+         <p class="disclaimer-text">
+            Risk:
+All financial planning assumes the possibility of loss. There is no guarantee that these numbers will be achieved. This calculator is based on a set of assumptions, given the current economy. This is not a forecast of the future economy or the future gains from any investment. Market conditions can vary over time. This is not intended as a Wealthsurance recommendation. 
+         </p>
+      </div>
+
+   </div>
+   <!-- <script src="scripts/shared.js"></script> -->
+   <!-- <script src="scripts/fna.js"></script> -->
+   <!-- <script>
+      updateResult(1);
+      fadeInResult();
+      updatePlaceholders(1);
+      reCalculate();
+      reEnter('fna.html');
+   </script> -->
+</body>
+
+</html>

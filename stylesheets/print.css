@@ -1,0 +1,108 @@
+:root {
+   --footer-font: 12px;
+   --warning-font: 11px;
+}
+
+* {
+   box-sizing: border-box;
+   /* border: 1px solid red; */
+}
+.content-container {
+   /* border: 1px solid red; */
+   width: 80%;
+   margin: 0 auto;
+}
+body {
+   background-color: white;
+   background-image: none;
+}
+.pdf-io-container {
+   display: block;
+   margin: 0;
+}
+
+.pdf-io-container .output .result,
+.assumptions,
+.output-header,
+.wealthsurance-header {
+   width: 100%;
+}
+.pdf-io-container .output {
+   padding: 0;
+   border: none;
+   margin-top: 4em !important;
+}
+.pdf-io-container .input {
+   margin: 0;
+}
+.calculated-result {
+   opacity: 1;
+   transform: translate(0);
+}
+.output .result {
+   padding: 2em 2em;
+}
+.assumptions {
+   box-shadow: none;
+   padding-top: 0;
+   margin-bottom: 4em;
+}
+.calculator-title {
+   margin: 1.5em auto 1em auto;
+}
+
+footer {
+   position: relative;
+   line-height: 30px;
+   font-family: "Gilroy-bold";
+   /* font-weight: 600; */
+   font-size: var(--footer-font);
+   padding: 2em 2em 1em 4em;
+   /* border: 1px solid red; */
+   background: url("/media/images/wealthsurance_bg.png") center no-repeat;
+   background-size: cover;
+   /* background-size: 110%; */
+   /* background-position: 52% 53%; */
+}
+footer section {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   justify-content: space-between;
+   align-items: flex-end;
+}
+
+.a-right {
+   text-align: right;
+}
+.a-right,
+.a-left {
+   font-size: 1.1em;
+   /* font-weight : 900; */
+}
+.a-center{
+   position: relative;
+   bottom: 2%;
+   left: 50%;
+   /* text-align: right; */
+}
+.a-left {
+   text-align: left;
+}
+.wealthsurance-header {
+   display: flex;
+   justify-content: flex-end;
+   text-align: right !important;
+}
+
+.wealthsurance-header img {
+   width: 3.8%;
+   margin-right: 5px;
+}
+
+.disclaimer-text {
+   color: black;
+   font-size: var(--warning-font);
+   text-align: left;
+   width: 88%;
+   margin: 3em auto;
+}

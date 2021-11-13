@@ -204,7 +204,8 @@ function pushToDatabase1(refi) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            // console.log(result.data)
+            console.log(url_string)
+            console.log(result.data)
             localStorage.setItem("refi_result", JSON.stringify(result.data));
          } else {
             console.log(result + "request not successful");
