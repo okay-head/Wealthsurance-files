@@ -1,6 +1,9 @@
 .bold{
    font-weight: 900;
 }
+.splash-screen{
+   display: none!important;
+}
 ::placeholder{
    font-weight: 300!important;
 }
