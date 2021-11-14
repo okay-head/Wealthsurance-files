@@ -463,6 +463,7 @@ li.p-relative:hover .dropdown-menu {
 }
 input,
 select {
+   max-width: 195px;
    font-size: var(--input-text);
    box-sizing: border-box;
    font-family: "Gilroy-medium";

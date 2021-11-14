@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- jquery -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+
+   <!-- number format -->
+    <script src="scripts/jquery/jquery.number.min.js"></script>
+
+
+
+   <!-- jquery transit -->
+   <script src="scripts/jquery/jquery.transit.min.js"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <link rel="stylesheet" href="stylesheets/font-size.css">
+   <title>College Expenses Calculator</title>
+</head>
+
+<body>
+   <div class="splash-screen"><img src="media/images/wealthsurance-logo.svg" alt="splash screen image"></div>
+
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="media/images/wealthsurance-logo.svg" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+         <div class="navigation">
+            <ul class="navigation-ul">
+               <li>
+                  <a href="#">Home</a>
+               </li>
+               <li>
+                  <a href="#">Know More</a>
+               </li>
+               <li class="p-relative">
+                  <a href="#">Tools <span class="dropdown-arrow"><img
+                           src="media/images/nav-dropdown-arrow.png" alt="dropdown-arrow"></span></a>
+                           <ul class="dropdown-menu">
+                              <li><a href="fna.html">Financial Needs Analysis</a></li>
+                              <li><a href="termInsurance.html">Term Insurance</a></li>
+                              <li><a href="annuity.html">Annuity</a></li>
+                              <li><a href="netWorth.html">Net worth</a></li>
+                              <li><a href="mortgage.html">Mortgage</a></li>
+                              <li><a href="retirement.html">Retirement</a></li>
+                              <li><a href="refi.html">Refi</a></li>
+                              <li><a href="college_expenses.html">College Expenses</a></li>
+                           </ul>
+               </li>
+               <li>
+                  <a href="#">Events</a>
+               </li>
+               <li>
+                  <a href="#">About Us</a>
+               </li>
+               <li>
+                  <a href="#">Contact Us</a>
+               </li>
+
+               <li>
+                  <span role="button" class="red-btn">Get a Quote</span>
+               </li>
+            </ul>
+         </div>
+
+         <span class="hamburger" role="button"></span>
+      </nav>
+
+      <div class="shadow-element"></div>
+      <div class="hide-hamburger-component"></div>
+      <aside class="offCanvasNav">
+         <div class="offCanvasNav-container">
+            <p><span class="canvas-close-btn"><img src="media/images/x.svg" alt="close-icon"></span></p>
+            <ul>
+               <li><a href="#">Home</a></li>
+               <li><a href="#">Know More</a></li>
+               <li><a href="#">Tools</a></li>
+               <li><a href="#">Events</a></li>
+               <li><a href="#">About us</a></li>
+               <li><a href="#">Contact us</a></li>
+            </ul>
+            <p>
+               <span role="button" class="red-btn">Get a Quote</span>
+            </p>
+         </div>
+      </aside>
+
+      <div class="content-container">
+         <div class="tool-container">
+            <p class="current-size"><span id="current-size">17</span>px</p>
+            <p class="size-btn-grp">
+               <button id="increase" class="f-size-btn"><img src="/media/images/arrow-upward.png" alt=""></button>
+               <button id="decrease" class="f-size-btn"><img src="/media/images/down-arrow.png" alt=""></button>
+            </p>
+            <p class="small-size-btn-grp">
+               <button id="pt-increase" class="f-size-btn f-size-btn-small"><img src="/media/images/arrow-upward.png" alt=""></button>
+               <button id="pt-decrease" class="f-size-btn f-size-btn-small"><img src="/media/images/down-arrow.png" alt=""></button>
+            </p>
+
+         </div>
+         <div class="top">
+            <h1 class="page-heading">College Expenses Calculator</h1>
+            <div class="loader">
+               <div class="progress-bar">
+                  <span class="progress-percentage"></span>
+               </div>
+            </div>
+         </div>
+
+         <div class="page1">
+            <div class="input-fields">
+               <div>I want to save for college expenses for
+                  <input type="text" id="clgpg1e1" placeholder="Enter Name">
+               </div>
+               <div>
+                  who is <input type="decimal" inputmode="decimal" id="clgpg1e2" placeholder="Enter no of years">years old, and will go to
+                  college at the age of
+               </div>
+               <div>
+                  <input type="decimal" inputmode="decimal" id="clgpg1e3" placeholder="Enter no of years">years, for
+                  <input type="decimal" inputmode="decimal" id="clgpg1e4" placeholder="Enter Number">
+                  years.
+               </div>
+               <div>
+                  I want to fund <input type="decimal" inputmode="decimal" id="clgpg1e5" placeholder="Enter percentage">% of the annual
+                  college expenses of
+                  $ <input type="decimal" inputmode="decimal" id="clgpg1e6" placeholder="Enter amount">
+               </div>
+               <div>My contribution will grow at<input type="decimal" inputmode="decimal" id="clgpg1e7" placeholder="Enter percentage">% annually each year.
+               </div>
+             <!--  <div>
+                  I have to put aside $
+                  <input type="decimal" inputmode="decimal" id="clgpg1e8" placeholder="Enter amount"> so far towards college expenses.
+               </div>
+               <div>
+                  I will contribute $ <input type="decimal" inputmode="decimal" id="clgpg1e9" placeholder="Enter amount"> each month,
+               </div>
+               <div>
+                  that will grow at<input type="decimal" inputmode="decimal" id="clgpg1e10" placeholder="Enter percentage"> % annually each
+                  year.
+               </div> -->
+
+            </div>
+         </div>
+
+
+         <div class="btn-group">
+            <span role="button" class="red-btn next-btn">Finish</span>
+         </div>
+
+      </div>
+   </div>
+   <script src="scripts/shared.js"></script>
+   <!-- <script src="scripts/college.js"></script> -->
+
+   <script>
+      'use strict'
+      initLoader();
+      // pgLocalStorage();
+      // next();
+
+      // init
+      const fontInitial = parseFloat($('input').css('fontSize')).toFixed(1)
+
+      $('#current-size')
+      .text(fontInitial)
+
+      // function changeVal(size) {
+      //    $('#current-size').text(size)
+      // }
+      function changeVal(f) {
+         $('#current-size').text(f)
+         $('input').css('fontSize',f)
+      }
+
+      $('#increase').on('click',()=>{
+         let f = (parseFloat($('input').css('fontSize'))) + 1
+         changeVal(f)
+      })
+      $('#decrease').on('click',()=>{
+         let f = (parseFloat($('input').css('fontSize'))) - 1
+         // console.log(f);
+         changeVal(f)
+      })
+
+      $('#pt-increase').on('click',()=>{
+         let g = parseFloat( (parseFloat($('input').css('fontSize'))).toFixed(1) ) 
+         
+         let f = (g + 0.1).toFixed(1)
+         // console.log(Number(f));
+         changeVal(Number(f))
+      })
+      $('#pt-decrease').on('click',()=>{
+         let g = parseFloat( (parseFloat($('input').css('fontSize'))).toFixed(1) ) 
+         
+         let f = (g - 0.1).toFixed(1)
+         // console.log(Number(f));
+         changeVal(Number(f))
+      })
+      // let g = 13.29999
+      // if (1) {
+      //       if (g.toString()[3]==2) {
+      //          let [z] = g.toString().
+      //          split(2)
+               
+      //          console.log(Number(z.toString()+ '3'));
+      //       }
+      //    }
+
+      // $('#pt-decrease').on('click',()=>{
+      //    let f = parseFloat(((parseFloat($('input').css('font-size'))).toFixed(1))+0.2).toFixed(1)
+      //    changeVal(f)
+      // })
+      // let xx = 3;
+      // for (let i = 0.2; i <1 ; i+=0.2) {
+      //    console.log(typeof(i.toFixed(1)));
+      //    xx+=i.toFixed(1);
+      // }  
+</script>
+
+
+</body>
+
+</html>
