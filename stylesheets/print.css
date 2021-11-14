@@ -7,6 +7,10 @@
    box-sizing: border-box;
    /* border: 1px solid red; */
 }
+
+.wealthsurance-header,.page-heading{
+   font-weight: 300;
+}
 .content-container {
    /* border: 1px solid red; */
    width: 80%;
