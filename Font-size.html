@@ -102,6 +102,8 @@
                <button id="pt-decrease" class="f-size-btn f-size-btn-small"><img src="media/images/down-arrow.png" alt=""></button>
             </p>
 
+            <button id="bold">Bold</button>
+
          </div>
          <div class="top">
             <h1 class="page-heading">College Expenses Calculator</h1>
@@ -201,6 +203,11 @@
          let f = (g - 0.1).toFixed(1)
          // console.log(Number(f));
          changeVal(Number(f))
+      })
+
+      $('#bold').on('click',()=>{
+         $('input').toggleClass('bold')
+         $('#bold').toggleClass('color')
       })
       // let g = 13.29999
       // if (1) {

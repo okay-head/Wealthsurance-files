@@ -1,3 +1,21 @@
+.bold{
+   font-weight: 900;
+}
+::placeholder{
+   font-weight: 300!important;
+}
+.color{
+   background-color: black;
+   color: white;
+}
+#bold{
+   display: inline-block;
+   font-size: 1.2em;
+   margin-top: 1em;
+   padding: 5px 25px;
+   border: 1px solid black;
+   border-radius: 2px;
+}
 .tool-container{
    position: absolute;
    right: 0%;
