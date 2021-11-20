@@ -7,6 +7,7 @@ let te = {
    page1: [],
    page2: [],
    page3: [],
+   page2new:[],
    results: [],
 };
 
@@ -249,6 +250,28 @@ function page1LocalStorage() {
          te.page1.push($("#tepg1e3").val());
 
          localStorage.setItem("tepg1", JSON.stringify(te.page1));
+      });
+   });
+}
+function page2newLocalStorage() {
+   //check for existing localStorage on page load
+   if (localStorage.getItem("tepg2new") != null) {
+      te.page2new = JSON.parse(localStorage.getItem("tepg2new"));
+      $("#tepg2new").val(te.page2new[0]);
+   }
+
+   //push to local storage
+   $(":input").change(() => {
+      if (localStorage.getItem("tepg2new") != null) {
+         localStorage.removeItem("tepg2new");
+         te.page2new = [];
+      }
+
+      $(".next-btn").one("click", () => {
+         te.page2new = [];
+         te.page2new.push($("#tepg2new").val());
+
+         localStorage.setItem("tepg2new", JSON.stringify(te.page2new));
       });
    });
 }

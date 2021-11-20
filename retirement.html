@@ -5,11 +5,11 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
    <!-- number format -->
-    <script src="scripts/jquery/jquery.number.min.js"></script>
+   <script src="scripts/jquery/jquery.number.min.js"></script>
 
 
 
@@ -104,38 +104,36 @@
             <div class="page1">
                <div class="input-fields">
                   <div>I am
-                     <input type="decimal" inputmode="decimal" id="retirepg1e1" placeholder="Enter Age" >
+                     <input type="decimal" inputmode="decimal" id="retirepg1e1" placeholder="Enter Age">
                      years old,
                   </div>
                   <div>
                      I plan to retire at the age of
-                     <input type="decimal" inputmode="decimal" id="retirepg1e2" placeholder="Enter Year" >years.
+                     <input type="decimal" inputmode="decimal" id="retirepg1e2" placeholder="Enter Year">years.
                   </div>
                   <div>
                      My annual household income is $
-                     <input type="decimal" inputmode="decimal" id="retirepg1e3" placeholder="Enter number" >.
+                     <input type="decimal" inputmode="decimal" id="retirepg1e3" placeholder="Enter number">.
                   </div>
-                  <div>
+                  <!-- <div>
                      I save
-                     <input type="decimal" inputmode="decimal" id="retirepg1e4" placeholder="Enter number" >% annually.
-                  </div>
+                     <input type="decimal" inputmode="decimal" id="retirepg1e4" placeholder="Enter number">% annually.
+                  </div> -->
                </div>
             </div>
 
             <div class="page2">
                <div class="input-fields">
-                  <div>My total savings including my retirement account,</div>
-                  <div>
-                     till today is $
-                     <input type="decimal" inputmode="decimal" id="retirepg2e1" placeholder="Enter Amount" >
-                  </div>
                   <div>After retirement, I need an income of</div>
                   <div>
                      $
-                     <input type="decimal" inputmode="decimal" id="retirepg2e2" placeholder="Enter Amount" >
+                     <input type="decimal" inputmode="decimal" id="retirepg2e1" placeholder="Enter Amount">
                      for
-                     <input type="decimal" inputmode="decimal" id="retirepg2e3" placeholder="Enter Amount" >
+                     <input type="decimal" inputmode="decimal" id="retirepg2e2" placeholder="Enter no of years">
                      years.
+                  </div>
+                  <div>My retirement goal is $
+                     <input type="decimal" inputmode="decimal" id="retirepg2e3" placeholder="Enter Amount">
                   </div>
                </div>
             </div>
@@ -143,75 +141,113 @@
             <div class="page3">
                <div class="input-fields">
                   <div>My income will increase annually by
-                     <input type="decimal" inputmode="decimal" id="retirepg3e1" placeholder="Enter percentage" >
+                     <input type="decimal" inputmode="decimal" id="retirepg3e1" placeholder="Enter percentage">
                      % till retirement.
                   </div>
                   <div>Pre-retirement investment return
-                     <input type="decimal" inputmode="decimal" id="retirepg3e2" placeholder="Enter percentage" >
+                     <input type="decimal" inputmode="decimal" id="retirepg3e2" placeholder="Enter percentage">
                      %.
                   </div>
                   <div>Post-retirement investment return
-                     <input type="decimal" inputmode="decimal" id="retirepg3e3" placeholder="Enter percentage" >
+                     <input type="decimal" inputmode="decimal" id="retirepg3e3" placeholder="Enter percentage">
                      %.
                   </div>
                   <div>Inflation is assumed at
-                     <input type="decimal" inputmode="decimal" id="retirepg3e4" placeholder="Enter percentage" >
+                     <input type="decimal" inputmode="decimal" id="retirepg3e4" placeholder="Enter percentage">
                      %.
+                  </div>
+
+               </div>
+            </div>
+            <div class="page5">
+               <div class="input-fields">
+                  <div>Pre-tax savings
+                     <input type="decimal" inputmode="decimal" id="retirepg5e1" placeholder="Enter percentage">
+                     %
+                  </div>
+                  <div>Pre-tax savings $
+                     <input type="decimal" inputmode="decimal" id="retirepg5e2" placeholder="Enter percentage">
+                  </div>
+                  <div>Post-tax savings
+                     <input type="decimal" inputmode="decimal" id="retirepg5e3" placeholder="Enter percentage">
+                     %.
+                  </div>
+                  <div>Post-tax savings $
+                     <input type="decimal" inputmode="decimal" id="retirepg5e4" placeholder="Enter Amount">
+
                   </div>
 
                </div>
             </div>
             <div class="page4 retirement-page4">
                <div class="input-fields">
-                  <div>Current income:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e1" placeholder="Enter Amount" >
-                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
-                  </div>
-                  <div>Savings:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e2" placeholder="Enter percentage" >
-                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
-
-                  </div>
-                  <div>Net savings, including retirement account:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e3" placeholder="Enter Amount" >
-                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
-
-                  </div>
                   <div>Current Age:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e4" placeholder="Enter no. of years" >
+                     <input type="decimal" inputmode="decimal" id="retirepg4e1" placeholder="Enter no. of years">
                      <div class="required tooltip"><span class="tooltip-text">Required</span></div>
 
                   </div>
                   <div>Retirement Age:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e5" placeholder="Enter no. of years" >
+                     <input type="decimal" inputmode="decimal" id="retirepg4e2" placeholder="Enter no. of years">
                      <div class="required tooltip"><span class="tooltip-text">Required</span></div>
 
                   </div>
-                  <div>Expected annual increase in income:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e6" placeholder="Enter percentage" >
+                  <div>Current income:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e3" placeholder="Enter Amount">
                      <div class="required tooltip"><span class="tooltip-text">Required</span></div>
+                  </div>
 
+                  <div>Post-retirement pre-tax income:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e4" placeholder="Enter amount">
+                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
                   </div>
                   <div>Years of retirement income:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e7" placeholder="Enter no. of years" >
+                     <input type="decimal" inputmode="decimal" id="retirepg4e5" placeholder="Enter no. of years">
+                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
+
+                  </div>
+                  <div>Retirement goal:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e6" placeholder="Enter Amount">
+                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
+                  </div>
+
+                  <div>Expected annual increase in income:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e7" placeholder="Enter percentage">
                      <div class="required tooltip"><span class="tooltip-text">Required</span></div>
 
                   </div>
                   <div>Pre-retirement investment returns:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e8" placeholder="Enter percentage" >
+                     <input type="decimal" inputmode="decimal" id="retirepg4e8" placeholder="Enter percentage">
                      <div class="required tooltip"><span class="tooltip-text">Required</span></div>
 
                   </div>
                   <div>Post-retirement investment returns:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e9" placeholder="Enter percentage" >
+                     <input type="decimal" inputmode="decimal" id="retirepg4e9" placeholder="Enter percentage">
                      <div class="required tooltip"><span class="tooltip-text">Required</span></div>
 
                   </div>
                   <div>Rate of inflation:
-                     <input type="decimal" inputmode="decimal" id="retirepg4e10" placeholder="Enter percentage" >
+                     <input type="decimal" inputmode="decimal" id="retirepg4e10" placeholder="Enter percentage">
                      <div class="required tooltip"><span class="tooltip-text">Required</span></div>
 
                   </div>
+
+                  <div>Pre-tax savings:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e11" placeholder="Enter percentage">
+                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
+                  </div>
+                  <div>Pre-tax savings $:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e12" placeholder="Enter Amount">
+                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
+                  </div>
+                  <div>Post-tax savings:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e13" placeholder="Enter percentage">
+                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
+                  </div>
+                  <div>Post-tax savings $:
+                     <input type="decimal" inputmode="decimal" id="retirepg4e14" placeholder="Enter Amount">
+                     <div class="required tooltip"><span class="tooltip-text">Required</span></div>
+                  </div>
+
 
                </div>
             </div>
@@ -241,25 +277,35 @@
          function onChangeCallback() {
             switch (this.currentSlide + 1) {
                case 1:
-                  hideTable();
+                  setPage4();
                   initLoader();
                   page1LocalStorage();
                   break;
                case 2:
-                  hideTable();
-                  updateLoader(1, 4);
+                  setPage4();
+                  updateLoader(1, 5);
                   page2LocalStorage();
                   break;
                case 3:
-                  hideTable();
-                  updateLoader(2, 4);
+                  setPage4();
+                  updateLoader(2, 5);
                   page3LocalStorage();
                   break;
                case 4:
+                  setPage4();
+
+                  hideTable();
+                  updateLoader(3, 5);
+                  page5LocalStorage();
+                  break;
+
+               case 5:
+                  setPage4();
+                  prefill()
                   showTable();
                   $('.next-btn').text('Finish');
-                  updateLoader(3, 4);
-                  page4LocalStorage();
+                  updateLoader(4, 5);
+                  // page4LocalStorage();
                   next();
                   break;
             }

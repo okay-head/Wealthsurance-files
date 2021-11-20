@@ -2,10 +2,6 @@
 
 //globals
 
-// $(":input").on("change", () => {
-//    localStorage.removeItem("clg_result");
-// });
-
 //____ Objects and collections
 
 let clg = {
@@ -21,7 +17,7 @@ function pushToDatabase1(clg) {
    let [a, b, c, d, e, f, g] = clg.page1;
 
    let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${f}&to_fund_percent=${e}&to_fund_amnt=${(
-      (f * e) /
+      (f * d * e) /
       100
    ).toFixed(2)}&inv_rate=${g}`;
 
@@ -61,10 +57,10 @@ function pushToDatabase2(clg) {
    ] = clg.results;
 
    let url_string = `http://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${e}&to_fund_percent=${f}&to_fund_amnt=${(
-      (f * e) /
+      (f *d * e) /
       100
    ).toFixed(2)}&inv_rate=${g}`;
-   console.log(url_string);
+   // console.log(url_string);
 
    $.ajax({
       type: "POST",
@@ -109,7 +105,7 @@ function updatePlaceholders(x) {
          $("#clgpg1resulte6").attr("placeholder", z[4]);
          $("#clgpg1resulte7").attr(
             "placeholder",
-            z[5] * (z[4] / 100).toFixed(2)
+            z[5] * z[3]*(z[4] / 100).toFixed(2)
          );
          $("#clgpg1resulte8").attr("placeholder", z[6]);
 
@@ -133,9 +129,9 @@ function updatePlaceholders(x) {
             $("#clgpg1resulte" + (i + 1)).attr("placeholder", a[i]);
          }
 
-         let calc = a[5] * (a[4] / 100).toFixed(2);
+         let calc = a[5] * a[3]*(a[4] / 100).toFixed(2);
          $("#clgpg1resulte7").attr("placeholder", calc);
-         $("#clgpg1resulte7").val(calc);
+         // $("#clgpg1resulte7").val(calc);
 
          $("#clgpg1resulte8").attr("placeholder", a[6]);
          break;
@@ -205,11 +201,6 @@ function storeRecalculate() {
       "portion_funded%": $("#clgpg1resulte6").val(),
       portion_funded$: $("#clgpg1resulte7").val(),
       investment_rate: $("#clgpg1resulte8").val(),
-      // 'saved': $('#clgpg1resulte8').val(),
-
-      // 'additional_saving': $('#clgpg2resulte1').val(),
-      // 'growth_rate': $('#clgpg2resulte2').val(),
-      // 'saving_monthly': $('#clgpg2resulte3').val(),
    };
 
    clg.results = [];

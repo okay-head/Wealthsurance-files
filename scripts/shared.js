@@ -130,6 +130,7 @@ function fadeInResult() {
    });
 }
 
+//behaviour of the reEnter button
 function reEnter(page) {
    $(".re-enter").on("click", () => {
       window.open(page, "_self");
