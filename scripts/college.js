@@ -130,7 +130,7 @@ function updatePlaceholders(x) {
          }
 
          let calc = a[5] * a[3]*(a[4] / 100).toFixed(2);
-         $("#clgpg1resulte7").attr("placeholder", calc);
+         $("#clgpg1resulte7").attr("placeholder", calc.toFixed(1));
          // $("#clgpg1resulte7").val(calc);
 
          $("#clgpg1resulte8").attr("placeholder", a[6]);

@@ -47,7 +47,7 @@ if (flag) {
 }
 
 //splash-screen
-$(".splash-screen").transition({ scale: 1.35 }, 1700);
+$(".splash-screen img").transition({ scale: 1.25 }, 1700);
 root.scrollTop = 0;
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
@@ -84,6 +84,16 @@ function createSessionId() {
    }
    session_id = string + number;
 
+}
+
+function numFormatter(num) {
+   if(num > 999 && num < 1000000){
+       return (num/1000).toFixed(2) + ' K';
+   }else if(num > 1000000){
+       return (num/1000000).toFixed(2) + ' Million'; 
+   }else if(num < 900){
+       return num; // if value < 1000, nothing to do
+   }
 }
 
 

@@ -122,9 +122,6 @@ body {
       url("../media/images/wealthsurance_bg.png") center center scroll;
    background-size: cover;
 }
-/* html,body,.container{
-   overflow: hidden!important;
-} */
 
 /* splash screen */
 .splash-screen {
@@ -133,9 +130,7 @@ body {
    left: 0;
    width: 100%;
    height: 100%;
-   /* background-color: black; */
    background-color: #e5e5e5;
-   /* background-color: white; */
    z-index: 200;
 }
 
@@ -195,19 +190,15 @@ body {
    min-width: 290px;
    height: 100%;
    z-index: 80;
-   /* background-color: var(--main-primary1); */
-   /* background-color: var(--text-secondary3); */
    background-color: var(--main-secondary2);
    transition: 0.4s ease-in-out all;
    transform: translateX(100%);
    visibility: hidden;
-   /* display: none; */
 }
 
 .offCanvasNav-visible {
    transform: translateX(0);
    visibility: visible;
-   /* display: block; */
 }
 .canvas-close-btn {
    cursor: pointer;
@@ -228,10 +219,8 @@ body {
 }
 .offCanvasNav-container p:first-child {
    position: relative;
-   /* right: -90%; */
    left: 9%;
    top: -6%;
-   /* top: -5%; */
 }
 .offCanvasNav-container p:first-child img {
    width: 13%;
@@ -343,8 +332,6 @@ li.p-relative:hover .dropdown-menu {
    margin: 0;
    padding-left: 1.5em;
    transition: 0.2s ease all;
-   /* padding: 10px 12px; */
-   /* margin: 10px 12px; */
 }
 .dropdown-menu a:hover {
    background-color: var(--main-secondary2);
@@ -390,7 +377,6 @@ li.p-relative:hover .dropdown-menu {
    text-align: center;
    min-height: 83vh;
    font-size: var(--font-main);
-   /* background-color: var(--text-primary3); */
    display: flex;
    flex-flow: column nowrap;
    align-items: center;
@@ -451,15 +437,10 @@ li.p-relative:hover .dropdown-menu {
    background-color: rgba(255, 255, 255, 0.705);
 }
 
-/* .loader{
-} */
 .input-fields {
    line-height: 63px;
    display: block;
    margin: 0.4em auto 1.9em auto;
-   /* display: flex;
-   flex-flow: column nowrap;
-   align-items: center; */
 }
 input,
 select {
@@ -479,7 +460,6 @@ select {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-   /* display: none; <- Crashes Chrome on hover */
    -webkit-appearance: none;
    margin: 0;
 }
@@ -538,14 +518,12 @@ option {
 
 .table {
    font-size: 0.9em;
-   /* margin: 1% 0 -0.5% 0; */
    overflow-x: auto;
    display: none;
 }
 
 table {
    position: relative;
-   /* need to center?? use margins when flex/grid casues bugs */
    width: 900px;
    padding: 1.3em 0;
    margin: 0 auto;
@@ -600,8 +578,6 @@ table {
 
 .slideshow-wrapper {
    align-self: stretch;
-   /* margin-bottom: 3.5%; */
-   /* margin-top: -15%; */
 }
 
 /* -- annuity --*/
@@ -625,6 +601,9 @@ table {
    color: var(--text-secondary1);
 }
 #orange-text {
+   color: var(--text-secondary1) !important;
+}
+.orange-text {
    color: var(--text-secondary1) !important;
 }
 .result-table table {
@@ -674,9 +653,6 @@ table {
    .results-table-container {
       overflow-x: auto;
    }
-   /* .results-table {
-      width: 600px;
-   } */
    .io-container {
       /* display: block; */
       grid-template-columns: 1fr !important;
@@ -725,18 +701,15 @@ table {
       margin-top: 2em !important;
    }
 }
-
 /* -------------- media end ---------------- */
-/* .io-container > section {
-   overflow-x: auto;
-} */
+
 section.input {
+   overflow-x: hidden;
    overflow-y: hidden;
    margin-right: 2em;
 }
 section.output {
    padding-left: 1.8em;
-   /* box-shadow: -15px 0 0 1px 1px #C4C4C4; */
    border-left: 2px solid #c4c4c4;
 }
 .results-table-container {
@@ -745,16 +718,12 @@ section.output {
 }
 .results-table-container input {
    width: 85%;
-   /* margin: 2px -20px; */
    background-color: transparent;
 }
 input:focus {
    border: none;
    border-radius: 4px;
 }
-/* .results-table-container input::placeholder {
-   font-size: 0.9em;
-} */
 .w-100 {
    width: 100%;
 }
@@ -769,17 +738,6 @@ input:focus {
    border-radius: 4px;
    --backdrop-filter: blur(10px);
 }
-/* .results-table tr td:first-child {
-   padding: 10px 2.5em 10px 1em;
-   text-align: left;
-} */
-/* .refi-io-container .results-table tr:first-child td {
-   padding: 0!important;
-} */
-/* .results-table tr:first-child td {
-   padding: 10px 2.5em 10px 1em!important;
-   text-align: left;
-} */
 .results-table tr:nth-child(2) {
    margin-top: 1em; /*not working*/
 }
@@ -792,13 +750,6 @@ input:focus {
 .results-table tr:first-child input {
    width: 95%;
 }
-/* .fna-results-table tr:nth-child(2) td, */
-/* .fna-results-table tr td:first-child:not(tr:first-child){
-   padding: 10px 2.5em 10px 1em;
-}
-.fna-results-table tr:nth-child(2) td{
-   padding: 0 1em 0 1em;
-} */
 .results-table tr td:first-child:not(tr:first-child) {
    padding: 10px 2.5em 10px 1em;
 }
@@ -874,6 +825,7 @@ input:focus {
 .assumptions {
    border-radius: 6px;
    background: white;
+   position: relative;
 }
 .output .result {
    margin: 2em auto;
@@ -892,24 +844,15 @@ input:focus {
    display: grid;
    place-items: center;
    overflow-x: auto;
-   /* overflow-x: auto; */
-   /* max-width: 315px; */
 }
 .legend {
    position: absolute;
    top: 10%;
    left: 6%;
-   /* margin: 0 auto; */
 }
 .legend img {
    width: 66%;
 }
-/* .legend{
-   background-image: url('/media/images/nw-label.png'); 
-   background-repeat: no-repeat; 
-   width: 0%; 
-   height: 40px;
-} */
 
 #toggle_modal_chart {
    cursor: pointer;
@@ -952,8 +895,6 @@ svg > g > g:last-child {
 }
 #close_chart {
    cursor: pointer;
-   /* border: 1px solid red; */
-   /* background-color: royalblue; */
    z-index: 100;
    position: absolute;
    top: 157px;
@@ -965,15 +906,6 @@ svg > g > g:last-child {
    content: "\d7";
 }
 
-/* #nw-chart_div { */
-/* width: 900px; */
-/* height: 30px; */
-/* } */
-
-/* .output .calculated-result {
-   transform: none;
-   margin: 0;
-} */
 .assumptions {
    text-align: left;
    padding: 2em 3em;
@@ -1052,7 +984,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 /* .ammortization-table{
 } */
-.ammortization-table-container{
+.ammortization-table-container {
    overflow-y: auto;
    max-height: 630px;
 }
@@ -1095,6 +1027,55 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 
 /* retirement */
+.retire-output #chart_div {
+   min-height: 400px;
+}
+.legend-text{
+   text-align: center;
+   z-index: 1;
+   position: absolute;
+   top: 36.5%;
+   right: 40%;
+}
+.legend-text p {
+   font-family: "Gilroy-medium", "Verdana", "Times new roman";
+   font-size: 0.78em;
+   margin-bottom: 0;
+   color: #1b1b1b ;
+}
+.legend-text h3{
+   margin: 0.8em 0;
+}
+/* .retire-graph-container{
+   min-height: 500px;
+   border: 1px solid red;
+} */
+.retire-output .result {
+   padding: 2.8em 2.5em;
+   font-size: var(--font-17);
+}
+.retire-output .result div p:first-child {
+   font-family: "Gilroy-medium", "Verdana", "Times new roman";
+   margin-bottom: 0.5em;
+}
+.larger-txt {
+   font-size: 1.2em;
+}
+.retire-re-summary {
+   margin-top: 2.4em;
+   /* margin-bottom:2em; */
+}
+.retire-re-summary p:first-child {
+   font-weight: 900;
+   color: #1b1b1b;
+}
+.retire-re-summary p:nth-child(2) {
+   font-family: "Gilroy-medium", "Verdana", "Times new roman";
+   font-size: 0.9em;
+   color: var(--text-primary3);
+   width: 65%;
+   margin: 0 auto;
+}
 .orange-header td {
    background-color: var(--main-primary3) !important;
 }
@@ -1110,6 +1091,9 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 .retirement-page4 .input-fields > div {
    position: relative;
+}
+.retirement-result-table tr td:nth-child(2) {
+   padding: 10px 2.5em 10px 1em;
 }
 /* .retirement-page4 .input-fields > div::after {
    position: absolute;
@@ -1176,6 +1160,9 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 
 /* college */
+#clgpg1resulte7::placeholder{
+   color: var(--text-secondary3);
+}
 .p-relative {
    position: relative;
 }
@@ -1185,16 +1172,13 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 
 /* mortgage */
 
-.small-toggle{
-   font-size: var(--font-buttons)!important;
-   margin: auto -1px!important;
+.small-toggle {
+   font-size: var(--font-buttons) !important;
+   margin: auto -1px !important;
 }
 .active-btn {
    background-color: var(--main-primary1) !important;
 }
-/* #slide-toggle-btn-grp{
-   transition: 0.001s ease opacity;
-} */
 .toggle-btn-grp {
    min-width: 270px;
    width: 70% !important;
@@ -1346,6 +1330,5 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
       --placeholder: 11.5px; /*13px*/
       --font-result: 22px;
       --input-text: 13.3px; /*14.8px*/
-
    }
 }

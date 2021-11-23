@@ -17,6 +17,10 @@
    <script src="scripts/jquery/jquery.transit.min.js"></script>
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
+
+   <!-- google charts -->
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
+
    <title>Retirement Calculator</title>
 </head>
 
@@ -117,58 +121,93 @@
                         <td>Values</td>
                      </tr>
                      <tr>
-                        <td>Current Age,years:</td>
+                        <td>Current Age,years</td>
                         <td id="orange-text"><input type="decimal" inputmode="decimal" id="retireresultpg1e1" placeholder="35"
                               ></td>
                      </tr>
                      <tr>
-                        <td>Current household income, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e2" placeholder="100000" ></td>
+                        <td>Retirement Age, years</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e2" placeholder="55" ></td>
                      </tr>
                      <tr>
-                        <td>Income growth rate, %:</td>
-                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e3" placeholder="4" ></td>
+                        <td>Current income, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e3" placeholder="40000" ></td>
                      </tr>
                      <tr>
-                        <td>Current monthly saving,%:</td>
+                        <td>Post-retirement pre-tax income, $</td>
                         <td><input type="decimal" inputmode="decimal" id="retireresultpg1e4" placeholder="500000" ></td>
                      </tr>
                      <tr>
-                        <td>Savings so far,$:</td>
-                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e5" placeholder="200000" >
+                        <td>Years of retirement income, years</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e5" placeholder="20" >
                         </td>
                      </tr>
                      <tr>
-                        <td>Growth rate,%:</td>
-                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e6" placeholder="9" >
+                        <td>Retirement goal, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e6" placeholder="97975" >
                         </td>
                      </tr>
                      <tr>
-                        <td>Retirement age,years:</td>
-                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e7" placeholder="65" >
+                        <td>Expected annual increase in income, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e7" placeholder="6" >
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>Pre-retirement investment returns, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e8" placeholder="5" >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Post-retirement investment returns, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e9" placeholder="8" >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Rate of inflation, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e10" placeholder="5" >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Pre-tax savings, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e11" placeholder="9" >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Pre-tax savings, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e12" placeholder="6524" >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Post-tax savings, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e13" placeholder="11" >
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Post-tax savings, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="retireresultpg1e14" placeholder="79787" >
                         </td>
                      </tr>
                   </table>
                </div>
 
                <div class="results-table-container result-table">
-                  <table class="annuity-results-table results-table w-100 editable-results-table">
+                  <table class="annuity-results-table results-table w-100 editable-results-table retirement-result-table">
                      <tr class="result-table-header orange-header">
                         <td>Output</td>
                         <td>Values</td>
                      </tr>
                      <tr>
                         <td>Retirement goal, $:</td>
-                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="retireresultpg2e1" placeholder="36000000"
-                              ></td>
+                        <td id="retireresultpg2e1" style="color:#ffa114!important">36000000</td>
                      </tr>
                      <tr>
                         <td>Potential nest egg, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="retireresultpg2e2" placeholder="26000000" ></td>
+                        <td id="retireresultpg2e2">26000000</td>
                      </tr>
                      <tr>
                         <td>Surplus/(Shortfall), $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="retireresultpg2e3" placeholder="-1000000" ></td>
+                        <td id="retireresultpg2e3">-1000000</td>
                      </tr>
                   </table>
                </div>
@@ -177,10 +216,29 @@
 
             </section>
 
-            <section class="output annuity-output">
+            <section class="output annuity-output retire-output">
                <h4 class="output-header">Output</h4>
                <div class="result">
-                  <p>Graph</p>
+                  <div class="retire-re-top">
+                     <p>My Retirement Goal:</p>
+                     <p class="orange-text larger-txt"> $ <span id="re-goal">3.60 Million</span></p>
+                  </div>
+                  <div class="legend-text">
+                     <p>You are</p>
+                     <h3 id="legend-txt" class="orange-text">65%</h3>
+                     <p>of the way there</p>
+                  </div>
+                  <!-- <div class="retire-graph-container"> -->
+                     <div id="chart_div"></div>
+                  <!-- </div> -->
+                  <div class="retire-re-bottom">
+                     <p>My potential nest egg:</p>
+                     <p class="orange-text">$ <span id="nest-egg"> 2.60 Million</span></p>
+                  </div>
+                  <div class="retire-re-summary">
+                     <p>You have some catching up to do.</p>
+                     <p>Adjust your savings plan to see how it changes yours result</p>
+                  </div>
                </div>
 
                <div>
@@ -218,7 +276,10 @@
    </div>
    <script src="scripts/shared.js"></script>
    <script src="scripts/retirement.js"></script>
+   <script src="scripts/retire-graph.js"></script>
    <script>
+      updatePlaceholders(1);
+      updateTables(1);
       reCalculate();
       reEnter('retirement.html');
       // fadeInResult();
