@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+   <title>Document</title>
+</head>
+<body>
+
+<button>Download pdf</button>
+
+<div id="output"></div>
+
+   <script>
+      'use strict'
+
+      const url_string = `https://v2.convertapi.com/convert/web/to/pdf?Secret=KKpF6ONL5EcXiwLY&Url=https%3A%2F%2Fokay-head.github.io%2FWealthsurance-files%2Ffna_pdf.html&StoreFile=true&Zoom=1.5&PageSize=a4&MarginTop=7&MarginRight=0&MarginBottom=7&MarginLeft=0`
+
+      $.ajax({
+      type: "POST",
+      url: url_string ,
+
+      success: (x) => {
+         // let result = JSON.parse(x);
+         // console.log(result);
+         console.log(x);
+         console.log(x.Files[0].Url);
+
+         const zz = x.Files[0].Url;
+
+         $('button').on('click',()=>{
+            window.open(zz,'_blank')
+            $('#output').text(zz)
+         })
+      },
+      error: (error) => {
+         console.log(error);
+      },
+   }); 
+   
+   
+   </script>
+</body>
+</html>

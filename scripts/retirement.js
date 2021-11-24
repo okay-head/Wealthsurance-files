@@ -125,7 +125,18 @@ function updateResult(goal, egg) {
       // console.log(goal,egg);
       drawGraph(goal, egg);
    } else {
-      alert("You've reached your retirement goal");
+      $("#re-goal").text(numFormatter(goal));
+      $("#nest-egg").text(numFormatter(egg));
+      $("#legend-txt").text(((egg / goal) * 100).toFixed(0) + "%");
+      $('#legend-text-bottom').text('ahead of your retirement goal')
+      
+      $('.retire-re-summary p:first-child').text('Congratulations!')
+      $('.retire-re-summary p:nth-child(2)').text("You've reached your retirement goal")
+
+
+      drawGraph(1, 1);
+
+      // alert("You've reached your retirement goal");
    }
 }
 

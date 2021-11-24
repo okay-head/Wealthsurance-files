@@ -139,7 +139,7 @@ body {
    place-items: center;
 }
 .splash-screen img {
-   transform: scale(0.8);
+   transform: scale(0.5);
    margin-bottom: 3%;
 }
 
@@ -671,7 +671,8 @@ table {
       grid-template-rows: 1.2fr 1fr !important;
    }
    .retirement-io-container {
-      grid-template-rows: 0.85fr 1fr !important;
+      grid-template-rows: 0.86fr 0.88fr !important;
+      margin-bottom: -5em;
    }
    .clg-io-container {
       grid-template-rows: 1.31fr 1fr !important;
@@ -1094,6 +1095,12 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 .retirement-result-table tr td:nth-child(2) {
    padding: 10px 2.5em 10px 1em;
+}
+.output .retirement-result-table{
+   width: 80%;
+}
+.retirement-output-header{
+   width: 78.5%;
 }
 /* .retirement-page4 .input-fields > div::after {
    position: absolute;

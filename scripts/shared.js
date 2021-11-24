@@ -47,7 +47,7 @@ if (flag) {
 }
 
 //splash-screen
-$(".splash-screen img").transition({ scale: 1.25 }, 1700);
+$(".splash-screen img").transition({ scale: 1.1 }, 1700);
 root.scrollTop = 0;
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
