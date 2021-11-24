@@ -16,19 +16,19 @@ let nw = {
 
 $('#toggle_modal_chart').on('click',()=>{
    root.scrollTop = 170
-   $('#nw_enlarged_chart,.shadow-element,#close_chart').toggleClass("hidden");
+   $('#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover').toggleClass("hidden");
    // $('#nw_enlarged_chart').removeClass("shrink");
 })
 
 $('body').on('keydown',(e)=>{
    if (e.key=='Escape') {
-      $('#nw_enlarged_chart,.shadow-element,#close_chart').addClass("hidden");
+      $('#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover').addClass("hidden");
       // $('#nw_enlarged_chart').removeClass("shrink");
    }
 })
 
 $('#close_chart').on('click',()=>{
-   $('#nw_enlarged_chart,.shadow-element,#close_chart').addClass("hidden");
+   $('#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover').addClass("hidden");
 })
 
 //functions

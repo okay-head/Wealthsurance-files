@@ -115,7 +115,7 @@ function drawChart() {
          width: "60%",
          // top: 0,
          // left: 0,
-         // right:0,
+         right:"18%",
          // bottom: 0,
       },
       height: "100%",
@@ -126,7 +126,7 @@ function drawChart() {
       legend: {
          position: "bottom",
       },
-      bar: { groupWidth: "70%" },
+      bar: { groupWidth: "60%" },
       vAxis: {
          format: "currency",
          // format: "$#,###",

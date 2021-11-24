@@ -876,7 +876,18 @@ input:focus {
    position: absolute;
    bottom: 19%;
 }
-#nw_enlarged_chart {
+.enlarged_chart_cover{
+   background-color: transparent!important;
+   z-index: 81!important;
+   height: 50px!important;
+}
+.enlarged_chart_cover span{
+   /* z-index: 81!important; */
+   position: absolute;
+   top: 12.6%;
+   right: 2.5%;
+}
+#nw_enlarged_chart,.enlarged_chart_cover {
    transform: scale(1);
    /* transition: 5s ease transform; */
    position: absolute;
@@ -896,16 +907,16 @@ svg > g > g:last-child {
 }
 #close_chart {
    cursor: pointer;
-   z-index: 100;
-   position: absolute;
-   top: 157px;
-   right: 219px;
+   /* z-index: 100; */
+   /* position: absolute; */
+   /* top: 157px; */
+   /* right: 219px; */
 }
-#close_chart::after {
-   color: #fff;
-   font-size: 38px;
-   content: "\d7";
-}
+/* #close_chart::after { */
+   /* color: #fff; */
+   /* font-size: 38px; */
+   /* content: "\d7"; */
+/* } */
 
 .assumptions {
    text-align: left;
