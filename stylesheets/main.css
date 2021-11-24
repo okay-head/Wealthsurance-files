@@ -35,9 +35,9 @@
    --font-headings: 36px;
    --font-17: 17px;
    --font-18: 18px;
-   --placeholder: 13px;
    --font-result: 28px;
-   --input-text: 14.8px; /*browser 13.3*/
+   --placeholder: 15px;
+   --input-text: 18px; /*browser 13.3*/
 }
 
 /*--- defaults ---*/
@@ -1031,7 +1031,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 .retire-output #chart_div {
    min-height: 400px;
 }
-.legend-text{
+.legend-text {
    text-align: center;
    z-index: 1;
    position: absolute;
@@ -1042,9 +1042,9 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    font-family: "Gilroy-medium", "Verdana", "Times new roman";
    font-size: 0.78em;
    margin-bottom: 0;
-   color: #1b1b1b ;
+   color: #1b1b1b;
 }
-.legend-text h3{
+.legend-text h3 {
    margin: 0.8em 0;
 }
 /* .retire-graph-container{
@@ -1090,16 +1090,19 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    text-align: right;
    margin-right: 26vw;
 }
+.retirement-page4 input {
+   background-color: white;
+}
 .retirement-page4 .input-fields > div {
    position: relative;
 }
 .retirement-result-table tr td:nth-child(2) {
    padding: 10px 2.5em 10px 1em;
 }
-.output .retirement-result-table{
+.output .retirement-result-table {
    width: 80%;
 }
-.retirement-output-header{
+.retirement-output-header {
    width: 78.5%;
 }
 /* .retirement-page4 .input-fields > div::after {
@@ -1167,7 +1170,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 
 /* college */
-#clgpg1resulte7::placeholder{
+#clgpg1resulte7::placeholder {
    color: var(--text-secondary3);
 }
 .p-relative {
@@ -1334,8 +1337,8 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
       --toggle-font-buttons: 17px; /*21*/
       --font-headings: 26px; /*36*/
       --font-17: 14px;
-      --placeholder: 11.5px; /*13px*/
+      --placeholder: 12px; /*13px*/
       --font-result: 22px;
-      --input-text: 13.3px; /*14.8px*/
+      --input-text: 14px; /*14.8px*/
    }
 }

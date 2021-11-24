@@ -31,8 +31,10 @@
          const zz = x.Files[0].Url;
 
          $('button').on('click',()=>{
-            window.open(zz,'_blank')
-            $('#output').text(zz)
+            window.open(zz)
+            // window.print()
+            // window.print(zz)
+            // $('#output').text(zz)
          })
       },
       error: (error) => {

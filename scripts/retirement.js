@@ -1,5 +1,10 @@
 "use strict";
 
+//defaults
+
+// disable page 4 inputs
+$('.retirement-page4 input').prop('disabled',true)
+
 //____ Objects and collections
 
 let retire = {
@@ -121,15 +126,18 @@ function updateResult(goal, egg) {
       $("#re-goal").text(numFormatter(goal));
       $("#nest-egg").text(numFormatter(egg));
       $("#legend-txt").text(((egg / goal) * 100).toFixed(0) + "%");
+      $('#legend-text-bottom').text('of the way there')
+      $('.retire-re-summary p:first-child').text('You have some catching up to do.')
+      $('.retire-re-summary p:nth-child(2)').text("Adjust your savings plan to see how it changes your result")
 
       // console.log(goal,egg);
       drawGraph(goal, egg);
    } else {
       $("#re-goal").text(numFormatter(goal));
       $("#nest-egg").text(numFormatter(egg));
-      $("#legend-txt").text(((egg / goal) * 100).toFixed(0) + "%");
-      $('#legend-text-bottom').text('ahead of your retirement goal')
-      
+      $("#legend-txt").text((((egg / goal) * 100)).toFixed(0) + "%");
+      $('#legend-text-bottom').text('ahead of your goal')
+
       $('.retire-re-summary p:first-child').text('Congratulations!')
       $('.retire-re-summary p:nth-child(2)').text("You've reached your retirement goal")
 
