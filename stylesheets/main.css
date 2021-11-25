@@ -49,6 +49,9 @@
    padding: 0;
    /* !no border-box */
 }
+input[disabled]{
+   background-color: rgba(255, 255, 255, 0.719);
+}
 .fade {
    opacity: 0;
    height: 0;

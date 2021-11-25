@@ -5,11 +5,11 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
    <!-- number format -->
-    <script src="scripts/jquery/jquery.number.min.js"></script>
+   <script src="scripts/jquery/jquery.number.min.js"></script>
 
 
 
@@ -105,35 +105,39 @@
          <div class="page1">
             <div class="input-fields">
                <div>I am looking to buy a house priced at $
-                  <input type="decimal" inputmode="decimal" id="mortgpg1e1" placeholder="Enter Amount"> 
+                  <input type="decimal" inputmode="decimal" id="mortgpg1e1" placeholder="Enter Amount">
                </div>
                <div>
                   in the zip code
                   <input type="text" id="mortgpg1e2" placeholder="Enter zip code" maxlength="5">
                </div>
                <div>
-                  Down payment <input type="decimal" inputmode="decimal" id="mortgpg1e3" placeholder="Enter Percentage">% or $ <input
-                     type="decimal" inputmode="decimal" id="mortgpg1e4" placeholder="Enter Amount">
+                  Down payment <input type="decimal" inputmode="decimal" id="mortgpg1e3"
+                     placeholder="Enter Percentage">% or $ <input type="decimal" inputmode="decimal" id="mortgpg1e4"
+                     placeholder="Enter Amount">
                </div>
                <div>
                   PMI
-                  <input type="decimal" inputmode="decimal" id="mortgpg1e5" placeholder="Enter percentage"> % till <input type="decimal"
-                     id="mortgpg1e6" placeholder="Enter percentage">% is paid
+                  <input type="decimal" inputmode="decimal" id="mortgpg1e5" placeholder="Enter percentage"> % till
+                  <input type="decimal" id="mortgpg1e6" placeholder="Enter percentage">% is paid
                </div>
                <div>Loan at
-                  <input type="decimal" inputmode="decimal" id="mortgpg1e7" placeholder="Enter Percentage">% rate $ <input type="decimal"
-                     id="mortgpg1e8" placeholder="Loan amount">
+                  <input type="decimal" inputmode="decimal" id="mortgpg1e7" placeholder="Enter Percentage">% rate $
+                  <input type="decimal" id="mortgpg1e8" placeholder="Loan amount">
                </div>
                <div>
                   for
                   <input type="decimal" inputmode="decimal" id="mortgpg1e9" placeholder="Enter years">years
                </div>
 
-               <div class="mt-1">Annual HOA dues $ <input type="decimal" inputmode="decimal" id="mortgpg1e10" placeholder="Enter amount"> per
+               <div class="mt-1">Annual HOA dues $ <input type="decimal" inputmode="decimal" id="mortgpg1e10"
+                     placeholder="Enter amount"> per
                   year</div>
-               <div>Annual property taxes $ <input type="decimal" inputmode="decimal" id="mortgpg1e11" placeholder="Enter amount"> per year
+               <div>Annual property taxes $ <input type="decimal" inputmode="decimal" id="mortgpg1e11"
+                     placeholder="Enter amount"> per year
                </div>
-               <div>Annual property insurance $ <input type="decimal" inputmode="decimal" id="mortgpg1e12" placeholder="Enter amount"> per
+               <div>Annual property insurance $ <input type="decimal" inputmode="decimal" id="mortgpg1e12"
+                     placeholder="Enter amount"> per
                   year
                </div>
             </div>
@@ -153,6 +157,16 @@
          initLoader();
          pgLocalStorage();
          next();
+
+         //Timers
+         const t1 = window.setInterval(detectChange1, 100)
+         const t2 = window.setInterval(detectChange2, 100)
+         const t3 = window.setInterval(detectChange3, 100)
+         const t4 = window.setInterval(detectChange4, 100)
+         const t5 = window.setInterval(detectChange5, 100)
+         const t6 = window.setInterval(detectChange6, 100)
+
+
       </script>
 
 
