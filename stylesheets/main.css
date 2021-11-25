@@ -611,6 +611,19 @@ table {
    font-size: 1.1em;
    border-spacing: 5px;
 }
+.result-table table input,
+.result-table table ::placeholder
+{
+   font-size: 0.95em;
+}
+.fna-results-table input,
+.nw-results-table input{
+font-size: 1.05em;
+}
+.fna-results-table ::placeholder,
+.nw-results-table ::placeholder{
+   font-size: 0.95em;
+}
 .result-table-header td {
    color: white !important;
    background-color: var(--text-primary1) !important;
