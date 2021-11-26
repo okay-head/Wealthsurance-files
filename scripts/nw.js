@@ -53,16 +53,6 @@ function updatePlaceholders(x) {
 
 
          break;
-
-      //recalculate
-   //    case 2:
-   //       for (let i = 1; i <= 4; i++) {
-   //          $("#refiresulte"+i).attr("placeholder", (Object.values(refi.results[0]))[i]);
-   //       }
-   //       for (let i = 5; i <= 10; i++) {
-   //          $("#refiresulte"+(i+1)).attr("placeholder", (Object.values(refi.results[0]))[i]);
-   //       }
-   //       break;
    }
 }
 
@@ -139,7 +129,7 @@ function page1LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page1 :input").change(() => {
       if (localStorage.getItem("nwpg1") != null) {
          localStorage.removeItem("nwpg1");
          nw.page1 = [];
@@ -202,7 +192,7 @@ function page2LocalStorage() {
    // }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page2 :input").change(() => {
       if (localStorage.getItem("nwpg2") != null) {
          localStorage.removeItem("nwpg2");
          nw.page2 = [];
@@ -271,13 +261,13 @@ function page3LocalStorage() {
    // }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page3 :input").change(() => {
       if (localStorage.getItem("nwpg3") != null) {
          localStorage.removeItem("nwpg3");
          nw.page3 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {   
          nw.page3 = [];
 
          const obj = {
@@ -304,22 +294,23 @@ function page3LocalStorage() {
 
 function next() {
    //  change next button's action
-   $(".next-btn").on("click", () => {
+   $(".next-btn").on("click", changeButtonBehaviour)
+
+   function changeButtonBehaviour() {
       function loaderPromise() {
          let update = new Promise((resolve) => {
             resolve(updateLoader(3, 3));
          });
-
          return update;
       }
-
       loaderPromise().then(() => {
          pushToDatabase1(nw);
          setTimeout(() => {
-            window.open("netWorth_result.html", "_self");
+            console.log('inside modified next button function');
+            // window.open("netWorth_result.html", "_self");
          }, 1410);
       });
-   });
+   }
 
    //change the functionality back when back button is pressed
    $(".prev-btn").on("click", () => {
@@ -328,6 +319,9 @@ function next() {
          .off()
          .on("click", () => {
             mySiema.next();
+            page1LocalStorage();
+            page2LocalStorage();
+            page3LocalStorage();
          });
    });
 }

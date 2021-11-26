@@ -72,7 +72,7 @@ a {
    min-height: 93vh !important;
 }
 .d-none {
-   display: none;
+   display: none!important;
 }
 
 .overflow-h {
