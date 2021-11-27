@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+
+   <!-- number format -->
+   <script src="scripts/jquery/jquery.number.min.js"></script>
+
+   <!-- jquery validation -->
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+
+   <!-- jquery transit -->
+   <script src="scripts/jquery/jquery.transit.min.js"></script>
+   <!-- stylesheets -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <title>Form validation</title>
+
+   <style>
+      .splash-screen {
+         display: none;
+      }
+
+      @media screen and (max-width: 610px) {
+         input {
+            width: 90%;
+         }
+      }
+
+      .input-fields {
+         line-height: 70px;
+      }
+
+      /* .input-fields div:first-child,
+      .input-fields div:nth-child(3) {
+         position: relative;
+      } */
+
+      .input-wrapper {
+         display: inline-block;
+         position: relative;
+         width: max-content;
+         /* border: 1px solid red; */
+      }
+
+      .error-container {
+         font-family: 'Gilroy-medium';
+         font-size: 0.5em;
+         letter-spacing: 0.1px;
+         position: absolute;
+         /* font-size: 0.3em; */
+         color: red;
+         z-index: -1;
+         top: 49%;
+         left: 7%;
+      }
+
+      #error1,
+      #error3 {
+         top: 49%;
+         left: 7%;
+         /* bottom: -3em;
+         left: 45em; */
+
+         /* bottom: -35px;
+         left: 530px; */
+
+         /* bottom: -49.5%;
+         left: 41%; */
+      }
+
+      #error3 {
+         /* top: 100%; */
+         /* left: -100%; */
+         color: blue !important;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="splash-screen"><img src="media/images/wealthsurance-logo.svg" alt="splash screen image"></div>
+
+   <div class="container">
+      <nav>
+         <div class="brand">
+            <img src="media/images/wealthsurance-logo.svg" alt="wealthsurance-logo" class="brand-image">
+            <span class="brand-text">Wealthsurance</span>
+         </div>
+
+         <div class="navigation">
+            <ul class="navigation-ul">
+               <li>
+                  <a href="#">Home</a>
+               </li>
+               <li>
+                  <a href="#">Know More</a>
+               </li>
+               <li class="p-relative">
+                  <a href="#">Tools <span class="dropdown-arrow"><img src="media/images/nav-dropdown-arrow.png"
+                           alt="dropdown-arrow"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="fna.html">Financial Needs Analysis</a></li>
+                     <li><a href="termInsurance.html">Term Insurance</a></li>
+                     <li><a href="annuity.html">Annuity</a></li>
+                     <li><a href="netWorth.html">Net worth</a></li>
+                     <li><a href="mortgage.html">Mortgage</a></li>
+                     <li><a href="retirement.html">Retirement</a></li>
+                     <li><a href="refi.html">Refi</a></li>
+                     <li><a href="college_expenses.html">College Expenses</a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#">Events</a>
+               </li>
+               <li>
+                  <a href="#">About Us</a>
+               </li>
+               <li>
+                  <a href="#">Contact Us</a>
+               </li>
+
+               <li>
+                  <span role="button" class="red-btn">Get a Quote</span>
+               </li>
+            </ul>
+         </div>
+
+         <span class="hamburger" role="button"></span>
+      </nav>
+
+      <div class="shadow-element"></div>
+      <div class="hide-hamburger-component"></div>
+      <aside class="offCanvasNav">
+         <div class="offCanvasNav-container">
+            <p><span class="canvas-close-btn"><img src="media/images/x.svg" alt="close-icon"></span></p>
+            <ul>
+               <li><a href="#">Home</a></li>
+               <li><a href="#">Know More</a></li>
+               <li><a href="#">Tools</a></li>
+               <li><a href="#">Events</a></li>
+               <li><a href="#">About us</a></li>
+               <li><a href="#">Contact us</a></li>
+            </ul>
+            <p>
+               <span role="button" class="red-btn">Get a Quote</span>
+            </p>
+         </div>
+      </aside>
+
+      <div class="content-container">
+         <div class="top">
+            <h1 class="page-heading">Financial Needs Analysis</h1>
+            <div class="loader">
+               <div class="progress-bar">
+                  <span class="progress-percentage"></span>
+               </div>
+            </div>
+         </div>
+
+         <!-- dynamic content  start -->
+         <div class="slideshow-wrapper siema">
+            <div class="page1">
+               <form id="page1Form">
+                  <div class="input-fields">
+                     <div>I am
+                        <div class="input-wrapper">
+
+                           <input type="decimal" inputmode="decimal" id="fnapg1e1" name="fnapg1e1"
+                              placeholder="Enter Age">
+                           <span class="error-container" id="error1">
+                        </div>
+                        <!-- This field is required -->
+
+                        </span>
+                        years old,
+                     </div>
+                     <div>
+                        <select id="fnapg1e2">
+                           <option value="married">married</option>
+                           <option value="unmarried">unmarried</option>
+                        </select>
+                        and,
+                     </div>
+                     <div>I have
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="fnapg1e3" name="fnapg1e3"
+                              placeholder="Enter number">
+                           <span class="error-container" id="error3">
+                              <!-- This field is required -->
+                           </span>
+                        </div>
+                        children under 18
+                     </div>
+                  </div>
+                  <!-- <span role="button" id="newFormSubmit" type="submit" name='submit' value="Post it !">Submit</span> -->
+                  <!-- <button type="submit" form="page1Form">Click me</button> -->
+               </form>
+            </div>
+
+            <div class="page2">
+               <form id="page2Form">
+                  <div class="input-fields">
+                     <div>My Annual household income is $
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="fnapg2e1" name="fnapg2e1"
+                              placeholder="Enter Amount">
+                           <span class="error-container" id="error4">
+                              <!-- This field is required -->
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+
+            <div class="page3">
+               <form id="page3Form">
+                  <div class="input-fields">
+                     <div>The mortgage on my house is
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="fnapg3e1" name="fnapg3e1"
+                              placeholder="Enter Amount">
+                           <span class="error-container" id="error3e1">
+                              <!-- This field is required -->
+                           </span>
+                        </div><br>
+                        at <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="fnapg3e2"
+                              name="fnapg3e2" placeholder="Enter Percentage">
+                           <span class="error-container" id="error3e2">
+                              <!-- This field is required -->
+                           </span>
+                        </div> % for
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="fnapg3e3" name="fnapg3e3"
+                              placeholder="Enter Years">
+                           <span class="error-container" id="error3e3">
+                              <!-- This field is required -->
+                           </span>
+                        </div> years.
+                     </div>
+                  </div>
+               </form>
+            </div>
+
+
+            <div class="page4">
+               <form id="page4Form">
+                  <div class="input-fields">
+                     <div>I carry a total debt (other than mortgage) of $
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="fnapg4e1" name="fnapg4e1"
+                              placeholder="Enter Amount">
+                           <span class="error-container" id="error4e1">
+                           </span>
+                        </div>
+                     </div>
+                     <div class="table">
+                        <table>
+                           <tr>
+                              <td>Credit Cards:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg4e2c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest"
+                                    id="fnapg4e2c2">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg4e2c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Vehicle Loans:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg4e3c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest"
+                                    id="fnapg4e3c2">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg4e3c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Student Loans:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg4e4c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest"
+                                    id="fnapg4e4c2">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg4e4c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Bank Loans:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg4e5c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest"
+                                    id="fnapg4e5c2">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg4e5c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Personal Loans:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg4e6c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest"
+                                    id="fnapg4e6c2">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg4e6c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Others:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg4e7c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest"
+                                    id="fnapg4e7c2">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg4e7c3">
+                              </td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+               </form>
+            </div>
+
+
+            <div class="page5">
+               <form id="page5Form">
+                  <div class="input-fields">
+                     <div>I have major expenses ahead of $
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="fnapg5e1" name="fnapg5e1"
+                              placeholder="Enter Amount">
+                           <span class="error-container" id="error5e1">
+                           </span>
+                        </div>
+                     </div>
+                     <div class="table">
+                        <table>
+                           <tr>
+                              <td>College Education:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e2c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg5e2c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Medical Expenses:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e3c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg5e3c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Planned life events:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e4c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg5e4c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Financial Expenses:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e5c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg5e5c3">
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Others:</td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e6c1">
+                              </td>
+                              <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
+                                    id="fnapg5e6c3">
+                              </td>
+                           </tr>
+                        </table>
+                     </div>
+
+                  </div>
+               </form>
+            </div>
+         </div>
+
+         <!-- dynamic content end -->
+
+
+         <div class="btn-group">
+            <span role="button" class="red-btn prev-btn">Previous</span>
+            <span role="button" id="newFormSubmit1" form="page1Form" name='submit' class="red-btn next-btn">Next</span>
+            <span role="button" id="newFormSubmit2" form="page2Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+            <span role="button" id="newFormSubmit3" form="page3Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+            <span role="button" id="newFormSubmit4" form="page4Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+            <span role="button" id="newFormSubmit5" form="page5Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+
+            <!-- type="submit" -->
+         </div>
+      </div>
+
+      <script src="scripts/shared.js"></script>
+      <script src="scripts/fna.js"></script>
+
+      <script src="scripts/siema-1.5.1/dist/siema.min.js"></script>
+
+      <script>
+         'use strict'
+
+
+         // window.setInterval(checkInput,100)
+         // function modifySubmit(id) {
+         //    $('#newFormSubmit').attr('form', id)
+         // }
+
+
+         // function validateForm1() {
+         //    if ($("#page1Form").valid()) {
+         //       // isValid = true
+         //       return mySiema.next()
+         //    }
+         // }
+         // function validateForm2() {
+         //    if ($("#page2Form").valid()) {
+         //       // isValid = true
+         //       return mySiema.next()
+         //    }
+         // }
+
+         // $("span[form~='page1Form']").on('click',()=>{
+         //    let x = window.setInterval(validateForm1,100)
+         //    if (isValid) {
+         //       window.clearInterval(x)
+         //    }
+         // })
+
+         // function validateForm2() {
+         //    $("span[form~='page2Form']").on('click', () => {
+         //       console.log(isValid);
+         //       // console.log('blehpg2');
+         //       if ($("#page2Form").valid()) {
+         //          $('.next-btn').click(() => {
+         //             return mySiema.next()
+         //          }
+         //          );
+         //          // isValid = true;
+         //       }
+         //    })
+         // }
+
+         let isValid = false;
+         function checkInput() {
+            $(':input').on('change', () => {
+               isValid = false;
+            })
+         }
+         checkInput()
+         // Page1 validation
+         $("#page1Form").validate(
+            {
+               // errorElement: "span#error1",
+               errorPlacement: function (error, element) {
+                  if (element.is('#fnapg1e1')) {
+                     error.appendTo('#error1');
+
+                  } else if (element.is('#fnapg1e3')) {
+                     error.appendTo('#error3');
+
+                  }
+               },
+               rules:
+               {
+                  fnapg1e1:
+                  {
+                     required: true
+                  },
+                  //  fnapg1e2: 
+                  //  {
+                  //    required: true,
+                  //    // email: true
+                  //  },
+                  fnapg1e3:
+                  {
+                     required: true
+                     // maxlength: 1024
+                  }
+               },
+               messages:
+               {
+                  fnapg1e1:
+                  {
+                     required: "Please enter your age"
+                  },
+                  //  fnapg1e2: 
+                  //  {
+                  //    required: "Please enter your marital status."
+                  // },
+                  fnapg1e3:
+                  {
+                     required: "Please enter this information."
+
+                     // maxlength: jQuery.format("Please limit the message to {0} letters!")
+                  }
+               }
+            });
+
+         //page 2 validation
+         $("#page2Form").validate(
+            {
+               errorPlacement: function (error) {
+                  error.appendTo('#error4');
+               },
+               rules:
+               {
+                  fnapg2e1:
+                  {
+                     required: true
+                  },
+               },
+               messages:
+               {
+                  fnapg2e1:
+                  {
+                     required: "Please enter your income"
+                  },
+               }
+            });
+
+
+         $("#page3Form").validate(
+            {
+               errorPlacement: function (error, element) {
+                  if (element.is('#fnapg3e1')) {
+                     error.appendTo('#error3e1');
+                  } else if (element.is('#fnapg3e2')) {
+                     error.appendTo('#error3e2');
+                  } else if (element.is('#fnapg3e3')) {
+                     error.appendTo('#error3e3');
+                  }
+               },
+               rules: {
+                  fnapg3e1: { required: true },
+                  fnapg3e2: { required: true },
+                  fnapg3e3: { required: true }
+               },
+               messages: {
+                  fnapg3e1: { required: "This field is required" },
+                  fnapg3e2: { required: "This field is required" },
+                  fnapg3e3: { required: "This field is required" }
+               }
+            });
+
+         $("#page4Form").validate(
+            {
+               errorPlacement: function (error, element) {
+                  if (element.is('#fnapg4e1')) {
+                     error.appendTo('#error4e1');
+                  }
+               },
+               rules: {
+                  fnapg4e1: { required: true },
+               },
+               messages: {
+                  fnapg4e1: { required: "This field is required" },
+               }
+            });
+
+         $("#page5Form").validate(
+            {
+               errorPlacement: function (error, element) {
+                  if (element.is('#fnapg5e1')) {
+                     error.appendTo('#error5e1');
+                  }
+               },
+               rules: {
+                  fnapg5e1: { required: true },
+               },
+               messages: {
+                  fnapg5e1: { required: "This field is required" },
+               }
+            });
+
+         $('button').on('click', (e) => {
+            e.preventDefault()
+         })
+
+         function validateForm(x) {
+            if ($(`#page${x}Form`).valid()) {
+               if (x !== 5) {
+                  return mySiema.next()
+               } else if (x == 5) {
+                  // next()
+                  nextPage()
+
+               }
+            }
+         }
+
+         function nextPage() {
+            function loaderPromise() {
+               let update = new Promise((resolve) => {
+                  resolve(updateLoader(5, 5));
+               });
+               return update;
+            }
+
+            loaderPromise().then(() => {
+               pushToDatabase1(fna);
+               setTimeout(() => {
+                  window.open("fna_result.html", "_self");
+               }, 1410);
+            });
+         }
+         function prevBehaviour() {
+            $(".prev-btn").on("click", () => {
+               $(".next-btn")
+                  .text("Next")
+                  // .off()
+               // .on("click", () => {
+               //    mySiema.next();
+               // });
+            });
+
+         }
+
+         // function fValidate(x) {
+         //    $(`span[form~='page${x}Form']`).on('click', () => {
+         //       validateForm(x)
+         //    }
+         //    );
+         // }
+
+         function fValidate(x) {
+            $(`span[form~='page${x}Form']`).on('click', () => {
+               validateForm(x)
+            })
+         }
+
+
+         //for page 1
+         initLoader();
+         page1LocalStorage();
+         fValidate(1);
+
+         function onChangeCallback() {
+            switch (this.currentSlide + 1) {
+               case 1:
+                  $('.next-btn').off()
+                  fValidate(1);
+                  initLoader();
+                  page1LocalStorage();
+                  $('#newFormSubmit2,#newFormSubmit3,#newFormSubmit4,#newFormSubmit5').addClass('d-none');
+                  $('#newFormSubmit1').removeClass('d-none'); break;
+               case 2:
+                  $('.next-btn').off()
+                  fValidate(2);
+                  $('#newFormSubmit1,#newFormSubmit3,#newFormSubmit4,#newFormSubmit5').addClass('d-none');
+                  $('#newFormSubmit2').removeClass('d-none');
+                  updateLoader(1, 5);
+                  page2LocalStorage();
+                  break;
+               case 3:
+                  $('.next-btn').off();
+                  fValidate(3);
+                  $('#newFormSubmit1,#newFormSubmit2,#newFormSubmit4,#newFormSubmit5').addClass('d-none');
+                  $('#newFormSubmit3').removeClass('d-none');
+                  updateLoader(2, 5);
+                  page3LocalStorage();
+                  break;
+               case 4:
+                  $('.next-btn').off();
+                  fValidate(4);
+                  $('#newFormSubmit1,#newFormSubmit3,#newFormSubmit2,#newFormSubmit5').addClass('d-none');
+                  $('#newFormSubmit4').removeClass('d-none');
+                  updateLoader(3, 5);
+                  table();
+                  page4LocalStorage();
+                  break;
+               case 5:
+                  // $('.next-btn').off();
+                  fValidate(5);
+                  $('#newFormSubmit1,#newFormSubmit3,#newFormSubmit4,#newFormSubmit2').addClass('d-none');
+                  $('#newFormSubmit5').removeClass('d-none');
+                  $('.next-btn').text('Finish');
+                  updateLoader(4, 5);
+                  table();
+                  page5LocalStorage();
+                  prevBehaviour();
+                  // next();
+                  break;
+            }
+         }
+
+         // --- slider ---
+         const mySiema = new Siema({
+            onChange: onChangeCallback,
+            selector: '.siema',
+            duration: 900,
+            easing: 'ease-in-out',
+            perPage: 1,
+            startIndex: 0,
+            draggable: false,
+            multipleDrag: false,
+            threshold: 20,
+            loop: false,
+            rtl: false,
+         });
+         $('.prev-btn').click(() => mySiema.prev());
+
+
+         // $('.next-btn').click(() =>{
+         //    // console.log(isValid);
+         //    validateForm1()
+         //    if (isValid) {
+         //    return mySiema.next()
+         //    }
+         // } 
+         // );
+
+         // function page1FormClick() {
+
+         // $("span[form~='page1Form']").on('click', () => {
+         //    // console.log(isValid);
+         //    validateForm1()
+         //    // if (isValid) {
+         //    //    nextSlide("span[form~='page1Form']")
+         //    // }
+         // }
+         // );
+         // // }
+
+         // page 2
+         // $("span[form~='page2Form']").on('click', () => {
+         //    validateForm2()
+         // }
+         // );
+
+
+
+         // function nextSlide(x) {
+         //    $(x).on('click',()=>{
+         //       return mySiema.next()
+         //    })
+         // }
+
+      </script>
+
+
+</body>
+
+</html>
