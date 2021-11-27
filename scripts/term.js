@@ -237,7 +237,7 @@ function page1LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page1 :input").change(() => {
       if (localStorage.getItem("tepg1") != null) {
          localStorage.removeItem("tepg1");
          te.page1 = [];
@@ -261,13 +261,13 @@ function page2newLocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page2 :input").change(() => {
       if (localStorage.getItem("tepg2new") != null) {
          localStorage.removeItem("tepg2new");
          te.page2new = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {
          te.page2new = [];
          te.page2new.push($("#tepg2new").val());
 
@@ -323,13 +323,13 @@ function page2LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page3 :input").change(() => {
       if (localStorage.getItem("tepg2") != null) {
          localStorage.removeItem("tepg2");
          te.page2 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {
          te.page2 = [];
 
          const obj = {
@@ -409,13 +409,13 @@ function page3LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page4 :input").change(() => {
       if (localStorage.getItem("tepg3") != null) {
          localStorage.removeItem("tepg3");
          te.page3 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {
          te.page3 = [];
 
          const obj = {

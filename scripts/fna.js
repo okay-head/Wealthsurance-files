@@ -202,7 +202,7 @@ function page1LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page1 :input").change(() => {
       if (localStorage.getItem("fnapg1") != null) {
          localStorage.removeItem("fnapg1");
          fna.page1 = [];
@@ -227,13 +227,13 @@ function page2LocalStorage() {
       $("#fnapg2e1").val(fna.page2[0]);
    }
    //push to local storage
-   $(":input").change(() => {
+   $(".page2 :input").change(() => {
       if (localStorage.getItem("fnapg2") != null) {
          localStorage.removeItem("fnapg2");
          fna.page2 = [];
       }
 
-      $(".next-btn").on("click", () => {
+      $(".next-btn,.prev-btn").on("click", () => {
          fna.page2 = [];
          fna.page2.push($("#fnapg2e1").val());
          localStorage.setItem("fnapg2", JSON.stringify(fna.page2));
@@ -252,13 +252,13 @@ function page3LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page3 :input").change(() => {
       if (localStorage.getItem("fnapg3") != null) {
          localStorage.removeItem("fnapg3");
          fna.page3 = [];
       }
 
-      $(".next-btn").on("click", () => {
+      $(".next-btn,.prev-btn").on("click", () => {
          fna.page3 = [];
          fna.page3.push($("#fnapg3e1").val());
          fna.page3.push($("#fnapg3e2").val());
@@ -315,13 +315,13 @@ function page4LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page4 :input").change(() => {
       if (localStorage.getItem("fnapg4") != null) {
          localStorage.removeItem("fnapg4");
          fna.page4 = [];
       }
 
-      $(".next-btn").on("click", () => {
+      $(".next-btn,.prev-btn").on("click", () => {
          fna.page4 = [];
 
          const obj = {
@@ -371,55 +371,55 @@ function page4LocalStorage() {
 
    //glitch push to local storage even when the input fields do not change, but are prefilled
 
-   if ($(':input').val()!=0) {
-      $(".next-btn").on("click", () => {
-         fna.page4 = [];
+   // if ($(':input').val()!=0) {
+   //    $(".next-btn").on("click", () => {
+   //       fna.page4 = [];
 
-         const obj = {
-            total: $("#fnapg4e1").val(),
-            credit: [
-               $("#fnapg4e2c1").val(),
-               $("#fnapg4e2c2").val(),
-               $("#fnapg4e2c3").val(),
-            ],
+   //       const obj = {
+   //          total: $("#fnapg4e1").val(),
+   //          credit: [
+   //             $("#fnapg4e2c1").val(),
+   //             $("#fnapg4e2c2").val(),
+   //             $("#fnapg4e2c3").val(),
+   //          ],
 
-            vehicle: [
-               $("#fnapg4e3c1").val(),
-               $("#fnapg4e3c2").val(),
-               $("#fnapg4e3c3").val(),
-            ],
+   //          vehicle: [
+   //             $("#fnapg4e3c1").val(),
+   //             $("#fnapg4e3c2").val(),
+   //             $("#fnapg4e3c3").val(),
+   //          ],
 
-            student: [
-               $("#fnapg4e4c1").val(),
-               $("#fnapg4e4c2").val(),
-               $("#fnapg4e4c3").val(),
-            ],
+   //          student: [
+   //             $("#fnapg4e4c1").val(),
+   //             $("#fnapg4e4c2").val(),
+   //             $("#fnapg4e4c3").val(),
+   //          ],
 
-            bank: [
-               $("#fnapg4e5c1").val(),
-               $("#fnapg4e5c2").val(),
-               $("#fnapg4e5c3").val(),
-            ],
+   //          bank: [
+   //             $("#fnapg4e5c1").val(),
+   //             $("#fnapg4e5c2").val(),
+   //             $("#fnapg4e5c3").val(),
+   //          ],
 
-            personal: [
-               $("#fnapg4e6c1").val(),
-               $("#fnapg4e6c2").val(),
-               $("#fnapg4e6c3").val(),
-            ],
+   //          personal: [
+   //             $("#fnapg4e6c1").val(),
+   //             $("#fnapg4e6c2").val(),
+   //             $("#fnapg4e6c3").val(),
+   //          ],
 
-            others: [
-               $("#fnapg4e7c1").val(),
-               $("#fnapg4e7c2").val(),
-               $("#fnapg4e7c3").val(),
-            ],
-         };
+   //          others: [
+   //             $("#fnapg4e7c1").val(),
+   //             $("#fnapg4e7c2").val(),
+   //             $("#fnapg4e7c3").val(),
+   //          ],
+   //       };
 
-         fna.page4.push(obj);
+   //       fna.page4.push(obj);
 
-         localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
-      });
+   //       localStorage.setItem("fnapg4", JSON.stringify(fna.page4));
+   //    });
 
-   }
+   // }
 }
 
 //page 5
@@ -446,13 +446,13 @@ function page5LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page5 :input").change(() => {
       if (localStorage.getItem("fnapg5") != null) {
          localStorage.removeItem("fnapg5");
          fna.page5 = [];
       }
 
-      $(".next-btn").on("click", () => {
+      $(".next-btn,.prev-btn").on("click", () => {
          fna.page5 = [];
 
          const obj = {

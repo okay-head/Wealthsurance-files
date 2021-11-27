@@ -198,7 +198,7 @@ function page2LocalStorage() {
          nw.page2 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {
          nw.page2 = [];
 
          const obj = {
@@ -319,9 +319,9 @@ function next() {
          .off()
          .on("click", () => {
             mySiema.next();
-            page1LocalStorage();
-            page2LocalStorage();
-            page3LocalStorage();
+            // page1LocalStorage();
+            // page2LocalStorage();
+            // page3LocalStorage();
          });
    });
 }

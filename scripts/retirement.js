@@ -159,7 +159,7 @@ function page1LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page1 :input").change(() => {
       if (localStorage.getItem("retirepg1") != null) {
          localStorage.removeItem("retirepg1");
          retire.page1 = [];
@@ -186,13 +186,13 @@ function page2LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page2 :input").change(() => {
       if (localStorage.getItem("retirepg2") != null) {
          localStorage.removeItem("retirepg2");
          retire.page2 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {
          retire.page2 = [];
          for (let i = 1; i <= 3; i++) {
             retire.page2.push($("#retirepg2e" + i).val());
@@ -211,13 +211,13 @@ function page3LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page3 :input").change(() => {
       if (localStorage.getItem("retirepg3") != null) {
          localStorage.removeItem("retirepg3");
          retire.page3 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {
          retire.page3 = [];
          for (let i = 1; i <= 4; i++) {
             retire.page3.push($("#retirepg3e" + i).val());
@@ -237,13 +237,13 @@ function page5LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page5 :input").change(() => {
       if (localStorage.getItem("retirepg5") != null) {
          localStorage.removeItem("retirepg5");
          retire.page5 = [];
       }
 
-      $(".next-btn").one("click", () => {
+      $(".next-btn,.prev-btn").one("click", () => {
          retire.page5 = [];
          for (let i = 0; i < 4; i++) {
             retire.page5.push($("#retirepg5e" + (i + 1)).val());
