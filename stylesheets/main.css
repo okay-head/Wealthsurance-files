@@ -441,7 +441,7 @@ li.p-relative:hover .dropdown-menu {
 }
 
 .input-fields {
-   line-height: 63px;
+   line-height: 70px;
    display: block;
    margin: 0.4em auto 1.9em auto;
 }
@@ -1243,6 +1243,28 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    min-height: 416px;
    min-width: 350px;
 }
+
+/* ---------------error --------------- */
+
+.input-wrapper {
+   display: inline-block;
+   position: relative;
+   width: max-content;
+}
+
+.error-container {
+   font-family: 'Gilroy-medium';
+   font-size: 0.5em;
+   letter-spacing: 0.1px;
+   position: absolute;
+   /* font-size: 0.3em; */
+   color: red;
+   z-index: -1;
+   top: 49%;
+   left: 6%;
+}
+
+
 /* ---breakpoints--- */
 @media screen and (max-width: 1340px) {
    .navigation {
@@ -1316,7 +1338,8 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
       width: 34px;
    }
    input {
-      width: 40%;
+      /* width: 40%; */
+      width: 90%;
       padding: 8px 0px;
       padding-left: 10px;
    }
@@ -1330,7 +1353,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
       padding: 8px 31px 8px 11px !important;
    }
    .input-fields {
-      line-height: 50px; /*63px*/
+      line-height: 57px; /*63px*/
    }
    /* ::placeholder {
       font-size: 12px;

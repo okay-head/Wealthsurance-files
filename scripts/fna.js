@@ -16,7 +16,7 @@ let fna = {
 function pushToDatabase1(fna) {
    createSessionId();
    let [a, b, c] = fna.page1;
-   b = b=='married'?1:2;
+   b = b == "married" ? 1 : 2;
    let [d] = fna.page2;
    let [e, f, g] = fna.page3;
    let [h1, h2, h3] = fna.page4[0].credit;
@@ -32,26 +32,49 @@ function pushToDatabase1(fna) {
    let [q1, q2] = fna.page5[0].financial;
    let [r1, r2] = fna.page5[0].others;
 
-   let debt_input_total = fna.page4[0].total
-   let expense_input_total = fna.page5[0].total
+   let debt_input_total = fna.page4[0].total;
+   let expense_input_total = fna.page5[0].total;
 
+   let url_debt = {
+      0: { type: 1, amount: h1, interest: h2, years: h3 },
+      1: { type: 2, amount: i1, interest: i2, years: i3 },
+      2: { type: 3, amount: j1, interest: j2, years: j3 },
+      3: { type: 4, amount: k1, interest: k2, years: k3 },
+      4: { type: 5, amount: l1, interest: l2, years: l3 },
+      5: { type: 6, amount: m1, interest: m2, years: m3 },
+   };
 
-   let url_debt = {"0":{"type":1,"amount":h1,"interest":h2,"years":h3},"1":{"type":2,"amount":i1,"interest":i2,"years":i3},"2":{"type":3,"amount":j1,"interest":j2,"years":j3},"3":{"type":4,"amount":k1,"interest":k2,"years":k3},"4":{"type":5,"amount":l1,"interest":l2,"years":l3},"5":{"type":6,"amount":m1,"interest":m2,"years":m3}}
+   let url_expenses = {
+      0: { type: 1, amount: n1, years: n2 },
+      1: { type: 2, amount: o1, years: o2 },
+      2: { type: 3, amount: p1, years: p2 },
+      3: { type: 4, amount: q1, years: q2 },
+      4: { type: 5, amount: r1, years: r2 },
+   };
 
-   let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
+   let debt_calc =
+      Number(h1) +
+      Number(i1) +
+      Number(j1) +
+      Number(k1) +
+      Number(l1) +
+      Number(m1);
+   let expense_calc =
+      Number(n1) + Number(o1) + Number(p1) + Number(q1) + Number(r1);
 
-   let debt_calc = Number(h1)+ Number(i1)+ Number(j1)+ Number(k1)+ Number(l1)+ Number(m1)
-   let expense_calc = Number(n1)+ Number(o1)+ Number(p1)+ Number(q1)+ Number(r1)
+   let debt_total = debt_input_total > debt_calc ? debt_input_total : debt_calc;
+   let expense_total =
+      expense_input_total > expense_calc ? expense_input_total : expense_calc;
 
-   let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
-   let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
-   
-
-   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}&debt_amount=${debt_total}&expense_amount=${expense_total}`
+   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(
+      url_debt
+   )}&expense=${JSON.stringify(
+      url_expenses
+   )}&debt_amount=${debt_total}&expense_amount=${expense_total}`;
 
    $.ajax({
       type: "POST",
-      url: url_string ,
+      url: url_string,
 
       success: (x) => {
          let result = JSON.parse(x);
@@ -73,7 +96,7 @@ function updatePlaceholders(x) {
          const pg5 = JSON.parse(localStorage.getItem("fnapg5"));
 
          let y = Object.values(pg4[0]);
-         
+
          $(`#fnaresultp1r0e1`).val(y[0]);
          for (let i = 1; i <= 6; i++) {
             $(`#fnaresultp1r${i}e1`).val(y[i][0]);
@@ -93,37 +116,38 @@ function updatePlaceholders(x) {
 
       //recalculate
       case 2:
-         const debt = fna.results[0]
-         const exp = fna.results[1]
+         const debt = fna.results[0];
+         const exp = fna.results[1];
 
          let a = Object.values(debt);
-         
+
          $(`#fnaresultp1r0e1`).val(a[1]);
          for (let i = 1; i < 7; i++) {
-            $(`#fnaresultp1r${i}e1`).val(a[i+1][0]);
-            $(`#fnaresultp1r${i}e2`).val(a[i+1][1]);
-            $(`#fnaresultp1r${i}e3`).val(a[i+1][2]);
+            $(`#fnaresultp1r${i}e1`).val(a[i + 1][0]);
+            $(`#fnaresultp1r${i}e2`).val(a[i + 1][1]);
+            $(`#fnaresultp1r${i}e3`).val(a[i + 1][2]);
          }
 
          let b = Object.values(exp);
-         
+
          $(`#fnaresultp2r0e1`).val(b[1]);
          for (let i = 1; i < 6; i++) {
-            $(`#fnaresultp2r${i}e1`).val(b[i+1][0]);
-            $(`#fnaresultp2r${i}e2`).val(b[i+1][1]);
+            $(`#fnaresultp2r${i}e1`).val(b[i + 1][0]);
+            $(`#fnaresultp2r${i}e2`).val(b[i + 1][1]);
          }
          break;
    }
 }
 
-
 function pushToDatabase2(fna) {
    createSessionId();
    // get a-g from localstorage
-   let [a=28, b="married", c=1] = JSON.parse(localStorage.getItem("fnapg1"));
-   b = b=='married'?1:2;
-   let [d] =  JSON.parse(localStorage.getItem("fnapg2"));
-   let [e, f, g] =  JSON.parse(localStorage.getItem("fnapg3"));
+   let [a = 28, b = "married", c = 1] = JSON.parse(
+      localStorage.getItem("fnapg1")
+   );
+   b = b == "married" ? 1 : 2;
+   let [d] = JSON.parse(localStorage.getItem("fnapg2"));
+   let [e, f, g] = JSON.parse(localStorage.getItem("fnapg3"));
 
    //debt
    let x1 = fna.results[0];
@@ -142,21 +166,45 @@ function pushToDatabase2(fna) {
    let [q1, q2] = x2.financial;
    let [r1, r2] = x2.others;
 
-   let debt_input_total = x1.total
-   let expense_input_total = x2.total
+   let debt_input_total = x1.total;
+   let expense_input_total = x2.total;
 
-   let url_debt = {"0":{"type":1,"amount":h1,"interest":h2,"years":h3},"1":{"type":2,"amount":i1,"interest":i2,"years":i3},"2":{"type":3,"amount":j1,"interest":j2,"years":j3},"3":{"type":4,"amount":k1,"interest":k2,"years":k3},"4":{"type":5,"amount":l1,"interest":l2,"years":l3},"5":{"type":6,"amount":m1,"interest":m2,"years":m3}}
+   let url_debt = {
+      0: { type: 1, amount: h1, interest: h2, years: h3 },
+      1: { type: 2, amount: i1, interest: i2, years: i3 },
+      2: { type: 3, amount: j1, interest: j2, years: j3 },
+      3: { type: 4, amount: k1, interest: k2, years: k3 },
+      4: { type: 5, amount: l1, interest: l2, years: l3 },
+      5: { type: 6, amount: m1, interest: m2, years: m3 },
+   };
 
-   let url_expenses = {"0":{"type":1,"amount":n1,"years":n2},"1":{"type":2,"amount":o1,"years":o2},"2":{"type":3,"amount":p1,"years":p2},"3":{"type":4,"amount":q1,"years":q2},"4":{"type":5,"amount":r1,"years":r2}}
+   let url_expenses = {
+      0: { type: 1, amount: n1, years: n2 },
+      1: { type: 2, amount: o1, years: o2 },
+      2: { type: 3, amount: p1, years: p2 },
+      3: { type: 4, amount: q1, years: q2 },
+      4: { type: 5, amount: r1, years: r2 },
+   };
 
-   let debt_calc = Number(h1)+ Number(i1)+ Number(j1)+ Number(k1)+ Number(l1)+ Number(m1)
-   let expense_calc = Number(n1)+ Number(o1)+ Number(p1)+ Number(q1)+ Number(r1)
+   let debt_calc =
+      Number(h1) +
+      Number(i1) +
+      Number(j1) +
+      Number(k1) +
+      Number(l1) +
+      Number(m1);
+   let expense_calc =
+      Number(n1) + Number(o1) + Number(p1) + Number(q1) + Number(r1);
 
-   let debt_total = debt_input_total>debt_calc?debt_input_total:debt_calc
-   let expense_total = expense_input_total>expense_calc?expense_input_total:expense_calc
-   
+   let debt_total = debt_input_total > debt_calc ? debt_input_total : debt_calc;
+   let expense_total =
+      expense_input_total > expense_calc ? expense_input_total : expense_calc;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(url_debt)}&expense=${JSON.stringify(url_expenses)}&debt_amount=${debt_total}&expense_amount=${expense_total}`
+   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(
+      url_debt
+   )}&expense=${JSON.stringify(
+      url_expenses
+   )}&debt_amount=${debt_total}&expense_amount=${expense_total}`;
 
    $.ajax({
       type: "POST",
@@ -165,7 +213,7 @@ function pushToDatabase2(fna) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            updateResult(2,result.amount);
+            updateResult(2, result.amount);
          } else {
             console.log(result + "request not successful");
          }
@@ -176,21 +224,18 @@ function pushToDatabase2(fna) {
    });
 }
 
-function updateResult(x,y=undefined) {
+function updateResult(x, y = undefined) {
    switch (x) {
       case 1:
-         let amount1 = $.number((JSON.parse(localStorage.getItem("fna_result"))))
-         $(".calculated-result").text(
-            "$" + amount1)
-         ;
+         let amount1 = $.number(JSON.parse(localStorage.getItem("fna_result")));
+         $(".calculated-result").text("$" + amount1);
          break;
       case 2:
-         let amount2 = $.number( y )
-         $(".calculated-result").text('$'+amount2)
+         let amount2 = $.number(y);
+         $(".calculated-result").text("$" + amount2);
          break;
    }
 }
-
 
 function page1LocalStorage() {
    //check for existing localStorage on page load
@@ -457,30 +502,15 @@ function page5LocalStorage() {
 
          const obj = {
             total: $("#fnapg5e1").val(),
-            college: [
-               $("#fnapg5e2c1").val(),
-               $("#fnapg5e2c3").val(),
-            ],
+            college: [$("#fnapg5e2c1").val(), $("#fnapg5e2c3").val()],
 
-            medical: [
-               $("#fnapg5e3c1").val(),
-               $("#fnapg5e3c3").val(),
-            ],
+            medical: [$("#fnapg5e3c1").val(), $("#fnapg5e3c3").val()],
 
-            planned: [
-               $("#fnapg5e4c1").val(),
-               $("#fnapg5e4c3").val(),
-            ],
+            planned: [$("#fnapg5e4c1").val(), $("#fnapg5e4c3").val()],
 
-            financial: [
-               $("#fnapg5e5c1").val(),
-               $("#fnapg5e5c3").val(),
-            ],
+            financial: [$("#fnapg5e5c1").val(), $("#fnapg5e5c3").val()],
 
-            others: [
-               $("#fnapg5e6c1").val(),
-               $("#fnapg5e6c3").val(),
-            ],
+            others: [$("#fnapg5e6c1").val(), $("#fnapg5e6c3").val()],
          };
          fna.page5.push(obj);
 
@@ -489,34 +519,34 @@ function page5LocalStorage() {
    });
 }
 
-function next() {
-   //  change next button's action
-   $(".next-btn").on("click", () => {
-      function loaderPromise() {
-         let update = new Promise((resolve) => {
-            resolve(updateLoader(5, 5));
-         });
-         return update;
-      }
+// function next() {
+//    //  change next button's action
+//    $(".next-btn").on("click", () => {
+//       function loaderPromise() {
+//          let update = new Promise((resolve) => {
+//             resolve(updateLoader(5, 5));
+//          });
+//          return update;
+//       }
 
-      loaderPromise().then(() => {
-         pushToDatabase1(fna);
-         setTimeout(() => {
-            window.open("fna_result.html", "_self");
-         }, 1410);
-      });
-   });
+//       loaderPromise().then(() => {
+//          pushToDatabase1(fna);
+//          setTimeout(() => {
+//             window.open("fna_result.html", "_self");
+//          }, 1410);
+//       });
+//    });
 
-   //change the functionality back when prev button is pressed
-   $(".prev-btn").on("click", () => {
-      $(".next-btn")
-         .text("Next")
-         .off()
-         .on("click", () => {
-            mySiema.next();
-         });
-   });
-}
+//    //change the functionality back when prev button is pressed
+//    $(".prev-btn").on("click", () => {
+//       $(".next-btn")
+//          .text("Next")
+//          .off()
+//          .on("click", () => {
+//             mySiema.next();
+//          });
+//    });
+// }
 
 function storeRecalculate() {
    //not to be stored in local storage
@@ -558,40 +588,279 @@ function storeRecalculate() {
    let expenses = {
       label: "expenses",
       total: $("#fnaresultp2r0e1").val(),
-      college: [
-         $("#fnaresultp2r1e1").val(),
-         $("#fnaresultp2r1e2").val(),
-      ],
-      medical: [
-         $("#fnaresultp2r2e1").val(),
-         $("#fnaresultp2r2e2").val(),
-      ],
-      planned: [
-         $("#fnaresultp2r3e1").val(),
-         $("#fnaresultp2r3e2").val(),
-      ],
-      financial: [
-         $("#fnaresultp2r4e1").val(),
-         $("#fnaresultp2r4e2").val(),
-      ],
-      others: [
-         $("#fnaresultp2r5e1").val(),
-         $("#fnaresultp2r5e2").val(),
-      ],
+      college: [$("#fnaresultp2r1e1").val(), $("#fnaresultp2r1e2").val()],
+      medical: [$("#fnaresultp2r2e1").val(), $("#fnaresultp2r2e2").val()],
+      planned: [$("#fnaresultp2r3e1").val(), $("#fnaresultp2r3e2").val()],
+      financial: [$("#fnaresultp2r4e1").val(), $("#fnaresultp2r4e2").val()],
+      others: [$("#fnaresultp2r5e1").val(), $("#fnaresultp2r5e2").val()],
    };
-   fna.results = []
+   fna.results = [];
    fna.results.push(debt);
    fna.results.push(expenses);
 
-   pushToDatabase2(fna)
+   pushToDatabase2(fna);
    // there's actually no need
    // updatePlaceholders(2)
 }
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
-
       storeRecalculate();
       // console.log(fna.results)
+   });
+}
+
+/* ----- Validation -----*/
+
+// Page1 validation
+$("#page1Form").validate({
+   // errorElement: "span#error1",
+   errorPlacement: function (error, element) {
+      if (element.is("#fnapg1e1")) {
+         error.appendTo("#error1");
+      } else if (element.is("#fnapg1e3")) {
+         error.appendTo("#error3");
+      }
+   },
+   rules: {
+      fnapg1e1: {
+         required: true,
+         // integer:true,
+         digits: true,
+         range: [1, 90],
+      },
+      fnapg1e3: {
+         required: true,
+         // integer:true,
+         digits: true,
+         range: [0, 20],
+         // maxlength: 1024
+      },
+   },
+   messages: {
+      fnapg1e1: {
+         required: "Please enter your age",
+         digits: "Please enter only positive integers",
+      },
+      //  fnapg1e2:
+      //  {
+      //    required: "Please enter your marital status."
+      // },
+      fnapg1e3: {
+         required: "Please enter this information.",
+         digits: "Please enter only positive integers",
+
+         // maxlength: jQuery.format("Please limit the message to {0} letters!")
+      },
+   },
+});
+
+//page 2 validation
+$("#page2Form").validate({
+   errorPlacement: function (error) {
+      error.appendTo("#error4");
+   },
+   rules: {
+      fnapg2e1: {
+         required: true,
+         number:true,
+         min:1,
+      },
+   },
+   messages: {
+      fnapg2e1: {
+         required: "Please enter your income",
+         min: "Income should be greater than 0"
+      },
+   },
+});
+
+$("#page3Form").validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#fnapg3e1")) {
+         error.appendTo("#error3e1");
+      } else if (element.is("#fnapg3e2")) {
+         error.appendTo("#error3e2");
+      } else if (element.is("#fnapg3e3")) {
+         error.appendTo("#error3e3");
+      }
+   },
+   rules: {
+      fnapg3e1: { 
+         required: true,
+         number: true,
+         min: 1,
+      },
+      fnapg3e2: { 
+         required: true,
+         number: true,
+         range: [0,100],
+       },
+      fnapg3e3: { 
+         required: true ,
+         number: true,
+         range: [1,45],
+      },
+   },
+   messages: {
+      fnapg3e1: { 
+         required: "This field is required",
+         min:"Mortgage should be greater than 0",
+         number: "Mortgage should be greater than 0"
+    },
+      fnapg3e2: { 
+         required: "This field is required",
+         digits: "Please enter only positive integers"
+    },
+      fnapg3e3: { 
+         required: "This field is required",
+         digits: "Please enter only positive integers"
+    },
+   },
+});
+
+$("#page4Form").validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#fnapg4e1")) {
+         error.appendTo("#error4e1");
+      }
+      for (let i = 2; i <= 7; i++) {
+         if (element.is(`#fnapg4e${i}c1`)) {
+            error.appendTo(`#error4e${i}c1`);
+         }
+      }
+      for (let i = 2; i <= 7; i++) {
+         if (element.is(`#fnapg4e${i}c2`)) {
+            error.appendTo(`#error4e${i}c2`);
+         }
+      }
+      for (let i = 2; i <= 7; i++) {
+         if (element.is(`#fnapg4e${i}c3`)) {
+            error.appendTo(`#error4e${i}c3`);
+         }
+      }
+   },
+   rules: {
+      fnapg4e1: {
+          required: true,
+          number: true,
+          min:1
+       },
+      
+       fnapg4e2c1: {number: true,min:1},
+       fnapg4e3c1: {number: true,min:1},
+       fnapg4e4c1: {number: true,min:1},
+       fnapg4e5c1: {number: true,min:1},
+       fnapg4e6c1: {number: true,min:1},
+       fnapg4e7c1: {number: true,min:1},
+       
+       fnapg4e2c2: {number: true,range:[0,100]},
+       fnapg4e3c2: {number: true,range:[0,100]},
+       fnapg4e4c2: {number: true,range:[0,100]},
+       fnapg4e5c2: {number: true,range:[0,100]},
+       fnapg4e6c2: {number: true,range:[0,100]},
+       fnapg4e7c2: {number: true,range:[0,100]},
+       
+       fnapg4e2c3: {number: true,min:0},
+       fnapg4e3c3: {number: true,min:0},
+       fnapg4e4c3: {number: true,min:0},
+       fnapg4e5c3: {number: true,min:0},
+       fnapg4e6c3: {number: true,min:0},
+       fnapg4e7c3: {number: true,min:0},
+   },
+   messages: {
+      fnapg4e1: {
+          required: "This field is required" ,
+          min: "Debt should be greater than 0",
+          digits: "Please enter only positive integers",
+   },
+   fnapg4e2c1:{min:"Value should be greater than 0"},
+   fnapg4e3c1:{min:"Value should be greater than 0"},
+   fnapg4e4c1:{min:"Value should be greater than 0"},
+   fnapg4e5c1:{min:"Value should be greater than 0"},
+   fnapg4e6c1:{min:"Value should be greater than 0"},
+   fnapg4e7c1:{min:"Value should be greater than 0"},
+
+   fnapg4e2c2:{range:"Please enter a value between 0-100"},
+   fnapg4e3c2:{range:"Please enter a value between 0-100"},
+   fnapg4e4c2:{range:"Please enter a value between 0-100"},
+   fnapg4e5c2:{range:"Please enter a value between 0-100"},
+   fnapg4e6c2:{range:"Please enter a value between 0-100"},
+   fnapg4e7c2:{range:"Please enter a value between 0-100"},
+
+   fnapg4e2c3:{min:"Value should be greater than 0"},
+   fnapg4e3c3:{min:"Value should be greater than 0"},
+   fnapg4e4c3:{min:"Value should be greater than 0"},
+   fnapg4e5c3:{min:"Value should be greater than 0"},
+   fnapg4e6c3:{min:"Value should be greater than 0"},
+   fnapg4e7c3:{min:"Value should be greater than 0"},
+   },
+});
+
+$("#page5Form").validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#fnapg5e1")) {
+         error.appendTo("#error5e1");
+      }
+   },
+   rules: {
+      fnapg5e1: { 
+         required: true,
+          number: true,
+         //  min:1
+      },
+   },
+   messages: {
+      fnapg5e1: {
+         required: "This field is required" ,
+         // min: "Debt should be greater than 0",
+         digits: "Please enter only positive integers"
+   },
+   },
+});
+
+$("button").on("click", (e) => {
+   e.preventDefault();
+});
+
+function validateForm(x) {
+   if ($(`#page${x}Form`).valid()) {
+      if (x !== 5) {
+         return mySiema.next();
+      } else if (x == 5) {
+         // next()
+         nextPage();
+      }
+   }
+}
+
+function nextPage() {
+   function loaderPromise() {
+      let update = new Promise((resolve) => {
+         resolve(updateLoader(5, 5));
+      });
+      return update;
+   }
+
+   loaderPromise().then(() => {
+      pushToDatabase1(fna);
+      setTimeout(() => {
+         window.open("fna_result.html", "_self");
+      }, 1410);
+   });
+}
+function prevBehaviour() {
+   $(".prev-btn").on("click", () => {
+      $(".next-btn").text("Next");
+      // .off()
+      // .on("click", () => {
+      //    mySiema.next();
+      // });
+   });
+}
+
+function fValidate(x) {
+   $(`span[form~='page${x}Form']`).on("click", () => {
+      validateForm(x);
    });
 }

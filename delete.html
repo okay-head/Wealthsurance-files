@@ -8,6 +8,10 @@
    <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
+   <!-- jquery validation -->
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+   
+
    <!-- number format -->
    <script src="scripts/jquery/jquery.number.min.js"></script>
 
@@ -172,11 +176,11 @@
 
                            <input type="decimal" inputmode="decimal" id="fnapg1e1" name="fnapg1e1"
                               placeholder="Enter Age">
-                           <span class="error-container" id="error1">
+                           <span class="error-container" id="error1"></span>
                         </div>
                         <!-- This field is required -->
 
-                        </span>
+                        
                         years old,
                      </div>
                      <div>
@@ -573,7 +577,7 @@
                   }
                },
                rules: {
-                  fnapg4e1: { required: true },
+                     fnapg4e1: { required: true },
                },
                messages: {
                   fnapg4e1: { required: "This field is required" },
@@ -662,10 +666,11 @@
                case 1:
                   $('.next-btn').off()
                   fValidate(1);
+                  $('#newFormSubmit2,#newFormSubmit3,#newFormSubmit4,#newFormSubmit5').addClass('d-none');
+                  $('#newFormSubmit1').removeClass('d-none');
                   initLoader();
                   page1LocalStorage();
-                  $('#newFormSubmit2,#newFormSubmit3,#newFormSubmit4,#newFormSubmit5').addClass('d-none');
-                  $('#newFormSubmit1').removeClass('d-none'); break;
+                  break;
                case 2:
                   $('.next-btn').off()
                   fValidate(2);
