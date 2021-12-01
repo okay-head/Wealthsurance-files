@@ -253,42 +253,42 @@
                      <table>
                         <tr>
                            <td>College Education:</td>
-                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e2c1"><span class="error-container" id="error4e2c1"></span></div>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e2c1" name="fnapg5e2c1"> <span class="error-container" id="error5e2c1"></span></div>
                            </td>
                            <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
-                                 id="fnapg5e2c3"><span class="error-container" id="error4e2c1"></span></div>
+                                 id="fnapg5e2c3" name="fnapg5e2c3"> <span class="error-container" id="error5e2c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Medical Expenses:</td>
-                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e3c1"><span class="error-container" id="error4e2c1"></span></div>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e3c1" name="fnapg5e3c1"> <span class="error-container" id="error5e3c1"></span></div>
                            </td>
                            <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
-                                 id="fnapg5e3c3"><span class="error-container" id="error4e2c1"></span></div>
+                                 id="fnapg5e3c3" name="fnapg5e3c3"> <span class="error-container" id="error5e3c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Planned life events:</td>
-                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e4c1"><span class="error-container" id="error4e2c1"></span></div>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e4c1" name="fnapg5e4c1"> <span class="error-container" id="error5e4c1"></span></div>
                            </td>
                            <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
-                                 id="fnapg5e4c3"><span class="error-container" id="error4e2c1"></span></div>
+                                 id="fnapg5e4c3" name="fnapg5e4c3"> <span class="error-container" id="error5e4c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Financial Expenses:</td>
-                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e5c1"><span class="error-container" id="error4e2c1"></span></div>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e5c1" name="fnapg5e5c1"> <span class="error-container" id="error5e5c1"></span></div>
                            </td>
                            <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
-                                 id="fnapg5e5c3"><span class="error-container" id="error4e2c1"></span></div>
+                                 id="fnapg5e5c3" name="fnapg5e5c3"> <span class="error-container" id="error5e5c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Others:</td>
-                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e6c1"><span class="error-container" id="error4e2c1"></span></div>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="fnapg5e6c1" name="fnapg5e6c1"> <span class="error-container" id="error5e6c1"></span></div>
                            </td>
                            <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go"
-                                 id="fnapg5e6c3"><span class="error-container" id="error4e2c1"></span></div>
+                                 id="fnapg5e6c3" name="fnapg5e6c3"> <span class="error-container" id="error5e6c3"></span></div>
                            </td>
                         </tr>
                      </table>
@@ -360,20 +360,21 @@
                   break;
                case 4:
                $('.next-btn').off();
-                  fValidate(4);
-                  $('#newFormSubmit1,#newFormSubmit3,#newFormSubmit2,#newFormSubmit5').addClass('d-none');
-                  $('#newFormSubmit4').removeClass('d-none');
-                  updateLoader(3, 5);
-                  table();
-                  page4LocalStorage();
-                  break;
+               fValidate(4);
+               $('#newFormSubmit1,#newFormSubmit3,#newFormSubmit2,#newFormSubmit5').addClass('d-none');
+               $('#newFormSubmit4').removeClass('d-none');
+               updateLoader(3, 5);
+               tableDown();
+               page4LocalStorage();
+               break;
                case 5:
-               fValidate(5);
+                  $('.next-btn').off();
+                  fValidate(5);
                   $('#newFormSubmit1,#newFormSubmit3,#newFormSubmit4,#newFormSubmit2').addClass('d-none');
                   $('#newFormSubmit5').removeClass('d-none');
                   $('.next-btn').text('Finish');
                   updateLoader(4, 5);
-                  table();
+                  tableDown();
                   page5LocalStorage();
                   prevBehaviour();
                   // next();

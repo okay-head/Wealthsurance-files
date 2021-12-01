@@ -449,7 +449,7 @@ input,
 select {
    max-width: 195px;
    font-size: var(--input-text);
-   box-sizing: border-box;
+   /* box-sizing: border-box; */
    font-family: "Gilroy-medium";
    border-radius: 4px;
    padding: 10px 3px;
@@ -457,8 +457,17 @@ select {
    margin: 0 10px;
    border: none;
    position: relative;
-   /* outline: none; */
+   outline: none;
    /* border: 0.1px solid black; */
+}
+
+input{
+   transition: 0.14s ease-in-out border;
+   border: 2px solid white;
+}
+input:focus{
+   /* border: 2px solid var(--main-primary1)!important; */
+   border: 2px solid var(--text-primary2);
 }
 
 input::-webkit-outer-spin-button,
@@ -734,13 +743,17 @@ section.output {
    font-size: 0.6em;
 }
 .results-table-container input {
-   width: 85%;
+   width: 80%;
    background-color: transparent;
+   padding-left: 5px;
 }
-input:focus {
+.fna-results-table-p2 input{
+   width: 90%;
+}
+/* input:focus {
    border: none;
    border-radius: 4px;
-}
+} */
 .w-100 {
    width: 100%;
 }
@@ -765,7 +778,8 @@ input:focus {
    color: white;
 }
 .results-table tr:first-child input {
-   width: 95%;
+   width: 94%;
+   max-width: none;
 }
 .results-table tr td:first-child:not(tr:first-child) {
    padding: 10px 2.5em 10px 1em;
@@ -1037,7 +1051,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    padding: 0;
 }
 .editable-results-table tr td:nth-child(2) input {
-   width: 90%;
+   width: 68%;
    padding: 8px 1em;
 }
 .editable-results-table tr td:nth-child(2) input::placeholder {

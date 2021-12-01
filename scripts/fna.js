@@ -315,11 +315,13 @@ function page3LocalStorage() {
 }
 
 //table
-function table() {
+function tableDown() {
    $("#fnapg4e1,#fnapg5e1").on("focus", () => {
       $(".table").slideDown(800);
    });
+}
 
+function tableUp() {
    // table glitch
    $(".next-btn,.prev-btn").on("click", () => {
       $(".table").slideUp();
@@ -605,8 +607,8 @@ function storeRecalculate() {
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
-      storeRecalculate();
-      // console.log(fna.results)
+      validateFormRecalc();
+      // storeRecalculate();
    });
 }
 
@@ -728,13 +730,9 @@ $("#page4Form").validate({
          if (element.is(`#fnapg4e${i}c1`)) {
             error.appendTo(`#error4e${i}c1`);
          }
-      }
-      for (let i = 2; i <= 7; i++) {
          if (element.is(`#fnapg4e${i}c2`)) {
             error.appendTo(`#error4e${i}c2`);
          }
-      }
-      for (let i = 2; i <= 7; i++) {
          if (element.is(`#fnapg4e${i}c3`)) {
             error.appendTo(`#error4e${i}c3`);
          }
@@ -746,6 +744,7 @@ $("#page4Form").validate({
           number: true,
           min:1
        },
+       //  fnapg4e2c1,fnapg4e3c1,fnapg4e4c1,fnapg4e5c1,fnapg4e6c1,fnapg4e7c1: {number: true,min:1},
       
        fnapg4e2c1: {number: true,min:1},
        fnapg4e3c1: {number: true,min:1},
@@ -754,6 +753,7 @@ $("#page4Form").validate({
        fnapg4e6c1: {number: true,min:1},
        fnapg4e7c1: {number: true,min:1},
        
+       
        fnapg4e2c2: {number: true,range:[0,100]},
        fnapg4e3c2: {number: true,range:[0,100]},
        fnapg4e4c2: {number: true,range:[0,100]},
@@ -761,18 +761,17 @@ $("#page4Form").validate({
        fnapg4e6c2: {number: true,range:[0,100]},
        fnapg4e7c2: {number: true,range:[0,100]},
        
-       fnapg4e2c3: {number: true,min:0},
-       fnapg4e3c3: {number: true,min:0},
-       fnapg4e4c3: {number: true,min:0},
-       fnapg4e5c3: {number: true,min:0},
-       fnapg4e6c3: {number: true,min:0},
-       fnapg4e7c3: {number: true,min:0},
+       fnapg4e2c3: {number: true,min:1},
+       fnapg4e3c3: {number: true,min:1},
+       fnapg4e4c3: {number: true,min:1},
+       fnapg4e5c3: {number: true,min:1},
+       fnapg4e6c3: {number: true,min:1},
+       fnapg4e7c3: {number: true,min:1},
    },
    messages: {
       fnapg4e1: {
           required: "This field is required" ,
           min: "Debt should be greater than 0",
-          digits: "Please enter only positive integers",
    },
    fnapg4e2c1:{min:"Value should be greater than 0"},
    fnapg4e3c1:{min:"Value should be greater than 0"},
@@ -802,36 +801,145 @@ $("#page5Form").validate({
       if (element.is("#fnapg5e1")) {
          error.appendTo("#error5e1");
       }
+      for (let i = 2; i <= 6; i++) {
+         if (element.is(`#fnapg5e${i}c1`)) {
+            error.appendTo(`#error5e${i}c1`);
+         }
+         if (element.is(`#fnapg5e${i}c3`)) {
+            error.appendTo(`#error5e${i}c3`);
+         }
+      }
+
    },
    rules: {
       fnapg5e1: { 
          required: true,
           number: true,
-         //  min:1
+          min:1
       },
+      fnapg5e2c1: {number: true,min:1},
+      fnapg5e3c1: {number: true,min:1},
+      fnapg5e4c1: {number: true,min:1},
+      fnapg5e5c1: {number: true,min:1},
+      fnapg5e6c1: {number: true,min:1},
+      
+      fnapg5e2c3: {number: true,min:0},
+      fnapg5e3c3: {number: true,min:0},
+      fnapg5e4c3: {number: true,min:0},
+      fnapg5e5c3: {number: true,min:0},
+      fnapg5e6c3: {number: true,min:0},
    },
    messages: {
       fnapg5e1: {
          required: "This field is required" ,
-         // min: "Debt should be greater than 0",
-         digits: "Please enter only positive integers"
+         min: "Value should be greater than 0",
    },
+   fnapg5e2c1:{min:"Value should be greater than 0"},
+   fnapg5e3c1:{min:"Value should be greater than 0"},
+   fnapg5e4c1:{min:"Value should be greater than 0"},
+   fnapg5e5c1:{min:"Value should be greater than 0"},
+   fnapg5e6c1:{min:"Value should be greater than 0"},
+
+   fnapg5e2c3:{min:"Value should be greater than 0"},
+   fnapg5e3c3:{min:"Value should be greater than 0"},
+   fnapg5e4c3:{min:"Value should be greater than 0"},
+   fnapg5e5c3:{min:"Value should be greater than 0"},
+   fnapg5e6c3:{min:"Value should be greater than 0"},
    },
 });
 
-$("button").on("click", (e) => {
-   e.preventDefault();
-});
+$('#fnaRecalcForm').validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#fnaresultp1r0e1")) {
+         error.appendTo("#eresultp1r0e1");
+      }
+      for (let i = 1; i <= 6; i++) {
+         if (element.is(`#fnaresultp1r${i}e1`)) {
+            error.appendTo(`#eresultp1r${i}e1`);
+         }
+         if (element.is(`#fnaresultp1r${i}e2`)) {
+            error.appendTo(`#eresultp1r${i}e2`);
+         }
+         if (element.is(`#fnaresultp1r${i}e3`)) {
+            error.appendTo(`#eresultp1r${i}e3`);
+         }
+      }
+   },
 
+   rules: {
+      fnaresultp1r0e1: { 
+         required: true,
+          number: true,
+          min:1
+      },
+      fnaresultp1r1e1: {number: true,min:1},
+      fnaresultp1r2e1: {number: true,min:1},
+      fnaresultp1r3e1: {number: true,min:1},
+      fnaresultp1r4e1: {number: true,min:1},
+      fnaresultp1r5e1: {number: true,min:1},
+      fnaresultp1r6e1: {number: true,min:1},
+      
+      fnaresultp1r1e2: {number: true,range:[0,100]},
+      fnaresultp1r2e2: {number: true,range:[0,100]},
+      fnaresultp1r3e2: {number: true,range:[0,100]},
+      fnaresultp1r4e2: {number: true,range:[0,100]},
+      fnaresultp1r5e2: {number: true,range:[0,100]},
+      fnaresultp1r6e2: {number: true,range:[0,100]},
+      
+      fnaresultp1r1e3: {number: true,min:1},
+      fnaresultp1r2e3: {number: true,min:1},
+      fnaresultp1r3e3: {number: true,min:1},
+      fnaresultp1r4e3: {number: true,min:1},
+      fnaresultp1r5e3: {number: true,min:1},
+      fnaresultp1r6e3: {number: true,min:1},
+
+   },
+   messages: {
+      fnaresultp1r0e1:{
+         min: "Value should be greater than 0"
+      },
+   fnaresultp1r1e1:{min:"Value should be greater than 0"},
+   fnaresultp1r2e1:{min:"Value should be greater than 0"},
+   fnaresultp1r3e1:{min:"Value should be greater than 0"},
+   fnaresultp1r4e1:{min:"Value should be greater than 0"},
+   fnaresultp1r5e1:{min:"Value should be greater than 0"},
+   fnaresultp1r6e1:{min:"Value should be greater than 0"},
+
+   fnaresultp1r1e2:{range:"Please enter a value between 0-100"},
+   fnaresultp1r2e2:{range:"Please enter a value between 0-100"},
+   fnaresultp1r3e2:{range:"Please enter a value between 0-100"},
+   fnaresultp1r4e2:{range:"Please enter a value between 0-100"},
+   fnaresultp1r5e2:{range:"Please enter a value between 0-100"},
+   fnaresultp1r6e2:{range:"Please enter a value between 0-100"},
+
+   fnaresultp1r1e3:{min:"Value should be greater than 0"},
+   fnaresultp1r2e3:{min:"Value should be greater than 0"},
+   fnaresultp1r3e3:{min:"Value should be greater than 0"},
+   fnaresultp1r4e3:{min:"Value should be greater than 0"},
+   fnaresultp1r5e3:{min:"Value should be greater than 0"},
+   fnaresultp1r6e3:{min:"Value should be greater than 0"},
+   }
+
+});
 function validateForm(x) {
    if ($(`#page${x}Form`).valid()) {
       if (x !== 5) {
-         return mySiema.next();
+         if (x!==4) {
+            return mySiema.next();
+         }else{
+            tableUp();
+            return mySiema.next();
+
+         }
       } else if (x == 5) {
          // next()
+         tableUp();
          nextPage();
       }
    }
+   // else{
+   //    doSomething(checkInvalid())
+   // }
 }
 
 function nextPage() {
@@ -859,8 +967,21 @@ function prevBehaviour() {
    });
 }
 
-function fValidate(x) {
-   $(`span[form~='page${x}Form']`).on("click", () => {
-      validateForm(x);
-   });
+function validateFormRecalc() {
+   if ($("#fnaRecalcForm").valid()) {
+      storeRecalculate();
+   }else{
+      let inval_arr = checkInvalid()
+      inval_arr.forEach((element)=>{
+      $(`#${element}`).parent().removeClass('d-none')
+      })
+   }
+   let valid_arr = checkValid()
+   valid_arr.forEach((element)=>{
+   $(`#${element}`).parent().addClass('d-none')
+   })
+
 }
+
+
+

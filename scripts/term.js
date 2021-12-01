@@ -276,12 +276,13 @@ function page2newLocalStorage() {
    });
 }
 
-function table() {
+function tableDown() {
    $("#tepg2e1,#tepg3e1").on("focus", () => {
       $(".table").slideDown(800);
    });
+}
 
-   // table glitch
+function tableUp() {
    $(".next-btn,.prev-btn").on("click", () => {
       $(".table").slideUp();
    });
@@ -437,34 +438,34 @@ function page3LocalStorage() {
    });
 }
 
-function next() {
-   //  change next button's action
-   $(".next-btn").on("click", () => {
-      function loaderPromise() {
-         let update = new Promise((resolve) => {
-            resolve(updateLoader(3, 3));
-         });
-         return update;
-      }
+// function next() {
+//    //  change next button's action
+//    $(".next-btn").on("click", () => {
+//       function loaderPromise() {
+//          let update = new Promise((resolve) => {
+//             resolve(updateLoader(3, 3));
+//          });
+//          return update;
+//       }
 
-      loaderPromise().then(() => {
-         pushToDatabase1(te);
-         setTimeout(() => {
-            window.open("termInsurance_result.html", "_self");
-         }, 1410);
-      });
-   });
+//       loaderPromise().then(() => {
+//          pushToDatabase1(te);
+//          setTimeout(() => {
+//             window.open("termInsurance_result.html", "_self");
+//          }, 1410);
+//       });
+//    });
 
-   //change the functionality back when prev button is pressed
-   $(".prev-btn").on("click", () => {
-      $(".next-btn")
-         .text("Next")
-         .off()
-         .on("click", () => {
-            mySiema.next();
-         });
-   });
-}
+//    //change the functionality back when prev button is pressed
+//    $(".prev-btn").on("click", () => {
+//       $(".next-btn")
+//          .text("Next")
+//          .off()
+//          .on("click", () => {
+//             mySiema.next();
+//          });
+//    });
+// }
 
 function storeRecalculate() {
    //not to be stored in local storage
@@ -525,9 +526,8 @@ function storeRecalculate() {
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
+      fValidate2()
       storeRecalculate();
-
-      // console.log(te.results);
    });
 }
 
@@ -572,3 +572,244 @@ function updatePlaceholders(x) {
       //    break;
    }
 }
+
+function nextPage() {
+   function loaderPromise() {
+      let update = new Promise((resolve) => {
+         resolve(updateLoader(4, 4));
+      });
+      return update;
+   }
+
+   loaderPromise().then(() => {
+      pushToDatabase1(te);
+      setTimeout(() => {
+         window.open("termInsurance_result.html", "_self");
+      }, 1410);
+   });
+}
+function prevBehaviour() {
+   $(".prev-btn").on("click", () => {
+      $(".next-btn").text("Next");
+   });
+}
+
+/* ---------- Validation ---------- */
+
+$("#page1Form").validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#tepg1e1")) {
+         error.appendTo("#error1e1");
+      } else if (element.is("#tepg1e3")) {
+         error.appendTo("#error1e3");
+      }
+   },
+   rules: {
+      tepg1e1: {
+         required: true,
+         digits: true,
+         range: [1, 90],
+      },
+      tepg1e3: {
+         required: true,
+         digits: true,
+         range: [0, 20],
+      },
+   },
+   messages: {
+      tepg1e1: {
+         required: "Please enter your age",
+         digits: "Please enter only positive integers",
+      },
+      tepg1e3: {
+         required: "Please enter this information.",
+         digits: "Please enter only positive integers",
+      },
+   },
+});
+
+$("#page2Form").validate({
+   errorPlacement: function (error) {
+      error.appendTo("#error2newe1");
+   },
+   rules: {
+      tepg2new: {
+         required: true,
+         number:true,
+         min:1,
+      },
+   },
+   messages: {
+      tepg2new: {
+         required: "Please enter your income",
+         min: "Income should be greater than 0"
+      },
+   },
+});
+
+$("#page3Form").validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#tepg2e1")) {
+         error.appendTo("#error2e1");
+      }
+      for (let i = 2; i <= 8; i++) {
+         if (element.is(`#tepg2e${i}c1`)) {
+            error.appendTo(`#error2e${i}c1`);
+         }
+      }
+      for (let i = 2; i <= 8; i++) {
+         if (element.is(`#tepg2e${i}c2`)) {
+            error.appendTo(`#error2e${i}c2`);
+         }
+      }
+      for (let i = 2; i <= 8; i++) {
+         if (element.is(`#tepg2e${i}c3`)) {
+            error.appendTo(`#error2e${i}c3`);
+         }
+      }
+   },
+   rules: {
+      tepg2e1: {
+          required: true,
+          number: true,
+          min:1
+       },
+      
+       tepg2e2c1: {number: true,min:1},
+       tepg2e3c1: {number: true,min:1},
+       tepg2e4c1: {number: true,min:1},
+       tepg2e5c1: {number: true,min:1},
+       tepg2e6c1: {number: true,min:1},
+       tepg2e7c1: {number: true,min:1},
+       tepg2e8c1: {number: true,min:1},
+       
+       tepg2e2c2: {number: true,range:[0,100]},
+       tepg2e3c2: {number: true,range:[0,100]},
+       tepg2e4c2: {number: true,range:[0,100]},
+       tepg2e5c2: {number: true,range:[0,100]},
+       tepg2e6c2: {number: true,range:[0,100]},
+       tepg2e7c2: {number: true,range:[0,100]},
+       tepg2e8c2: {number: true,range:[0,100]},
+       
+       tepg2e2c3: {number: true,min:1},
+       tepg2e3c3: {number: true,min:1},
+       tepg2e4c3: {number: true,min:1},
+       tepg2e5c3: {number: true,min:1},
+       tepg2e6c3: {number: true,min:1},
+       tepg2e7c3: {number: true,min:1},
+       tepg2e8c3: {number: true,min:1},
+   },
+   messages: {
+      tepg2e1: {
+          required: "This field is required" ,
+          min: "Debt should be greater than 0",
+          digits: "Please enter only positive integers",
+   },
+   tepg2e2c1:{min:"Value should be greater than 0"},
+   tepg2e3c1:{min:"Value should be greater than 0"},
+   tepg2e4c1:{min:"Value should be greater than 0"},
+   tepg2e5c1:{min:"Value should be greater than 0"},
+   tepg2e6c1:{min:"Value should be greater than 0"},
+   tepg2e7c1:{min:"Value should be greater than 0"},
+   tepg2e8c1:{min:"Value should be greater than 0"},
+
+   tepg2e2c2:{range:"Please enter a value between 0-100"},
+   tepg2e3c2:{range:"Please enter a value between 0-100"},
+   tepg2e4c2:{range:"Please enter a value between 0-100"},
+   tepg2e5c2:{range:"Please enter a value between 0-100"},
+   tepg2e6c2:{range:"Please enter a value between 0-100"},
+   tepg2e7c2:{range:"Please enter a value between 0-100"},
+   tepg2e8c2:{range:"Please enter a value between 0-100"},
+
+   tepg2e2c3:{min:"Value should be greater than 0"},
+   tepg2e3c3:{min:"Value should be greater than 0"},
+   tepg2e4c3:{min:"Value should be greater than 0"},
+   tepg2e5c3:{min:"Value should be greater than 0"},
+   tepg2e6c3:{min:"Value should be greater than 0"},
+   tepg2e7c3:{min:"Value should be greater than 0"},
+   tepg2e8c3:{min:"Value should be greater than 0"},
+   },
+});
+
+$("#page4Form").validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#tepg3e1")) {
+         error.appendTo("#error3e1");
+      }
+      for (let i = 2; i <= 6; i++) {
+         if (element.is(`#tepg3e${i}c1`)) {
+            error.appendTo(`#error3e${i}c1`);
+         }
+      }
+      for (let i = 2; i <= 6; i++) {
+         if (element.is(`#tepg3e${i}c2`)) {
+            error.appendTo(`#error3e${i}c2`);
+         }
+      }
+      for (let i = 2; i <= 6; i++) {
+         if (element.is(`#tepg3e${i}c3`)) {
+            error.appendTo(`#error3e${i}c3`);
+         }
+      }
+   },
+   rules: {
+      tepg3e1: {
+          required: true,
+          number: true,
+          min:1
+       },
+      
+       tepg3e2c1: {number: true,min:1},
+       tepg3e3c1: {number: true,min:1},
+       tepg3e4c1: {number: true,min:1},
+       tepg3e5c1: {number: true,min:1},
+       tepg3e6c1: {number: true,min:1},
+       
+       tepg3e2c2: {number: true,min:1},
+       tepg3e3c2: {number: true,min:1},
+       tepg3e4c2: {number: true,min:1},
+       tepg3e5c2: {number: true,min:1},
+       tepg3e6c2: {number: true,min:1},
+   },
+   messages: {
+      tepg3e1: {
+          required: "This field is required" ,
+          min: "Value should be greater than 0",
+          digits: "Please enter only positive integers",
+   },
+   tepg3e2c1:{min:"Value should be greater than 0"},
+   tepg3e3c1:{min:"Value should be greater than 0"},
+   tepg3e4c1:{min:"Value should be greater than 0"},
+   tepg3e5c1:{min:"Value should be greater than 0"},
+   tepg3e6c1:{min:"Value should be greater than 0"},
+
+   tepg3e2c2:{min:"Value should be greater than 0"},
+   tepg3e3c2:{min:"Value should be greater than 0"},
+   tepg3e4c2:{min:"Value should be greater than 0"},
+   tepg3e5c2:{min:"Value should be greater than 0"},
+   tepg3e6c2:{min:"Value should be greater than 0"},
+   },
+});
+
+
+function validateForm(x) {
+   if ($(`#page${x}Form`).valid()) {
+      if (x !== 4) {
+         if (x!==3) {
+            return mySiema.next();
+            // tableUp();
+         }else{
+            tableUp()
+            return mySiema.next();
+
+         }
+      } else if (x == 4) {
+         // next()
+         tableUp();
+         nextPage();
+      }
+   }
+}
+
+
+

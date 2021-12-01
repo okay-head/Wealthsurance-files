@@ -4,6 +4,10 @@ const [root] = document.getElementsByTagName("html");
 //global actions
 $(".shadow-element,.hide-hamburger-component").addClass("hidden");
 
+$("button").on("click", (e) => {
+   e.preventDefault();
+});
+
 
 // $('html,body,.container').addClass('hide-scroll')
 // $('html,body,.container').addClass('overflow-h')
@@ -47,14 +51,16 @@ if (flag) {
 }
 
 //splash-screen
-$(".splash-screen img").transition({ scale: 1.1 }, 1700);
 root.scrollTop = 0;
+window.setTimeout(()=>{
+   $(".splash-screen img").transition({ scale: 1.16 }, 1100);
+},400)
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
    // window.setTimeout(()=>{
    //    $('html,body,.container').removeClass('hide-scroll')
    // }, 0)
-}, 1500);
+}, 1200);
 
 //brand
 $(".brand").on("click", () => {
@@ -145,4 +151,44 @@ function reEnter(page) {
    $(".re-enter").on("click", () => {
       window.open(page, "_self");
    });
+}
+
+function prevBehaviour() {
+   $(".prev-btn").on("click", () => {
+      $(".next-btn").text("Next");
+      // .off()
+      // .on("click", () => {
+      //    mySiema.next();
+      // });
+   });
+}
+
+
+//Validation functions 
+
+function fValidate(x) {
+   $(`span[form~='page${x}Form']`).on("click", () => {
+      validateForm(x);
+   });
+}
+
+
+//Validation functions for reCalc
+function checkInvalid() {
+   let z = document.querySelectorAll('input.error')
+   let inval = [] //array containing id's of invalid elements
+   z.forEach(element => {
+      let x  = (element.id).toString().slice(3)
+      inval.push('e'+x);
+   });
+   return inval
+}
+function checkValid() {
+   let z = document.querySelectorAll('input.valid')
+   let valid = [] //array containing id's of valid elements
+   z.forEach(element => {
+      let x  = (element.id).toString().slice(3)
+      valid.push('e'+x);
+   });
+   return valid
 }

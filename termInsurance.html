@@ -107,143 +107,158 @@
          <!-- dynamic content  start -->
          <div class="slideshow-wrapper siema">
             <div class="page1">
+               <form id="page1Form">
                <div class="input-fields">
                   <div>I am
-                     <input type="decimal" inputmode="decimal" id="tepg1e1" placeholder="Enter Age">
-                     years old,
+                     <div class="input-wrapper">
+                     <input type="decimal" inputmode="decimal" id="tepg1e1" name="tepg1e1" placeholder="Enter Age"> <span class="error-container" id="error1e1"></span>
+                     years old,</div>
                   </div>
                   <div>
-                     <select id="tepg1e2">
+                     <select id="tepg1e2" name="tepg1e2">
                         <option value="married">married</option>
                         <option value="unmarried">unmarried</option>
                      </select>
                      and,
                   </div>
                   <div>I have
-                     <input type="decimal" inputmode="decimal" id="tepg1e3" placeholder="Enter number">
+                     <div class="input-wrapper">
+                     <input type="decimal" inputmode="decimal" id="tepg1e3" name="tepg1e3" placeholder="Enter number"><span class="error-container" id="error1e3"></span>
                      children under 18
                   </div>
-               </div>
-            </div>
-            <div class="page2">
-               <div class="input-fields">
-                  <div>My Annual household income is $
-                     <input type="decimal" inputmode="decimal"  id="tepg2new" placeholder="Enter Amount">
                   </div>
                </div>
+               </form>
+            </div>
+            <div class="page2">
+               <form id="page2Form">
+               <div class="input-fields">
+                  <div>My Annual household income is $
+                     <div class="input-wrapper"><input type="decimal" inputmode="decimal"  id="tepg2new" name="tepg2new" placeholder="Enter Amount"><span class="error-container" id="error2newe1"></span></div>
+                  </div>
+               </div>
+               </form>
             </div>
 
             <div class="page3">
+               <form id="page3Form">
                <div class="input-fields">
                   <div>I carry a total debt of $
-                     <input type="decimal" inputmode="decimal" id="tepg2e1" placeholder="Enter Amount">
+                     <div class="input-wrapper">
+                     <input type="decimal" inputmode="decimal" id="tepg2e1" name="tepg2e1" placeholder="Enter Amount"><span class="error-container" id="error2e1"></span></div>
                   </div>
                   <div class="table">
                      <table>
                         <tr>
                            <td>Mortgage:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e2c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e2c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e2c1" name="tepg2e2c1"><span class="error-container" id="error2e2c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e2c2" name="tepg2e2c2"><span class="error-container" id="error2e2c2"></span></div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e2c3">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e2c3" name="tepg2e2c3"><span class="error-container" id="error2e2c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Credit Cards:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e3c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e3c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e3c1" name="tepg2e3c1"><span class="error-container" id="error2e3c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e3c2" name="tepg2e3c2"><span class="error-container" id="error2e3c2"></span></div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e3c3">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e3c3" name="tepg2e3c3"><span class="error-container" id="error2e3c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Vehicle Loans:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e4c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e4c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e4c1" name="tepg2e4c1"><span class="error-container" id="error2e4c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e4c2" name="tepg2e4c2"><span class="error-container" id="error2e4c2"></span></div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e4c3">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e4c3" name="tepg2e4c3"><span class="error-container" id="error2e4c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Student Loans:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e5c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e5c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e5c1" name="tepg2e5c1"><span class="error-container" id="error2e5c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e5c2" name="tepg2e5c2"><span class="error-container" id="error2e5c2"></span></div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e5c3">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e5c3" name="tepg2e5c3"><span class="error-container" id="error2e5c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Bank Loans:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e6c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e6c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e6c1" name="tepg2e6c1"><span class="error-container" id="error2e6c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e6c2" name="tepg2e6c2"><span class="error-container" id="error2e6c2"></span></div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e6c3">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e6c3" name="tepg2e6c3"><span class="error-container" id="error2e6c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Personal Loans:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e7c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e7c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e7c1" name="tepg2e7c1"><span class="error-container" id="error2e7c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e7c2" name="tepg2e7c2"><span class="error-container" id="error2e7c2"></span></div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e7c3">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e7c3" name="tepg2e7c3"><span class="error-container" id="error2e7c3"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Others:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e8c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e8c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg2e8c1" name="tepg2e8c1"><span class="error-container" id="error2e8c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Interest" id="tepg2e8c2" name="tepg2e8c2"><span class="error-container" id="error2e8c2"></span></div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e8c3">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg2e8c3" name="tepg2e8c3"><span class="error-container" id="error2e8c3"></span></div>
                            </td>
                         </tr>
                      </table>
                   </div>
                </div>
+               </form>
             </div>
 
 
             <div class="page4">
+               <form id="page4Form">
                <div class="input-fields">
                   <div>I have major expenses ahead of $
-                     <input type="decimal" inputmode="decimal" id="tepg3e1" placeholder="Enter Amount">
+                     <div class="input-wrapper">
+                     <input type="decimal" inputmode="decimal" id="tepg3e1" name="tepg3e1" placeholder="Enter Amount"><span class="error-container" id="error3e1"></span></div>
                   </div>
                   <div class="table">
                      <table>
                         <tr>
                            <td>College Education:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e2c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e2c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e2c1" name="tepg3e2c1"><span class="error-container" id="error3e2c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e2c2" name="tepg3e2c2"><span class="error-container" id="error3e2c2"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Medical Expenses:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e3c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e3c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e3c1" name="tepg3e3c1"><span class="error-container" id="error3e3c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e3c2" name="tepg3e3c2"><span class="error-container" id="error3e3c2"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Planned life events:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e4c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e4c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e4c1" name="tepg3e4c1"><span class="error-container" id="error3e4c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e4c2" name="tepg3e4c2"><span class="error-container" id="error3e4c2"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Financial Expenses:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e5c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e5c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e5c1" name="tepg3e5c1"><span class="error-container" id="error3e5c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e5c2" name="tepg3e5c2"><span class="error-container" id="error3e5c2"></span></div>
                            </td>
                         </tr>
                         <tr>
                            <td>Others:</td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e6c1"></td>
-                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e6c2">
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="tepg3e6c1" name="tepg3e6c1"><span class="error-container" id="error3e6c1"></span></div></td>
+                           <td><div class="input-wrapper"><input type="decimal" inputmode="decimal" placeholder="Enter Years to go" id="tepg3e6c2" name="tepg3e6c2"><span class="error-container" id="error3e6c2"></span></div>
                            </td>
                         </tr>
                      </table>
                   </div>
 
                </div>
+               </form>
             </div>
+
+
          </div>
 
          <!-- dynamic content end -->
@@ -251,7 +266,14 @@
 
          <div class="btn-group">
             <span role="button" class="red-btn prev-btn">Previous</span>
-            <span role="button" class="red-btn next-btn">Next</span>
+            
+            <span role="button" id="formSubmit1" form="page1Form" name='submit' class="red-btn next-btn">Next</span>
+            <span role="button" id="formSubmit2" form="page2Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+            <span role="button" id="formSubmit3" form="page3Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+            <span role="button" id="formSubmit4" form="page4Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
          </div>
       </div>
 
@@ -264,29 +286,47 @@
          //for page 1
          initLoader();
          page1LocalStorage();
+         fValidate(1);
 
          function onChangeCallback() {
             switch (this.currentSlide + 1) {
                case 1:
+               $('.next-btn').off()
+                  fValidate(1);
+                  $('#formSubmit2,#formSubmit3,#formSubmit4').addClass('d-none');
+                  $('#formSubmit1').removeClass('d-none');
                   initLoader();
                   page1LocalStorage();
                   break;
                case 2:
+               $('.next-btn').off()
+                  fValidate(2);
+                  $('#formSubmit1,#formSubmit3,#formSubmit4').addClass('d-none');
+                  $('#formSubmit2').removeClass('d-none');
                   updateLoader(1, 4);
+                  tableUp()
                      page2newLocalStorage();
                   break;
 
                case 3:
+               $('.next-btn').off();
+                  fValidate(3);
+                  $('#formSubmit1,#formSubmit2,#formSubmit4').addClass('d-none');
+                  $('#formSubmit3').removeClass('d-none');
                   updateLoader(2, 4);
-                  table();
+                  tableDown();
                   page2LocalStorage();
                   break;
                case 4:
+               $('.next-btn').off();
+                  fValidate(4);
+                  $('#formSubmit1,#formSubmit3,#formSubmit2').addClass('d-none');
+                  $('#formSubmit4').removeClass('d-none');
                   $('.next-btn').text('Finish');
+                  tableDown();
+                  prevBehaviour();
                   updateLoader(3, 4);
-                  table();
                   page3LocalStorage();
-                  next();
                   break;
             }
          }
@@ -306,7 +346,7 @@
             rtl: false,
          });
          $('.prev-btn').click(() => mySiema.prev());
-         $('.next-btn').click(() => mySiema.next());
+         // $('.next-btn').click(() => mySiema.next());
 
       </script>
 
