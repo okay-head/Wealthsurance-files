@@ -94,6 +94,8 @@ function pushToDatabase1(nw) {
           
 
       success: (x) => {
+         console.log(x);
+
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("nw_result", JSON.stringify(result.data));
@@ -306,7 +308,6 @@ function next() {
       loaderPromise().then(() => {
          pushToDatabase1(nw);
          setTimeout(() => {
-            console.log('inside modified next button function');
             // window.open("netWorth_result.html", "_self");
          }, 1410);
       });
@@ -366,6 +367,7 @@ function pushToDatabase2(arr) {
       url: url_string,
 
       success: (x) => {
+         console.log(x);
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("nw_result", JSON.stringify(result.data));

@@ -78,6 +78,8 @@ function pushToDatabase1(fna) {
 
       success: (x) => {
          let result = JSON.parse(x);
+         // console.log(url_string);
+         // console.log(result);
          if (result.success) {
             localStorage.setItem("fna_result", JSON.stringify(result.amount));
          } else {
@@ -735,7 +737,7 @@ $("#page4Form").validate({
       fnapg4e1: {
           required: true,
           number: true,
-          min:1
+          min:0
        },
        //  fnapg4e2c1,fnapg4e3c1,fnapg4e4c1,fnapg4e5c1,fnapg4e6c1,fnapg4e7c1: {number: true,min:1},
       
@@ -764,7 +766,7 @@ $("#page4Form").validate({
    messages: {
       fnapg4e1: {
           required: "This field is required" ,
-          min: "Debt should be greater than 0",
+          min: "Debt cannot be negative",
    },
    fnapg4e2c1:{min:"Value should be greater than 0"},
    fnapg4e3c1:{min:"Value should be greater than 0"},
@@ -808,7 +810,7 @@ $("#page5Form").validate({
       fnapg5e1: { 
          required: true,
           number: true,
-          min:1
+          min:0
       },
       fnapg5e2c1: {number: true,min:1},
       fnapg5e3c1: {number: true,min:1},
@@ -825,7 +827,7 @@ $("#page5Form").validate({
    messages: {
       fnapg5e1: {
          required: "This field is required" ,
-         min: "Value should be greater than 0",
+         min: "Value cannot be negative",
    },
    fnapg5e2c1:{min:"Value should be greater than 0"},
    fnapg5e3c1:{min:"Value should be greater than 0"},
@@ -874,7 +876,7 @@ $('#fnaRecalcForm').validate({
       fnaresultp1r0e1: { 
          required: true,
           number: true,
-          min:1
+          min:0
       },
       fnaresultp1r1e1: {number: true,min:1},
       fnaresultp1r2e1: {number: true,min:1},
@@ -902,7 +904,7 @@ $('#fnaRecalcForm').validate({
       fnaresultp2r0e1: { 
          required: true,
           number: true,
-          min:1
+          min:0
       },
 
       fnaresultp2r1e1: {number: true,min:1},
@@ -920,10 +922,10 @@ $('#fnaRecalcForm').validate({
    },
    messages: {
       fnaresultp1r0e1:{
-         min: "Value should be greater than 0"
+         min: "Debt cannot be negative"
       },
       fnaresultp2r0e1:{
-         min: "Value should be greater than 0"
+         min: "Value cannot be negative"
       },
    fnaresultp1r1e1:{min:"Value should be greater than 0"},
    fnaresultp1r2e1:{min:"Value should be greater than 0"},
