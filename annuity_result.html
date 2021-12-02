@@ -5,15 +5,15 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
    <!-- jquery validation -->
    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-   
+
 
    <!-- number format -->
-    <script src="scripts/jquery/jquery.number.min.js"></script>
+   <script src="scripts/jquery/jquery.number.min.js"></script>
 
 
 
@@ -41,18 +41,18 @@
                   <a href="#">Know More</a>
                </li>
                <li class="p-relative">
-                  <a href="#">Tools <span class="dropdown-arrow"><img
-                           src="media/images/nav-dropdown-arrow.png" alt="dropdown-arrow"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="fna.html">Financial Needs Analysis</a></li>
-                              <li><a href="termInsurance.html">Term Insurance</a></li>
-                              <li><a href="annuity.html">Annuity</a></li>
-                              <li><a href="netWorth.html">Net worth</a></li>
-                              <li><a href="mortgage.html">Mortgage</a></li>
-                              <li><a href="retirement.html">Retirement</a></li>
-                              <li><a href="refi.html">Refi</a></li>
-                              <li><a href="college_expenses.html">College Expenses</a></li>
-                           </ul>
+                  <a href="#">Tools <span class="dropdown-arrow"><img src="media/images/nav-dropdown-arrow.png"
+                           alt="dropdown-arrow"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="fna.html">Financial Needs Analysis</a></li>
+                     <li><a href="termInsurance.html">Term Insurance</a></li>
+                     <li><a href="annuity.html">Annuity</a></li>
+                     <li><a href="netWorth.html">Net worth</a></li>
+                     <li><a href="mortgage.html">Mortgage</a></li>
+                     <li><a href="retirement.html">Retirement</a></li>
+                     <li><a href="refi.html">Refi</a></li>
+                     <li><a href="college_expenses.html">College Expenses</a></li>
+                  </ul>
                </li>
                <li>
                   <a href="#">Events</a>
@@ -115,6 +115,7 @@
                <h4>Input</h4>
 
                <div class="results-table-container result-table">
+                  <form id="annRecalcForm">
                   <table class="annuity-results-table results-table w-100 editable-results-table">
                      <tr class="result-table-header">
                         <td>Parameters</td>
@@ -122,26 +123,51 @@
                      </tr>
                      <tr>
                         <td>Current Age,years:</td>
-                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="annresulte1" placeholder="45" >
+                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="annresulte1"
+                              name="annresulte1" placeholder="45">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte1"></span>
+                           </div>
+
                         </td>
                      </tr>
                      <tr>
                         <td>Age to start payment,years:</td>
-                        <td><input type="decimal" inputmode="decimal" id="annresulte2" placeholder="65" ></td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte2" name="annresulte2"
+                              placeholder="65">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte2"></span>
+                           </div>
+                        </td>
                      </tr>
                      <!-- <tr>
                         <td>Length of annuity,years:</td>
-                        <td><input type="decimal" inputmode="decimal" id="annresulte3" placeholder="20" ></td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte3" name="annresulte3" placeholder="20" ></td>
                      </tr> -->
                      <tr>
                         <td>Initial amount,$:</td>
-                        <td><input type="decimal" inputmode="decimal" id="annresulte3" placeholder="500000" ></td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte3" name="annresulte3"
+                              placeholder="500000">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte3"></span>
+                           </div>
+                        </td>
                      </tr>
                      <tr>
                         <td>Annual growth rate,%:</td>
-                        <td><input type="decimal" inputmode="decimal" id="annresulte4" placeholder="6" ></td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte4" name="annresulte4"
+                              placeholder="6">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte4"></span>
+                           </div>
+                        </td>
                      </tr>
                   </table>
+               </form>
                </div>
 
                <a href="#" class="red-btn re-calc-btn" id="re-calc">Re-calculate</a>

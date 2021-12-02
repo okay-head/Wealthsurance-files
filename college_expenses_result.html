@@ -5,15 +5,15 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
    <!-- jquery validation -->
    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-   
+
 
    <!-- number format -->
-    <script src="scripts/jquery/jquery.number.min.js"></script>
+   <script src="scripts/jquery/jquery.number.min.js"></script>
 
 
 
@@ -116,51 +116,95 @@
                <h4>Input</h4>
 
                <div class="results-table-container result-table">
-                  <table class="annuity-results-table results-table w-100 editable-results-table">
-                     <tr>
-                        <td>Name</td>
-                        <td id="orange-text"><input type="text" id="clgpg1resulte1" placeholder="John doe"
-                              inputmode="text"></td>
-                     </tr>
-                     <tr>
-                        <td>Current age,years</td>
-                        <td><input type="decimal" inputmode="decimal" id="clgpg1resulte2" placeholder="5" ></td>
-                     </tr>
-                     <tr>
-                        <td>Age entering college, years</td>
-                        <td><input type="decimal" inputmode="decimal" id="clgpg1resulte3" placeholder="18" ></td>
-                     </tr>
-                     <tr>
-                        <td>Years in college, years</td>
-                        <td><input type="decimal" inputmode="decimal" id="clgpg1resulte4" placeholder="4" ></td>
-                     </tr>
-                     <tr>
-                        <td>Annual college expenses, $</td>
-                        <td><input type="decimal" inputmode="decimal" id="clgpg1resulte5" placeholder="45000" >
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>Investment rate, %</td>
-                        <td><input type="decimal" inputmode="decimal" id="clgpg1resulte8" placeholder="8" >
-                        </td>
-                     </tr>
+                  <form id="clgRecalcForm">
+                     <table class="annuity-results-table results-table w-100 editable-results-table">
+                        <tr>
+                           <td>Name</td>
+                           <td id="orange-text"><input type="text" id="clgpg1resulte1" name="clgpg1resulte1"
+                                 placeholder="John doe" inputmode="text">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte1"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Current age,years</td>
+                           <td><input type="decimal" inputmode="decimal" id="clgpg1resulte2" name="clgpg1resulte2"
+                                 placeholder="5">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte2"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Age entering college, years</td>
+                           <td><input type="decimal" inputmode="decimal" id="clgpg1resulte3" name="clgpg1resulte3"
+                                 placeholder="18">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte3"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Years in college, years</td>
+                           <td><input type="decimal" inputmode="decimal" id="clgpg1resulte4" name="clgpg1resulte4"
+                                 placeholder="4">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte4"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Annual college expenses, $</td>
+                           <td><input type="decimal" inputmode="decimal" id="clgpg1resulte5" name="clgpg1resulte5"
+                                 placeholder="45000">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte5"></span>
+                              </div>
 
-                     <tr>
-                        <td>Portion to be funded, %</td>
-                        <td><input type="decimal" inputmode="decimal" id="clgpg1resulte6" placeholder="40" >
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>Portion to be funded, $</td>
-                        <td><input type="decimal" inputmode="decimal" id="clgpg1resulte7" placeholder="18000" disabled>
-                        </td>
-                     </tr>
-                     <!-- <tr>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Investment rate, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="clgpg1resulte8" name="clgpg1resulte8"
+                                 placeholder="8">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte8"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td>Portion to be funded, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="clgpg1resulte6" name="clgpg1resulte6"
+                                 placeholder="40">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte6"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Portion to be funded, $</td>
+                           <td><input type="decimal" inputmode="decimal" id="clgpg1resulte7" name="clgpg1resulte7"
+                                 placeholder="18000" disabled>
+                           </td>
+                        </tr>
+                        <!-- <tr>
                         <td>Saved so far, $</td>
                         <td><input type="decimal" inputmode="decimal" id="clgpg1resulte8" placeholder="20000" >
                         </td>
                      </tr> -->
-                  </table>
+                     </table>
+                  </form>
                </div>
                <!-- <div class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 editable-results-table">

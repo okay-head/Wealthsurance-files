@@ -35,10 +35,14 @@ function pushToDatabase1(ann) {
 function pushToDatabase2(ann) {
    // Create session id only when the user decides to recalculate
    createSessionId();
-   [{ current_age: b[0],
-      ageToStart_payment: b[1],
-      initial_amount: b[2],
-      growth_rate: b[3],}] = ann.results;
+   [
+      {
+         current_age: b[0],
+         ageToStart_payment: b[1],
+         initial_amount: b[2],
+         growth_rate: b[3],
+      },
+   ] = ann.results;
 
    $.ajax({
       type: "POST",
@@ -47,7 +51,7 @@ function pushToDatabase2(ann) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            updateResult(2,result.data)
+            updateResult(2, result.data);
          } else {
             console.log(result + "request not successful");
          }
@@ -58,16 +62,15 @@ function pushToDatabase2(ann) {
    });
 }
 
-function updateResult(x,y=undefined) {
+function updateResult(x, y = undefined) {
    switch (x) {
       case 1:
-         let amount1 = $.number((JSON.parse(localStorage.getItem("ann_result"))) )
-         $(".calculated-result").text(
-            "$" + amount1);
+         let amount1 = $.number(JSON.parse(localStorage.getItem("ann_result")));
+         $(".calculated-result").text("$" + amount1);
          break;
       case 2:
-         let amount2 = $.number( y)
-         $(".calculated-result").text('$'+amount2)
+         let amount2 = $.number(y);
+         $(".calculated-result").text("$" + amount2);
          break;
    }
    // console.log(JSON.parse(localStorage.getItem('ann_result')))
@@ -106,29 +109,22 @@ function pgLocalStorage() {
 
 function next() {
    //  change next button's action
-   $(".next-btn").on("click", () => {
-      function loaderPromise() {
-         let update = new Promise((resolve) => {
-            resolve(updateLoader(1, 1));
-         });
-         return update;
-      }
-      loaderPromise().then(() => {
-         //----- @ajax -----
-         pushToDatabase1(ann);
-         // ------------------
-         setTimeout(() => {
-            window.open("annuity_result.html", "_self");
-         }, 1410);
+   function loaderPromise() {
+      let update = new Promise((resolve) => {
+         resolve(updateLoader(1, 1));
       });
+      return update;
+   }
+   loaderPromise().then(() => {
+      pushToDatabase1(ann);
+      setTimeout(() => {
+         window.open("annuity_result.html", "_self");
+      }, 1410);
    });
 }
-
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
-      storeRecalculate();
-
-      updatePlaceholders(2);
+      validateFormRecalc("#annRecalcForm", 3);
    });
 }
 
@@ -145,7 +141,9 @@ function storeRecalculate() {
    ann.results = [];
    ann.results.push(obj);
 
-   pushToDatabase2(ann)
+   pushToDatabase2(ann);
+   updatePlaceholders(2);
+
 }
 
 function updatePlaceholders(x) {
@@ -177,3 +175,133 @@ function updatePlaceholders(x) {
          break;
    }
 }
+
+/* -------- validation -------- */
+
+$.validator.addMethod(
+   "min_age",
+   function (value, element, param) {
+      let isValid = value >= Number($("#annpg1e1").val());
+
+      return isValid;
+   },
+   "Age should be greater than or equal to current age"
+);
+
+// recalc
+$.validator.addMethod(
+   "min_age2",
+   function (value) {
+      let isValid = value >= Number($("#annresulte1").val());
+
+      return isValid;
+   },
+   "Age should be greater than or equal to current age"
+);
+
+$("#annForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 4; i++) {
+         if (element.is("#annpg1e" + i)) {
+            error.appendTo("#error" + i);
+         }
+      }
+   }, 
+   rules: {
+      annpg1e1: {
+         required: true,
+         digits: true,
+         range: [1, 90],
+      },
+      annpg1e2: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      annpg1e3: {
+         required: true,
+         digits: true,
+         min_age: true,
+         // min:1,
+         max: 90,
+      },
+      annpg1e4: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+   },
+   messages: {
+      annpg1e1: {
+         digits: "Please enter only positive integers",
+      },
+      annpg1e2: {
+         min: "Value should be greater than 0",
+      },
+      annpg1e3: {
+         digits: "Please enter only positive integers",
+         min: "Age should be greater than or equal to current age",
+         max: "Please enter a value less than or equal to 90",
+      },
+      annpg1e4: {
+         range: "Please enter a val between 0-100",
+      },
+   },
+});
+
+$("#annRecalcForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 4; i++) {
+         if (element.is("#annresulte" + i)) {
+            error.appendTo("#eresulte" + i);
+         }
+      }
+   },
+   rules: {
+      annresulte1: {
+         required: true,
+         digits: true,
+         range: [1, 90],
+      },
+      annresulte3: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      annresulte2: {
+         required: true,
+         digits: true,
+         min_age2: true,
+         // min:1,
+         max: 90,
+      },
+      annresulte4: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+   },
+   messages: {
+      annresulte1: {
+         digits: "Please enter only positive integers",
+      },
+      annresulte3: {
+         min: "Value should be greater than 0",
+      },
+      annresulte2: {
+         digits: "Please enter only positive integers",
+         min: "Age should be greater than or equal to current age",
+         max: "Please enter a value less than or equal to 90",
+      },
+      annresulte4: {
+         range: "Please enter a val between 0-100",
+      },
+   },
+});
+
+
+$("#annFormSubmit").on("click", () => {
+   if ($("#annForm").valid()) {
+      next();
+   }
+});

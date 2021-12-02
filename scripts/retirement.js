@@ -266,7 +266,7 @@ function page4LocalStorage() {
    }
 
    //push to local storage
-   $(":input").change(() => {
+   $(".page4 :input").change(() => {
       if (localStorage.getItem("retirepg4") != null) {
          localStorage.removeItem("retirepg4");
          retire.page4 = [];

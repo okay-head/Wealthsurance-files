@@ -1194,7 +1194,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 .required {
    position: absolute;
-   display: inline-block;
+   display: none!important;
    content: url(../media/images/alert-circle2.svg);
    top: 40%;
    right: -3.5%;

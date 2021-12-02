@@ -5,15 +5,15 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
    <!-- jquery validation -->
    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-   
+
 
    <!-- number format -->
-    <script src="scripts/jquery/jquery.number.min.js"></script>
+   <script src="scripts/jquery/jquery.number.min.js"></script>
 
 
 
@@ -42,18 +42,18 @@
                   <a href="#">Know More</a>
                </li>
                <li class="p-relative">
-                  <a href="#">Tools <span class="dropdown-arrow"><img
-                           src="media/images/nav-dropdown-arrow.png" alt="dropdown-arrow"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="fna.html">Financial Needs Analysis</a></li>
-                              <li><a href="termInsurance.html">Term Insurance</a></li>
-                              <li><a href="annuity.html">Annuity</a></li>
-                              <li><a href="netWorth.html">Net worth</a></li>
-                              <li><a href="mortgage.html">Mortgage</a></li>
-                              <li><a href="retirement.html">Retirement</a></li>
-                              <li><a href="refi.html">Refi</a></li>
-                              <li><a href="college_expenses.html">College Expenses</a></li>
-                           </ul>
+                  <a href="#">Tools <span class="dropdown-arrow"><img src="media/images/nav-dropdown-arrow.png"
+                           alt="dropdown-arrow"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="fna.html">Financial Needs Analysis</a></li>
+                     <li><a href="termInsurance.html">Term Insurance</a></li>
+                     <li><a href="annuity.html">Annuity</a></li>
+                     <li><a href="netWorth.html">Net worth</a></li>
+                     <li><a href="mortgage.html">Mortgage</a></li>
+                     <li><a href="retirement.html">Retirement</a></li>
+                     <li><a href="refi.html">Refi</a></li>
+                     <li><a href="college_expenses.html">College Expenses</a></li>
+                  </ul>
                </li>
                <li>
                   <a href="#">Events</a>
@@ -104,27 +104,44 @@
          </div>
 
          <div class="page1">
-            <div class="input-fields">
-               <div>I want to save for college expenses for
-                  <input type="text" id="clgpg1e1" placeholder="Enter Name">
-               </div>
-               <div>
-                  who is <input type="decimal" inputmode="decimal" id="clgpg1e2" placeholder="Enter no of years">years old, and will go to
-                  college at the age of
-               </div>
-               <div>
-                  <input type="decimal" inputmode="decimal" id="clgpg1e3" placeholder="Enter no of years">years, for
-                  <input type="decimal" inputmode="decimal" id="clgpg1e4" placeholder="Enter Number">
-                  years.
-               </div>
-               <div>
-                  I want to fund <input type="decimal" inputmode="decimal" id="clgpg1e5" placeholder="Enter percentage">% of the annual
-                  college expenses of
-                  $ <input type="decimal" inputmode="decimal" id="clgpg1e6" placeholder="Enter amount">
-               </div>
-               <div>My contribution will grow at<input type="decimal" inputmode="decimal" id="clgpg1e7" placeholder="Enter percentage">% annually each year.
-               </div>
-             <!--  <div>
+            <form id="clgForm">
+               <div class="input-fields">
+                  <div>I want to save for college expenses for
+                     <div class="input-wrapper"> <input type="text" id="clgpg1e1" name="clgpg1e1"  placeholder="Enter Name" maxlength="18"><span
+                           class="error-container" id="error1"></span>
+                     </div>
+                  </div>
+                  <div>
+                     who is <div class="input-wrapper"> <input type="decimal" inputmode="decimal" id="clgpg1e2" name="clgpg1e2" 
+                           placeholder="Enter no of years"><span class="error-container" id="error2"></span>
+                     </div>years old, and will go to
+                     college at the age of
+                  </div>
+                  <div>
+                     <div class="input-wrapper"> <input type="decimal" inputmode="decimal" id="clgpg1e3" name="clgpg1e3" 
+                           placeholder="Enter no of years"><span class="error-container" id="error3"></span>
+                     years,</div> for
+                     <div class="input-wrapper"> <input type="decimal" inputmode="decimal" id="clgpg1e4" name="clgpg1e4" 
+                           placeholder="Enter Number"><span class="error-container" id="error4"></span>
+                     </div>
+                     years.
+                  </div>
+                  <div>
+                     I want to fund <div class="input-wrapper"> <input type="decimal" inputmode="decimal" id="clgpg1e5" name="clgpg1e5" 
+                           placeholder="Enter percentage"><span class="error-container" id="error5"></span>
+                     % of the annual</div>
+                     college expenses  <div class="input-wrapper"> of
+                        $ <input type="decimal" inputmode="decimal" id="clgpg1e6" name="clgpg1e6" 
+                           placeholder="Enter amount"><span class="error-container" id="error6"></span>
+                     </div>
+                  </div>
+                  <div>My contribution will grow at<div class="input-wrapper"> <input type="decimal" inputmode="decimal"
+                           id="clgpg1e7" name="clgpg1e7"  placeholder="Enter percentage"><span class="error-container"
+                           id="error7"></span>
+                     % annually</div>
+                     each year.
+                  </div>
+                  <!--  <div>
                   I have to put aside $
                   <input type="decimal" inputmode="decimal" id="clgpg1e8" placeholder="Enter amount"> so far towards college expenses.
                </div>
@@ -136,12 +153,13 @@
                   year.
                </div> -->
 
-            </div>
+               </div>
+            </form>
          </div>
 
 
          <div class="btn-group">
-            <span role="button" class="red-btn next-btn">Finish</span>
+            <span role="button" id="clgFormSubmit" form="clgForm" name="submit" class="red-btn next-btn">Finish</span>
          </div>
 
       </div>
@@ -153,7 +171,7 @@
       'use strict'
       initLoader();
       pgLocalStorage();
-      next();
+      // next();
    </script>
 
 

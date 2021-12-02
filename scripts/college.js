@@ -66,6 +66,7 @@ function pushToDatabase2(clg) {
       type: "POST",
       url: url_string,
       success: (x) => {
+         // console.log(x);
          let result = JSON.parse(x);
          if (result.success) {
             updateResult(2, result.amount);
@@ -165,7 +166,6 @@ function pgLocalStorage() {
 
 function next() {
    //  change next button's action
-   $(".next-btn").on("click", () => {
       function loaderPromise() {
          let update = new Promise((resolve) => {
             resolve(updateLoader(1, 1));
@@ -178,14 +178,10 @@ function next() {
             window.open("college_expenses_result.html", "_self");
          }, 1410);
       });
-   });
 }
-
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
-      storeRecalculate();
-
-      // updatePlaceholders(2);
+      validateFormRecalc("#clgRecalcForm", 6);
    });
 }
 
@@ -209,3 +205,199 @@ function storeRecalculate() {
 
    updatePlaceholders(2);
 }
+
+
+/* ----------- Validation ----------- */
+$.validator.addMethod("lettersonly", function(value, element)
+{
+return this.optional(element) || /^[a-z ]+$/i.test(value);
+}, "Letters and spaces only please");
+
+$.validator.addMethod(
+   "min_age",
+   function (value) {
+      let isValid = ( value >= Number($("#clgpg1e2").val()) );
+
+      return isValid;
+   },
+   "Age should be greater than or equal to current age"
+);
+
+$.validator.addMethod(
+   "min_age2",
+   function (value) {
+      let isValid = ( value >= Number($("#clgpg1resulte2").val()) );
+
+      return isValid;
+   },
+   "Age should be greater than or equal to current age"
+);
+// let difference = undefined
+
+// function getDifference() {
+//    difference = 90-(Number($("#clgpg1e3").val()))
+//    return difference
+// }
+
+// window.setInterval(getDifference,200)
+
+// $.validator.addMethod(
+//    "max_y",
+//    function (value) {
+//        difference = 90-(Number($("#clgpg1e3").val()) )
+//       let isValid =  value <= difference ;
+
+//       return isValid;
+//    },
+//    `College years cannot be greater than ${getDifference()}`
+// );
+
+
+$("#clgForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 7; i++) {
+         if (element.is("#clgpg1e" + i)) {
+            error.appendTo("#error" + i);
+         }
+      }
+   },
+   rules: {
+      clgpg1e1: {
+         required: true,
+         lettersonly: true,
+      },
+      clgpg1e2: {
+         required: true,
+         digits: true,
+         range: [1,90],
+      },
+      clgpg1e3: {
+         required: true,
+         digits: true,
+         min_age: true,
+         max: 90,
+      },
+      clgpg1e4: {
+         required: true,
+         number: true,
+         range: [1, 90],
+         // max_y: true,
+      },
+      clgpg1e5: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      clgpg1e6: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      clgpg1e7: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+
+   },
+   messages: {
+      clgpg1e1: {
+         digits: "Please enter only positive integers",
+      },
+      clgpg1e2: {
+         digits: "Please enter only positive integers",
+         range: "Please enter a value between 1-90",
+      },
+      clgpg1e3: {
+         digits: "Please enter only positive integers",
+         // min: "Age should be greater than or equal to current age",
+         max: "Please enter a value less than or equal to 90",
+      },
+      clgpg1e4: {
+         range: "Please enter a val between 0-90",
+      },
+      clgpg1e6:{
+         min: "Value should be greater than 0"
+      }
+   },
+});
+
+$("#clgRecalcForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 8; i++) {
+         if (element.is("#clgpg1resulte" + i)) {
+            error.appendTo("#eresulte" + i);
+         }
+      }
+   },
+   rules: {
+      clgpg1resulte1: {
+         required: true,
+         lettersonly: true,
+      },
+      clgpg1resulte2: {
+         required: true,
+         digits: true,
+         range: [1,90],
+      },
+      clgpg1resulte3: {
+         required: true,
+         digits: true,
+         min_age2: true,
+         max: 90,
+      },
+      clgpg1resulte4: {
+         required: true,
+         number: true,
+         range: [1, 90],
+         // max_y: true,
+      },
+      clgpg1resulte6: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      clgpg1resulte5: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      clgpg1resulte8: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+
+   },
+   messages: {
+      clgpg1resulte1: {
+         digits: "Please enter only positive integers",
+      },
+      clgpg1resulte2: {
+         digits: "Please enter only positive integers",
+         range: "Please enter a value between 1-90",
+      },
+      clgpg1resulte3: {
+         digits: "Please enter only positive integers",
+         // min: "Age should be greater than or equal to current age",
+         max: "Please enter a value less than or equal to 90",
+      },
+      clgpg1resulte4: {
+         range: "Please enter a val between 0-90",
+      },
+      clgpg1resulte5:{
+         min: "Value should be greater than 0"
+      }
+   },
+});
+
+
+
+$("#clgFormSubmit").on("click", () => {
+   if ($("#clgForm").valid()) {
+      next();
+   }else{
+      console.log('invalid form');
+   }
+});
+
