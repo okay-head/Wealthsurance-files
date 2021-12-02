@@ -1278,8 +1278,80 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    left: 6%;
 }
 
+td {
+   position: relative;
+}
 
-/* ---breakpoints--- */
+.tooltip {
+   font-family: 'Gilroy-regular', Arial, Courier, monospace;
+   font-size: 0.8em;
+   position: absolute;
+   top: 20.5%;
+   right: 9.5%;
+   display: inline-block;
+}
+.head-tooltip{
+   right: 3%;
+}
+
+.tooltip .tooltip-text {
+   z-index: 1;
+   visibility: hidden;
+   width: 120px;
+   background-color: rgba(0, 0, 0, 0.746);
+   color: #fff;
+   text-align: center;
+   border-radius: 4px;
+   padding: 0.4em 0.05em;
+   position: absolute;
+   bottom: 125%;
+   left: 50%;
+   margin-left: -60px;
+   /* top: -7px;
+right: 124%; */
+   opacity: 0;
+   transition: opacity 0.3s;
+}
+
+.tooltip .tooltip-text::after {
+   content: "";
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   margin-left: -5px;
+   /* top: 50%;
+left: 100%; */
+   /* margin-top: -6px; */
+   border-width: 6px;
+   border-style: solid;
+   border-color: rgba(0, 0, 0, 0.746)transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+   visibility: visible;
+   opacity: 1;
+}
+
+.tooltip-left .tooltip-text {
+   /* top: -5px;
+bottom: auto;
+right: 128%; */
+   top: -7px;
+   right: 124%;
+   bottom: inherit;
+   left: inherit;
+}
+
+.tooltip-left .tooltip-text::after {
+   top: 50%;
+   left: 100%;
+   margin-top: -6px;
+   margin-left: 0;
+   border-color: transparent transparent transparent rgba(0, 0, 0, 0.746);
+}
+
+
+/* ------------breakpoints------------ */
 @media screen and (max-width: 1340px) {
    .navigation {
       display: none;

@@ -526,8 +526,8 @@ function storeRecalculate() {
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
-      fValidate2()
-      storeRecalculate();
+      validateFormRecalc('#teRecalcForm',2);
+      // storeRecalculate();
    });
 }
 
@@ -586,11 +586,6 @@ function nextPage() {
       setTimeout(() => {
          window.open("termInsurance_result.html", "_self");
       }, 1410);
-   });
-}
-function prevBehaviour() {
-   $(".prev-btn").on("click", () => {
-      $(".next-btn").text("Next");
    });
 }
 
@@ -810,6 +805,134 @@ function validateForm(x) {
       }
    }
 }
+
+$('#teRecalcForm').validate({
+   errorPlacement: function (error, element) {
+      if (element.is("#teresultp1r0e1")) {
+         error.appendTo("#eresultp1r0e1");
+      }
+      if (element.is("#teresultp2r0e1")) {
+         error.appendTo("#eresultp2r0e1");
+      }
+      for (let i = 1; i <= 7; i++) {
+         if (element.is(`#teresultp1r${i}e1`)) {
+            error.appendTo(`#eresultp1r${i}e1`);
+         }
+         if (element.is(`#teresultp1r${i}e2`)) {
+            error.appendTo(`#eresultp1r${i}e2`);
+         }
+         if (element.is(`#teresultp1r${i}e3`)) {
+            error.appendTo(`#eresultp1r${i}e3`);
+         }
+      }
+      for (let i = 1; i <= 5; i++) {
+         if (element.is(`#teresultp2r${i}e1`)) {
+            error.appendTo(`#eresultp2r${i}e1`);
+         }
+         if (element.is(`#teresultp2r${i}e2`)) {
+            error.appendTo(`#eresultp2r${i}e2`);
+         }
+      }
+   },
+
+   rules: {
+      teresultp1r0e1: { 
+         required: true,
+          number: true,
+          min:1
+      },
+      teresultp1r1e1: {number: true,min:1},
+      teresultp1r2e1: {number: true,min:1},
+      teresultp1r3e1: {number: true,min:1},
+      teresultp1r4e1: {number: true,min:1},
+      teresultp1r5e1: {number: true,min:1},
+      teresultp1r6e1: {number: true,min:1},
+      teresultp1r7e1: {number: true,min:1},
+      
+      teresultp1r1e2: {number: true,range:[0,100]},
+      teresultp1r2e2: {number: true,range:[0,100]},
+      teresultp1r3e2: {number: true,range:[0,100]},
+      teresultp1r4e2: {number: true,range:[0,100]},
+      teresultp1r5e2: {number: true,range:[0,100]},
+      teresultp1r6e2: {number: true,range:[0,100]},
+      teresultp1r7e2: {number: true,range:[0,100]},
+      
+      teresultp1r1e3: {number: true,min:1},
+      teresultp1r2e3: {number: true,min:1},
+      teresultp1r3e3: {number: true,min:1},
+      teresultp1r4e3: {number: true,min:1},
+      teresultp1r5e3: {number: true,min:1},
+      teresultp1r6e3: {number: true,min:1},
+      teresultp1r7e3: {number: true,min:1},
+
+
+      // page2
+      teresultp2r0e1: { 
+         required: true,
+          number: true,
+          min:1
+      },
+
+      teresultp2r1e1: {number: true,min:1},
+      teresultp2r2e1: {number: true,min:1},
+      teresultp2r3e1: {number: true,min:1},
+      teresultp2r4e1: {number: true,min:1},
+      teresultp2r5e1: {number: true,min:1},
+
+      teresultp2r1e2: {number: true,min:1},
+      teresultp2r2e2: {number: true,min:1},
+      teresultp2r3e2: {number: true,min:1},
+      teresultp2r4e2: {number: true,min:1},
+      teresultp2r5e2: {number: true,min:1},
+
+   },
+   messages: {
+      teresultp1r0e1:{
+         min: "Value should be greater than 0"
+      },
+      teresultp2r0e1:{
+         min: "Value should be greater than 0"
+      },
+   teresultp1r1e1:{min:"Value should be greater than 0"},
+   teresultp1r2e1:{min:"Value should be greater than 0"},
+   teresultp1r3e1:{min:"Value should be greater than 0"},
+   teresultp1r4e1:{min:"Value should be greater than 0"},
+   teresultp1r5e1:{min:"Value should be greater than 0"},
+   teresultp1r6e1:{min:"Value should be greater than 0"},
+   teresultp1r7e1:{min:"Value should be greater than 0"},
+
+   teresultp1r1e2:{range:"Please enter a value between 0-100"},
+   teresultp1r2e2:{range:"Please enter a value between 0-100"},
+   teresultp1r3e2:{range:"Please enter a value between 0-100"},
+   teresultp1r4e2:{range:"Please enter a value between 0-100"},
+   teresultp1r5e2:{range:"Please enter a value between 0-100"},
+   teresultp1r6e2:{range:"Please enter a value between 0-100"},
+   teresultp1r7e2:{range:"Please enter a value between 0-100"},
+
+   teresultp1r1e3:{min:"Value should be greater than 0"},
+   teresultp1r2e3:{min:"Value should be greater than 0"},
+   teresultp1r3e3:{min:"Value should be greater than 0"},
+   teresultp1r4e3:{min:"Value should be greater than 0"},
+   teresultp1r5e3:{min:"Value should be greater than 0"},
+   teresultp1r6e3:{min:"Value should be greater than 0"},
+   teresultp1r7e3:{min:"Value should be greater than 0"},
+
+   // page2
+   teresultp2r1e1:{min:"Value should be greater than 0"},
+   teresultp2r2e1:{min:"Value should be greater than 0"},
+   teresultp2r3e1:{min:"Value should be greater than 0"},
+   teresultp2r4e1:{min:"Value should be greater than 0"},
+   teresultp2r5e1:{min:"Value should be greater than 0"},
+
+   teresultp2r1e2:{min:"Value should be greater than 0"},
+   teresultp2r2e2:{min:"Value should be greater than 0"},
+   teresultp2r3e2:{min:"Value should be greater than 0"},
+   teresultp2r4e2:{min:"Value should be greater than 0"},
+   teresultp2r5e2:{min:"Value should be greater than 0"},
+   }
+
+});
+
 
 
 

@@ -605,13 +605,6 @@ function storeRecalculate() {
    // updatePlaceholders(2)
 }
 
-function reCalculate() {
-   $("#re-calc").on("click", () => {
-      validateFormRecalc();
-      // storeRecalculate();
-   });
-}
-
 /* ----- Validation -----*/
 
 // Page1 validation
@@ -853,6 +846,9 @@ $('#fnaRecalcForm').validate({
       if (element.is("#fnaresultp1r0e1")) {
          error.appendTo("#eresultp1r0e1");
       }
+      if (element.is("#fnaresultp2r0e1")) {
+         error.appendTo("#eresultp2r0e1");
+      }
       for (let i = 1; i <= 6; i++) {
          if (element.is(`#fnaresultp1r${i}e1`)) {
             error.appendTo(`#eresultp1r${i}e1`);
@@ -862,6 +858,14 @@ $('#fnaRecalcForm').validate({
          }
          if (element.is(`#fnaresultp1r${i}e3`)) {
             error.appendTo(`#eresultp1r${i}e3`);
+         }
+      }
+      for (let i = 1; i <= 5; i++) {
+         if (element.is(`#fnaresultp2r${i}e1`)) {
+            error.appendTo(`#eresultp2r${i}e1`);
+         }
+         if (element.is(`#fnaresultp2r${i}e2`)) {
+            error.appendTo(`#eresultp2r${i}e2`);
          }
       }
    },
@@ -893,9 +897,32 @@ $('#fnaRecalcForm').validate({
       fnaresultp1r5e3: {number: true,min:1},
       fnaresultp1r6e3: {number: true,min:1},
 
+
+      // page2
+      fnaresultp2r0e1: { 
+         required: true,
+          number: true,
+          min:1
+      },
+
+      fnaresultp2r1e1: {number: true,min:1},
+      fnaresultp2r2e1: {number: true,min:1},
+      fnaresultp2r3e1: {number: true,min:1},
+      fnaresultp2r4e1: {number: true,min:1},
+      fnaresultp2r5e1: {number: true,min:1},
+
+      fnaresultp2r1e2: {number: true,min:1},
+      fnaresultp2r2e2: {number: true,min:1},
+      fnaresultp2r3e2: {number: true,min:1},
+      fnaresultp2r4e2: {number: true,min:1},
+      fnaresultp2r5e2: {number: true,min:1},
+
    },
    messages: {
       fnaresultp1r0e1:{
+         min: "Value should be greater than 0"
+      },
+      fnaresultp2r0e1:{
          min: "Value should be greater than 0"
       },
    fnaresultp1r1e1:{min:"Value should be greater than 0"},
@@ -918,9 +945,23 @@ $('#fnaRecalcForm').validate({
    fnaresultp1r4e3:{min:"Value should be greater than 0"},
    fnaresultp1r5e3:{min:"Value should be greater than 0"},
    fnaresultp1r6e3:{min:"Value should be greater than 0"},
+
+   // page2
+   fnaresultp2r1e1:{min:"Value should be greater than 0"},
+   fnaresultp2r2e1:{min:"Value should be greater than 0"},
+   fnaresultp2r3e1:{min:"Value should be greater than 0"},
+   fnaresultp2r4e1:{min:"Value should be greater than 0"},
+   fnaresultp2r5e1:{min:"Value should be greater than 0"},
+
+   fnaresultp2r1e2:{min:"Value should be greater than 0"},
+   fnaresultp2r2e2:{min:"Value should be greater than 0"},
+   fnaresultp2r3e2:{min:"Value should be greater than 0"},
+   fnaresultp2r4e2:{min:"Value should be greater than 0"},
+   fnaresultp2r5e2:{min:"Value should be greater than 0"},
    }
 
 });
+
 function validateForm(x) {
    if ($(`#page${x}Form`).valid()) {
       if (x !== 5) {
@@ -957,31 +998,14 @@ function nextPage() {
       }, 1410);
    });
 }
-function prevBehaviour() {
-   $(".prev-btn").on("click", () => {
-      $(".next-btn").text("Next");
-      // .off()
-      // .on("click", () => {
-      //    mySiema.next();
-      // });
+
+function reCalculate() {
+   $("#re-calc").on("click", () => {
+      validateFormRecalc('#fnaRecalcForm',3);
+      // storeRecalculate();
    });
 }
 
-function validateFormRecalc() {
-   if ($("#fnaRecalcForm").valid()) {
-      storeRecalculate();
-   }else{
-      let inval_arr = checkInvalid()
-      inval_arr.forEach((element)=>{
-      $(`#${element}`).parent().removeClass('d-none')
-      })
-   }
-   let valid_arr = checkValid()
-   valid_arr.forEach((element)=>{
-   $(`#${element}`).parent().addClass('d-none')
-   })
-
-}
 
 
 

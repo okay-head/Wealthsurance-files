@@ -146,6 +146,7 @@ function fadeInResult() {
    });
 }
 
+
 //behaviour of the reEnter button
 function reEnter(page) {
    $(".re-enter").on("click", () => {
@@ -172,22 +173,39 @@ function fValidate(x) {
    });
 }
 
+function validateFormRecalc(x,y) {
+   if ($(x).valid()) {
+      storeRecalculate();
+   }else{
+      $('.calculated-result').text('null')
+      $('.calculated-result-2').text('0')
+      let inval_arr = checkInvalid(y)
+      inval_arr.forEach((element)=>{
+      $(`#${element}`).parent().removeClass('d-none')
+      })
+   }
+   let valid_arr = checkValid(y)
+   valid_arr.forEach((element)=>{
+   $(`#${element}`).parent().addClass('d-none')
+   })
+
+}
 
 //Validation functions for reCalc
-function checkInvalid() {
+function checkInvalid(y) {
    let z = document.querySelectorAll('input.error')
    let inval = [] //array containing id's of invalid elements
    z.forEach(element => {
-      let x  = (element.id).toString().slice(3)
+      let x  = (element.id).toString().slice(y)
       inval.push('e'+x);
    });
    return inval
 }
-function checkValid() {
+function checkValid(y) {
    let z = document.querySelectorAll('input.valid')
    let valid = [] //array containing id's of valid elements
    z.forEach(element => {
-      let x  = (element.id).toString().slice(3)
+      let x  = (element.id).toString().slice(y)
       valid.push('e'+x);
    });
    return valid

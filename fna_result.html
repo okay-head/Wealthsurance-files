@@ -20,104 +20,6 @@
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
    <title>Financial needs Analysis</title>
-
-   <style>
-      td {
-         position: relative;
-      }
-
-
-      /* .tooltip {
-         z-index: 2;
-         display: none;
-         position: absolute;
-         left: -141%;
-         top: -150%;
-         background-color: rgba(0, 0, 0, 0.746);
-         border-radius: 4px;
-         color: white;
-         padding: 0.25em 0.5em;
-
-      } */
-
-      /* .tooltip-arrow {
-         position: absolute;
-         bottom: -73%;
-         left: 38%;
-
-         width: 0;
-         height: 0;
-         border-left: 10px solid transparent;
-         border-right: 10px solid transparent;
-
-         border-top: 10px solid rgba(0, 0, 0, 0.746);
-      } */
-
-      .tooltip {
-         font-family: 'Gilroy-regular', Arial, Courier, monospace;
-         font-size: 0.8em;
-         position: absolute;
-         top: 20.5%;
-         right: 7.5%;
-         display: inline-block;
-      }
-
-      .tooltip .tooltip-text {
-         z-index: 1;
-         visibility: hidden;
-         width: 120px;
-         background-color: rgba(0, 0, 0, 0.746);
-         color: #fff;
-         text-align: center;
-         border-radius: 4px;
-         padding: 0.4em 0.05em;
-         position: absolute;
-         bottom: 125%;
-         left: 50%;
-         margin-left: -60px;
-         /* top: -7px;
-  right: 124%; */
-         opacity: 0;
-         transition: opacity 0.3s;
-      }
-
-      .tooltip .tooltip-text::after {
-         content: "";
-         position: absolute;
-         top: 100%;
-         left: 50%;
-         margin-left: -5px;
-         /* top: 50%;
-  left: 100%; */
-         /* margin-top: -6px; */
-         border-width: 6px;
-         border-style: solid;
-         border-color: rgba(0, 0, 0, 0.746)transparent transparent transparent;
-      }
-
-      .tooltip:hover .tooltip-text {
-         visibility: visible;
-         opacity: 1;
-      }
-
-      .tooltip-left .tooltip-text {
-         /* top: -5px;
-	bottom: auto;
-	right: 128%; */
-         top: -7px;
-         right: 124%;
-         bottom: inherit;
-         left: inherit;
-      }
-
-      .tooltip-left .tooltip-text::after {
-         top: 50%;
-         left: 100%;
-         margin-top: -6px;
-         margin-left: 0;
-         border-color: transparent transparent transparent rgba(0, 0, 0, 0.746);
-      }
-   </style>
 </head>
 
 <body>
@@ -217,10 +119,11 @@
                      <table class="results-table fna-results-table w-100">
                         <tr>
                            <td>Debt(other than mortgage)</td>
-                           <td colspan="3"><input type="decimal" inputmode="decimal" id="fnaresultp1r0e1" name="fnaresultp1r0e1"
-                                 placeholder="Enter Amount">
-                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                                 <span class="tooltip-text" id="eresultp1r0e1" id="eresultp1r0e1"></span>
+                           <td colspan="3"><input type="decimal" inputmode="decimal" id="fnaresultp1r0e1"
+                                 name="fnaresultp1r0e1" placeholder="Enter Amount">
+                              <div class="tooltip tooltip-left d-none head-tooltip" style="top:28.5%"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp1r0e1"></span>
                               </div>
 
                            </td>
@@ -245,8 +148,10 @@
                                  <span class="tooltip-text" id="eresultp1r1e2"></span>
                               </div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r1e3" name="fnaresultp1r1e3" placeholder="Enter Years">
-                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r1e3" name="fnaresultp1r1e3"
+                                 placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
                                  <span class="tooltip-text" id="eresultp1r1e3"></span>
                               </div>
                            </td>
@@ -265,8 +170,10 @@
                                  <span class="tooltip-text" id="eresultp1r2e2"></span>
                               </div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r2e3" name="fnaresultp1r2e3" placeholder="Enter Years">
-                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r2e3" name="fnaresultp1r2e3"
+                                 placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
                                  <span class="tooltip-text" id="eresultp1r2e3"></span>
                               </div>
                            </td>
@@ -285,8 +192,10 @@
                                  <span class="tooltip-text" id="eresultp1r3e2"></span>
                               </div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r3e3" name="fnaresultp1r3e3" placeholder="Enter Years">
-                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r3e3" name="fnaresultp1r3e3"
+                                 placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
                                  <span class="tooltip-text" id="eresultp1r3e3"></span>
                               </div>
 
@@ -306,8 +215,10 @@
                                  <span class="tooltip-text" id="eresultp1r4e2"></span>
                               </div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r4e3" name="fnaresultp1r4e3" placeholder="Enter Years">
-                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r4e3" name="fnaresultp1r4e3"
+                                 placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
                                  <span class="tooltip-text" id="eresultp1r4e3"></span>
                               </div>
 
@@ -327,8 +238,10 @@
                                  <span class="tooltip-text" id="eresultp1r5e2"></span>
                               </div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r5e3" name="fnaresultp1r5e3" placeholder="Enter Years">
-                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r5e3" name="fnaresultp1r5e3"
+                                 placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
                                  <span class="tooltip-text" id="eresultp1r5e3"></span>
                               </div>
 
@@ -348,19 +261,28 @@
                                  <span class="tooltip-text" id="eresultp1r6e2"></span>
                               </div>
                            </td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r6e3" name="fnaresultp1r6e3" placeholder="Enter Years">
-                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp1r6e3" name="fnaresultp1r6e3"
+                                 placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
                                  <span class="tooltip-text" id="eresultp1r6e3"></span>
                               </div>
 
                            </td>
                         </tr>
                      </table>
+
+                        
                      <table class="results-table fna-results-table fna-results-table-p2 w-100">
                         <tr>
                            <td>Major expenses</td>
-                           <td colspan="3"><input type="decimal" inputmode="decimal" id="fnaresultp2r0e1"
-                                 placeholder="Enter Amount"></td>
+                           <td colspan="3"><input type="decimal" inputmode="decimal" id="fnaresultp2r0e1" name="fnaresultp2r0e1"
+                                 placeholder="Enter Amount">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r0e1"></span>
+                              </div>
+                           </td>
                         </tr>
                         <tr>
                            <td>Values</td>
@@ -369,37 +291,87 @@
                         </tr>
                         <tr>
                            <td>College&nbspEducation:</td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r1e1"
-                                 placeholder="Enter Amount"></td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r1e2" placeholder="Enter Years">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r1e1" name="fnaresultp2r1e1"
+                                 placeholder="Enter Amount">
+                              <div class="tooltip d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r1e1"></span>
+                              </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r1e2" name="fnaresultp2r1e2" placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r1e2"></span>
+                              </div>
+
                            </td>
                         </tr>
                         <tr>
                            <td>Medical&nbspExpenses:</td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r2e1"
-                                 placeholder="Enter Amount"></td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r2e2" placeholder="Enter Years">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r2e1" name="fnaresultp2r2e1"
+                                 placeholder="Enter Amount">
+                              <div class="tooltip d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r2e1"></span>
+                              </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r2e2" name="fnaresultp2r2e2" placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r2e2"></span>
+                              </div>
+
                            </td>
                         </tr>
                         <tr>
                            <td>Planned&nbspLife&nbspEvents:</td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r3e1"
-                                 placeholder="Enter Amount"></td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r3e2" placeholder="Enter Years">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r3e1" name="fnaresultp2r3e1"
+                                 placeholder="Enter Amount">
+                              <div class="tooltip d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r3e1"></span>
+                              </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r3e2" name="fnaresultp2r3e2" placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r3e2"></span>
+                              </div>
+
                            </td>
                         </tr>
                         <tr>
                            <td>Financial&nbspExpenses:</td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r4e1"
-                                 placeholder="Enter Amount"></td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r4e2" placeholder="Enter Years">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r4e1" name="fnaresultp2r4e1"
+                                 placeholder="Enter Amount">
+                              <div class="tooltip d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r4e1"></span>
+                              </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r4e2" name="fnaresultp2r4e2" placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r4e2"></span>
+                              </div>
+
                            </td>
                         </tr>
                         <tr>
                            <td>Others:</td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r5e1"
-                                 placeholder="Enter Amount"></td>
-                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r5e2" placeholder="Enter Years">
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r5e1" name="fnaresultp2r5e1"
+                                 placeholder="Enter Amount">
+                              <div class="tooltip d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r5e1"></span>
+                              </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" id="fnaresultp2r5e2" name="fnaresultp2r5e2" placeholder="Enter Years">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresultp2r5e2"></span>
+                              </div>
+
                            </td>
                         </tr>
                      </table>
