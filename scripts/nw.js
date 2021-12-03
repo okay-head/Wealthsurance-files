@@ -94,7 +94,6 @@ function pushToDatabase1(nw) {
           
 
       success: (x) => {
-         console.log(x);
 
          let result = JSON.parse(x);
          if (result.success) {
@@ -308,7 +307,7 @@ function next() {
       loaderPromise().then(() => {
          pushToDatabase1(nw);
          setTimeout(() => {
-            // window.open("netWorth_result.html", "_self");
+            window.open("netWorth_result.html", "_self");
          }, 1410);
       });
    }

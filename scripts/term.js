@@ -17,7 +17,7 @@ function pushToDatabase1(te) {
    createSessionId();
    let [a = 28, b = "married", c = 1] = te.page1;
    b = b == "married" ? 1 : 2;
-   let d = 500000; //annual income, what if directly the user goes to the term calc
+   let d = te.page2new; 
    // let [d] = te.page2;
    // let [e, f, g] = te.page3;
    let [g1, g2, g3] = te.page2[0].mortgage;
@@ -101,6 +101,8 @@ function pushToDatabase1(te) {
       url: url_string,
 
       success: (x) => {
+         // console.log(url_string);
+         // console.log(x);
          let result = JSON.parse(x);
          localStorage.setItem("te_result", JSON.stringify(result));
       },
@@ -117,7 +119,7 @@ function pushToDatabase2(te) {
       localStorage.getItem("tepg1")
    );
    b = b == "married" ? 1 : 2;
-   let d = 500000;
+   let d = JSON.parse(localStorage.getItem("tepg2new"));
    //debt
    let [g1, g2, g3] = te.results[0].mortgage;
    let [h1, h2, h3] = te.results[0].credit;
@@ -667,7 +669,7 @@ $("#page3Form").validate({
       tepg2e1: {
           required: true,
           number: true,
-          min:1
+          min:0
        },
       
        tepg2e2c1: {number: true,min:1},
@@ -697,8 +699,7 @@ $("#page3Form").validate({
    messages: {
       tepg2e1: {
           required: "This field is required" ,
-          min: "Debt should be greater than 0",
-          digits: "Please enter only positive integers",
+          min: "Debt cannot be negative",
    },
    tepg2e2c1:{min:"Value should be greater than 0"},
    tepg2e3c1:{min:"Value should be greater than 0"},
@@ -751,7 +752,7 @@ $("#page4Form").validate({
       tepg3e1: {
           required: true,
           number: true,
-          min:1
+          min:0
        },
       
        tepg3e2c1: {number: true,min:1},
@@ -769,8 +770,7 @@ $("#page4Form").validate({
    messages: {
       tepg3e1: {
           required: "This field is required" ,
-          min: "Value should be greater than 0",
-          digits: "Please enter only positive integers",
+          min: "Value cannot be negative",
    },
    tepg3e2c1:{min:"Value should be greater than 0"},
    tepg3e3c1:{min:"Value should be greater than 0"},
@@ -839,7 +839,7 @@ $('#teRecalcForm').validate({
       teresultp1r0e1: { 
          required: true,
           number: true,
-          min:1
+          min:0
       },
       teresultp1r1e1: {number: true,min:1},
       teresultp1r2e1: {number: true,min:1},
@@ -870,7 +870,7 @@ $('#teRecalcForm').validate({
       teresultp2r0e1: { 
          required: true,
           number: true,
-          min:1
+          min:0
       },
 
       teresultp2r1e1: {number: true,min:1},
@@ -888,10 +888,10 @@ $('#teRecalcForm').validate({
    },
    messages: {
       teresultp1r0e1:{
-         min: "Value should be greater than 0"
+         min: "Debt cannot be negative"
       },
       teresultp2r0e1:{
-         min: "Value should be greater than 0"
+         min: "Value cannot be negative"
       },
    teresultp1r1e1:{min:"Value should be greater than 0"},
    teresultp1r2e1:{min:"Value should be greater than 0"},

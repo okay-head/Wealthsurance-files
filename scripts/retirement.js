@@ -3,7 +3,7 @@
 //defaults
 
 // disable page 4 inputs
-$('.retirement-page4 input').prop('disabled',true)
+$(".retirement-page4 input").prop("disabled", true);
 
 //____ Objects and collections
 
@@ -17,7 +17,7 @@ let retire = {
 };
 
 //functions
-function pushToDatabase1(a,x=undefined) {
+function pushToDatabase1(a, x = undefined) {
    createSessionId();
 
    let url_string = `http://wealthsurance.com/calculators/?calculator=retirement&session_id=${session_id}&ip_address=${ip}&current_age=${a[0]}&ret_age=${a[1]}&current_income=${a[2]}&post_ret_pre_tax_income=${a[3]}&ret_year=${a[4]}&ret_goal=${a[5]}&income_growth=${a[6]}&growth_rate=${a[7]}&post_ret_growth_rate=${a[8]}&inflation_rate=${a[9]}&saving_pre_percent=${a[10]}&saving_pre_amount=${a[11]}&saving_post_percent=${a[12]}&saving_post_amount=${a[13]}
@@ -26,8 +26,10 @@ function pushToDatabase1(a,x=undefined) {
    $.ajax({
       type: "POST",
       url: url_string,
-      
+
       success: (x) => {
+         // console.log(url_string);
+         // console.log(x);
          let result = JSON.parse(x);
          // console.log(url_string)
          // console.log(result);
@@ -39,8 +41,8 @@ function pushToDatabase1(a,x=undefined) {
    });
 
    //recalculate
-   if (x==1) {
-      updateTables(2)
+   if (x == 1) {
+      updateTables(2);
    }
 }
 function pushToDatabase2(a) {
@@ -58,7 +60,7 @@ function pushToDatabase2(a) {
          let result = JSON.parse(x);
          // console.log(result);
          // localStorage.setItem("retire_result", JSON.stringify(result.data));
-         updateTables(2,result.data)
+         updateTables(2, result.data);
       },
       error: (error) => {
          console.log(error);
@@ -66,10 +68,7 @@ function pushToDatabase2(a) {
    });
 
    //recalculate
-   
 }
-
-
 
 function updatePlaceholders(x) {
    switch (x) {
@@ -91,7 +90,7 @@ function updatePlaceholders(x) {
          break;
    }
 }
-function updateTables(x,egg=undefined) {
+function updateTables(x, egg = undefined) {
    switch (x) {
       case 1:
          let res = [];
@@ -109,7 +108,7 @@ function updateTables(x,egg=undefined) {
       case 2:
          let res2 = [];
          res2[0] = retire.results[0][5]; //retirement goal
-         res2[1] = egg
+         res2[1] = egg;
          res2[2] = res2[1] - res2[0];
 
          updateResult(Number(res2[0]), Number(res2[1]));
@@ -126,21 +125,26 @@ function updateResult(goal, egg) {
       $("#re-goal").text(numFormatter(goal));
       $("#nest-egg").text(numFormatter(egg));
       $("#legend-txt").text(((egg / goal) * 100).toFixed(0) + "%");
-      $('#legend-text-bottom').text('of the way there')
-      $('.retire-re-summary p:first-child').text('You have some catching up to do.')
-      $('.retire-re-summary p:nth-child(2)').text("Adjust your savings plan to see how it changes your result")
+      $("#legend-text-bottom").text("of the way there");
+      $(".retire-re-summary p:first-child").text(
+         "You have some catching up to do."
+      );
+      $(".retire-re-summary p:nth-child(2)").text(
+         "Adjust your savings plan to see how it changes your result"
+      );
 
       // console.log(goal,egg);
       drawGraph(goal, egg);
    } else {
       $("#re-goal").text(numFormatter(goal));
       $("#nest-egg").text(numFormatter(egg));
-      $("#legend-txt").text((((egg / goal) * 100)).toFixed(0) + "%");
-      $('#legend-text-bottom').text('ahead of your goal')
+      $("#legend-txt").text(((egg / goal) * 100).toFixed(0) + "%");
+      $("#legend-text-bottom").text("ahead of your goal");
 
-      $('.retire-re-summary p:first-child').text('Congratulations!')
-      $('.retire-re-summary p:nth-child(2)').text("You've reached your retirement goal")
-
+      $(".retire-re-summary p:first-child").text("Congratulations!");
+      $(".retire-re-summary p:nth-child(2)").text(
+         "You've reached your retirement goal"
+      );
 
       drawGraph(1, 1);
 
@@ -330,34 +334,323 @@ function next() {
    });
 
    //change the functionality back when back button is pressed
-   $(".prev-btn").on("click", () => {
-      $(".next-btn")
-         .text("Next")
-         .off()
-         .on("click", () => {
-            mySiema.next();
-         });
-   });
+   // $(".prev-btn").on("click", () => {
+   //    $(".next-btn")
+   //       .text("Next")
+   //       .off()
+   //       .on("click", () => {
+   //          mySiema.next();
+   //       });
+   // });
 }
 
 function storeRecalculate() {
    //not to be stored in local storage
-   let input = []
+   let input = [];
 
    for (let i = 1; i <= 14; i++) {
-      input.push(Number($('#retireresultpg1e'+i).val()))
+      input.push(Number($("#retireresultpg1e" + i).val()));
    }
 
-   retire.results = []
+   retire.results = [];
    retire.results.push(input);
 
-   pushToDatabase2(retire.results[0],1)
-   updatePlaceholders(2)
+   pushToDatabase2(retire.results[0], 1);
+   updatePlaceholders(2);
 }
 
 function reCalculate() {
-
    $("#re-calc").on("click", () => {
       storeRecalculate();
    });
 }
+
+/* ---------- Validation ---------- */
+
+$.validator.addMethod(
+   "min_age",
+   function (value) {
+      let isValid = value >= Number($("#retirepg1e1").val());
+
+      return isValid;
+   },
+   "Value should be greater than or equal to current age"
+);
+
+
+$("#page1Form").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 3; i++) {
+         if (element.is("#retirepg1e" + i)) {
+            error.appendTo("#error1e" + i);
+         }
+      }
+   },
+   rules: {
+      retirepg1e1: {
+         required: true,
+         digits: true,
+         range: [1, 90],
+      },
+      retirepg1e2: {
+         required: true,
+         digits: true,
+         max: 90,
+         min_age:true,
+      },
+      retirepg1e3: {
+         required: true,
+         number: true,
+         min: 0,
+      },
+   },
+   messages: {
+      retirepg1e1: {
+         required: "Please enter your age",
+         digits: "Please enter only positive integers",
+         range: "Please enter a value between 1-90",
+      },
+      retirepg1e2: {
+         required: "Please enter your retirement age",
+         digits: "Please enter only positive integers",
+      },
+      retirepg1e3: {
+         required: "Please enter your income",
+         // min: "Income should be greater than 0",
+         min: "Income cannot be negative",
+      },
+   },
+});
+
+$("#page2Form").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 3; i++) {
+         if (element.is("#retirepg2e" + i)) {
+            error.appendTo("#error2e" + i);
+         }
+      }
+   },
+   rules: {
+      retirepg2e1: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      retirepg2e2: {
+         required: true,
+         number: true,
+         range: [1, 100],
+      },
+      retirepg2e3: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+   },
+   messages: {
+      retirepg2e1: {
+         min: "Value should be greater than 0",
+      },
+      retirepg2e2: {
+         range: "Please enter a value between 1-100",
+      },
+      retirepg2e3: {
+         min: "Value should be greater than 0",
+      },
+   },
+});
+
+$("#page3Form").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 4; i++) {
+         if (element.is("#retirepg3e" + i)) {
+            error.appendTo("#error3e" + i);
+         }
+      }
+   },
+   rules: {
+      retirepg3e1: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retirepg3e2: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retirepg3e3: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retirepg3e4: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+   },
+   messages: {
+      retirepg3e1: {
+         range: "Please enter a value between 0-100",
+      },
+      retirepg3e2: {
+         range: "Please enter a value between 0-100",
+      },
+      retirepg3e3: {
+         range: "Please enter a value between 0-100",
+      },
+      retirepg3e4: {
+         range: "Please enter a value between 0-100",
+      },
+   },
+});
+
+$("#page4Form").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 4; i++) {
+         if (element.is("#retirepg5e" + i)) {
+            error.appendTo("#error5e" + i);
+         }
+      }
+   },
+   rules: {
+      retirepg5e1: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retirepg5e2: {
+         required: true,
+         number: true,
+         min:0,
+      },
+      retirepg5e3: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retirepg5e4: {
+         required: true,
+         number: true,
+         min:0,
+      },
+   },
+   messages: {
+      retirepg5e1: {
+         range: "Please enter a value between 0-100",
+      },
+      retirepg5e2: {
+         min: "Value cannot be negative",
+      },
+      retirepg5e3: {
+         range: "Please enter a value between 0-100",
+      },
+      retirepg5e4: {
+         min: "Value cannot be negative",
+      },
+   },
+});
+
+$("#retireRecalcForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 14; i++) {
+         if (element.is("#retireresultpg1e" + i)) {
+            error.appendTo("#eresultpg1e1" + i);
+         }
+      }
+   },
+
+   rules: {
+      retireresultpg1e1: {
+         required: true,
+         digits: true,
+         range: [1, 90],
+      },
+      retireresultpg1e2: {
+         required: true,
+         digits: true,
+         max: 90,
+         min_age:true,
+      },
+      retireresultpg1e3: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+
+
+      retireresultpg1e4: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      retireresultpg1e5: {
+         required: true,
+         number: true,
+         range: [1, 100],
+      },
+      retireresultpg1e6: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+
+
+
+      retireresultpg1e7: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retireresultpg1e8: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retireresultpg1e9: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retireresultpg1e10: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+
+
+
+      retireresultpg1e11: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retireresultpg1e12: {
+         required: true,
+         number: true,
+         min:0,
+      },
+      retireresultpg1e13: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      retireresultpg1e14: {
+         required: true,
+         number: true,
+         min:0,
+      },
+
+
+   },
+
+
+});
+
+function validateForm(x) {
+   if ($(`#page${x}Form`).valid()) {
+      return mySiema.next();
+   }
+}
+

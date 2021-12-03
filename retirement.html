@@ -10,7 +10,7 @@
 
    <!-- jquery validation -->
    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-   
+
 
    <!-- number format -->
    <script src="scripts/jquery/jquery.number.min.js"></script>
@@ -106,82 +106,125 @@
 
          <div class="slideshow-wrapper siema">
             <div class="page1">
-               <div class="input-fields">
-                  <div>I am
-                     <input type="decimal" inputmode="decimal" id="retirepg1e1" placeholder="Enter Age">
-                     years old,
-                  </div>
-                  <div>
-                     I plan to retire at the age of
-                     <input type="decimal" inputmode="decimal" id="retirepg1e2" placeholder="Enter Year">years.
-                  </div>
-                  <div>
-                     My annual household income is $
-                     <input type="decimal" inputmode="decimal" id="retirepg1e3" placeholder="Enter number">.
-                  </div>
-                  <!-- <div>
+               <form id="page1Form">
+                  <div class="input-fields">
+                     <div>I am
+                        <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="retirepg1e1"
+                              name="retirepg1e1" placeholder="Enter Age"><span class="error-container"
+                              id="error1e1"></span>
+                           years </div> old,
+                     </div>
+                     <div>
+                        I plan to retire at the age <div class="input-wrapper">of
+                        <input type="decimal" inputmode="decimal" id="retirepg1e2"
+                              name="retirepg1e2" placeholder="Enter Year"><span class="error-container"
+                              id="error1e2"></span>years.</div>
+                     </div>
+                     <div>
+                        My annual household income is $
+                        <div class="input-wrapper"> <input type="decimal" inputmode="decimal" id="retirepg1e3"
+                              name="retirepg1e3" placeholder="Enter number"><span class="error-container"
+                              id="error1e3"></span>.</div>
+                     </div>
+                     <!-- <div>
                      I save
-                     <input type="decimal" inputmode="decimal" id="retirepg1e4" placeholder="Enter number">% annually.
+                     <input type="decimal" inputmode="decimal" id="retirepg1e4" name="retirepg1e4" placeholder="Enter number">% annually.
                   </div> -->
-               </div>
+                  </div>
+               </form>
             </div>
 
             <div class="page2">
-               <div class="input-fields">
-                  <div>After retirement, I need an income of</div>
-                  <div>
-                     $
-                     <input type="decimal" inputmode="decimal" id="retirepg2e1" placeholder="Enter Amount">
-                     for
-                     <input type="decimal" inputmode="decimal" id="retirepg2e2" placeholder="Enter no of years">
-                     years.
+               <form id="page2Form">
+                  <div class="input-fields">
+                     <div>After retirement, I need an income of</div>
+                     <div>
+                        $<div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg2e1" name="retirepg2e1"
+                              placeholder="Enter Amount"><span class="error-container" id="error2e1"></span>
+                           for
+                        </div>
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg2e2" name="retirepg2e2"
+                              placeholder="Enter no of years"><span class="error-container" id="error2e2"></span>
+                           years.
+                        </div>
+                     </div>
+                     <div>My retirement goal is $
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg2e3" name="retirepg2e3"
+                              placeholder="Enter Amount"><span class="error-container" id="error2e3"></span>
+                        </div>
+                     </div>
                   </div>
-                  <div>My retirement goal is $
-                     <input type="decimal" inputmode="decimal" id="retirepg2e3" placeholder="Enter Amount">
-                  </div>
-               </div>
+               </form>
             </div>
 
             <div class="page3">
-               <div class="input-fields">
-                  <div>My income will increase annually by
-                     <input type="decimal" inputmode="decimal" id="retirepg3e1" placeholder="Enter percentage">
-                     % till retirement.
-                  </div>
-                  <div>Pre-retirement investment return
-                     <input type="decimal" inputmode="decimal" id="retirepg3e2" placeholder="Enter percentage">
-                     %.
-                  </div>
-                  <div>Post-retirement investment return
-                     <input type="decimal" inputmode="decimal" id="retirepg3e3" placeholder="Enter percentage">
-                     %.
-                  </div>
-                  <div>Inflation is assumed at
-                     <input type="decimal" inputmode="decimal" id="retirepg3e4" placeholder="Enter percentage">
-                     %.
-                  </div>
+               <form id="page3Form">
+                  <div class="input-fields">
+                     <div>My income will increase annually by
+                        <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="retirepg3e1"
+                              name="retirepg3e1" placeholder="Enter percentage"><span class="error-container" id="error3e1"></span>
+                           % till </div> retirement.
+                     </div>
+                     <div>Pre-retirement investment return
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg3e2" name="retirepg3e2"
+                              placeholder="Enter percentage"><span class="error-container" id="error3e2"></span>
+                           %.
+                        </div>
+                     </div>
+                     <div>Post-retirement investment return
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg3e3" name="retirepg3e3"
+                              placeholder="Enter percentage"><span class="error-container" id="error3e3"></span>
+                           %.
+                        </div>
+                     </div>
+                     <div>Inflation is assumed at
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg3e4" name="retirepg3e4"
+                              placeholder="Enter percentage"><span class="error-container" id="error3e4"></span>
+                           %.
+                        </div>
+                     </div>
 
-               </div>
+                  </div>
+               </form>
             </div>
             <div class="page5">
-               <div class="input-fields">
-                  <div>Pre-tax savings
-                     <input type="decimal" inputmode="decimal" id="retirepg5e1" placeholder="Enter percentage">
-                     %
-                  </div>
-                  <div>Pre-tax savings $
-                     <input type="decimal" inputmode="decimal" id="retirepg5e2" placeholder="Enter percentage">
-                  </div>
-                  <div>Post-tax savings
-                     <input type="decimal" inputmode="decimal" id="retirepg5e3" placeholder="Enter percentage">
-                     %.
-                  </div>
-                  <div>Post-tax savings $
-                     <input type="decimal" inputmode="decimal" id="retirepg5e4" placeholder="Enter Amount">
+               <!-- by index page5 == page 4 -->
+               <form id="page4Form">
+                  <div class="input-fields">
+                     <div>Pre-tax savings
+                        <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="retirepg5e1"
+                              name="retirepg5e1" placeholder="Enter percentage"><span class="error-container" id="error5e1"></span>
+                           %</div>
+                     </div>
+                     <div>Pre-tax savings $
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg5e2" name="retirepg5e2"
+                              placeholder="Enter percentage"><span class="error-container" id="error5e2"></span>
+                        </div>
+                     </div>
+                     <div>Post-tax savings
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg5e3" name="retirepg5e3"
+                              placeholder="Enter percentage"><span class="error-container" id="error5e3"></span>
+                           %.
+                        </div>
+                     </div>
+                     <div>Post-tax savings $
+                        <div class="input-wrapper">
+                           <input type="decimal" inputmode="decimal" id="retirepg5e4" name="retirepg5e4"
+                              placeholder="Enter Amount"><span class="error-container" id="error5e4"></span>
+                        </div>
+
+                     </div>
 
                   </div>
-
-               </div>
+               </form>
             </div>
             <div class="page4 retirement-page4">
                <div class="input-fields">
@@ -263,7 +306,19 @@
 
          <div class="btn-group">
             <span role="button" class="red-btn prev-btn">Previous</span>
-            <span role="button" class="red-btn next-btn">Next</span>
+
+            <span role="button" id="formSubmit1" form="page1Form" name='submit' class="red-btn next-btn">Next</span>
+
+            <span role="button" id="formSubmit2" form="page2Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+
+            <span role="button" id="formSubmit3" form="page3Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+
+            <span role="button" id="formSubmit4" form="page4Form" name='submit'
+               class="d-none red-btn next-btn">Next</span>
+
+            <!-- <span role="button" class="red-btn next-btn">Next</span> -->
          </div>
       </div>
 
@@ -277,39 +332,58 @@
          hideTable();
          initLoader();
          page1LocalStorage();
+         fValidate(1);
 
          function onChangeCallback() {
             switch (this.currentSlide + 1) {
                case 1:
                   // setPage4();
+                  $('.next-btn').off()
+                  fValidate(1);
+                  $('#formSubmit2,#formSubmit3,#formSubmit4').addClass('d-none');
+                  $('#formSubmit1').removeClass('d-none');
                   initLoader();
                   page1LocalStorage();
                   break;
                case 2:
                   // setPage4();
+                  $('.next-btn').off()
+                  fValidate(2);
+                  $('#formSubmit1,#formSubmit3,#formSubmit4').addClass('d-none');
+                  $('#formSubmit2').removeClass('d-none');
                   updateLoader(1, 5);
                   page2LocalStorage();
                   break;
                case 3:
                   // setPage4();
+                  $('.next-btn').off();
+                  fValidate(3);
+                  $('#formSubmit1,#formSubmit2,#formSubmit4').addClass('d-none');
+                  $('#formSubmit3').removeClass('d-none');
                   updateLoader(2, 5);
                   page3LocalStorage();
                   break;
                case 4:
                   // setPage4();
-
+                  $('.next-btn').off();
+                  fValidate(4);
+                  $('#formSubmit1,#formSubmit3,#formSubmit2').addClass('d-none');
+                  $('#formSubmit4').removeClass('d-none');
+                  
                   hideTable();
                   updateLoader(3, 5);
                   page5LocalStorage();
                   break;
-
-               case 5:
+                  
+                  case 5:
+               $('.next-btn').off();
                   setPage4();
                   prefill()
                   showTable();
                   $('.next-btn').text('Finish');
                   updateLoader(4, 5);
                   // page4LocalStorage();
+                  prevBehaviour();
                   next();
                   break;
             }
@@ -330,7 +404,7 @@
             rtl: false,
          });
          $('.prev-btn').click(() => mySiema.prev());
-         $('.next-btn').click(() => mySiema.next());
+         // $('.next-btn').click(() => mySiema.next());
 
       </script>
 

@@ -27,8 +27,8 @@ function pushToDatabase1(clg) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         // console.log(result.amount);
-         // console.log(url_string);
+         console.log(result.amount);
+         console.log(url_string);
 
          if (result.success) {
             localStorage.setItem("clg_result", JSON.stringify(result.amount));
@@ -66,7 +66,8 @@ function pushToDatabase2(clg) {
       type: "POST",
       url: url_string,
       success: (x) => {
-         // console.log(x);
+         console.log(x);
+         console.log(url_string);
          let result = JSON.parse(x);
          if (result.success) {
             updateResult(2, result.amount);

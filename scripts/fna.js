@@ -707,8 +707,8 @@ $("#page3Form").validate({
     },
       fnapg3e2: { 
          required: "This field is required",
-         digits: "Please enter only positive integers"
-    },
+         range: "Please enter a value between 0-100"
+      },
       fnapg3e3: { 
          required: "This field is required",
          digits: "Please enter only positive integers"
