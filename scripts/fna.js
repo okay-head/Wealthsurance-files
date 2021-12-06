@@ -686,7 +686,7 @@ $("#page3Form").validate({
       fnapg3e1: { 
          required: true,
          number: true,
-         min: 1,
+         min: 0,
       },
       fnapg3e2: { 
          required: true,

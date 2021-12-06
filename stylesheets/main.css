@@ -60,6 +60,9 @@ a {
    display: inline-block;
    text-decoration: none;
 }
+.reduce-font{
+   font-size: 1.3em!important;
+}
 .initial {
    color: initial;
    font-size: initial;
@@ -859,11 +862,19 @@ section.output {
    position: relative;
 }
 .output .result {
+   margin-top: 1.56em!important;
    margin: 2em auto;
    width: 65%;
    padding: 5em 2em;
    font-size: var(--font-result);
    /* border: 1px solid brown; */
+}
+
+.college-result{
+   padding: 4em 1.5em!important;
+}
+.clg-reEnter{
+   margin: 0!important;
 }
 
 #nw-result-container {

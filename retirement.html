@@ -226,7 +226,7 @@
                   </div>
                </form>
             </div>
-            <div class="page4 retirement-page4">
+            <!-- <div class="page4 retirement-page4">
                <div class="input-fields">
                   <div>Current Age:
                      <input type="decimal" inputmode="decimal" id="retirepg4e1" placeholder="Enter no. of years">
@@ -297,7 +297,7 @@
 
 
                </div>
-            </div>
+            </div> -->
 
 
          </div>
@@ -351,7 +351,7 @@
                   fValidate(2);
                   $('#formSubmit1,#formSubmit3,#formSubmit4').addClass('d-none');
                   $('#formSubmit2').removeClass('d-none');
-                  updateLoader(1, 5);
+                  updateLoader(1, 4);
                   page2LocalStorage();
                   break;
                case 3:
@@ -360,7 +360,7 @@
                   fValidate(3);
                   $('#formSubmit1,#formSubmit2,#formSubmit4').addClass('d-none');
                   $('#formSubmit3').removeClass('d-none');
-                  updateLoader(2, 5);
+                  updateLoader(2, 4);
                   page3LocalStorage();
                   break;
                case 4:
@@ -370,22 +370,26 @@
                   $('#formSubmit1,#formSubmit3,#formSubmit2').addClass('d-none');
                   $('#formSubmit4').removeClass('d-none');
                   
+                  // setPage4();
                   hideTable();
-                  updateLoader(3, 5);
+                  updateLoader(3, 4);
                   page5LocalStorage();
-                  break;
-                  
-                  case 5:
-               $('.next-btn').off();
-                  setPage4();
-                  prefill()
-                  showTable();
                   $('.next-btn').text('Finish');
-                  updateLoader(4, 5);
-                  // page4LocalStorage();
                   prevBehaviour();
                   next();
                   break;
+                  
+               //    case 5:
+               // $('.next-btn').off();
+               //    setPage4();
+               //    prefill()
+               //    showTable();
+               //    $('.next-btn').text('Finish');
+               //    updateLoader(4, 5);
+               //    // page4LocalStorage();
+               //    prevBehaviour();
+               //    next();
+               //    break;
             }
          }
 

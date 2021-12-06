@@ -31,8 +31,6 @@ function pushToDatabase1(a, x = undefined) {
          // console.log(url_string);
          // console.log(x);
          let result = JSON.parse(x);
-         // console.log(url_string)
-         // console.log(result);
          localStorage.setItem("retire_result", JSON.stringify(result.data));
       },
       error: (error) => {
@@ -253,51 +251,52 @@ function page5LocalStorage() {
             retire.page5.push($("#retirepg5e" + (i + 1)).val());
          }
          localStorage.setItem("retirepg5", JSON.stringify(retire.page5));
-         setPage4();
-         prefill();
+         // setPage4();
+         // prefill();
       });
    });
 }
 
 // page4 is logically page5;the last page
-function page4LocalStorage() {
-   //check for existing localStorage on page load
-   if (localStorage.getItem("retirepg4") != null) {
-      retire.page4 = JSON.parse(localStorage.getItem("retirepg4"));
-      for (let i = 0; i < 14; i++) {
-         $("#retirepg4e" + (i + 1)).val(retire.page4[i]);
-      }
-   }
+// function page4LocalStorage() {
+//    //check for existing localStorage on page load
+//    if (localStorage.getItem("retirepg4") != null) {
+//       retire.page4 = JSON.parse(localStorage.getItem("retirepg4"));
+//       for (let i = 0; i < 14; i++) {
+//          $("#retirepg4e" + (i + 1)).val(retire.page4[i]);
+//       }
+//    }
 
-   //push to local storage
-   $(".page4 :input").change(() => {
-      if (localStorage.getItem("retirepg4") != null) {
-         localStorage.removeItem("retirepg4");
-         retire.page4 = [];
-      }
+//    //push to local storage
+//    $(".page4 :input").change(() => {
+//       if (localStorage.getItem("retirepg4") != null) {
+//          localStorage.removeItem("retirepg4");
+//          retire.page4 = [];
+//       }
 
-      $(".next-btn").one("click", () => {
-         retire.page4 = [
-            ...retire.page1,
-            ...retire.page2,
-            ...retire.page3,
-            ...retire.page5,
-         ];
-         // for (let i = 0; i < 10; i++) {
-         //    retire.page4.push($("#retirepg4e"+(i+1)).val());
-         // }
-         localStorage.setItem("retirepg4", JSON.stringify(retire.page4));
-      });
-   });
-}
+//       $(".next-btn").one("click", () => {
+//          retire.page4 = [
+//             ...retire.page1,
+//             ...retire.page2,
+//             ...retire.page3,
+//             ...retire.page5,
+//          ];
+//          // for (let i = 0; i < 10; i++) {
+//          //    retire.page4.push($("#retirepg4e"+(i+1)).val());
+//          // }
+//          localStorage.setItem("retirepg4", JSON.stringify(retire.page4));
+//       });
+//    });
+// }
 
-function prefill() {
-   for (let i = 0; i < 14; i++) {
-      $("#retirepg4e" + (i + 1)).val(retire.page4[i]);
-   }
+// function prefill() {
+//    //function discarded
+//    // for (let i = 0; i < 14; i++) {
+//    //    $("#retirepg4e" + (i + 1)).val(retire.page4[i]);
+//    // }
 
-   localStorage.setItem("retirepg4", JSON.stringify(retire.page4));
-}
+//    // localStorage.setItem("retirepg4", JSON.stringify(retire.page4));
+// }
 
 function setPage4() {
    retire.page4 = [
@@ -306,6 +305,8 @@ function setPage4() {
       ...retire.page3,
       ...retire.page5,
    ];
+
+   localStorage.setItem("retirepg4",JSON.stringify(retire.page4))
 }
 
 function hideTable() {
@@ -318,9 +319,10 @@ function showTable() {
 function next() {
    //  change next button's action
    $(".next-btn").on("click", () => {
+      setPage4();
       function loaderPromise() {
          let update = new Promise((resolve) => {
-            resolve(updateLoader(5, 5));
+            resolve(updateLoader(4, 4));
          });
          return update;
       }

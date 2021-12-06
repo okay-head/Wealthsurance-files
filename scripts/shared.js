@@ -68,12 +68,13 @@ $(".brand").on("click", () => {
    // @change
 });
 
+$('#re-calc').on('click',scrollTop)
+
 // _____functions
 
 let session_id = "aaabbb000000";
 let ip = '139.5.30.66';
 
-//functions
 
 function createSessionId() {
    const length = 6; //length of the alphabet part of session id
@@ -98,7 +99,7 @@ function numFormatter(num) {
    }else if(num > 1000000){
        return (num/1000000).toFixed(2) + ' Million'; 
    }else if(num < 900){
-       return num; // if value < 1000, nothing to do
+       return num; 
    }
 }
 
@@ -147,6 +148,10 @@ function fadeInResult() {
 }
 
 
+function scrollTop() {
+   root.scrollTop = 95
+}
+
 //behaviour of the reEnter button
 function reEnter(page) {
    $(".re-enter").on("click", () => {
@@ -175,9 +180,11 @@ function fValidate(x) {
 
 function validateFormRecalc(x,y) {
    if ($(x).valid()) {
+      $('.calculated-result').removeClass('reduce-font')
       storeRecalculate();
    }else{
-      $('.calculated-result').text('null')
+      $('.calculated-result').addClass('reduce-font')
+      $('.calculated-result').text('Incorrect information')
       $('.calculated-result-2').text('0')
       let inval_arr = checkInvalid(y)
       inval_arr.forEach((element)=>{

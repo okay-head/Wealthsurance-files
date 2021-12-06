@@ -27,8 +27,8 @@ function pushToDatabase1(clg) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         console.log(result.amount);
-         console.log(url_string);
+         // console.log(result.amount);
+         // console.log(url_string);
 
          if (result.success) {
             localStorage.setItem("clg_result", JSON.stringify(result.amount));
@@ -281,13 +281,13 @@ $("#clgForm").validate({
       clgpg1e4: {
          required: true,
          number: true,
-         range: [1, 90],
+         range: [1, 8],
          // max_y: true,
       },
       clgpg1e5: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [1, 100],
       },
       clgpg1e6: {
          required: true,
@@ -315,7 +315,7 @@ $("#clgForm").validate({
          max: "Please enter a value less than or equal to 90",
       },
       clgpg1e4: {
-         range: "Please enter a val between 0-90",
+         range: "Please enter a val between 1-8",
       },
       clgpg1e6:{
          min: "Value should be greater than 0"
@@ -350,7 +350,7 @@ $("#clgRecalcForm").validate({
       clgpg1resulte4: {
          required: true,
          number: true,
-         range: [1, 90],
+         range: [1, 8],
          // max_y: true,
       },
       clgpg1resulte6: {
@@ -384,7 +384,7 @@ $("#clgRecalcForm").validate({
          max: "Please enter a value less than or equal to 90",
       },
       clgpg1resulte4: {
-         range: "Please enter a val between 0-90",
+         range: "Please enter a val between 1-8",
       },
       clgpg1resulte5:{
          min: "Value should be greater than 0"
