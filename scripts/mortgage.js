@@ -193,6 +193,8 @@ function pushToDatabase1(mortg) {
 
       success: (x) => {
          let result = JSON.parse(x);
+         console.log(x);
+         console.log(url_string);
          if (result.success) {
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
          } else {
