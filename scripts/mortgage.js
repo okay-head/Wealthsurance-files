@@ -12,7 +12,7 @@ let a = [];
 // prefill
 
 //pmi
-$("#mortgpg1e6").val(20);
+$("#mortgpg1e6,#mortgresulte5").val(20);
 //disabling loan amount
 $("#mortgpg1e8").prop("disabled", true);
 
@@ -23,6 +23,15 @@ $("#table").addClass("d-none");
 $("#graph-btn,#table-btn").on("click", () => {
    $("#graph,#table").toggleClass("d-none");
    $("#graph-btn,#table-btn").toggleClass("active-btn");
+});
+
+//Monthly/yearly toggler for  graphs
+$("#year-btn-g").addClass("active-btn");
+$("#mortg_chartM").addClass("d-none");
+
+$("#year-btn-g,#month-btn-g").on("click", () => {
+   $("#mortg_chart,#mortg_chartM").toggleClass("d-none");
+   $("#year-btn-g,#month-btn-g").toggleClass("active-btn");
 });
 
 //Yearly/Monthly toggler for ammortization schedule
@@ -70,17 +79,19 @@ function pgLocalStorage() {
    if (localStorage.getItem("mortgpg1") != null) {
       mortg.page1 = JSON.parse(localStorage.getItem("mortgpg1"));
 
-      // for (let i = 0; i < 12; i++) {
-      //    if (i == 2 || i == 3 || i == 7) {
-      //       // if (i==2 && mortg.page1[i]==0) {
-      //       //    $("#mortgpg1e4").val(mortg.page1[3]);
-      //       // }else{
-      //       //    $("#mortgpg1e3").val(mortg.page1[2]);
-      //       // }
-      //       continue;
-      //    }
-      //    $("#mortgpg1e" + (i + 1)).val(mortg.page1[i]);
-      // }
+      for (let i = 0; i < 12; i++) {
+         if (i == 2 || i == 3 || i == 7) {
+            if (i==2 && mortg.page1[i]!=0) {
+               $("#mortgpg1e3").val(mortg.page1[i]);
+            }
+            else if (i==3 && mortg.page1[i]!=0) {
+               $("#mortgpg1e4").val(mortg.page1[i]);
+            }
+            continue;
+         }else{
+            $("#mortgpg1e" + (i + 1)).val(mortg.page1[i]);
+         }
+      }
    }
 
    //push to local storage
@@ -94,21 +105,23 @@ function pgLocalStorage() {
          mortg.page1 = [];
          for (let i = 0; i < 12; i++) {
             if (i == 7 || i == 2 || i == 3) {
-               // if (i == 2 || i == 3) {
-               //    if (i == 2 && $("#mortgpg1e4").val() == 0) {
-               //       mortg.page1.push($("#mortgpg1e" + (i + 1)).val());
-               //    }
-               //    else if (i==3 && $("#mortgpg1e3").val() == 0) {
-               //       mortg.page1.push($("#mortgpg1e" + (i + 1)).val());
-               //    }else{
-               //       break
-               //    }
-               // }else{
-               //    mortg.page1.push(0);
-               // }
-                  mortg.page1.push(0);
-               continue;
-            }else{
+
+               if (i == 2 || i == 3) {
+                  if (i == 2 && $("#mortgpg1e4").val() == 0) {
+                     mortg.page1.push($("#mortgpg1e" + (i + 1)).val());
+                  }else if(i == 2 && $("#mortgpg1e4").val() != 0){
+                     mortg.page1.push(0);
+                  }
+                  else if (i==3 && $("#mortgpg1e3").val() == 0) {
+                     mortg.page1.push($("#mortgpg1e" + (i + 1)).val());
+                  }
+                  else if (i==3 && $("#mortgpg1e3").val() != 0) {
+                     mortg.page1.push(0);
+                  }
+               }else if(i==7){
+                  mortg.page1.push(Number($('#mortgpg1e8').attr('placeholder')));
+               }
+            } else {
                mortg.page1.push($("#mortgpg1e" + (i + 1)).val());
             }
          }
@@ -117,28 +130,28 @@ function pgLocalStorage() {
    });
 }
 
-function next() {
-   //  change next button's action
-   $(".next-btn").on("click", () => {
-      function loaderPromise() {
-         let update = new Promise((resolve) => {
-            resolve(updateLoader(1, 1));
-         });
-         return update;
-      }
-      loaderPromise().then(() => {
-         pushToDatabase1(mortg);
-         setTimeout(() => {
-            // console.log(mortg);
-            // window.open("mortgage_result.html", "_self");
-         }, 1410);
-      });
-   });
-}
+// function next() {
+//    //  change next button's action
+//    $(".next-btn").on("click", () => {
+//       function loaderPromise() {
+//          let update = new Promise((resolve) => {
+//             resolve(updateLoader(1, 1));
+//          });
+//          return update;
+//       }
+//       loaderPromise().then(() => {
+//          pushToDatabase1(mortg);
+//          setTimeout(() => {
+//             window.open("mortgage_result.html", "_self");
+//          }, 1410);
+//       });
+//    });
+// }
 
 function reCalculate() {
    $(".re-calc-btn").on("click", () => {
-      storeRecalculate();
+      validateFormRecalc("#mortgRecalcForm", 5);
+      // storeRecalculate();
    });
 }
 
@@ -158,11 +171,17 @@ function storeRecalculate() {
       annual_property_taxes: $("#mortgresulte10").val(),
       annual_property_insurance: $("#mortgresulte11").val(),
    };
+
+   obj.down_payment$ = obj.down_payment$ || ((obj.house_price*obj["down_payment%"])/100).toFixed(2)
+
+   obj["down_payment%"] = obj["down_payment%"] || ((obj.down_payment$*100)/obj.house_price).toFixed(2)
+
    mortg.results = [];
    mortg.results.push(obj);
 
    updatePlaceholders(2);
 
+   // console.log(mortg.results[0]);
    pushToDatabase2(mortg);
 }
 
@@ -193,12 +212,11 @@ function pushToDatabase1(mortg) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         console.log(x);
-         console.log(url_string);
          if (result.success) {
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
          } else {
             console.log(result + "request not successful");
+            return 0;
          }
       },
       error: (error) => {
@@ -219,8 +237,10 @@ function pushToDatabase1(mortg) {
       },
       error: (error) => {
          console.log(error);
+         return 0;
       },
    });
+   return 1
 }
 
 function pushToDatabase2(mortg) {
@@ -253,8 +273,12 @@ function pushToDatabase2(mortg) {
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
             updateTables(2, result.data);
             createAmmortizationTable(2);
+            drawGraph(2,result.data);
          } else {
             console.log(result + "request not successful");
+            let alert_text = 'Cannot fetch data from the database. Please try again later \nWe are sorry for the inconvenience.'
+            alert(alert_text)
+            return
          }
       },
       error: (error) => {
@@ -289,7 +313,7 @@ function updatePlaceholders(x) {
             z[3] = ((Number(z[0]) * Number(z[2])) / 100).toFixed(2);
          }
          if (z[2] == "") {
-            z[2] = (Number(z[3]) * 100) / Number(z[0]);
+            z[2] = ((Number(z[3]) * 100) / Number(z[0])).toFixed(2);
          }
          $("#mortgresulte1").attr("placeholder", z[0]);
          for (let i = 2; i <= 11; i++) {
@@ -486,35 +510,6 @@ function detectChange2() {
       $("#mortgpg1e3").attr("placeholder", down_percentage.toFixed(2));
    }
 }
-// reCalculate
-
-function detectChange3() {
-   let z = $("#mortgresulte2").val();
-   if (z == "") {
-      $("#mortgresulte3").prop("disabled", false);
-      $("#mortgresulte3").attr("placeholder", "Enter amount");
-   } else {
-      $("#mortgresulte3").prop("disabled", true);
-      let down_amount = (
-         (Number($("#mortgresulte1").val()) *
-            Number($("#mortgresulte2").val())) /
-         100
-      ).toFixed(2);
-      $("#mortgresulte3").attr("placeholder", down_amount);
-   }
-}
-function detectChange4() {
-   let z = $("#mortgresulte3").val();
-   if (z == "") {
-      $("#mortgresulte2").prop("disabled", false);
-      $("#mortgresulte2").attr("placeholder", "Enter Percentage");
-   } else {
-      $("#mortgresulte2").prop("disabled", true);
-      let down_percentage =
-         (Number(z) * 100) / Number($("#mortgresulte1").val());
-      $("#mortgresulte2").attr("placeholder", down_percentage.toFixed(2));
-   }
-}
 
 //loan amount
 function detectChange5() {
@@ -534,7 +529,52 @@ function detectChange5() {
       $("#mortgpg1e8").attr("placeholder", loan.toFixed(2));
    }
 }
-// reCalculate
+
+
+// ____reCalculate___
+
+
+let local_data = JSON.parse(localStorage.getItem("mortgpg1"));
+if (local_data==0 || local_data==null || local_data==undefined || local_data=='') {
+   // do nothing
+}else{
+   if (local_data[3] == "") {
+      local_data[3] = ((Number(local_data[0]) * Number(local_data[2])) / 100).toFixed(2);
+   }
+   if (local_data[2] == "") {
+      local_data[2] = ((Number(local_data[3]) * 100) / Number(local_data[0])).toFixed(2);
+   }
+}
+
+
+function detectChange3() {
+   let z = $("#mortgresulte2").val();
+   if (z == "") {
+      $("#mortgresulte3").prop("disabled", false);
+      $("#mortgresulte3").attr("placeholder", local_data[3]);
+   } else {
+      $("#mortgresulte3").prop("disabled", true);
+      let down_amount = (
+         (Number($("#mortgresulte1").val()) *
+            Number($("#mortgresulte2").val())) /
+         100
+      ).toFixed(2);
+      $("#mortgresulte3").attr("placeholder", down_amount);
+   }
+}
+function detectChange4() {
+   let z = $("#mortgresulte3").val();
+   if (z == "") {
+      $("#mortgresulte2").prop("disabled", false);
+      $("#mortgresulte2").attr("placeholder", local_data[2]);
+   } else {
+      $("#mortgresulte2").prop("disabled", true);
+      let down_percentage =
+         (Number(z) * 100) / Number($("#mortgresulte1").val());
+      $("#mortgresulte2").attr("placeholder", down_percentage.toFixed(2));
+   }
+}
+
 function detectChange6() {
    let loan = undefined;
    let down_payment = undefined;
@@ -552,10 +592,218 @@ function detectChange6() {
    }
 }
 
-// Timers
-// const t1 = window.setInterval(detectChange1,100)
-// const t2 = window.setInterval(detectChange2,100)
-// const t3 = window.setInterval(detectChange3,100)
-// const t4 = window.setInterval(detectChange4,100)
-// const t5 = window.setInterval(detectChange5,100)
-// const t6 = window.setInterval(detectChange6,100)
+/* ----------- Validation ----------- */
+function next() {
+   //  change next button's action
+      function loaderPromise() {
+         let update = new Promise((resolve) => {
+            resolve(updateLoader(1, 1));
+         });
+         return update;
+      }
+      loaderPromise().then(() => {
+         let t = pushToDatabase1(mortg);
+         if (t) {
+            setTimeout(() => {
+               window.open("mortgage_result.html", "_self");
+            }, 1410);
+         }else{
+            let alert_text = 'Cannot fetch data from the database. Please try again later \nWe are sorry for the inconvenience.'
+            alert(alert_text)
+         }
+      });
+}
+
+$.validator.addMethod("require_from_group", function(value, element, options) {
+   var $fields = $(options[1], element.form),
+       $fieldsFirst = $fields.eq(0),
+       validator = $fieldsFirst.data("valid_req_grp") ? $fieldsFirst.data("valid_req_grp") : $.extend({}, this),
+       isValid = $fields.filter(function() {
+           return validator.elementValue(this);
+       }).length >= options[0];
+
+   // Store the cloned validator for future validation
+   $fieldsFirst.data("valid_req_grp", validator);
+
+   // If element isn't being validated, run each require_from_group field's validation rules
+   if (!$(element).data("being_validated")) {
+       $fields.data("being_validated", true);
+       $fields.each(function() {
+           validator.element(this);
+       });
+       $fields.data("being_validated", false);
+   }
+   return isValid;
+}, $.validator.format("Please fill at least {0} of these fields."));
+
+$.validator.addMethod(
+   "down_amount",
+   function (value) {
+      let isValid = ( value < Number($("#mortgpg1e1").val()) );
+
+      return isValid;
+   },
+   "Down payment amount should be smaller than house price"
+);
+
+
+$("#mortgForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 12; i++) {
+         if (element.is("#mortgpg1e" + i)) {
+            error.appendTo("#error" + i);
+         }
+      }
+   },
+   rules: {
+      mortgpg1e1: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      mortgpg1e2: {
+         required: true,
+         digits: true,
+         min: 0,
+      },
+      mortgpg1e3: {
+         // required: true,
+         require_from_group:[1,".down_payment"],
+         number: true,
+         range: [0,100]
+      },
+      mortgpg1e4: {
+         // required: true,
+         number: true,
+         min: 0,
+         down_amount:true,
+         
+      },
+      mortgpg1e5: {
+         required: true,
+         number: true,
+         range:[0,5],
+      },
+      mortgpg1e6: {
+         required: true,
+         number: true,
+         range:[0,100],
+      },
+      mortgpg1e7: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      mortgpg1e9: {
+         required: true,
+         number: true,
+         range: [0, 45],
+      },
+      mortgpg1e10: {
+         required: true,
+         number: true,
+         min: 0,
+      },
+      mortgpg1e11: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      mortgpg1e12: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+
+   },
+   messages: {
+      mortgpg1e3: {
+         require_from_group:"Please enter atleast one of the fields: down payment percentage / down payment amount",
+      }
+   },
+});
+$("#mortgRecalcForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 11; i++) {
+         if (element.is("#mortgresulte" + i)) {
+            error.appendTo("#eresulte" + i);
+         }
+      }
+   },
+   rules: {
+      mortgresulte1: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+      // mortgpg1e2: {
+      //    required: true,
+      //    digits: true,
+      //    min: 0,
+      // },
+     mortgresulte2: {
+         // required: true,
+         number: true,
+         range: [0,100]
+      },
+      mortgresulte3: {
+        require_from_group:[1,".down_payment"],
+         // required: true,
+         number: true,
+         min: 0,
+         // down_amount:true,
+         
+      },
+     mortgresulte4: {
+         required: true,
+         number: true,
+         range:[0,5],
+      },
+     mortgresulte5: {
+         required: true,
+         number: true,
+         range:[0,100],
+      },
+     mortgresulte6: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+     mortgresulte8: {
+         required: true,
+         number: true,
+         range: [0, 45],
+      },
+     mortgresulte9: {
+         required: true,
+         number: true,
+         min: 0,
+      },
+     mortgresulte10: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+     mortgresulte11: {
+         required: true,
+         number: true,
+         min: 1,
+      },
+
+   },
+   messages: {
+      mortgresulte3: {
+         require_from_group:"Please enter atleast one of the fields: down payment percentage / down payment amount",
+      }
+   },
+});
+
+
+
+$("#mortgFormSubmit").on("click", () => {
+   if ($("#mortgForm").valid()) {
+      next();
+   }else{
+      console.log('invalid form');
+   }
+});

@@ -107,49 +107,65 @@
          </div>
 
          <div class="page1">
+            <form id="mortgForm">
             <div class="input-fields">
-               <div>I am looking to buy a house priced at $
-                  <input type="decimal" inputmode="decimal" id="mortgpg1e1" placeholder="Enter Amount">
+               <div>I am looking to buy a house priced <div class="input-wrapper">at $
+                  <input type="decimal" inputmode="decimal" id="mortgpg1e1" name="mortgpg1e1" placeholder="Enter Amount"><span
+                     class="error-container" id="error1"></span></div>
                </div>
                <div>
                   in the zip code
-                  <input type="text" id="mortgpg1e2" placeholder="Enter zip code" maxlength="5">
+                  <div class="input-wrapper">
+                  <input type="text" id="mortgpg1e2" name="mortgpg1e2" placeholder="Enter zip code" maxlength="5"><span
+                  class="error-container" id="error2"></span></div>
                </div>
                <div>
-                  Down payment <input type="decimal" inputmode="decimal" id="mortgpg1e3"
-                     placeholder="Enter Percentage">% or $ <input type="decimal" inputmode="decimal" id="mortgpg1e4"
-                     placeholder="Enter Amount">
+                  Down paymen<div class="input-wrapper">t <input class="down_payment" type="decimal" inputmode="decimal" id="mortgpg1e3" name="mortgpg1e3"
+                     placeholder="Enter Percentage"><span
+                     class="error-container" id="error3"></span><div class="input-wrapper extend">% or $<input class="down_payment" type="decimal" inputmode="decimal" id="mortgpg1e4" name="mortgpg1e4"
+                     placeholder="Enter Amount"><span
+                     class="error-container" id="error4"></span></div>
+                  </div>
                </div>
                <div>
                   PMI
-                  <input type="decimal" inputmode="decimal" id="mortgpg1e5" placeholder="Enter percentage"> % till
-                  <input type="decimal" id="mortgpg1e6" placeholder="Enter percentage">% is paid
-               </div>
+                  <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="mortgpg1e5" name="mortgpg1e5" placeholder="Enter percentage"> % till<span
+                     class="error-container" id="error5"></span></div>
+                     <div class="input-wrapper">
+                  <input type="decimal" id="mortgpg1e6" name="mortgpg1e6" placeholder="Enter percentage"><span
+                  class="error-container" id="error6"></span>% is paid</div></div>
                <div>Loan at
-                  <input type="decimal" inputmode="decimal" id="mortgpg1e7" placeholder="Enter Percentage">% rate $
-                  <input type="decimal" id="mortgpg1e8" placeholder="Loan amount">
+                  <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="mortgpg1e7" name="mortgpg1e7" placeholder="Enter Percentage">% rate<span
+                     class="error-container" id="error7"></span></div> $
+                  <div class="input-wrapper"><input type="decimal" id="mortgpg1e8" name="mortgpg1e8" placeholder="Loan amount"><span
+                     class="error-container" id="error8"></span></div>
                </div>
                <div>
                   for
-                  <input type="decimal" inputmode="decimal" id="mortgpg1e9" placeholder="Enter years">years
+                  <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="mortgpg1e9" name="mortgpg1e9" placeholder="Enter years">years<span
+                     class="error-container" id="error9"></span></div>
                </div>
 
-               <div class="mt-1">Annual HOA dues $ <input type="decimal" inputmode="decimal" id="mortgpg1e10"
+               <div class="mt-1">Annual HOA dues $ <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="mortgpg1e10" name="mortgpg1e10"
                      placeholder="Enter amount"> per
+                  year<span
+                  class="error-container" id="error10"></span></div></div>
+               <div>Annual property taxes $ <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="mortgpg1e11" name="mortgpg1e11"
+                     placeholder="Enter amount"> per year<span
+                     class="error-container" id="error11"></span></div>
+               </div>
+               <div>Annual property insurance $<div class="input-wrapper"> <input type="decimal" inputmode="decimal" id="mortgpg1e12" name="mortgpg1e12"
+                     placeholder="Enter amount"> <span
+                     class="error-container" id="error12"></span>per
                   year</div>
-               <div>Annual property taxes $ <input type="decimal" inputmode="decimal" id="mortgpg1e11"
-                     placeholder="Enter amount"> per year
                </div>
-               <div>Annual property insurance $ <input type="decimal" inputmode="decimal" id="mortgpg1e12"
-                     placeholder="Enter amount"> per
-                  year
-               </div>
-            </div>
+            </form>
+         </div>
          </div>
 
 
          <div class="btn-group">
-            <span role="button" class="red-btn next-btn">Finish</span>
+            <span role="button" id="mortgFormSubmit" form="mortgForm" name="submit" class="red-btn next-btn">Finish</span>
          </div>
 
       </div>
@@ -160,15 +176,15 @@
          'use strict'
          initLoader();
          pgLocalStorage();
-         next();
+         // next();
 
          //Timers
          const t1 = window.setInterval(detectChange1, 100)
          const t2 = window.setInterval(detectChange2, 100)
-         const t3 = window.setInterval(detectChange3, 100)
-         const t4 = window.setInterval(detectChange4, 100)
+         // const t3 = window.setInterval(detectChange3, 100)
+         // const t4 = window.setInterval(detectChange4, 100)
          const t5 = window.setInterval(detectChange5, 100)
-         const t6 = window.setInterval(detectChange6, 100)
+         // const t6 = window.setInterval(detectChange6, 100)
 
 
       </script>

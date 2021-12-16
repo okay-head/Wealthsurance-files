@@ -13,24 +13,26 @@ let fna = {
 
 //_____ functions
 
+let t = undefined
+
 function pushToDatabase1(fna) {
    createSessionId();
    let [a, b, c] = fna.page1;
    b = b == "married" ? 1 : 2;
    let [d] = fna.page2;
    let [e, f, g] = fna.page3;
-   let [h1, h2, h3] = fna.page4[0].credit;
-   let [i1, i2, i3] = fna.page4[0].vehicle;
-   let [j1, j2, j3] = fna.page4[0].student;
-   let [k1, k2, k3] = fna.page4[0].bank;
-   let [l1, l2, l3] = fna.page4[0].personal;
-   let [m1, m2, m3] = fna.page4[0].others;
+   let [h1=0, h2=0, h3=0] = fna.page4[0].credit;
+   let [i1=0, i2=0, i3=0] = fna.page4[0].vehicle;
+   let [j1=0, j2=0, j3=0] = fna.page4[0].student;
+   let [k1=0, k2=0, k3=0] = fna.page4[0].bank;
+   let [l1=0, l2=0, l3=0] = fna.page4[0].personal;
+   let [m1=0, m2=0, m3=0] = fna.page4[0].others;
 
-   let [n1, n2] = fna.page5[0].college;
-   let [o1, o2] = fna.page5[0].medical;
-   let [p1, p2] = fna.page5[0].planned;
-   let [q1, q2] = fna.page5[0].financial;
-   let [r1, r2] = fna.page5[0].others;
+   let [n1=0, n2=0] = fna.page5[0].college;
+   let [o1=0, o2=0] = fna.page5[0].medical;
+   let [p1=0, p2=0] = fna.page5[0].planned;
+   let [q1=0, q2=0] = fna.page5[0].financial;
+   let [r1=0, r2=0] = fna.page5[0].others;
 
    let debt_input_total = fna.page4[0].total;
    let expense_input_total = fna.page5[0].total;
@@ -78,18 +80,28 @@ function pushToDatabase1(fna) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         // console.log(url_string);
-         // console.log(result);
          if (result.success) {
             localStorage.setItem("fna_result", JSON.stringify(result.amount));
-         } else {
+            // console.log('inside success');
+            // return 1;
+            // t=1;
+
+         }else {
             console.log(result + "request not successful");
+            console.log('inside else');
+            // return 0;
+            // t=0;
          }
       },
       error: (error) => {
          console.log(error);
+         // console.log('inside error');
+         // return 0;
+         // t=0;
       },
+
    });
+   // return 1;
 }
 function updatePlaceholders(x) {
    switch (x) {
@@ -218,6 +230,8 @@ function pushToDatabase2(fna) {
             updateResult(2, result.amount);
          } else {
             console.log(result + "request not successful");
+            let alert_text = 'Cannot fetch data from the database. Please try again later \nWe are sorry for the inconvenience.'
+            alert(alert_text)
          }
       },
       error: (error) => {
@@ -519,6 +533,8 @@ function page5LocalStorage() {
          fna.page5.push(obj);
 
          localStorage.setItem("fnapg5", JSON.stringify(fna.page5));
+
+         // pushToDatabase1()
       });
    });
 }
@@ -992,12 +1008,22 @@ function nextPage() {
       });
       return update;
    }
-
+   
    loaderPromise().then(() => {
-      pushToDatabase1(fna);
-      setTimeout(() => {
-         window.open("fna_result.html", "_self");
-      }, 1410);
+      pushToDatabase1(fna); //should execute after page5 localStorage gets executed but works here as well
+               setTimeout(() => {
+            window.open("fna_result.html", "_self");
+         }, 1410);
+
+      // console.log(t);
+      // if (t) {
+      //    setTimeout(() => {
+      //       // window.open("fna_result.html", "_self");
+      //    }, 1410);
+      // }else{
+      //    let alert_text = 'Cannot fetch data from the database. Please try again later \nWe are sorry for the inconvenience.'
+      //    alert(alert_text)
+      // }
    });
 }
 

@@ -92,8 +92,9 @@ function updateTables(x, egg = undefined) {
    switch (x) {
       case 1:
          let res = [];
-         res[0] = JSON.parse(localStorage.getItem("retirepg4"))[5]; //retirement goal
+         res[0] = JSON.parse(localStorage.getItem("retirepg2"))[2]; //retirement goal
          res[1] = JSON.parse(localStorage.getItem("retire_result")); //nest egg
+
          res[2] = res[1] - res[0];
 
          updateResult(Number(res[0]), Number(res[1]));
@@ -120,8 +121,10 @@ function updateTables(x, egg = undefined) {
 
 function updateResult(goal, egg) {
    if (goal - egg > 0) {
-      $("#re-goal").text(numFormatter(goal));
-      $("#nest-egg").text(numFormatter(egg));
+      console.log(goal,egg);
+      $("#re-goal").text(numFormatter(Number(goal)));
+      // $("#re-goal").text('aaa');
+      $("#nest-egg").text(numFormatter(Number(egg)));
       $("#legend-txt").text(((egg / goal) * 100).toFixed(0) + "%");
       $("#legend-text-bottom").text("of the way there");
       $(".retire-re-summary p:first-child").text(
@@ -134,8 +137,9 @@ function updateResult(goal, egg) {
       // console.log(goal,egg);
       drawGraph(goal, egg);
    } else {
-      $("#re-goal").text(numFormatter(goal));
-      $("#nest-egg").text(numFormatter(egg));
+      $("#re-goal").text(numFormatter(Number(goal)));
+      // $("#re-goal").text('bbb');
+      $("#nest-egg").text(numFormatter(Number(egg)));
       $("#legend-txt").text(((egg / goal) * 100).toFixed(0) + "%");
       $("#legend-text-bottom").text("ahead of your goal");
 
@@ -328,6 +332,7 @@ function next() {
       }
 
       loaderPromise().then(() => {
+         setPage4()
          pushToDatabase1(retire.page4);
          setTimeout(() => {
             window.open("retirement_result.html", "_self");

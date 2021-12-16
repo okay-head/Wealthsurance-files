@@ -5,15 +5,15 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- jquery -->
+   <!-- jquery -->
    <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
 
    <!-- jquery validation -->
    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-   
+
 
    <!-- number format -->
-    <script src="scripts/jquery/jquery.number.min.js"></script>
+   <script src="scripts/jquery/jquery.number.min.js"></script>
 
 
 
@@ -22,6 +22,9 @@
 
    <!-- stylesheet -->
    <link rel="stylesheet" href="stylesheets/main.css">
+
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
+
    <title>Mortgage Calculator</title>
 </head>
 
@@ -115,57 +118,82 @@
                <h4>Input</h4>
 
                <div class="results-table-container result-table">
+                  <form id="mortgRecalcForm">
                   <table class="annuity-results-table results-table w-100 editable-results-table">
                      <tr>
                         <td>House price, $ </td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte1" placeholder="500000"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte1" name="mortgresulte1" placeholder="500000"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte1"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>Down payment, %:</td>
-                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="mortgresulte2" placeholder="10"></td>
+                        <td id="orange-text"><input type="decimal" class="down_payment" inputmode="decimal" id="mortgresulte2" name="mortgresulte2"
+                              placeholder="10"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                                 <span class="tooltip-text" id="eresulte2"></span>
+                              </div></td>
 
                      </tr>
                      <tr>
                         <td>Down payment, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte3" placeholder="50000"></td>
+                        <td><input type="decimal" class="down_payment" inputmode="decimal" id="mortgresulte3" name="mortgresulte3" placeholder="50000"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte3"></span>
+                        </div></td>
 
                      </tr>
                      <tr>
                         <td>PMI, %:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte4" placeholder="1.00"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte4" name="mortgresulte4" placeholder="1.00"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte4"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>PMI stops at, %:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte5" placeholder="20"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte5" name="mortgresulte5" placeholder="20"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte5"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>Interest rate, %:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte6" placeholder="3.500"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte6" name="mortgresulte6" placeholder="3.500"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte6"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>Loan amount, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte7" placeholder="450000"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte7" name="mortgresulte7" placeholder="450000" disabled><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte7"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>Loan duration, years</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte8" placeholder="30"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte8" name="mortgresulte8" placeholder="30"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte8"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>Annual HOA dues, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte9" placeholder="2400"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte9" name="mortgresulte9" placeholder="2400"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte9"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>Annual property taxes, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte10" placeholder="15000"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte10" name="mortgresulte10" placeholder="15000"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte10"></span>
+                        </div></td>
                      </tr>
                      <tr>
                         <td>Annual property insurance, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte11" placeholder="1500"></td>
+                        <td><input type="decimal" inputmode="decimal" id="mortgresulte11" name="mortgresulte11" placeholder="1500"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                           <span class="tooltip-text" id="eresulte11"></span>
+                        </div></td>
                      </tr>
                   </table>
+                  </form>
                </div>
 
-                              <span class="red-btn re-calc-btn" id="re-calc">Re-calculate</span>
+               <span class="red-btn re-calc-btn" id="re-calc">Re-calculate</span>
 
 
                <div class="schedule-call">
@@ -190,8 +218,21 @@
 
                <p class="small-title">Your expenses will be</p>
 
-               <div class="result" id="graph">
-                  <h3>Graph</h3>
+               <div class="" id="graph">
+                  <div class="toggle-btn-grp" style="margin-top: 0;margin-bottom: 1.5em;">
+                     <span id="year-btn-g" class="red-btn">Yearly</span><span id="month-btn-g"
+                        class="red-btn">Monthly</span>
+                  </div>
+                  <!-- <h3>Graph</h3> -->
+                  <!-- <div class="mortg-chart-container"> -->
+                  <!-- yearly -->
+                  <div id="mortg_chart"></div>
+
+                  <!-- monthly -->
+                  <div id="mortg_chartM">
+                  </div>
+                  <!-- </div> -->
+
                </div>
 
                <div id="table" class="results-table-container result-table">
@@ -257,17 +298,35 @@
 
                <span class="red-btn ammortization-btn" role="button"><span id="show-table">Show</span> Ammortization
                   Schedule</span>
-                  <div class="toggle-btn-grp" id="slide-toggle-btn-grp">
-                     <span id="year-btn" class="red-btn small-toggle">&nbspYearly&nbsp</span>
-                     <span id="month-btn" class="red-btn small-toggle">Monthly</span>
-                  </div>
+               <div class="toggle-btn-grp" id="slide-toggle-btn-grp">
+                  <span id="year-btn" class="red-btn small-toggle">&nbspYearly&nbsp</span>
+                  <span id="month-btn" class="red-btn small-toggle" style="margin-left: -5px!important;">Monthly</span>
+               </div>
+
+
 
                <div class="results-table-container result-table ammortization-table-container">
+
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table"
+                     id="amm-table-header">
+                     <tr>
+                        <td>Period</td>
+                        <td>Balance</td>
+                        <td>Principal</td>
+                        <td>Interest</td>
+                        <td>Payment</td>
+                        <td>PMI Pay</td>
+                        <td>Month</td>
+                     </tr>
+                  </table>
+
+
                   <!-- Yearly -->
-                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table" id="amm-yearly">
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table"
+                     id="amm-yearly">
 
 
-   
+
                      <tr>
                         <td>Period</td>
                         <td>Balance</td>
@@ -343,7 +402,9 @@
                   </table>
 
                   <!-- monthly -->
-                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table" id="amm-monthly">
+
+                  <table class="annuity-results-table results-table w-100 refi-output-table ammortization-table"
+                     id="amm-monthly">
                      <tr>
                         <td>Period</td>
                         <td>Balance</td>
@@ -429,16 +490,23 @@
       </div>
 
    </div>
+   <script src="scripts/mortg-graph.js"></script>
    <script src="scripts/shared.js"></script>
    <script src="scripts/mortgage.js"></script>
    <script>
       scrollTop()
+      drawGraph(1)
       updateTables(1);
       createAmmortizationTable(1);
       createAmmortizationTable2(1);
       updatePlaceholders(1);
       reCalculate();
       reEnter('mortgage.html');
+
+      const t3 = window.setInterval(detectChange3, 100)
+      const t4 = window.setInterval(detectChange4, 100)
+      const t6 = window.setInterval(detectChange6, 100)
+
    </script>
 </body>
 

@@ -8,14 +8,16 @@
    box-sizing: border-box;
    /* border: 1px solid red; */
 }
-.w-100{
-   width: 100%!important;
+.w-100 {
+   width: 100% !important;
 }
-.wealthsurance-header,.page-heading{
+.wealthsurance-header,
+.page-heading {
    font-weight: 300;
 }
 .content-container {
    /* border: 1px solid red; */
+   position: initial;
    width: 80%;
    margin: 0 auto;
 }
@@ -37,7 +39,7 @@ body {
 .pdf-io-container .output {
    padding: 0;
    border: none;
-   margin-top: 4em !important;
+   margin-top: 20em !important;
 }
 .pdf-io-container .input {
    margin: 0;
@@ -59,16 +61,19 @@ body {
 }
 
 footer {
-   /* for print */
-   /* margin-top: 2em; */
-   /* -- */
-   position: relative;
+   width: 100vw;
+   margin: 0 auto;
+   left: 0;
+   right: 0;
+   /* left: 0.5%; */
+   position: absolute;
    line-height: 30px;
-   font-family: "Gilroy-bold";
+   font-family: "Gilroy-medium";
+   /* font-family: "Gilroy-bold"; */
    /* font-weight: 600; */
    font-size: var(--footer-font);
-   padding: 2em 2em 1em 4em;
-   /* border: 1px solid red; */
+   /* padding: 1.5em 2em 1em 4em; */
+   padding: 3.5em 11em 3em 11em;
    background: url("/media/images/wealthsurance_bg.png") center no-repeat;
    background-size: cover;
    /* background-size: 110%; */
@@ -76,7 +81,7 @@ footer {
 }
 footer section {
    display: grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 0.8fr 1.4fr 0.8fr;
    justify-content: space-between;
    align-items: flex-end;
 }
@@ -89,11 +94,10 @@ footer section {
    font-size: 1.1em;
    /* font-weight : 900; */
 }
-.a-center{
+.a-center {
+   color: #8b8b8b;
    position: relative;
-   bottom: 2%;
-   left: 50%;
-   /* text-align: right; */
+   top: 26%;
 }
 .a-left {
    text-align: left;
@@ -122,4 +126,12 @@ footer section {
    text-align: left;
    width: 88%;
    margin: 3em auto;
+}
+
+.footer-1{
+   margin-top: 9.2em;
+}
+
+.footer-2{
+   margin-top: 24.8em;
 }

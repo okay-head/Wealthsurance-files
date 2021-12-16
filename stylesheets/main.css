@@ -49,7 +49,7 @@
    padding: 0;
    /* !no border-box */
 }
-input[disabled]{
+input[disabled] {
    background-color: rgba(255, 255, 255, 0.719);
 }
 .fade {
@@ -60,8 +60,8 @@ a {
    display: inline-block;
    text-decoration: none;
 }
-.reduce-font{
-   font-size: 1.3em!important;
+.reduce-font {
+   font-size: 1.3em !important;
 }
 .initial {
    color: initial;
@@ -75,7 +75,7 @@ a {
    min-height: 93vh !important;
 }
 .d-none {
-   display: none!important;
+   display: none !important;
 }
 
 .overflow-h {
@@ -464,11 +464,11 @@ select {
    /* border: 0.1px solid black; */
 }
 
-input{
+input {
    transition: 0.14s ease-in-out border;
    border: 2px solid white;
 }
-input:focus{
+input:focus {
    /* border: 2px solid var(--main-primary1)!important; */
    border: 2px solid var(--text-primary2);
 }
@@ -627,16 +627,15 @@ table {
    border-spacing: 5px;
 }
 .result-table table input,
-.result-table table ::placeholder
-{
+.result-table table ::placeholder {
    font-size: 0.95em;
 }
 .fna-results-table input,
-.nw-results-table input{
-font-size: 1.05em;
+.nw-results-table input {
+   font-size: 1.05em;
 }
 .fna-results-table ::placeholder,
-.nw-results-table ::placeholder{
+.nw-results-table ::placeholder {
    font-size: 0.95em;
 }
 .result-table-header td {
@@ -750,7 +749,7 @@ section.output {
    background-color: transparent;
    padding-left: 5px;
 }
-.fna-results-table-p2 input{
+.fna-results-table-p2 input {
    width: 90%;
 }
 /* input:focus {
@@ -862,7 +861,7 @@ section.output {
    position: relative;
 }
 .output .result {
-   margin-top: 1.56em!important;
+   margin-top: 1.56em !important;
    margin: 2em auto;
    width: 65%;
    padding: 5em 2em;
@@ -870,11 +869,11 @@ section.output {
    /* border: 1px solid brown; */
 }
 
-.college-result{
-   padding: 4em 1.5em!important;
+.college-result {
+   padding: 4em 1.5em !important;
 }
-.clg-reEnter{
-   margin: 0!important;
+.clg-reEnter {
+   margin: 0 !important;
 }
 
 #nw-result-container {
@@ -917,18 +916,19 @@ section.output {
    position: absolute;
    bottom: 19%;
 }
-.enlarged_chart_cover{
-   background-color: transparent!important;
-   z-index: 81!important;
-   height: 50px!important;
+.enlarged_chart_cover {
+   background-color: transparent !important;
+   z-index: 81 !important;
+   height: 50px !important;
 }
-.enlarged_chart_cover span{
+.enlarged_chart_cover span {
    /* z-index: 81!important; */
    position: absolute;
    top: 12.6%;
    right: 2.5%;
 }
-#nw_enlarged_chart,.enlarged_chart_cover {
+#nw_enlarged_chart,
+.enlarged_chart_cover {
    transform: scale(1);
    /* transition: 5s ease transform; */
    position: absolute;
@@ -954,9 +954,9 @@ svg > g > g:last-child {
    /* right: 219px; */
 }
 /* #close_chart::after { */
-   /* color: #fff; */
-   /* font-size: 38px; */
-   /* content: "\d7"; */
+/* color: #fff; */
+/* font-size: 38px; */
+/* content: "\d7"; */
 /* } */
 
 .assumptions {
@@ -1023,7 +1023,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    overflow: hidden;
 }
 .refi-io-container {
-   grid-template-columns: 1fr 1.3fr;
+   grid-template-columns: 0.9fr 1.3fr;
 }
 .refi-output .w-100 {
    width: 91%;
@@ -1205,7 +1205,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 .required {
    position: absolute;
-   display: none!important;
+   display: none !important;
    content: url(../media/images/alert-circle2.svg);
    top: 40%;
    right: -3.5%;
@@ -1233,7 +1233,32 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 
 /* mortgage */
-
+.extend::after {
+   content: "abcd";
+   width: 30px;
+   height: auto;
+   color: transparent;
+   /* display: inline-block; */
+}
+#mortg_chart,
+#mortg_chartM {
+   min-height: 450px;
+}
+#graph {
+   box-sizing: border-box;
+   margin: 1em auto;
+   min-height: 416px;
+   min-width: 350px;
+   overflow: hidden;
+   width: 75%;
+}
+#amm-table-header {
+   width: 49.9%;
+   position: absolute;
+   display: none;
+   right: 2.9%;
+   z-index: 1;
+}
 .small-toggle {
    font-size: var(--font-buttons) !important;
    margin: auto -1px !important;
@@ -1262,13 +1287,6 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    margin: 2.5em auto 0 auto;
 }
 
-#graph {
-   box-sizing: border-box;
-   margin: 1em auto;
-   min-height: 416px;
-   min-width: 350px;
-}
-
 /* ---------------error --------------- */
 
 .input-wrapper {
@@ -1278,7 +1296,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 }
 
 .error-container {
-   font-family: 'Gilroy-medium';
+   font-family: "Gilroy-medium";
    font-size: 0.5em;
    letter-spacing: 0.1px;
    position: absolute;
@@ -1294,14 +1312,14 @@ td {
 }
 
 .tooltip {
-   font-family: 'Gilroy-regular', Arial, Courier, monospace;
+   font-family: "Gilroy-regular", Arial, Courier, monospace;
    font-size: 0.8em;
    position: absolute;
    top: 20.5%;
    right: 9.5%;
    display: inline-block;
 }
-.head-tooltip{
+.head-tooltip {
    right: 3%;
 }
 
@@ -1335,7 +1353,7 @@ left: 100%; */
    /* margin-top: -6px; */
    border-width: 6px;
    border-style: solid;
-   border-color: rgba(0, 0, 0, 0.746)transparent transparent transparent;
+   border-color: rgba(0, 0, 0, 0.746) transparent transparent transparent;
 }
 
 .tooltip:hover .tooltip-text {
@@ -1347,20 +1365,33 @@ left: 100%; */
    /* top: -5px;
 bottom: auto;
 right: 128%; */
-   top: -7px;
-   right: 124%;
-   bottom: inherit;
+   /* top: -34px; */
+   right: -10px;
+   /* top: -7px;
+   right: 124%; */
+   /* bottom: inherit; */
    left: inherit;
 }
 
 .tooltip-left .tooltip-text::after {
-   top: 50%;
+   /* top: 50%;
    left: 100%;
    margin-top: -6px;
    margin-left: 0;
-   border-color: transparent transparent transparent rgba(0, 0, 0, 0.746);
-}
+   border-color: transparent transparent transparent rgba(0, 0, 0, 0.746); */
 
+   content: "";
+   position: absolute;
+   top: 100%;
+   left: 81%;
+   margin-left: -5px;
+   /* top: 50%;
+left: 100%; */
+   /* margin-top: -6px; */
+   border-width: 6px;
+   border-style: solid;
+   border-color: rgba(0, 0, 0, 0.746) transparent transparent transparent;
+}
 
 /* ------------breakpoints------------ */
 @media screen and (max-width: 1340px) {

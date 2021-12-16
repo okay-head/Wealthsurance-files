@@ -94,11 +94,11 @@ function createSessionId() {
 }
 
 function numFormatter(num) {
-   if(num > 999 && num < 1000000){
+   if(num >=1000 && num < 1000000){
        return (num/1000).toFixed(2) + ' K';
-   }else if(num > 1000000){
+   }else if(num >= 1000000){
        return (num/1000000).toFixed(2) + ' Million'; 
-   }else if(num < 900){
+   }else if(num <1000){
        return num; 
    }
 }
@@ -182,6 +182,9 @@ function validateFormRecalc(x,y) {
    if ($(x).valid()) {
       $('.calculated-result').removeClass('reduce-font')
       storeRecalculate();
+      if (x==mortgRecalcForm) {
+         $('#mortgresulte3,#mortgresulte2').removeClass('error')
+      }
    }else{
       $('.calculated-result').addClass('reduce-font')
       $('.calculated-result').text('Incorrect information')
