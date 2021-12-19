@@ -427,7 +427,8 @@ li.p-relative:hover .dropdown-menu {
    margin-left: 0.5em;
 }
 .btn-group {
-   min-width: max-content;
+   min-width: 310px;
+   /* min-width: max-content; */
    margin-bottom: 4%;
 }
 .next-btn {
@@ -970,7 +971,13 @@ svg > g > g:last-child {
    display: inline-block;
    font-family: "Gilroy-Bold", "Verdana", "Times New Roman";
    color: var(--text-secondary2);
-   margin: 0 0 0.8em -1em;
+   margin: 0 0 0.5em -1em;
+}
+.assumptions ul {
+   font-size: 0.9em;
+}
+.assumptions ul li{
+   margin: 4px;
 }
 /* net worth */
 .nw-table-container {
@@ -989,7 +996,7 @@ svg > g > g:last-child {
 .nw-table tr:first-child td:nth-child(2)::after,
 .nw-table tr:first-child td:nth-child(3)::after {
    position: absolute;
-   content: url(../media/images/alert-circle.svg);
+   /* content: url(../media/images/alert-circle.svg); */
    top: 17%;
    right: 6%;
    transform: scale(0.8);
@@ -1292,7 +1299,8 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
 .input-wrapper {
    display: inline-block;
    position: relative;
-   width: max-content;
+   /* width: max-content; */
+   /* width: 200px; */
 }
 
 .error-container {
@@ -1304,7 +1312,7 @@ table.mt-4 tr:not(:first-child) td:nth-child(3) {
    color: red;
    z-index: -1;
    top: 49%;
-   left: 6%;
+   left: 4%;
 }
 
 td {
@@ -1466,8 +1474,8 @@ left: 100%; */
       width: 34px;
    }
    input {
-      /* width: 40%; */
-      width: 90%;
+      /* width: 45%; */
+      width: 30%;
       padding: 8px 0px;
       padding-left: 10px;
    }

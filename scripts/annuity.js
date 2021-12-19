@@ -18,10 +18,8 @@ function pushToDatabase1(ann) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
-            // localStorage.removeItem('ann_result')
             localStorage.setItem("ann_result", JSON.stringify(result.data));
 
-            // console.log(result)
          } else {
             console.log(result + "request not successful");
          }
@@ -143,7 +141,6 @@ function storeRecalculate() {
 
    pushToDatabase2(ann);
    updatePlaceholders(2);
-
 }
 
 function updatePlaceholders(x) {
@@ -206,7 +203,7 @@ $("#annForm").validate({
             error.appendTo("#error" + i);
          }
       }
-   }, 
+   },
    rules: {
       annpg1e1: {
          required: true,
@@ -298,7 +295,6 @@ $("#annRecalcForm").validate({
       },
    },
 });
-
 
 $("#annFormSubmit").on("click", () => {
    if ($("#annForm").valid()) {

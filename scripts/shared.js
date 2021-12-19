@@ -169,8 +169,61 @@ function prevBehaviour() {
    });
 }
 
+// ----- Assumptions ------
 
-//Validation functions 
+function getAssumptions(calc) {
+   const assump_url = `http://wealthsurance.com/calculators/?get=assumption&cal=${calc}`;
+   
+   $.ajax({
+      type: "GET",
+      url: assump_url,
+
+      success: (x) => {
+         let result = JSON.parse(x);
+         if (result==0 || result=='' || result ==null ||result ==undefined) {
+            console.log('Assumptions cannot be fetched from the database. (Not available)');
+         }else{
+            addAssumptions(result);
+         }
+      },
+
+      error: (error) => {
+         console.log(error);
+      },
+   });
+}
+
+function addAssumptions(assump_arr) {
+   let assump_text = "";
+   Object.values(assump_arr).forEach((element) => {
+      let x = `<li>${element}</li>`;
+      assump_text += x;
+   });
+
+   $(".assumptions ul").html(assump_text);
+}
+
+
+// ----- Number formatting -----
+// $('#annFormSubmit').on('click',()=>{
+//    let newText = placeCommas($('#annpg1e2').val())
+//    console.log(newText);
+//    $('#annpg1e2').val(newText)
+//    // changeText()
+// })
+
+// function changeText() {
+//    $('#annpg1e2').val('banjo')
+   
+// }
+
+// function placeCommas(num) {
+//   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+// }
+
+
+
+// ------Validation functions ------ 
 
 function fValidate(x) {
    $(`span[form~='page${x}Form']`).on("click", () => {
@@ -182,13 +235,40 @@ function validateFormRecalc(x,y) {
    if ($(x).valid()) {
       $('.calculated-result').removeClass('reduce-font')
       storeRecalculate();
-      if (x==mortgRecalcForm) {
+      if (x=='#mortgRecalcForm') {
          $('#mortgresulte3,#mortgresulte2').removeClass('error')
+         $('#mortgresulte3,#mortgresulte2').addClass('valid')
       }
    }else{
       $('.calculated-result').addClass('reduce-font')
       $('.calculated-result').text('Incorrect information')
       $('.calculated-result-2').text('0')
+      let inval_arr = checkInvalid(y)
+      inval_arr.forEach((element)=>{
+      $(`#${element}`).parent().removeClass('d-none')
+      })
+   }
+   let valid_arr = checkValid(y)
+   valid_arr.forEach((element)=>{
+   $(`#${element}`).parent().addClass('d-none')
+   })
+
+}
+// for networth page2 and page3
+function validateForm2(x,y) {
+   if ($(x).valid()) {
+      let valid_arr = checkValid(y)
+      valid_arr.forEach((element)=>{
+      $(`#${element}`).parent().addClass('d-none')
+      })
+
+      if (x=='#page3Form') {
+         next()
+      }else{
+         return mySiema.next();
+      }
+   }
+   else{
       let inval_arr = checkInvalid(y)
       inval_arr.forEach((element)=>{
       $(`#${element}`).parent().removeClass('d-none')

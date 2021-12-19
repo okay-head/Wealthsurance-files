@@ -121,7 +121,7 @@ function updateTables(x, egg = undefined) {
 
 function updateResult(goal, egg) {
    if (goal - egg > 0) {
-      console.log(goal,egg);
+      // console.log(goal,egg);
       $("#re-goal").text(numFormatter(Number(goal)));
       // $("#re-goal").text('aaa');
       $("#nest-egg").text(numFormatter(Number(egg)));
@@ -322,7 +322,6 @@ function showTable() {
 
 function next() {
    //  change next button's action
-   $(".next-btn").on("click", () => {
       setPage4();
       function loaderPromise() {
          let update = new Promise((resolve) => {
@@ -338,17 +337,7 @@ function next() {
             window.open("retirement_result.html", "_self");
          }, 1410);
       });
-   });
 
-   //change the functionality back when back button is pressed
-   // $(".prev-btn").on("click", () => {
-   //    $(".next-btn")
-   //       .text("Next")
-   //       .off()
-   //       .on("click", () => {
-   //          mySiema.next();
-   //       });
-   // });
 }
 
 function storeRecalculate() {
@@ -408,7 +397,7 @@ $("#page1Form").validate({
       retirepg1e3: {
          required: true,
          number: true,
-         min: 0,
+         min: 1,
       },
    },
    messages: {
@@ -424,7 +413,7 @@ $("#page1Form").validate({
       retirepg1e3: {
          required: "Please enter your income",
          // min: "Income should be greater than 0",
-         min: "Income cannot be negative",
+         // min: "Income cannot be negative",
       },
    },
 });
@@ -456,13 +445,13 @@ $("#page2Form").validate({
    },
    messages: {
       retirepg2e1: {
-         min: "Value should be greater than 0",
+         min: "Value should be greater than 1",
       },
       retirepg2e2: {
          range: "Please enter a value between 1-100",
       },
       retirepg2e3: {
-         min: "Value should be greater than 0",
+         min: "Value should be greater than 1",
       },
    },
 });
@@ -657,7 +646,12 @@ $("#retireRecalcForm").validate({
 
 function validateForm(x) {
    if ($(`#page${x}Form`).valid()) {
-      return mySiema.next();
+      if (x==4) {
+         // console.log($(`#page4Form`).valid());
+         next()
+      }else{
+         return mySiema.next();
+      }
    }
 }
 

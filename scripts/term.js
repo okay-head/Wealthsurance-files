@@ -37,24 +37,24 @@ function pushToDatabase1(te) {
    let debt_input_total = te.page2[0].total;
    let expense_input_total = te.page3[0].total;
 
-   let max_years = undefined;
+   let max_years = 30;
 
-   let arr = [
-      Number(g3),
-      Number(h3),
-      Number(i3),
-      Number(j3),
-      Number(k3),
-      Number(l3),
-      Number(m3),
-   ];
-   let largest_no = arr[0];
-   arr.forEach((x) => {
-      if (x > largest_no) {
-         largest_no = x;
-      }
-   });
-   max_years = largest_no;
+   // let arr = [
+   //    Number(g3),
+   //    Number(h3),
+   //    Number(i3),
+   //    Number(j3),
+   //    Number(k3),
+   //    Number(l3),
+   //    Number(m3),
+   // ];
+   // let largest_no = arr[0];
+   // arr.forEach((x) => {
+   //    if (x > largest_no) {
+   //       largest_no = x;
+   //    }
+   // });
+   // max_years = largest_no;
 
    let url_debt = {
       0: { type: 1, amount: g1, interest: g2, years: g3 },
@@ -139,24 +139,24 @@ function pushToDatabase2(te) {
    let debt_input_total = te.results[0].total;
    let expense_input_total = te.results[1].total;
 
-   let max_years = undefined;
+   let max_years = 30;
 
-   let arr = [
-      Number(g3),
-      Number(h3),
-      Number(i3),
-      Number(j3),
-      Number(k3),
-      Number(l3),
-      Number(m3),
-   ];
-   let largest_no = arr[0];
-   arr.forEach((x) => {
-      if (x > largest_no) {
-         largest_no = x;
-      }
-   });
-   max_years = largest_no;
+   // let arr = [
+   //    Number(g3),
+   //    Number(h3),
+   //    Number(i3),
+   //    Number(j3),
+   //    Number(k3),
+   //    Number(l3),
+   //    Number(m3),
+   // ];
+   // let largest_no = arr[0];
+   // arr.forEach((x) => {
+   //    if (x > largest_no) {
+   //       largest_no = x;
+   //    }
+   // });
+   // max_years = largest_no;
 
    let url_debt = {
       0: { type: 1, amount: g1, interest: g2, years: g3 },

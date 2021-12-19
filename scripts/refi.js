@@ -88,7 +88,7 @@ function next() {
       loaderPromise().then(() => {
          pushToDatabase1(refi);
          setTimeout(() => {
-            window.open("refi_result.html", "_self");
+            // window.open("refi_result.html", "_self");
          }, 1410);
       });
    });
@@ -203,7 +203,9 @@ function pushToDatabase1(refi) {
 
       success: (x) => {
          let result = JSON.parse(x);
+         console.log(result);
          if (result.success) {
+            localStorage.setItem("refi_result", JSON.stringify(result.data));
             console.log(url_string)
             console.log(result.data)
             localStorage.setItem("refi_result", JSON.stringify(result.data));
@@ -221,6 +223,7 @@ function pushToDatabase1(refi) {
 
       success: (x) => {
          let result = JSON.parse(x);
+         console.log(result);
          if (result.success) {
             localStorage.setItem("refi_result2", JSON.stringify(result.data));
          } else {

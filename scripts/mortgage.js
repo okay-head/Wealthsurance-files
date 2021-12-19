@@ -804,6 +804,6 @@ $("#mortgFormSubmit").on("click", () => {
    if ($("#mortgForm").valid()) {
       next();
    }else{
-      console.log('invalid form');
+      // console.log('invalid form');
    }
 });
