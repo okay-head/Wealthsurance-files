@@ -13,7 +13,7 @@ function pushToDatabase1(ann) {
    let [a, b, c, d] = ann.page1;
    $.ajax({
       type: "POST",
-      url: `http://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${a}&pay_year=${c}&amount=${b}&growth_rate=${d}`,
+      url: `https://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${a}&pay_year=${c}&amount=${b}&growth_rate=${d}`,
 
       success: (x) => {
          let result = JSON.parse(x);
@@ -44,7 +44,7 @@ function pushToDatabase2(ann) {
 
    $.ajax({
       type: "POST",
-      url: `http://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${b[0]}&pay_year=${b[1]}&amount=${b[2]}&growth_rate=${b[3]}`,
+      url: `https://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${b[0]}&pay_year=${b[1]}&amount=${b[2]}&growth_rate=${b[3]}`,
 
       success: (x) => {
          let result = JSON.parse(x);

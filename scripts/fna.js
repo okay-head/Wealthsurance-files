@@ -11,9 +11,56 @@ let fna = {
    results: [],
 };
 
-//_____ functions
+// default operations
+// $(".download").hover(() => {
+//    $(".pdf-load-screen").addClass("fade-in");
+// });
+// $('.print').on('click',()=>{
+//    window.close()
+// })
 
-let t = undefined
+$(".download").on("click", () => {
+   // if ($('#fnaRecalcForm').valid()) {
+   $(".pdf-load-screen").addClass("fade-in");
+   console.log("printing pdf");
+   // window.open('fna_pdf.html','_blank')
+   let print_window = window.open('https://5dec-171-61-28-122.ngrok.io/fna_pdf.html','_blank')
+   
+   // getPdf();
+
+
+   // setTimeout(() => {
+   //    print_window.close()
+   // }, 5000);
+   // }else{
+   // console.log('trigger tooltip');
+   // }
+});
+
+//_____ functions
+function getPdf() {
+
+   let url= window.location.href
+   let url_string =  `https://v2.convertapi.com/convert/web/to/pdf?Secret=KKpF6ONL5EcXiwLY&Url=${url}&StoreFile=true&FileName=Financial_needs_Analysis&Zoom=1.4&PageSize=a4&MarginTop=3&MarginRight=0&MarginBottom=0&MarginLeft=0
+   `
+
+   $.ajax({
+      type: "GET",
+      url:url_string,
+      success: (x) => {
+         console.log(url_string);
+         console.log(x);
+         // console.log(x.Url);
+         // $(".pdf-load-screen").removeClass("fade-in");
+         window.open(x.Files[0].Url, "_self");
+      },
+      error: (e) => {
+         console.log(e);
+      },
+   });
+}
+
+let t = undefined;
 
 function pushToDatabase1(fna) {
    createSessionId();
@@ -21,18 +68,18 @@ function pushToDatabase1(fna) {
    b = b == "married" ? 1 : 2;
    let [d] = fna.page2;
    let [e, f, g] = fna.page3;
-   let [h1=0, h2=0, h3=0] = fna.page4[0].credit;
-   let [i1=0, i2=0, i3=0] = fna.page4[0].vehicle;
-   let [j1=0, j2=0, j3=0] = fna.page4[0].student;
-   let [k1=0, k2=0, k3=0] = fna.page4[0].bank;
-   let [l1=0, l2=0, l3=0] = fna.page4[0].personal;
-   let [m1=0, m2=0, m3=0] = fna.page4[0].others;
+   let [h1 = 0, h2 = 0, h3 = 0] = fna.page4[0].credit;
+   let [i1 = 0, i2 = 0, i3 = 0] = fna.page4[0].vehicle;
+   let [j1 = 0, j2 = 0, j3 = 0] = fna.page4[0].student;
+   let [k1 = 0, k2 = 0, k3 = 0] = fna.page4[0].bank;
+   let [l1 = 0, l2 = 0, l3 = 0] = fna.page4[0].personal;
+   let [m1 = 0, m2 = 0, m3 = 0] = fna.page4[0].others;
 
-   let [n1=0, n2=0] = fna.page5[0].college;
-   let [o1=0, o2=0] = fna.page5[0].medical;
-   let [p1=0, p2=0] = fna.page5[0].planned;
-   let [q1=0, q2=0] = fna.page5[0].financial;
-   let [r1=0, r2=0] = fna.page5[0].others;
+   let [n1 = 0, n2 = 0] = fna.page5[0].college;
+   let [o1 = 0, o2 = 0] = fna.page5[0].medical;
+   let [p1 = 0, p2 = 0] = fna.page5[0].planned;
+   let [q1 = 0, q2 = 0] = fna.page5[0].financial;
+   let [r1 = 0, r2 = 0] = fna.page5[0].others;
 
    let debt_input_total = fna.page4[0].total;
    let expense_input_total = fna.page5[0].total;
@@ -68,7 +115,7 @@ function pushToDatabase1(fna) {
    let expense_total =
       expense_input_total > expense_calc ? expense_input_total : expense_calc;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(
+   let url_string = `https://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(
       url_debt
    )}&expense=${JSON.stringify(
       url_expenses
@@ -85,10 +132,9 @@ function pushToDatabase1(fna) {
             // console.log('inside success');
             // return 1;
             // t=1;
-
-         }else {
+         } else {
             console.log(result + "request not successful");
-            console.log('inside else');
+            console.log("inside else");
             // return 0;
             // t=0;
          }
@@ -99,7 +145,6 @@ function pushToDatabase1(fna) {
          // return 0;
          // t=0;
       },
-
    });
    // return 1;
 }
@@ -214,7 +259,7 @@ function pushToDatabase2(fna) {
    let expense_total =
       expense_input_total > expense_calc ? expense_input_total : expense_calc;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(
+   let url_string = `https://wealthsurance.com/calculators/?calculator=fna&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&mortgage={"amount":${e},"interest":${f},"years":${g}}&debt=${JSON.stringify(
       url_debt
    )}&expense=${JSON.stringify(
       url_expenses
@@ -230,8 +275,9 @@ function pushToDatabase2(fna) {
             updateResult(2, result.amount);
          } else {
             console.log(result + "request not successful");
-            let alert_text = 'Cannot fetch data from the database. Please try again later \nWe are sorry for the inconvenience.'
-            alert(alert_text)
+            let alert_text =
+               "Cannot fetch data from the database. Please try again later \nWe are sorry for the inconvenience.";
+            alert(alert_text);
          }
       },
       error: (error) => {
@@ -676,14 +722,14 @@ $("#page2Form").validate({
    rules: {
       fnapg2e1: {
          required: true,
-         number:true,
-         min:1,
+         number: true,
+         min: 1,
       },
    },
    messages: {
       fnapg2e1: {
          required: "Please enter your income",
-         min: "Income should be greater than 0"
+         min: "Income should be greater than 0",
       },
    },
 });
@@ -699,36 +745,36 @@ $("#page3Form").validate({
       }
    },
    rules: {
-      fnapg3e1: { 
+      fnapg3e1: {
          required: true,
          number: true,
          min: 0,
       },
-      fnapg3e2: { 
+      fnapg3e2: {
          required: true,
          number: true,
-         range: [0,100],
-       },
-      fnapg3e3: { 
-         required: true ,
+         range: [0, 100],
+      },
+      fnapg3e3: {
+         required: true,
          number: true,
-         range: [1,45],
+         range: [1, 45],
       },
    },
    messages: {
-      fnapg3e1: { 
+      fnapg3e1: {
          required: "This field is required",
-         min:"Mortgage should be greater than 0",
-         number: "Mortgage should be greater than 0"
-    },
-      fnapg3e2: { 
-         required: "This field is required",
-         range: "Please enter a value between 0-100"
+         min: "Mortgage should be greater than 0",
+         number: "Mortgage should be greater than 0",
       },
-      fnapg3e3: { 
+      fnapg3e2: {
          required: "This field is required",
-         digits: "Please enter only positive integers"
-    },
+         range: "Please enter a value between 0-100",
+      },
+      fnapg3e3: {
+         required: "This field is required",
+         digits: "Please enter only positive integers",
+      },
    },
 });
 
@@ -751,59 +797,58 @@ $("#page4Form").validate({
    },
    rules: {
       fnapg4e1: {
-          required: true,
-          number: true,
-          min:0
-       },
-       //  fnapg4e2c1,fnapg4e3c1,fnapg4e4c1,fnapg4e5c1,fnapg4e6c1,fnapg4e7c1: {number: true,min:1},
-      
-       fnapg4e2c1: {number: true,min:1},
-       fnapg4e3c1: {number: true,min:1},
-       fnapg4e4c1: {number: true,min:1},
-       fnapg4e5c1: {number: true,min:1},
-       fnapg4e6c1: {number: true,min:1},
-       fnapg4e7c1: {number: true,min:1},
-       
-       
-       fnapg4e2c2: {number: true,range:[0,100]},
-       fnapg4e3c2: {number: true,range:[0,100]},
-       fnapg4e4c2: {number: true,range:[0,100]},
-       fnapg4e5c2: {number: true,range:[0,100]},
-       fnapg4e6c2: {number: true,range:[0,100]},
-       fnapg4e7c2: {number: true,range:[0,100]},
-       
-       fnapg4e2c3: {number: true,min:1},
-       fnapg4e3c3: {number: true,min:1},
-       fnapg4e4c3: {number: true,min:1},
-       fnapg4e5c3: {number: true,min:1},
-       fnapg4e6c3: {number: true,min:1},
-       fnapg4e7c3: {number: true,min:1},
+         required: true,
+         number: true,
+         min: 0,
+      },
+      //  fnapg4e2c1,fnapg4e3c1,fnapg4e4c1,fnapg4e5c1,fnapg4e6c1,fnapg4e7c1: {number: true,min:1},
+
+      fnapg4e2c1: { number: true, min: 1 },
+      fnapg4e3c1: { number: true, min: 1 },
+      fnapg4e4c1: { number: true, min: 1 },
+      fnapg4e5c1: { number: true, min: 1 },
+      fnapg4e6c1: { number: true, min: 1 },
+      fnapg4e7c1: { number: true, min: 1 },
+
+      fnapg4e2c2: { number: true, range: [0, 100] },
+      fnapg4e3c2: { number: true, range: [0, 100] },
+      fnapg4e4c2: { number: true, range: [0, 100] },
+      fnapg4e5c2: { number: true, range: [0, 100] },
+      fnapg4e6c2: { number: true, range: [0, 100] },
+      fnapg4e7c2: { number: true, range: [0, 100] },
+
+      fnapg4e2c3: { number: true, min: 1 },
+      fnapg4e3c3: { number: true, min: 1 },
+      fnapg4e4c3: { number: true, min: 1 },
+      fnapg4e5c3: { number: true, min: 1 },
+      fnapg4e6c3: { number: true, min: 1 },
+      fnapg4e7c3: { number: true, min: 1 },
    },
    messages: {
       fnapg4e1: {
-          required: "This field is required" ,
-          min: "Debt cannot be negative",
-   },
-   fnapg4e2c1:{min:"Value should be greater than 0"},
-   fnapg4e3c1:{min:"Value should be greater than 0"},
-   fnapg4e4c1:{min:"Value should be greater than 0"},
-   fnapg4e5c1:{min:"Value should be greater than 0"},
-   fnapg4e6c1:{min:"Value should be greater than 0"},
-   fnapg4e7c1:{min:"Value should be greater than 0"},
+         required: "This field is required",
+         min: "Debt cannot be negative",
+      },
+      fnapg4e2c1: { min: "Value should be greater than 0" },
+      fnapg4e3c1: { min: "Value should be greater than 0" },
+      fnapg4e4c1: { min: "Value should be greater than 0" },
+      fnapg4e5c1: { min: "Value should be greater than 0" },
+      fnapg4e6c1: { min: "Value should be greater than 0" },
+      fnapg4e7c1: { min: "Value should be greater than 0" },
 
-   fnapg4e2c2:{range:"Please enter a value between 0-100"},
-   fnapg4e3c2:{range:"Please enter a value between 0-100"},
-   fnapg4e4c2:{range:"Please enter a value between 0-100"},
-   fnapg4e5c2:{range:"Please enter a value between 0-100"},
-   fnapg4e6c2:{range:"Please enter a value between 0-100"},
-   fnapg4e7c2:{range:"Please enter a value between 0-100"},
+      fnapg4e2c2: { range: "Please enter a value between 0-100" },
+      fnapg4e3c2: { range: "Please enter a value between 0-100" },
+      fnapg4e4c2: { range: "Please enter a value between 0-100" },
+      fnapg4e5c2: { range: "Please enter a value between 0-100" },
+      fnapg4e6c2: { range: "Please enter a value between 0-100" },
+      fnapg4e7c2: { range: "Please enter a value between 0-100" },
 
-   fnapg4e2c3:{min:"Value should be greater than 0"},
-   fnapg4e3c3:{min:"Value should be greater than 0"},
-   fnapg4e4c3:{min:"Value should be greater than 0"},
-   fnapg4e5c3:{min:"Value should be greater than 0"},
-   fnapg4e6c3:{min:"Value should be greater than 0"},
-   fnapg4e7c3:{min:"Value should be greater than 0"},
+      fnapg4e2c3: { min: "Value should be greater than 0" },
+      fnapg4e3c3: { min: "Value should be greater than 0" },
+      fnapg4e4c3: { min: "Value should be greater than 0" },
+      fnapg4e5c3: { min: "Value should be greater than 0" },
+      fnapg4e6c3: { min: "Value should be greater than 0" },
+      fnapg4e7c3: { min: "Value should be greater than 0" },
    },
 });
 
@@ -820,46 +865,45 @@ $("#page5Form").validate({
             error.appendTo(`#error5e${i}c3`);
          }
       }
-
    },
    rules: {
-      fnapg5e1: { 
+      fnapg5e1: {
          required: true,
-          number: true,
-          min:0
+         number: true,
+         min: 0,
       },
-      fnapg5e2c1: {number: true,min:1},
-      fnapg5e3c1: {number: true,min:1},
-      fnapg5e4c1: {number: true,min:1},
-      fnapg5e5c1: {number: true,min:1},
-      fnapg5e6c1: {number: true,min:1},
-      
-      fnapg5e2c3: {number: true,min:0},
-      fnapg5e3c3: {number: true,min:0},
-      fnapg5e4c3: {number: true,min:0},
-      fnapg5e5c3: {number: true,min:0},
-      fnapg5e6c3: {number: true,min:0},
+      fnapg5e2c1: { number: true, min: 1 },
+      fnapg5e3c1: { number: true, min: 1 },
+      fnapg5e4c1: { number: true, min: 1 },
+      fnapg5e5c1: { number: true, min: 1 },
+      fnapg5e6c1: { number: true, min: 1 },
+
+      fnapg5e2c3: { number: true, min: 0 },
+      fnapg5e3c3: { number: true, min: 0 },
+      fnapg5e4c3: { number: true, min: 0 },
+      fnapg5e5c3: { number: true, min: 0 },
+      fnapg5e6c3: { number: true, min: 0 },
    },
    messages: {
       fnapg5e1: {
-         required: "This field is required" ,
+         required: "This field is required",
          min: "Value cannot be negative",
-   },
-   fnapg5e2c1:{min:"Value should be greater than 0"},
-   fnapg5e3c1:{min:"Value should be greater than 0"},
-   fnapg5e4c1:{min:"Value should be greater than 0"},
-   fnapg5e5c1:{min:"Value should be greater than 0"},
-   fnapg5e6c1:{min:"Value should be greater than 0"},
+      },
+      fnapg5e2c1: { min: "Value should be greater than 0" },
+      fnapg5e3c1: { min: "Value should be greater than 0" },
+      fnapg5e4c1: { min: "Value should be greater than 0" },
+      fnapg5e5c1: { min: "Value should be greater than 0" },
+      fnapg5e6c1: { min: "Value should be greater than 0" },
 
-   fnapg5e2c3:{min:"Value should be greater than 0"},
-   fnapg5e3c3:{min:"Value should be greater than 0"},
-   fnapg5e4c3:{min:"Value should be greater than 0"},
-   fnapg5e5c3:{min:"Value should be greater than 0"},
-   fnapg5e6c3:{min:"Value should be greater than 0"},
+      fnapg5e2c3: { min: "Value should be greater than 0" },
+      fnapg5e3c3: { min: "Value should be greater than 0" },
+      fnapg5e4c3: { min: "Value should be greater than 0" },
+      fnapg5e5c3: { min: "Value should be greater than 0" },
+      fnapg5e6c3: { min: "Value should be greater than 0" },
    },
 });
 
-$('#fnaRecalcForm').validate({
+$("#fnaRecalcForm").validate({
    errorPlacement: function (error, element) {
       if (element.is("#fnaresultp1r0e1")) {
          error.appendTo("#eresultp1r0e1");
@@ -889,106 +933,102 @@ $('#fnaRecalcForm').validate({
    },
 
    rules: {
-      fnaresultp1r0e1: { 
+      fnaresultp1r0e1: {
          required: true,
-          number: true,
-          min:0
+         number: true,
+         min: 0,
       },
-      fnaresultp1r1e1: {number: true,min:1},
-      fnaresultp1r2e1: {number: true,min:1},
-      fnaresultp1r3e1: {number: true,min:1},
-      fnaresultp1r4e1: {number: true,min:1},
-      fnaresultp1r5e1: {number: true,min:1},
-      fnaresultp1r6e1: {number: true,min:1},
-      
-      fnaresultp1r1e2: {number: true,range:[0,100]},
-      fnaresultp1r2e2: {number: true,range:[0,100]},
-      fnaresultp1r3e2: {number: true,range:[0,100]},
-      fnaresultp1r4e2: {number: true,range:[0,100]},
-      fnaresultp1r5e2: {number: true,range:[0,100]},
-      fnaresultp1r6e2: {number: true,range:[0,100]},
-      
-      fnaresultp1r1e3: {number: true,min:1},
-      fnaresultp1r2e3: {number: true,min:1},
-      fnaresultp1r3e3: {number: true,min:1},
-      fnaresultp1r4e3: {number: true,min:1},
-      fnaresultp1r5e3: {number: true,min:1},
-      fnaresultp1r6e3: {number: true,min:1},
+      fnaresultp1r1e1: { number: true, min: 1 },
+      fnaresultp1r2e1: { number: true, min: 1 },
+      fnaresultp1r3e1: { number: true, min: 1 },
+      fnaresultp1r4e1: { number: true, min: 1 },
+      fnaresultp1r5e1: { number: true, min: 1 },
+      fnaresultp1r6e1: { number: true, min: 1 },
 
+      fnaresultp1r1e2: { number: true, range: [0, 100] },
+      fnaresultp1r2e2: { number: true, range: [0, 100] },
+      fnaresultp1r3e2: { number: true, range: [0, 100] },
+      fnaresultp1r4e2: { number: true, range: [0, 100] },
+      fnaresultp1r5e2: { number: true, range: [0, 100] },
+      fnaresultp1r6e2: { number: true, range: [0, 100] },
+
+      fnaresultp1r1e3: { number: true, min: 1 },
+      fnaresultp1r2e3: { number: true, min: 1 },
+      fnaresultp1r3e3: { number: true, min: 1 },
+      fnaresultp1r4e3: { number: true, min: 1 },
+      fnaresultp1r5e3: { number: true, min: 1 },
+      fnaresultp1r6e3: { number: true, min: 1 },
 
       // page2
-      fnaresultp2r0e1: { 
+      fnaresultp2r0e1: {
          required: true,
-          number: true,
-          min:0
+         number: true,
+         min: 0,
       },
 
-      fnaresultp2r1e1: {number: true,min:1},
-      fnaresultp2r2e1: {number: true,min:1},
-      fnaresultp2r3e1: {number: true,min:1},
-      fnaresultp2r4e1: {number: true,min:1},
-      fnaresultp2r5e1: {number: true,min:1},
+      fnaresultp2r1e1: { number: true, min: 1 },
+      fnaresultp2r2e1: { number: true, min: 1 },
+      fnaresultp2r3e1: { number: true, min: 1 },
+      fnaresultp2r4e1: { number: true, min: 1 },
+      fnaresultp2r5e1: { number: true, min: 1 },
 
-      fnaresultp2r1e2: {number: true,min:1},
-      fnaresultp2r2e2: {number: true,min:1},
-      fnaresultp2r3e2: {number: true,min:1},
-      fnaresultp2r4e2: {number: true,min:1},
-      fnaresultp2r5e2: {number: true,min:1},
-
+      fnaresultp2r1e2: { number: true, min: 1 },
+      fnaresultp2r2e2: { number: true, min: 1 },
+      fnaresultp2r3e2: { number: true, min: 1 },
+      fnaresultp2r4e2: { number: true, min: 1 },
+      fnaresultp2r5e2: { number: true, min: 1 },
    },
    messages: {
-      fnaresultp1r0e1:{
-         min: "Debt cannot be negative"
+      fnaresultp1r0e1: {
+         min: "Debt cannot be negative",
       },
-      fnaresultp2r0e1:{
-         min: "Value cannot be negative"
+      fnaresultp2r0e1: {
+         min: "Value cannot be negative",
       },
-   fnaresultp1r1e1:{min:"Value should be greater than 0"},
-   fnaresultp1r2e1:{min:"Value should be greater than 0"},
-   fnaresultp1r3e1:{min:"Value should be greater than 0"},
-   fnaresultp1r4e1:{min:"Value should be greater than 0"},
-   fnaresultp1r5e1:{min:"Value should be greater than 0"},
-   fnaresultp1r6e1:{min:"Value should be greater than 0"},
+      fnaresultp1r1e1: { min: "Value should be greater than 0" },
+      fnaresultp1r2e1: { min: "Value should be greater than 0" },
+      fnaresultp1r3e1: { min: "Value should be greater than 0" },
+      fnaresultp1r4e1: { min: "Value should be greater than 0" },
+      fnaresultp1r5e1: { min: "Value should be greater than 0" },
+      fnaresultp1r6e1: { min: "Value should be greater than 0" },
 
-   fnaresultp1r1e2:{range:"Please enter a value between 0-100"},
-   fnaresultp1r2e2:{range:"Please enter a value between 0-100"},
-   fnaresultp1r3e2:{range:"Please enter a value between 0-100"},
-   fnaresultp1r4e2:{range:"Please enter a value between 0-100"},
-   fnaresultp1r5e2:{range:"Please enter a value between 0-100"},
-   fnaresultp1r6e2:{range:"Please enter a value between 0-100"},
+      fnaresultp1r1e2: { range: "Please enter a value between 0-100" },
+      fnaresultp1r2e2: { range: "Please enter a value between 0-100" },
+      fnaresultp1r3e2: { range: "Please enter a value between 0-100" },
+      fnaresultp1r4e2: { range: "Please enter a value between 0-100" },
+      fnaresultp1r5e2: { range: "Please enter a value between 0-100" },
+      fnaresultp1r6e2: { range: "Please enter a value between 0-100" },
 
-   fnaresultp1r1e3:{min:"Value should be greater than 0"},
-   fnaresultp1r2e3:{min:"Value should be greater than 0"},
-   fnaresultp1r3e3:{min:"Value should be greater than 0"},
-   fnaresultp1r4e3:{min:"Value should be greater than 0"},
-   fnaresultp1r5e3:{min:"Value should be greater than 0"},
-   fnaresultp1r6e3:{min:"Value should be greater than 0"},
+      fnaresultp1r1e3: { min: "Value should be greater than 0" },
+      fnaresultp1r2e3: { min: "Value should be greater than 0" },
+      fnaresultp1r3e3: { min: "Value should be greater than 0" },
+      fnaresultp1r4e3: { min: "Value should be greater than 0" },
+      fnaresultp1r5e3: { min: "Value should be greater than 0" },
+      fnaresultp1r6e3: { min: "Value should be greater than 0" },
 
-   // page2
-   fnaresultp2r1e1:{min:"Value should be greater than 0"},
-   fnaresultp2r2e1:{min:"Value should be greater than 0"},
-   fnaresultp2r3e1:{min:"Value should be greater than 0"},
-   fnaresultp2r4e1:{min:"Value should be greater than 0"},
-   fnaresultp2r5e1:{min:"Value should be greater than 0"},
+      // page2
+      fnaresultp2r1e1: { min: "Value should be greater than 0" },
+      fnaresultp2r2e1: { min: "Value should be greater than 0" },
+      fnaresultp2r3e1: { min: "Value should be greater than 0" },
+      fnaresultp2r4e1: { min: "Value should be greater than 0" },
+      fnaresultp2r5e1: { min: "Value should be greater than 0" },
 
-   fnaresultp2r1e2:{min:"Value should be greater than 0"},
-   fnaresultp2r2e2:{min:"Value should be greater than 0"},
-   fnaresultp2r3e2:{min:"Value should be greater than 0"},
-   fnaresultp2r4e2:{min:"Value should be greater than 0"},
-   fnaresultp2r5e2:{min:"Value should be greater than 0"},
-   }
-
+      fnaresultp2r1e2: { min: "Value should be greater than 0" },
+      fnaresultp2r2e2: { min: "Value should be greater than 0" },
+      fnaresultp2r3e2: { min: "Value should be greater than 0" },
+      fnaresultp2r4e2: { min: "Value should be greater than 0" },
+      fnaresultp2r5e2: { min: "Value should be greater than 0" },
+   },
 });
 
 function validateForm(x) {
    if ($(`#page${x}Form`).valid()) {
       if (x !== 5) {
-         if (x!==4) {
+         if (x !== 4) {
             return mySiema.next();
-         }else{
+         } else {
             tableUp();
             return mySiema.next();
-
          }
       } else if (x == 5) {
          // next()
@@ -1008,12 +1048,12 @@ function nextPage() {
       });
       return update;
    }
-   
+
    loaderPromise().then(() => {
       pushToDatabase1(fna); //should execute after page5 localStorage gets executed but works here as well
-               setTimeout(() => {
-            window.open("fna_result.html", "_self");
-         }, 1410);
+      setTimeout(() => {
+         window.open("fna_result.html", "_self");
+      }, 1410);
 
       // console.log(t);
       // if (t) {
@@ -1029,11 +1069,7 @@ function nextPage() {
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
-      validateFormRecalc('#fnaRecalcForm',3);
+      validateFormRecalc("#fnaRecalcForm", 3);
       // storeRecalculate();
    });
 }
-
-
-
-

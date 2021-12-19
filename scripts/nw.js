@@ -112,7 +112,7 @@ function pushToDatabase1(nw) {
       11: { amount: n1, growth_rate: n2, type: 12 },
    };
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=net&session_id=${session_id}&ip_address=${ip}&current_age=${a}&retirement_age=${b}&asset=${JSON.stringify(
+   let url_string = `https://wealthsurance.com/calculators/?calculator=net&session_id=${session_id}&ip_address=${ip}&current_age=${a}&retirement_age=${b}&asset=${JSON.stringify(
       url_asset1
    )}&liablity=${JSON.stringify(url_liablity1)}`;
    $.ajax({
@@ -407,7 +407,7 @@ function pushToDatabase2(arr) {
       11: { amount: n1, growth_rate: n2, type: 12 },
    };
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=net&session_id=${session_id}&ip_address=${ip}&current_age=${a}&retirement_age=${b}&asset=${JSON.stringify(
+   let url_string = `https://wealthsurance.com/calculators/?calculator=net&session_id=${session_id}&ip_address=${ip}&current_age=${a}&retirement_age=${b}&asset=${JSON.stringify(
       url_asset1
    )}&liablity=${JSON.stringify(url_liablity1)}`;
 

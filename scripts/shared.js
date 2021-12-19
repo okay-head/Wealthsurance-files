@@ -172,7 +172,7 @@ function prevBehaviour() {
 // ----- Assumptions ------
 
 function getAssumptions(calc) {
-   const assump_url = `http://wealthsurance.com/calculators/?get=assumption&cal=${calc}`;
+   const assump_url = `https://wealthsurance.com/calculators/?get=assumption&cal=${calc}`;
    
    $.ajax({
       type: "GET",

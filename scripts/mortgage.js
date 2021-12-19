@@ -202,9 +202,9 @@ function pushToDatabase1(mortg) {
       z[3] = ((Number(z[0]) * Number(z[2])) / 100).toFixed(2);
    }
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=2&zipcode=${z[1]}`;
+   let url_string = `https://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=2&zipcode=${z[1]}`;
    // monthly
-   let url_string2 = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=1&zipcode=${z[1]}`;
+   let url_string2 = `https://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[7]} ,"down" : ${z[3]},"interest" : ${z[6]},"duration" : ${z[8]},"hoaDue" : ${z[9]},"propTax" : ${z[10]},"propIns" : ${z[11]},"stPmi" : ${z[4]},"fnPmi" : ${z[5]}}&type=1&zipcode=${z[1]}`;
 
    $.ajax({
       type: "POST",
@@ -260,8 +260,8 @@ function pushToDatabase2(mortg) {
    // $('#mortgresulte3')
    // .attr('placeholder',z[2])
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=2&zipcode=${zip}`;
-   let url_string2 = `http://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=1&zipcode=${zip}`;
+   let url_string = `https://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=2&zipcode=${zip}`;
+   let url_string2 = `https://wealthsurance.com/calculators/?calculator=mortgage&session_id=${session_id}&ip_address=${ip}&data={"price" : ${z[0]},"amount" : ${z[5]} ,"down" : ${z[2]},"interest" : ${z[6]},"duration" : ${z[7]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"stPmi" : ${z[3]},"fnPmi" : ${z[4]}}&type=1&zipcode=${zip}`;
 
    $.ajax({
       type: "POST",

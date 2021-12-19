@@ -89,7 +89,7 @@ function pushToDatabase1(te) {
    let expense_total =
       expense_input_total > expense_calc ? expense_input_total : expense_calc;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(
+   let url_string = `https://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(
       url_debt
    )}&expense=${JSON.stringify(
       url_expenses
@@ -191,7 +191,7 @@ function pushToDatabase2(te) {
    let expense_total =
       expense_input_total > expense_calc ? expense_input_total : expense_calc;
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(
+   let url_string = `https://wealthsurance.com/calculators/?calculator=term&session_id=${session_id}&ip_address=${ip}&age=${a}&status=${b}&child_count=${c}&annual_income=${d}&debt=${JSON.stringify(
       url_debt
    )}&expense=${JSON.stringify(
       url_expenses

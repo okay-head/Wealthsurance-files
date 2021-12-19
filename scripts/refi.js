@@ -194,8 +194,8 @@ function pushToDatabase1(refi) {
       z[i] = refi.page1[i];
    }
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=2`;
-   let url_string2 = `http://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=1`;
+   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=2`;
+   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=1`;
 
    $.ajax({
       type: "POST",
@@ -245,8 +245,8 @@ function pushToDatabase2(refi) {
       z[i] = Object.values(refi.results[0])[i + 1];
    }
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=2`;
-   let url_string2 = `http://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=1`;
+   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=2`;
+   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=1`;
 
    $.ajax({
       type: "POST",

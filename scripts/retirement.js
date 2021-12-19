@@ -20,7 +20,7 @@ let retire = {
 function pushToDatabase1(a, x = undefined) {
    createSessionId();
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=retirement&session_id=${session_id}&ip_address=${ip}&current_age=${a[0]}&ret_age=${a[1]}&current_income=${a[2]}&post_ret_pre_tax_income=${a[3]}&ret_year=${a[4]}&ret_goal=${a[5]}&income_growth=${a[6]}&growth_rate=${a[7]}&post_ret_growth_rate=${a[8]}&inflation_rate=${a[9]}&saving_pre_percent=${a[10]}&saving_pre_amount=${a[11]}&saving_post_percent=${a[12]}&saving_post_amount=${a[13]}
+   let url_string = `https://wealthsurance.com/calculators/?calculator=retirement&session_id=${session_id}&ip_address=${ip}&current_age=${a[0]}&ret_age=${a[1]}&current_income=${a[2]}&post_ret_pre_tax_income=${a[3]}&ret_year=${a[4]}&ret_goal=${a[5]}&income_growth=${a[6]}&growth_rate=${a[7]}&post_ret_growth_rate=${a[8]}&inflation_rate=${a[9]}&saving_pre_percent=${a[10]}&saving_pre_amount=${a[11]}&saving_post_percent=${a[12]}&saving_post_amount=${a[13]}
    `;
 
    $.ajax({
@@ -46,7 +46,7 @@ function pushToDatabase1(a, x = undefined) {
 function pushToDatabase2(a) {
    createSessionId();
 
-   let url_string = `http://wealthsurance.com/calculators/?calculator=retirement&session_id=${session_id}&ip_address=${ip}&current_age=${a[0]}&ret_age=${a[1]}&current_income=${a[2]}&post_ret_pre_tax_income=${a[3]}&ret_year=${a[4]}&ret_goal=${a[5]}&income_growth=${a[6]}&growth_rate=${a[7]}&post_ret_growth_rate=${a[8]}&inflation_rate=${a[9]}&saving_pre_percent=${a[10]}&saving_pre_amount=${a[11]}&saving_post_percent=${a[12]}&saving_post_amount=${a[13]}
+   let url_string = `https://wealthsurance.com/calculators/?calculator=retirement&session_id=${session_id}&ip_address=${ip}&current_age=${a[0]}&ret_age=${a[1]}&current_income=${a[2]}&post_ret_pre_tax_income=${a[3]}&ret_year=${a[4]}&ret_goal=${a[5]}&income_growth=${a[6]}&growth_rate=${a[7]}&post_ret_growth_rate=${a[8]}&inflation_rate=${a[9]}&saving_pre_percent=${a[10]}&saving_pre_amount=${a[11]}&saving_post_percent=${a[12]}&saving_post_amount=${a[13]}
    `;
 
    // console.log(url_string)

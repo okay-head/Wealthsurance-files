@@ -56,6 +56,11 @@ input[disabled] {
    opacity: 0;
    height: 0;
 }
+.fade-in{
+   opacity: 1!important;
+   margin-top: 0!important;
+   visibility: visible!important;
+}
 a {
    display: inline-block;
    text-decoration: none;
@@ -976,7 +981,7 @@ svg > g > g:last-child {
 .assumptions ul {
    font-size: 0.9em;
 }
-.assumptions ul li{
+.assumptions ul li {
    margin: 4px;
 }
 /* net worth */
@@ -1393,12 +1398,39 @@ right: 128%; */
    top: 100%;
    left: 81%;
    margin-left: -5px;
-   /* top: 50%;
-left: 100%; */
-   /* margin-top: -6px; */
    border-width: 6px;
    border-style: solid;
    border-color: rgba(0, 0, 0, 0.746) transparent transparent transparent;
+}
+
+.load-screen {
+   color: var(--main-secondary3);
+   z-index: 1;
+   position: fixed;
+   transform: translate(-50%, -8%);
+   top: 8%;
+   left: 50%;
+   /* top: 0;
+   top: 0; */
+   width: 20%;
+   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.431);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: white;
+   transition: 0.3s ease-in-out all;
+   /* transform: translateY(2%); */
+   visibility: hidden;
+   opacity: 0;
+   margin-top: -3%;
+}
+
+.load-screen div {
+   padding: 2em 2em;
+   text-align: center;
+}
+.load-screen div p:first-child{
+   font-size: 1.4em;
 }
 
 /* ------------breakpoints------------ */
