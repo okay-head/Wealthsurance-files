@@ -24,7 +24,8 @@ $(".download").on("click", () => {
    $(".pdf-load-screen").addClass("fade-in");
    console.log("printing pdf");
    // window.open('fna_pdf.html','_blank')
-   let print_window = window.open('https://5dec-171-61-28-122.ngrok.io/fna_pdf.html','_blank')
+   // let print_window = window.open('https://5dec-171-61-28-122.ngrok.io/fna_pdf.html','_blank')
+   let print_window = window.open('https://okay-head.github.io/Wealthsurance-files/fna_pdf.html','_blank')
    
    // getPdf();
 
