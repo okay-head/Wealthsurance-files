@@ -1335,6 +1335,9 @@ td {
 .head-tooltip {
    right: 3%;
 }
+#retireRecalcForm .head-tooltip {
+   right: 8%;
+}
 
 .tooltip .tooltip-text {
    z-index: 1;

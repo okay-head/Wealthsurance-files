@@ -357,7 +357,8 @@ function storeRecalculate() {
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
-      storeRecalculate();
+      validateFormRecalc("#retireRecalcForm", 6);
+      // storeRecalculate();
    });
 }
 
@@ -367,6 +368,16 @@ $.validator.addMethod(
    "min_age",
    function (value) {
       let isValid = value >= Number($("#retirepg1e1").val());
+
+      return isValid;
+   },
+   "Value should be greater than or equal to current age"
+);
+
+$.validator.addMethod(
+   "min_age2",
+   function (value) {
+      let isValid = value >= Number($("#retireresultpg1e1").val());
 
       return isValid;
    },
@@ -552,7 +563,7 @@ $("#retireRecalcForm").validate({
    errorPlacement: function (error, element) {
       for (let i = 1; i <= 14; i++) {
          if (element.is("#retireresultpg1e" + i)) {
-            error.appendTo("#eresultpg1e1" + i);
+            error.appendTo("#eresultpg1e" + i);
          }
       }
    },
@@ -567,7 +578,7 @@ $("#retireRecalcForm").validate({
          required: true,
          digits: true,
          max: 90,
-         min_age:true,
+         min_age2:true,
       },
       retireresultpg1e3: {
          required: true,
