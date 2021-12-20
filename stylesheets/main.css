@@ -1339,6 +1339,10 @@ td {
    right: 8%;
 }
 
+#fnaRecalcForm .tooltip img{
+   width: 26px;
+}
+
 .tooltip .tooltip-text {
    z-index: 1;
    visibility: hidden;

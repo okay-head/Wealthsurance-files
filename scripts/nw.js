@@ -512,11 +512,11 @@ function validateForm(x) {
 $.validator.addMethod(
    "min_age",
    function (value) {
-      let isValid = value >= Number($("#nwpg1e1").val());
+      let isValid = value > Number($("#nwpg1e1").val());
 
       return isValid;
    },
-   "Age should be greater than or equal to current age"
+   "Age should be greater than current age"
 );
 
 $("#page1Form").validate({
@@ -531,12 +531,12 @@ $("#page1Form").validate({
       nwpg1e1: {
          required: true,
          digits: true,
-         range: [1, 90],
+         range: [18, 90],
       },
       nwpg1e2: {
          required: true,
          digits: true,
-         range: [1, 90],
+         range: [18, 90],
          min_age: true,
       },
    },
@@ -618,53 +618,53 @@ $("#page2Form").validate({
       nwpg2r1c2: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r11c2: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r10c2: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r2c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r3c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r4c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r5c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r6c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r7c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r8c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r9c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg2r12c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
    },
 });
@@ -684,60 +684,60 @@ $("#page3Form").validate({
    rules: {
       nwpg3r1c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwpg3r2c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwpg3r3c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwpg3r4c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwpg3r5c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwpg3r6c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwpg3r7c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
 
       nwpg3r1c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg3r2c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg3r3c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg3r4c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg3r5c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg3r6c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwpg3r7c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
    },
 });
@@ -815,113 +815,113 @@ $("#nwRecalcForm").validate({
       nwresultp1r1c2: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r11c2: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r10c2: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r2c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r3c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r4c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r5c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r6c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r7c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r8c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r9c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp1r12c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
 
       // liabilities
 
       nwresultp2r1c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwresultp2r2c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwresultp2r3c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwresultp2r4c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwresultp2r5c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwresultp2r6c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
       nwresultp2r7c1: {
          number: true,
-         min: 1,
+         min: 0,
       },
 
       nwresultp2r1c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp2r2c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp2r3c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp2r4c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp2r5c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp2r6c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       nwresultp2r7c2: {
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
    },
 });

@@ -225,7 +225,7 @@ $("#annForm").validate({
       annpg1e4: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 8],
       },
    },
    messages: {
@@ -241,7 +241,7 @@ $("#annForm").validate({
          max: "Please enter a value less than or equal to 90",
       },
       annpg1e4: {
-         range: "Please enter a val between 0-100",
+         range: "Please enter a val between 0-8",
       },
    },
 });
@@ -275,7 +275,7 @@ $("#annRecalcForm").validate({
       annresulte4: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 8],
       },
    },
    messages: {
@@ -291,7 +291,7 @@ $("#annRecalcForm").validate({
          max: "Please enter a value less than or equal to 90",
       },
       annresulte4: {
-         range: "Please enter a val between 0-100",
+         range: "Please enter a val between 0-8",
       },
    },
 });
