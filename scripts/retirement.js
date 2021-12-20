@@ -445,7 +445,7 @@ $("#page2Form").validate({
       },
       retirepg2e2: {
          required: true,
-         number: true,
+         digits: true,
          range: [1, 100],
       },
       retirepg2e3: {
@@ -460,6 +460,7 @@ $("#page2Form").validate({
       },
       retirepg2e2: {
          range: "Please enter a value between 1-100",
+         digits:"Please enter only positive integers"
       },
       retirepg2e3: {
          min: "Value should be greater than 1",
@@ -594,7 +595,7 @@ $("#retireRecalcForm").validate({
       },
       retireresultpg1e5: {
          required: true,
-         number: true,
+         digits: true,
          range: [1, 100],
       },
       retireresultpg1e6: {
@@ -651,6 +652,11 @@ $("#retireRecalcForm").validate({
 
 
    },
+   messages:{
+      retireresultpg1e5:{
+         digits:"Please enter only positive integers"
+      }
+   }
 
 
 });

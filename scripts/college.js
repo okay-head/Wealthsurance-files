@@ -297,7 +297,7 @@ $("#clgForm").validate({
       clgpg1e7: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
 
    },
@@ -366,7 +366,7 @@ $("#clgRecalcForm").validate({
       clgpg1resulte8: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
 
    },
