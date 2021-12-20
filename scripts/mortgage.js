@@ -659,7 +659,7 @@ $("#mortgForm").validate({
       mortgpg1e1: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
       mortgpg1e2: {
          required: true,
@@ -692,7 +692,7 @@ $("#mortgForm").validate({
       mortgpg1e7: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
       mortgpg1e9: {
          required: true,
@@ -701,25 +701,29 @@ $("#mortgForm").validate({
       },
       mortgpg1e10: {
          required: true,
-         number: true,
+         digits: true,
          min: 0,
       },
       mortgpg1e11: {
          required: true,
-         number: true,
-         min: 1,
+         digits: true,
+         min: .1,
       },
       mortgpg1e12: {
          required: true,
-         number: true,
-         min: 1,
+         digits: true,
+         min: .1,
       },
 
    },
    messages: {
+      mortgpg1e1:{min: "Value should be greater than zero"},
       mortgpg1e3: {
          require_from_group:"Please enter atleast one of the fields: down payment percentage / down payment amount",
-      }
+      },
+      mortgpg1e10: {digits:"Please enter only positive integers"},
+      mortgpg1e11: {digits:"Please enter only positive integers",min:"Value should be greater than zero"},
+      mortgpg1e12: {digits:"Please enter only positive integers",min:"Value should be greater than zero"},
    },
 });
 $("#mortgRecalcForm").validate({
@@ -734,7 +738,7 @@ $("#mortgRecalcForm").validate({
       mortgresulte1: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
       // mortgpg1e2: {
       //    required: true,
@@ -767,7 +771,7 @@ $("#mortgRecalcForm").validate({
      mortgresulte6: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 20],
       },
      mortgresulte8: {
          required: true,
@@ -776,29 +780,31 @@ $("#mortgRecalcForm").validate({
       },
      mortgresulte9: {
          required: true,
-         number: true,
+         digits: true,
          min: 0,
       },
      mortgresulte10: {
          required: true,
-         number: true,
-         min: 1,
+         digits: true,
+         min: .1,
       },
      mortgresulte11: {
          required: true,
-         number: true,
-         min: 1,
+         digits: true,
+         min: .1,
       },
 
    },
    messages: {
+      mortgresulte1:{min: "Value should be greater than 0"},
       mortgresulte3: {
          require_from_group:"Please enter atleast one of the fields: down payment percentage / down payment amount",
-      }
+      },
+      mortgresulte9: {digits:"Please enter only positive integers"},
+      mortgresulte10: {digits:"Please enter only positive integers",min:"Value should be greater than zero"},
+      mortgresulte11: {digits:"Please enter only positive integers",min:"Value should be greater than zero"},
    },
 });
-
-
 
 $("#mortgFormSubmit").on("click", () => {
    if ($("#mortgForm").valid()) {

@@ -270,13 +270,13 @@ $("#clgForm").validate({
       clgpg1e2: {
          required: true,
          digits: true,
-         range: [1,90],
+         range: [1,35],
       },
       clgpg1e3: {
          required: true,
          digits: true,
          min_age: true,
-         max: 90,
+         range:[5,35]
       },
       clgpg1e4: {
          required: true,
@@ -292,7 +292,7 @@ $("#clgForm").validate({
       clgpg1e6: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
       clgpg1e7: {
          required: true,
@@ -307,12 +307,12 @@ $("#clgForm").validate({
       },
       clgpg1e2: {
          digits: "Please enter only positive integers",
-         range: "Please enter a value between 1-90",
+         // range: "Please enter a value between 1-90",
       },
       clgpg1e3: {
          digits: "Please enter only positive integers",
          // min: "Age should be greater than or equal to current age",
-         max: "Please enter a value less than or equal to 90",
+         // max: "Please enter a value less than or equal to 90",
       },
       clgpg1e4: {
          range: "Please enter a val between 1-8",
@@ -339,13 +339,13 @@ $("#clgRecalcForm").validate({
       clgpg1resulte2: {
          required: true,
          digits: true,
-         range: [1,90],
+         range: [1,35],
       },
       clgpg1resulte3: {
          required: true,
          digits: true,
          min_age2: true,
-         max: 90,
+         range:[5,35]
       },
       clgpg1resulte4: {
          required: true,
@@ -356,12 +356,12 @@ $("#clgRecalcForm").validate({
       clgpg1resulte6: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [1, 100],
       },
       clgpg1resulte5: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
       clgpg1resulte8: {
          required: true,
@@ -376,12 +376,12 @@ $("#clgRecalcForm").validate({
       },
       clgpg1resulte2: {
          digits: "Please enter only positive integers",
-         range: "Please enter a value between 1-90",
+         // range: "Please enter a value between 1-90",
       },
       clgpg1resulte3: {
          digits: "Please enter only positive integers",
          // min: "Age should be greater than or equal to current age",
-         max: "Please enter a value less than or equal to 90",
+         // max: "Please enter a value less than or equal to 90",
       },
       clgpg1resulte4: {
          range: "Please enter a val between 1-8",
