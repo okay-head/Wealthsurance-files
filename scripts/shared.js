@@ -233,16 +233,21 @@ function fValidate(x) {
 
 function validateFormRecalc(x,y) {
    if ($(x).valid()) {
-      $('.calculated-result').removeClass('reduce-font')
+      // $('.error-text-container').removeClass('opacity-in')
+      // $('.calculated-result').removeClass('reduce-font')
       storeRecalculate();
       if (x=='#mortgRecalcForm') {
          $('#mortgresulte3,#mortgresulte2').removeClass('error')
          $('#mortgresulte3,#mortgresulte2').addClass('valid')
       }
    }else{
-      $('.calculated-result').addClass('reduce-font')
-      $('.calculated-result').text('Incorrect information')
-      $('.calculated-result-2').text('0')
+      $('.error-text-container').addClass('opacity-in')
+      $('.error-text-container').addClass('z-index')
+      $('.ammortization-btn').addClass('d-none')
+      $('.retire-results-table-container').addClass('d-none')
+      // $('.calculated-result').addClass('reduce-font')
+      // $('.calculated-result').text('Incorrect information')
+      // $('.calculated-result-2').text('0')
       let inval_arr = checkInvalid(y)
       inval_arr.forEach((element)=>{
       $(`#${element}`).parent().removeClass('d-none')

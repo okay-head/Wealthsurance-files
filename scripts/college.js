@@ -92,7 +92,13 @@ function updateResult(x, y = undefined) {
       case 2:
          let amount2 = $.number( y )
          $(".calculated-result").text("$" + amount2);
+         $(".error-text-container").removeClass("opacity-in");
+         setTimeout(() => {
+            $(".error-text-container").removeClass("z-index");
+         }, 800);
+
          break;
+         
    }
 }
 

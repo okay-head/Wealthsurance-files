@@ -19,7 +19,6 @@ function pushToDatabase1(ann) {
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("ann_result", JSON.stringify(result.data));
-
          } else {
             console.log(result + "request not successful");
          }
@@ -69,6 +68,11 @@ function updateResult(x, y = undefined) {
       case 2:
          let amount2 = $.number(y);
          $(".calculated-result").text("$" + amount2);
+         $(".error-text-container").removeClass("opacity-in");
+         setTimeout(() => {
+            $(".error-text-container").removeClass("z-index");
+         }, 800);
+
          break;
    }
    // console.log(JSON.parse(localStorage.getItem('ann_result')))

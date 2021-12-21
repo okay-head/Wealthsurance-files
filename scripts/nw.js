@@ -424,6 +424,11 @@ function pushToDatabase2(arr) {
             localStorage.setItem("nw_result", JSON.stringify(result.data));
 
             drawGraph();
+            $(".error-text-container").removeClass("opacity-in");
+            setTimeout(() => {
+               $(".error-text-container").removeClass("z-index");
+            }, 800);
+            // $(".error-text-container").addClass("fade");
             // console.log(result)
          } else {
             console.log(result + "request not successful");
@@ -928,8 +933,7 @@ $("#nwRecalcForm").validate({
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
-      validateFormRecalc('#nwRecalcForm',2);
+      validateFormRecalc("#nwRecalcForm", 2);
       // storeRecalculate();
    });
 }
-

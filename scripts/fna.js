@@ -25,10 +25,12 @@ $(".download").on("click", () => {
    console.log("printing pdf");
    // window.open('fna_pdf.html','_blank')
    // let print_window = window.open('https://5dec-171-61-28-122.ngrok.io/fna_pdf.html','_blank')
-   let print_window = window.open('https://okay-head.github.io/Wealthsurance-files/fna_pdf.html','_blank')
-   
-   // getPdf();
+   let print_window = window.open(
+      "https://okay-head.github.io/Wealthsurance-files/fna_pdf.html",
+      "_blank"
+   );
 
+   // getPdf();
 
    // setTimeout(() => {
    //    print_window.close()
@@ -40,14 +42,13 @@ $(".download").on("click", () => {
 
 //_____ functions
 function getPdf() {
-
-   let url= window.location.href
-   let url_string =  `https://v2.convertapi.com/convert/web/to/pdf?Secret=KKpF6ONL5EcXiwLY&Url=${url}&StoreFile=true&FileName=Financial_needs_Analysis&Zoom=1.4&PageSize=a4&MarginTop=3&MarginRight=0&MarginBottom=0&MarginLeft=0
-   `
+   let url = window.location.href;
+   let url_string = `https://v2.convertapi.com/convert/web/to/pdf?Secret=KKpF6ONL5EcXiwLY&Url=${url}&StoreFile=true&FileName=Financial_needs_Analysis&Zoom=1.4&PageSize=a4&MarginTop=3&MarginRight=0&MarginBottom=0&MarginLeft=0
+   `;
 
    $.ajax({
       type: "GET",
-      url:url_string,
+      url: url_string,
       success: (x) => {
          console.log(url_string);
          console.log(x);
@@ -296,6 +297,12 @@ function updateResult(x, y = undefined) {
       case 2:
          let amount2 = $.number(y);
          $(".calculated-result").text("$" + amount2);
+         $(".error-text-container").removeClass("opacity-in");
+         setTimeout(() => {
+            $(".error-text-container").removeClass("z-index");
+         }, 800);
+
+
          break;
    }
 }
@@ -844,12 +851,30 @@ $("#page4Form").validate({
       fnapg4e6c2: { range: "Please enter a value between 0-100" },
       fnapg4e7c2: { range: "Please enter a value between 0-100" },
 
-      fnapg4e2c3: { min: "Value cannot be negative",digits:"Please enter only positive integers" },
-      fnapg4e3c3: { min: "Value cannot be negative",digits:"Please enter only positive integers" },
-      fnapg4e4c3: { min: "Value cannot be negative",digits:"Please enter only positive integers" },
-      fnapg4e5c3: { min: "Value cannot be negative",digits:"Please enter only positive integers" },
-      fnapg4e6c3: { min: "Value cannot be negative",digits:"Please enter only positive integers" },
-      fnapg4e7c3: { min: "Value cannot be negative",digits:"Please enter only positive integers" },
+      fnapg4e2c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg4e3c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg4e4c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg4e5c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg4e6c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg4e7c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
    },
 });
 
@@ -896,11 +921,26 @@ $("#page5Form").validate({
       fnapg5e5c1: { min: "Value cannot be negative" },
       fnapg5e6c1: { min: "Value cannot be negative" },
 
-      fnapg5e2c3: { min: "Value cannot be negative",digits: "Please enter only positive integers" },
-      fnapg5e3c3: { min: "Value cannot be negative",digits: "Please enter only positive integers" },
-      fnapg5e4c3: { min: "Value cannot be negative",digits: "Please enter only positive integers" },
-      fnapg5e5c3: { min: "Value cannot be negative",digits: "Please enter only positive integers" },
-      fnapg5e6c3: { min: "Value cannot be negative",digits: "Please enter only positive integers" },
+      fnapg5e2c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg5e3c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg5e4c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg5e5c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnapg5e6c3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
    },
 });
 
@@ -1000,12 +1040,30 @@ $("#fnaRecalcForm").validate({
       fnaresultp1r5e2: { range: "Please enter a value between 0-100" },
       fnaresultp1r6e2: { range: "Please enter a value between 0-100" },
 
-      fnaresultp1r1e3: { min: "Value cannot be negative", digits:"Please enter only positive integers" },
-      fnaresultp1r2e3: { min: "Value cannot be negative", digits:"Please enter only positive integers" },
-      fnaresultp1r3e3: { min: "Value cannot be negative", digits:"Please enter only positive integers" },
-      fnaresultp1r4e3: { min: "Value cannot be negative", digits:"Please enter only positive integers" },
-      fnaresultp1r5e3: { min: "Value cannot be negative", digits:"Please enter only positive integers" },
-      fnaresultp1r6e3: { min: "Value cannot be negative", digits:"Please enter only positive integers" },
+      fnaresultp1r1e3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp1r2e3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp1r3e3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp1r4e3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp1r5e3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp1r6e3: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
 
       // page2
       fnaresultp2r1e1: { min: "Value cannot be negative" },
@@ -1014,11 +1072,26 @@ $("#fnaRecalcForm").validate({
       fnaresultp2r4e1: { min: "Value cannot be negative" },
       fnaresultp2r5e1: { min: "Value cannot be negative" },
 
-      fnaresultp2r1e2: { min: "Value cannot be negative",digits:"Please enter only positive integers"},
-      fnaresultp2r2e2: { min: "Value cannot be negative",digits:"Please enter only positive integers"},
-      fnaresultp2r3e2: { min: "Value cannot be negative",digits:"Please enter only positive integers"},
-      fnaresultp2r4e2: { min: "Value cannot be negative",digits:"Please enter only positive integers"},
-      fnaresultp2r5e2: { min: "Value cannot be negative",digits:"Please enter only positive integers"},
+      fnaresultp2r1e2: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp2r2e2: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp2r3e2: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp2r4e2: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
+      fnaresultp2r5e2: {
+         min: "Value cannot be negative",
+         digits: "Please enter only positive integers",
+      },
    },
 });
 

@@ -224,6 +224,11 @@ function updateResult(x, y = undefined, z = undefined) {
          let amount2 = $.number( y)
          $(".calculated-result").text("$" + amount2);
          $(".calculated-result-2").text(z);
+         $(".error-text-container").removeClass("opacity-in");
+         setTimeout(() => {
+            $(".error-text-container").removeClass("z-index");
+         }, 800);
+
          break;
    }
    // console.log(JSON.parse(localStorage.getItem('ann_result')))

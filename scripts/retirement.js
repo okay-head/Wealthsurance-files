@@ -59,6 +59,12 @@ function pushToDatabase2(a) {
          // console.log(result);
          // localStorage.setItem("retire_result", JSON.stringify(result.data));
          updateTables(2, result.data);
+         $(".error-text-container").removeClass("opacity-in");
+         setTimeout(() => {
+            $(".error-text-container").removeClass("z-index");
+         }, 800);
+      $('.retire-results-table-container').removeClass('d-none')
+
       },
       error: (error) => {
          console.log(error);

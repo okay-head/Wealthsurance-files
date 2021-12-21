@@ -119,77 +119,120 @@
 
                <div class="results-table-container result-table">
                   <form id="mortgRecalcForm">
-                  <table class="annuity-results-table results-table w-100 editable-results-table">
-                     <tr>
-                        <td>House price, $ </td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte1" name="mortgresulte1" placeholder="500000"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte1"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>Down payment, %:</td>
-                        <td id="orange-text"><input type="decimal" class="down_payment" inputmode="decimal" id="mortgresulte2" name="mortgresulte2"
-                              placeholder="10"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
+                     <table class="annuity-results-table results-table w-100 editable-results-table">
+                        <tr>
+                           <td>House price, $ </td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte1" name="mortgresulte1"
+                                 placeholder="500000">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte1"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Down payment, %:</td>
+                           <td id="orange-text"><input type="decimal" class="down_payment" inputmode="decimal"
+                                 id="mortgresulte2" name="mortgresulte2" placeholder="10">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
                                  <span class="tooltip-text" id="eresulte2"></span>
-                              </div></td>
+                              </div>
+                           </td>
 
-                     </tr>
-                     <tr>
-                        <td>Down payment, $:</td>
-                        <td><input type="decimal" class="down_payment" inputmode="decimal" id="mortgresulte3" name="mortgresulte3" placeholder="50000"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte3"></span>
-                        </div></td>
+                        </tr>
+                        <tr>
+                           <td>Down payment, $:</td>
+                           <td><input type="decimal" class="down_payment" inputmode="decimal" id="mortgresulte3"
+                                 name="mortgresulte3" placeholder="50000">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte3"></span>
+                              </div>
+                           </td>
 
-                     </tr>
-                     <tr>
-                        <td>PMI, %:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte4" name="mortgresulte4" placeholder="1.00"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte4"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>PMI stops at, %:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte5" name="mortgresulte5" placeholder="20"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte5"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>Interest rate, %:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte6" name="mortgresulte6" placeholder="3.500"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte6"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>Loan amount, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte7" name="mortgresulte7" placeholder="450000" disabled><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte7"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>Loan duration, years</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte8" name="mortgresulte8" placeholder="30"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte8"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>Annual HOA dues, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte9" name="mortgresulte9" placeholder="2400"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte9"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>Annual property taxes, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte10" name="mortgresulte10" placeholder="15000"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte10"></span>
-                        </div></td>
-                     </tr>
-                     <tr>
-                        <td>Annual property insurance, $:</td>
-                        <td><input type="decimal" inputmode="decimal" id="mortgresulte11" name="mortgresulte11" placeholder="1500"><div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg" alt="alert">
-                           <span class="tooltip-text" id="eresulte11"></span>
-                        </div></td>
-                     </tr>
-                  </table>
+                        </tr>
+                        <tr>
+                           <td>PMI, %:</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte4" name="mortgresulte4"
+                                 placeholder="1.00">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte4"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>PMI stops at, %:</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte5" name="mortgresulte5"
+                                 placeholder="20">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte5"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Interest rate, %:</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte6" name="mortgresulte6"
+                                 placeholder="3.500">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte6"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Loan amount, $:</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte7" name="mortgresulte7"
+                                 placeholder="450000" disabled>
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte7"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Loan duration, years</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte8" name="mortgresulte8"
+                                 placeholder="30">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte8"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Annual HOA dues, $:</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte9" name="mortgresulte9"
+                                 placeholder="2400">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte9"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Annual property taxes, $:</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte10" name="mortgresulte10"
+                                 placeholder="15000">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte10"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Annual property insurance, $:</td>
+                           <td><input type="decimal" inputmode="decimal" id="mortgresulte11" name="mortgresulte11"
+                                 placeholder="1500">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle2.svg"
+                                    alt="alert">
+                                 <span class="tooltip-text" id="eresulte11"></span>
+                              </div>
+                           </td>
+                        </tr>
+                     </table>
                   </form>
                </div>
 
@@ -210,31 +253,39 @@
 
             <section class="output annuity-output refi-output">
                <h4 class="output-header">Output</h4>
+               <div class="mortg-result-container">
+                  <div class="error-text-container">
+                     <div>
+                        We cannot calculate the value based on the information that you have provided. Please check the
+                        errors and try again.
+                     </div>
 
-               <div class="toggle-btn-grp">
-                  <span id="graph-btn" class="red-btn">Graph view</span><span id="table-btn" class="red-btn">Table
-                     view</span>
-               </div>
-
-               <p class="small-title">Your expenses will be</p>
-
-               <div class="" id="graph">
-                  <div class="toggle-btn-grp" style="margin-top: 0;margin-bottom: 1.5em;">
-                     <span id="year-btn-g" class="red-btn">Yearly</span><span id="month-btn-g"
-                        class="red-btn">Monthly</span>
                   </div>
-                  <!-- <h3>Graph</h3> -->
-                  <!-- <div class="mortg-chart-container"> -->
-                  <!-- yearly -->
-                  <div id="mortg_chart"></div>
 
-                  <!-- monthly -->
-                  <div id="mortg_chartM">
+
+                  <div class="toggle-btn-grp">
+                     <span id="graph-btn" class="red-btn">Graph view</span><span id="table-btn" class="red-btn">Table
+                        view</span>
                   </div>
-                  <!-- </div> -->
 
-               </div>
+                  <p class="small-title">Your expenses will be</p>
 
+                  <div class="" id="graph">
+                     <div class="toggle-btn-grp" style="margin-top: 0;margin-bottom: 1.5em;">
+                        <span id="year-btn-g" class="red-btn">Yearly</span><span id="month-btn-g"
+                           class="red-btn">Monthly</span>
+                     </div>
+                     <!-- <h3>Graph</h3> -->
+                     <!-- <div class="mortg-chart-container"> -->
+                     <!-- yearly -->
+                     <div id="mortg_chart"></div>
+
+                     <!-- monthly -->
+                     <div id="mortg_chartM">
+                     </div>
+                     <!-- </div> -->
+
+                  </div>
                <div id="table" class="results-table-container result-table">
                   <table class="annuity-results-table results-table w-100 refi-output-table refi-output-table1">
                      <tr>
@@ -286,7 +337,7 @@
                      </tr>
                   </table>
                </div>
-
+</div>
                <div class="assumptions small refi-assumptions">
                   <span>Assumptions</span>
                   <ul>
