@@ -215,6 +215,10 @@ function pushToDatabase1(mortg) {
       success: (x) => {
          let result = JSON.parse(x);
          if (result.success) {
+            // console.log('string1',url_string);
+            // console.log('string2',url_string2);
+            // console.log('-------------------');
+            // console.log(result.data);
             localStorage.setItem("mortg_result", JSON.stringify(result.data));
          } else {
             console.log(result + "request not successful");
@@ -233,6 +237,7 @@ function pushToDatabase1(mortg) {
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("mortg_result2", JSON.stringify(result.data));
+            // console.log(result.data);
          } else {
             console.log(result + "request not successful");
          }
@@ -670,6 +675,15 @@ $.validator.addMethod(
    },
    "Down payment amount should be smaller than house price"
 );
+$.validator.addMethod(
+   "down_amount2",
+   function (value) {
+      let isValid = value < Number($("#mortgresulte1").val());
+
+      return isValid;
+   },
+   "Down payment amount should be smaller than house price"
+);
 
 $("#mortgForm").validate({
    errorPlacement: function (error, element) {
@@ -784,7 +798,7 @@ $("#mortgRecalcForm").validate({
          // required: true,
          number: true,
          min: 0,
-         // down_amount:true,
+         down_amount2:true,
       },
       mortgresulte4: {
          required: true,

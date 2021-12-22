@@ -74,7 +74,7 @@ footer {
    font-size: var(--footer-font);
    /* padding: 1.5em 2em 1em 4em; */
    padding: 3.5em 11em 3em 11em;
-   background: url("/media/images/wealthsurance_bg.png") center no-repeat;
+   background: url("../media/images/wealthsurance_bg.png") center no-repeat;
    background-size: cover;
    /* background-size: 110%; */
    /* background-position: 52% 53%; */
