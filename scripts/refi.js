@@ -88,7 +88,7 @@ function next() {
       loaderPromise().then(() => {
          pushToDatabase1(refi);
          setTimeout(() => {
-            // window.open("refi_result.html", "_self");
+            window.open("refi_result.html", "_self");
          }, 1410);
       });
    });
@@ -194,8 +194,9 @@ function pushToDatabase1(refi) {
       z[i] = refi.page1[i];
    }
 
-   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=2`;
-   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=1`;
+   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${z[4]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=2`;
+
+   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${z[4]},"interestN" : ${z[5]},"durationN" : ${z[6]},"hoaDue" : ${z[8]},"propTax" : ${z[9]},"propIns" : ${z[10]},"costRefinance" : ${z[7]}}&zipcode=${z[11]}&type=1`;
 
    $.ajax({
       type: "POST",
@@ -203,11 +204,7 @@ function pushToDatabase1(refi) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         console.log(result);
          if (result.success) {
-            localStorage.setItem("refi_result", JSON.stringify(result.data));
-            console.log(url_string)
-            console.log(result.data)
             localStorage.setItem("refi_result", JSON.stringify(result.data));
          } else {
             console.log(result + "request not successful");
@@ -223,7 +220,6 @@ function pushToDatabase1(refi) {
 
       success: (x) => {
          let result = JSON.parse(x);
-         console.log(result);
          if (result.success) {
             localStorage.setItem("refi_result2", JSON.stringify(result.data));
          } else {
@@ -245,8 +241,8 @@ function pushToDatabase2(refi) {
       z[i] = Object.values(refi.results[0])[i + 1];
    }
 
-   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=2`;
-   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=1`;
+   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${z[0]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=2`;
+   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${z[0]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=1`;
 
    $.ajax({
       type: "POST",
@@ -275,7 +271,7 @@ function pushToDatabase2(refi) {
          if (result.success) {
             localStorage.setItem("refi_result2", JSON.stringify(result.data));
             updateTables(1);
-            // createAmmortizationTable2(2)
+            createAmmortizationTable2(2)
          } else {
             console.log(result + "request not successful");
          }
@@ -308,7 +304,7 @@ function updateAmmortizationTable(years) {
       $(`#ayr${i}c1`).text(i)
    }
    for (let i = 1; i <= nYears; i++) {
-      $(`#ayr${i}c7`).text(i)
+      $(`#ayr${i}c6`).text(i)
    }
    
 }
@@ -323,7 +319,7 @@ function createAmmortizationTable(x) {
    let str = ''
    let yearStr = ''
    for (let i = 1; i <= nYears; i++) {
-      for (let j = 1; j <= 7; j++) {         
+      for (let j = 1; j <= 6; j++) {         
          str+=`<td id="ayr${i}c${j}">0</td>`
       }
       yearStr+=`<tr> ${str} </tr>`
@@ -336,7 +332,6 @@ function createAmmortizationTable(x) {
           <td>Principal</td>
           <td>Interest</td>
           <td>Payment</td>
-          <td>PMI Pay</td>
           <td>Year</td>
      </tr> `
 
@@ -368,7 +363,7 @@ function updateAmmortizationTable2(months) {
       $(`#amr${i}c1`).text(i)
    }
    for (let i = 1; i <= nMonths; i++) {
-      $(`#amr${i}c7`).text(i)
+      $(`#amr${i}c6`).text(i)
    }
    
 }
@@ -383,7 +378,7 @@ function createAmmortizationTable2(x) {
    let str = ''
    let yearStr = ''
    for (let i = 1; i <= nMonths; i++) {
-      for (let j = 1; j <= 7; j++) {         
+      for (let j = 1; j <= 6; j++) {         
          str+=`<td id="amr${i}c${j}">0</td>`
       }
       yearStr+=`<tr> ${str} </tr>`
@@ -396,7 +391,6 @@ function createAmmortizationTable2(x) {
           <td>Principal</td>
           <td>Interest</td>
           <td>Payment</td>
-          <td>PMI Pay</td>
           <td>Month</td>
      </tr> `
 
