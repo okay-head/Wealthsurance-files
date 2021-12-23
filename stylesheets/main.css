@@ -1505,6 +1505,12 @@ right: 128%; */
 
 /* mobile */
 @media screen and (max-width: 610px) {
+   .retire-re-summary p:nth-child(2) {
+      width: 85%;
+   }
+   .legend-text{
+      right: 36%;
+   }
    .prev-btn {
       padding: 8px 26px;
    }

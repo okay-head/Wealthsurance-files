@@ -318,7 +318,7 @@
                   </div>
                </div>
 
-               <div class="retire-results-table-container  results-table-container result-table">
+               <div class="retire-results-table-container  results-table-container result-table overflowing-container">
                   <table
                      class="annuity-results-table results-table w-100 editable-results-table retirement-result-table">
                      <tr class="result-table-header orange-header">
@@ -379,6 +379,7 @@
    <script>
       scrollTop();
       getAssumptions('retirement');
+      changeMaxWidth();
       updatePlaceholders(1);
       updateTables(1);
       reCalculate();

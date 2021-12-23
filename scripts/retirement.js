@@ -17,6 +17,12 @@ let retire = {
 };
 
 //functions
+
+function changeMaxWidth() {
+   let vw = $(window).width()
+   $('.result,.overflowing-container').css('maxWidth',vw-30)
+}
+
 function pushToDatabase1(a, x = undefined) {
    createSessionId();
 

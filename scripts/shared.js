@@ -45,7 +45,7 @@ if (flag) {
    $(window).resize(() => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-         // window.location.reload();
+         window.location.reload();
       }, 100);
    });
 }
