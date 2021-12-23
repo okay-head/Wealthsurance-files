@@ -16,7 +16,6 @@ $("#year-btn,#month-btn").on("click", () => {
    $("#year-btn,#month-btn").toggleClass("active-btn");
 });
 
-
 //For ammortization table
 $(".ammortization-table-container,#slide-toggle-btn-grp")
    .slideUp()
@@ -78,25 +77,23 @@ function pgLocalStorage() {
 
 function next() {
    //  change next button's action
-   $(".next-btn").on("click", () => {
-      function loaderPromise() {
-         let update = new Promise((resolve) => {
-            resolve(updateLoader(1, 1));
-         });
-         return update;
-      }
-      loaderPromise().then(() => {
-         pushToDatabase1(refi);
-         setTimeout(() => {
-            window.open("refi_result.html", "_self");
-         }, 1410);
+   function loaderPromise() {
+      let update = new Promise((resolve) => {
+         resolve(updateLoader(1, 1));
       });
+      return update;
+   }
+   loaderPromise().then(() => {
+      pushToDatabase1(refi);
+      setTimeout(() => {
+         window.open("refi_result.html", "_self");
+      }, 1410);
    });
 }
 
 function reCalculate() {
-   $(".re-calc-btn").on("click", () => {
-      storeRecalculate();
+   $("#re-calc").on("click", () => {
+      validateFormRecalc("#refiRecalcForm", 4);
    });
 }
 
@@ -230,8 +227,6 @@ function pushToDatabase1(refi) {
          console.log(error);
       },
    });
-
-
 }
 function pushToDatabase2(refi) {
    createSessionId();
@@ -253,7 +248,21 @@ function pushToDatabase2(refi) {
          if (result.success) {
             localStorage.setItem("refi_result", JSON.stringify(result.data));
             updateTables(1);
-            createAmmortizationTable(2)
+
+            $(".error-text-container").removeClass("opacity-in");
+
+            $("#year-btn").addClass('active-btn')
+            $("#month-btn").removeClass('active-btn')
+
+            $(".refi-output-table,.toggle-btn-grp").removeClass("d-none");
+            $("#amm-monthly").addClass('d-none');
+            setTimeout(() => {
+               $(".error-text-container").removeClass("z-index");
+            }, 800);
+
+            $(".ammortization-btn,.ammortization-table-container").removeClass("d-none");
+
+            createAmmortizationTable(2);
          } else {
             console.log(result + "request not successful");
          }
@@ -270,8 +279,8 @@ function pushToDatabase2(refi) {
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("refi_result2", JSON.stringify(result.data));
-            updateTables(1);
-            createAmmortizationTable2(2)
+            // updateTables(1);
+            createAmmortizationTable2(2);
          } else {
             console.log(result + "request not successful");
          }
@@ -282,49 +291,44 @@ function pushToDatabase2(refi) {
    });
 }
 
-
-
 // ammortization table
 function updateAmmortizationTable(years) {
-   let data = undefined
+   let data = undefined;
    let nYears = years;
-   data =JSON.parse(localStorage.getItem('refi_result'))
-
+   data = JSON.parse(localStorage.getItem("refi_result"));
 
    //for c1-5
    for (let j = 1; j <= nYears; j++) {
-      for (let i = 0; i <5; i++) {
-         $(`#ayr${j}c${i+2}`).text(
-            Object.values(data.new_amortization[12*j])[i]
-         )
+      for (let i = 0; i < 5; i++) {
+         $(`#ayr${j}c${i + 2}`).text(
+            Object.values(data.new_amortization[12 * j])[i]
+         );
       }
    }
    // for c1 and c7
    for (let i = 1; i <= nYears; i++) {
-      $(`#ayr${i}c1`).text(i)
+      $(`#ayr${i}c1`).text(i);
    }
    for (let i = 1; i <= nYears; i++) {
-      $(`#ayr${i}c6`).text(i)
+      $(`#ayr${i}c6`).text(i);
    }
-   
 }
 function createAmmortizationTable(x) {
    let nYears = undefined;
-   if (x==1) {
-      nYears = (JSON.parse(localStorage.getItem("refipg1")))[6];
-   }else{
+   if (x == 1) {
+      nYears = JSON.parse(localStorage.getItem("refipg1"))[6];
+   } else {
       nYears = refi.results[0].new_loan_duration;
    }
-   
-   let str = ''
-   let yearStr = ''
-   for (let i = 1; i <= nYears; i++) {
-      for (let j = 1; j <= 6; j++) {         
-         str+=`<td id="ayr${i}c${j}">0</td>`
-      }
-      yearStr+=`<tr> ${str} </tr>`
-      str=''
 
+   let str = "";
+   let yearStr = "";
+   for (let i = 1; i <= nYears; i++) {
+      for (let j = 1; j <= 6; j++) {
+         str += `<td id="ayr${i}c${j}">0</td>`;
+      }
+      yearStr += `<tr> ${str} </tr>`;
+      str = "";
    }
    let initialStr = `<tr>
           <td>Period</td>
@@ -333,57 +337,54 @@ function createAmmortizationTable(x) {
           <td>Interest</td>
           <td>Payment</td>
           <td>Year</td>
-     </tr> `
+     </tr> `;
 
-   let finalStr = initialStr+ `<tr>${yearStr}</tr>`
+   let finalStr = initialStr + `<tr>${yearStr}</tr>`;
    // console.log(finalStr)
 
    $("#amm-yearly").html(finalStr);
 
    // console.log(x,nYears)
-   updateAmmortizationTable(nYears)
+   updateAmmortizationTable(nYears);
 }
-// monthly 
+// monthly
 function updateAmmortizationTable2(months) {
-   let data = undefined
+   let data = undefined;
    let nMonths = months;
-   data =JSON.parse(localStorage.getItem('refi_result2'))
-
+   data = JSON.parse(localStorage.getItem("refi_result2"));
 
    //for c1-5
    for (let j = 1; j <= nMonths; j++) {
-      for (let i = 0; i <5; i++) {
-         $(`#amr${j}c${i+2}`).text(
+      for (let i = 0; i < 5; i++) {
+         $(`#amr${j}c${i + 2}`).text(
             Object.values(data.new_amortization[j])[i]
-         )
+         );
       }
    }
    // for c1 and c7
    for (let i = 1; i <= nMonths; i++) {
-      $(`#amr${i}c1`).text(i)
+      $(`#amr${i}c1`).text(i);
    }
    for (let i = 1; i <= nMonths; i++) {
-      $(`#amr${i}c6`).text(i)
+      $(`#amr${i}c6`).text(i);
    }
-   
 }
 function createAmmortizationTable2(x) {
    let nMonths = undefined;
-   if (x==1) {
-      nMonths = ((JSON.parse(localStorage.getItem("refipg1")))[6])*12;
-   }else{
-      nMonths = (refi.results[0].new_loan_duration)*12;
+   if (x == 1) {
+      nMonths = JSON.parse(localStorage.getItem("refipg1"))[6] * 12;
+   } else {
+      nMonths = refi.results[0].new_loan_duration * 12;
    }
-   
-   let str = ''
-   let yearStr = ''
-   for (let i = 1; i <= nMonths; i++) {
-      for (let j = 1; j <= 6; j++) {         
-         str+=`<td id="amr${i}c${j}">0</td>`
-      }
-      yearStr+=`<tr> ${str} </tr>`
-      str=''
 
+   let str = "";
+   let yearStr = "";
+   for (let i = 1; i <= nMonths; i++) {
+      for (let j = 1; j <= 6; j++) {
+         str += `<td id="amr${i}c${j}">0</td>`;
+      }
+      yearStr += `<tr> ${str} </tr>`;
+      str = "";
    }
    let initialStr = `<tr>
           <td>Period</td>
@@ -392,12 +393,233 @@ function createAmmortizationTable2(x) {
           <td>Interest</td>
           <td>Payment</td>
           <td>Month</td>
-     </tr> `
+     </tr> `;
 
-   let finalStr = initialStr+ `<tr>${yearStr}</tr>`
+   let finalStr = initialStr + `<tr>${yearStr}</tr>`;
    // console.log(finalStr)
 
    $("#amm-monthly").html(finalStr);
 
-   updateAmmortizationTable2(nMonths)
+   updateAmmortizationTable2(nMonths);
 }
+
+// ------------------ Validation ------------------
+$.validator.addMethod(
+   "min_years",
+   function (value) {
+      let isValid = value < Number($("#refipg1e3").val());
+
+      return isValid;
+   },
+   "Years passed cannot be greater than loan duration"
+);
+
+$.validator.addMethod(
+   "min_years2",
+   function (value) {
+      let isValid = value < Number($("#refiresulte3").val());
+
+      return isValid;
+   },
+   "Years passed cannot be greater than loan duration"
+);
+
+$("#refiForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 12; i++) {
+         if (element.is("#refipg1e" + i)) {
+            error.appendTo("#error" + i);
+         }
+      }
+   },
+   rules: {
+      refipg1e1: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refipg1e2: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      refipg1e3: {
+         required: true,
+         digits: true,
+         range: [1, 45],
+      },
+      refipg1e4: {
+         required: true,
+         digits: true,
+         range: [1, 45],
+         min_years: true,
+      },
+      refipg1e5: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refipg1e6: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      refipg1e7: {
+         required: true,
+         digits: true,
+         range: [1, 45],
+      },
+      refipg1e8: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refipg1e9: {
+         required: true,
+         number: true,
+         min: 0,
+      },
+      refipg1e10: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refipg1e11: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refipg1e12: {
+         required: true,
+         digits: true,
+      },
+   },
+   messages: {
+      refipg1e1: { min: "Value should be greater than zero" },
+      refipg1e2: { min: "Value should be greater than zero" },
+      refipg1e3: {
+         min: "Value should be greater than zero",
+         digits: "Please enter only positive integers",
+      },
+      refipg1e4: { min: "Value should be greater than zero" },
+      refipg1e5: { min: "Value should be greater than zero" },
+      refipg1e6: { min: "Value should be greater than zero" },
+      refipg1e7: {
+         min: "Value should be greater than zero",
+         digits: "Please enter only positive integers",
+      },
+      refipg1e8: { min: "Value should be greater than zero" },
+      refipg1e10: { min: "Value should be greater than zero" },
+      refipg1e9: { min: "Please enter only positive numbers" },
+      refipg1e11: {
+         min: "Value should be greater than zero",
+      },
+      refipg1e12: {
+         digits: "Please enter only positive integers",
+      },
+   },
+});
+
+$("#refiRecalcForm").validate({
+   errorPlacement: function (error, element) {
+      for (let i = 1; i <= 11; i++) {
+         if (element.is("#refiresulte" + i)) {
+            error.appendTo("#eresulte" + i);
+         }
+      }
+   },
+   rules: {
+      refiresulte1: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refiresulte2: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      refiresulte3: {
+         required: true,
+         digits: true,
+         range: [1, 45],
+      },
+      refiresulte4: {
+         required: true,
+         digits: true,
+         range: [1, 45],
+         min_years2: true,
+      },
+      refiresulte5: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refiresulte6: {
+         required: true,
+         number: true,
+         range: [0, 100],
+      },
+      refiresulte7: {
+         required: true,
+         digits: true,
+         range: [1, 45],
+      },
+      refiresulte8: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refiresulte9: {
+         required: true,
+         number: true,
+         min: 0,
+      },
+      refiresulte10: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      refiresulte11: {
+         required: true,
+         number: true,
+         min: 0.1,
+      },
+      // refiresulte12: {
+      //    required: true,
+      //    digits: true,
+      // },
+   },
+   messages: {
+      refiresulte1: { min: "Value should be greater than zero" },
+      refiresulte2: { min: "Value should be greater than zero" },
+      refiresulte3: {
+         min: "Value should be greater than zero",
+         digits: "Please enter only positive integers",
+      },
+      refiresulte4: { min: "Value should be greater than zero" },
+      refiresulte5: { min: "Value should be greater than zero" },
+      refiresulte6: { min: "Value should be greater than zero" },
+      refiresulte7: {
+         min: "Value should be greater than zero",
+         digits: "Please enter only positive integers",
+      },
+      refiresulte8: { min: "Value should be greater than zero" },
+      refiresulte10: { min: "Value should be greater than zero" },
+      refiresulte9: { min: "Please enter only positive numbers" },
+      refiresulte11: {
+         min: "Value should be greater than zero",
+      },
+      // refiresulte12: {
+      //    digits: "Please enter only positive integers",
+      // },
+   },
+});
+
+$("#refiFormSubmit").on("click", () => {
+   if ($("#refiForm").valid()) {
+      next();
+   } else {
+      //log invalid form
+   }
+});

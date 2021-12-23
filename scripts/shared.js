@@ -244,6 +244,8 @@ function validateFormRecalc(x,y) {
       $('.error-text-container').addClass('opacity-in')
       $('.error-text-container').addClass('z-index')
       $('.ammortization-btn').addClass('d-none')
+      $('.refi-output-table').addClass('d-none')
+      $('.ammortization-table-container,.toggle-btn-grp').addClass('d-none')
       $('.retire-results-table-container').addClass('d-none')
       // $('.calculated-result').addClass('reduce-font')
       // $('.calculated-result').text('Incorrect information')

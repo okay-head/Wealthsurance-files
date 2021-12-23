@@ -187,7 +187,7 @@ function next() {
       });
 }
 function reCalculate() {
-   $(".re-calc-btn").on("click", () => {
+   $("#re-calc").on("click", () => {
       validateFormRecalc("#clgRecalcForm", 6);
    });
 }

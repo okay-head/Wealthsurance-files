@@ -147,7 +147,7 @@ function pgLocalStorage() {
 // }
 
 function reCalculate() {
-   $(".re-calc-btn").on("click", () => {
+   $("#re-calc").on("click", () => {
       validateFormRecalc("#mortgRecalcForm", 5);
       // storeRecalculate();
    });
@@ -283,10 +283,16 @@ function pushToDatabase2(mortg) {
             drawGraph(2, result.data);
 
             $(".error-text-container").removeClass("opacity-in");
+
+            $("#year-btn").addClass('active-btn')
+            $("#month-btn").removeClass('active-btn')
+
+            $(".refi-output-table,.toggle-btn-grp").removeClass('d-none');
+            $("#amm-monthly").addClass('d-none');
             setTimeout(() => {
                $(".error-text-container").removeClass("z-index");
-            }, 800);
-            $(".ammortization-btn").removeClass("d-none");
+            }, 900);
+            $(".ammortization-btn,.ammortization-table-container").removeClass("d-none");
          } else {
             console.log(result + "request not successful");
             let alert_text =

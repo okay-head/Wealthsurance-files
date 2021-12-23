@@ -1,4 +1,5 @@
 //____ Objects and collections
+const [element] = document.getElementsByClassName('enlarged-chart-container')
 
 let nw = {
    //nw = net worth
@@ -15,9 +16,10 @@ let nw = {
 // $('#nw_enlarged_chart').addClass("shrink");
 
 $("#toggle_modal_chart").on("click", () => {
-   root.scrollTop = 170;
+   let top_distance = element.getBoundingClientRect().top + 30
+   root.scrollTop = top_distance;
    $(
-      "#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover"
+      "#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover,.enlarged-chart-container"
    ).toggleClass("hidden");
    // $('#nw_enlarged_chart').removeClass("shrink");
 });
@@ -25,7 +27,7 @@ $("#toggle_modal_chart").on("click", () => {
 $("body").on("keydown", (e) => {
    if (e.key == "Escape") {
       $(
-         "#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover"
+         "#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover,.enlarged-chart-container"
       ).addClass("hidden");
       // $('#nw_enlarged_chart').removeClass("shrink");
    }
@@ -33,11 +35,19 @@ $("body").on("keydown", (e) => {
 
 $("#close_chart").on("click", () => {
    $(
-      "#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover"
+      "#nw_enlarged_chart,.shadow-element,#close_chart,.enlarged_chart_cover,.enlarged-chart-container"
    ).addClass("hidden");
 });
 
 //functions
+
+// Change the max width for the graph container depending on the viewport (for results page )
+
+function changeMaxWidth() {
+   let vw = $(window).width()
+   $('#nw-result-container').css('maxWidth',vw-30)
+   $('.enlarged-chart-container,.enlarged_chart_cover').css('maxWidth',vw-60)
+}
 
 function updatePlaceholders(x) {
    switch (x) {
@@ -441,7 +451,7 @@ function pushToDatabase2(arr) {
 }
 
 // function reCalculate() {
-//    $(".re-calc-btn").on("click", () => {
+//    $("#re-calc").on("click", () => {
 //       storeRecalculate();
 
 //       // console.log(nw.results);

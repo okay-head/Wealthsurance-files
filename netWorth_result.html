@@ -424,7 +424,9 @@
                <div class="enlarged_chart_cover hidden">
                   <span id="close_chart" class="hidden"><img src="media/images/x.svg" alt="Close button"></span>
                </div>
-               <div id="nw_enlarged_chart" class="hidden shrink">
+               <div class="enlarged-chart-container hidden">
+                  <div id="nw_enlarged_chart" class="hidden shrink">
+                  </div>
                </div>
                <!-- <span id="close_chart" class="hidden"> -->
                <!-- <img src="media/images/x.svg" alt="close button"> -->
@@ -457,6 +459,7 @@
       // populateTable();
       scrollTop();
       getAssumptions('net');
+      changeMaxWidth();
       drawGraph();
       updatePlaceholders(1);
       reCalculate();

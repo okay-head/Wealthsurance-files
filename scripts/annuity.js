@@ -125,7 +125,7 @@ function next() {
    });
 }
 function reCalculate() {
-   $(".re-calc-btn").on("click", () => {
+   $("#re-calc").on("click", () => {
       validateFormRecalc("#annRecalcForm", 3);
    });
 }

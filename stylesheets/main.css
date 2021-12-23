@@ -971,8 +971,18 @@ section.output {
    top: 12.6%;
    right: 2.5%;
 }
+
+.enlarged-chart-container{
+   overflow-y: hidden;
+}
+#nw_enlarged_chart{
+   top: 0!important;
+}
+
+
 #nw_enlarged_chart,
-.enlarged_chart_cover {
+.enlarged_chart_cover,.enlarged-chart-container {
+   overflow-x: auto;
    transform: scale(1);
    /* transition: 5s ease transform; */
    position: absolute;

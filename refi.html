@@ -106,43 +106,57 @@
          </div>
 
          <div class="page1">
+            <form id="refiForm">
             <div class="input-fields">
-               <div>My zipcode is <input type="decimal" inputmode="decimal"  maxlength="5" id="refipg1e12" placeholder="Enter zip code">
+               <div>My zipcode is <div class="input-wrapper"><input type="decimal" inputmode="decimal"  maxlength="5" id="refipg1e12" name="refipg1e12" placeholder="Enter zip code"><span
+                  class="error-container" id="error12"></span></div>
 
                </div>
-               <div>Current Mortgage $
-                  <input type="decimal" inputmode="decimal" id="refipg1e1" placeholder="Enter Amount">
-                  at <input type="decimal" inputmode="decimal" id="refipg1e2" placeholder="Enter Percentage">% for <input type="decimal"
-                     id="refipg1e3" placeholder="Enter Year">years
+               <div>Current Mortgage $ <div class="input-wrapper">
+                  <input type="decimal" inputmode="decimal" id="refipg1e1" name="refipg1e1" placeholder="Enter Amount"><span
+                  class="error-container" id="error1"></span></div>
+                  at <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="refipg1e2" name="refipg1e2" placeholder="Enter Percentage"><span
+                     class="error-container" id="error2"></span>%</div> for <div class="input-wrapper"> <input type="decimal"
+                     id="refipg1e3" name="refipg1e3" placeholder="Enter Year"><span
+                     class="error-container" id="error3"></span></div>years
                </div>
                <div>
-                  It is
-                  <input type="decimal" inputmode="decimal" id="refipg1e4" placeholder="Enter Number">
-                  years since I took the current mortgage on my house
+                  It is <div class="input-wrapper">
+                  <input type="decimal" inputmode="decimal" id="refipg1e4" name="refipg1e4" placeholder="Enter Number"><span
+                  class="error-container" id="error4"></span>years since</div>
+                   I took the current mortgage on my house
                </div>
-               <div>New Mortgage $
-                  <input type="decimal" inputmode="decimal" id="refipg1e5" placeholder="Enter Amount"> at <input type="decimal" inputmode="decimal" id="refipg1e6"
-                     placeholder="Enter Percentage">% for <input type="decimal" inputmode="decimal" id="refipg1e7"
-                     placeholder="Enter Years">years
+               <div>New Mortgage $ <div class="input-wrapper">
+                  <input type="decimal" inputmode="decimal" id="refipg1e5" name="refipg1e5" placeholder="Enter Amount"><span
+                  class="error-container" id="error5"></span></div> at <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="refipg1e6" name="refipg1e6"
+                     placeholder="Enter Percentage"><span
+                     class="error-container" id="error6"></span>%</div> for <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="refipg1e7" name="refipg1e7"
+                     placeholder="Enter Years"><span
+                     class="error-container" id="error7"></span></div>years
                </div>
                <div>
-                  Processing cost $
-                  <input type="decimal" inputmode="decimal" id="refipg1e8" placeholder="Enter percentage">
+                  Processing cost $ <div class="input-wrapper">
+                  <input type="decimal" inputmode="decimal" id="refipg1e8" name="refipg1e8" placeholder="Enter percentage"><span
+                  class="error-container" id="error8"></span></div>
                </div>
                
-               <div class="mt-1">Annual HOA dues $ <input type="decimal" inputmode="decimal" id="refipg1e9" placeholder="Enter amount"> per
+               <div class="mt-1">Annual HOA dues $ <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="refipg1e9" name="refipg1e9" placeholder="Enter amount"><span
+                  class="error-container" id="error9"></span></div> per
                   year</div>
-               <div>Annual property taxes $ <input type="decimal" inputmode="decimal" id="refipg1e10" placeholder="Enter amount"> per year
+               <div>Annual property taxes $ <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="refipg1e10" name="refipg1e10" placeholder="Enter amount"><span
+                  class="error-container" id="error10"></span></div> per year
                </div>
-               <div>Annual property insurance $ <input type="decimal" inputmode="decimal" id="refipg1e11" placeholder="Enter amount"> per
+               <div>Annual property insurance $ <div class="input-wrapper"><input type="decimal" inputmode="decimal" id="refipg1e11" name="refipg1e11" placeholder="Enter amount"><span
+                  class="error-container" id="error11"></span></div> per
                   year
                </div>
             </div>
+            </form>
          </div>
 
 
          <div class="btn-group">
-            <span role="button" class="red-btn next-btn">Finish</span>
+            <span role="button" id="refiFormSubmit" form="refiForm" name="submit" class="red-btn next-btn">Finish</span>
          </div>
 
       </div>
@@ -153,7 +167,7 @@
          'use strict'
          initLoader();
          pgLocalStorage();
-         next();
+         // next();
       </script>
 
 
