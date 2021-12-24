@@ -1526,6 +1526,9 @@ right: 128%; */
    .ammortization-table-container .w-100 {
       width: 550px !important;
    }
+   #retireRecalcForm .w-100{
+      width: 470px !important;
+   }
    .w-100 {
       width: 400px !important;
    }
@@ -1545,13 +1548,13 @@ right: 128%; */
       grid-template-rows: 0.5fr 1fr !important;
    }
    .mortg-io-container {
-      grid-template-rows: 1.14fr 1fr !important;
+      grid-template-rows: 1.25fr 1.02fr !important;
    }
    .retirement-io-container {
-      grid-template-rows: 0.7fr 1fr !important;
+      grid-template-rows: 0.7fr 0.88fr !important;
    }
    .clg-io-container {
-      grid-template-rows: 1.16fr 1fr !important;
+      grid-template-rows: 0.9fr 1fr !important;
    }
    .loader {
       width: 99%;

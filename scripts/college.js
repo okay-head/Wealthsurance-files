@@ -66,8 +66,8 @@ function pushToDatabase2(clg) {
       type: "POST",
       url: url_string,
       success: (x) => {
-         console.log(x);
-         console.log(url_string);
+         // console.log(x);
+         // console.log(url_string);
          let result = JSON.parse(x);
          if (result.success) {
             updateResult(2, result.amount);

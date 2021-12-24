@@ -11,11 +11,14 @@ let b = [];
 
 function pushToDatabase1(ann) {
    let [a, b, c, d] = ann.page1;
+   
    $.ajax({
       type: "POST",
       url: `https://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${a}&pay_year=${c}&amount=${b}&growth_rate=${d}`,
 
+      
       success: (x) => {
+         console.log(x);
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("ann_result", JSON.stringify(result.data));
