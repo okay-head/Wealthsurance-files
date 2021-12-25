@@ -8,7 +8,6 @@ $("button").on("click", (e) => {
    e.preventDefault();
 });
 
-
 // $('html,body,.container').addClass('hide-scroll')
 // $('html,body,.container').addClass('overflow-h')
 
@@ -18,11 +17,13 @@ $(".hamburger, .canvas-close-btn,.hide-hamburger-component").on("click", () => {
    $(".shadow-element,.hide-hamburger-component").toggleClass("hidden");
    $("html,body,.container").toggleClass("hide-scroll");
    if (
-      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+         navigator.userAgent
+      )
    ) {
       $("html,body,.container").toggleClass("mr-8");
    }
-   resizeComponent()
+   resizeComponent();
 });
 
 // $('body').on('click',()=>{
@@ -52,9 +53,9 @@ if (flag) {
 
 //splash-screen
 root.scrollTop = 0;
-window.setTimeout(()=>{
+window.setTimeout(() => {
    $(".splash-screen img").transition({ scale: 1.16 }, 1100);
-},400)
+}, 400);
 window.setTimeout(() => {
    $(".splash-screen").fadeOut(400);
    // window.setTimeout(()=>{
@@ -62,26 +63,31 @@ window.setTimeout(() => {
    // }, 0)
 }, 1200);
 
+//result splash screen
+
+$(() => {
+   // $(".result-splash-screen").fadeOut(400);
+});
+
 //brand
 $(".brand").on("click", () => {
    window.open("index.html", "_self");
    // @change
 });
 
-$('#re-calc').on('click',scrollTop)
+$("#re-calc").on("click", scrollTop);
 
 // _____functions
 
 let session_id = "aaabbb000000";
-let ip = '139.5.30.66';
-
+let ip = "139.5.30.66";
 
 function createSessionId() {
    const length = 6; //length of the alphabet part of session id
    // let number = Math.round(      Math.random().toFixed(length / 2) * Math.pow(10, length / 2)
    // ).toString(); //8
 
-   let number =  Math.round((Date.now())/1000) 
+   let number = Math.round(Date.now() / 1000);
 
    const arr = "abcdefghijklmnopqrstuvwxyz";
    let string = "";
@@ -90,23 +96,22 @@ function createSessionId() {
       string += arr[x];
    }
    session_id = string + number;
-
 }
 
 function numFormatter(num) {
-   if(num >=1000 && num < 1000000){
-       return (num/1000).toFixed(2) + ' K';
-   }else if(num >= 1000000){
-       return (num/1000000).toFixed(2) + ' Million'; 
-   }else if(num <1000){
-       return num; 
+   if (num >= 1000 && num < 1000000) {
+      return (num / 1000).toFixed(2) + " K";
+   } else if (num >= 1000000) {
+      return (num / 1000000).toFixed(2) + " Million";
+   } else if (num < 1000) {
+      return num;
    }
 }
 
-
 function resizeComponent() {
-   $(".hide-hamburger-component")
-   .width($(window).width() - $(".offCanvasNav").width())
+   $(".hide-hamburger-component").width(
+      $(window).width() - $(".offCanvasNav").width()
+   );
 }
 
 // update val
@@ -139,17 +144,16 @@ function fadeInResult() {
          .animate({ opacity: 1 })
          .css("transform", "translateY(0)");
 
-         window.setTimeout(() => {
-            $(".calculated-result-2")
+      window.setTimeout(() => {
+         $(".calculated-result-2")
             .animate({ opacity: 1 })
             .css("transform", "translateY(15%)");
-         }, 800);
+      }, 800);
    });
 }
 
-
 function scrollTop() {
-   root.scrollTop = 95
+   root.scrollTop = 95;
 }
 
 //behaviour of the reEnter button
@@ -173,16 +177,24 @@ function prevBehaviour() {
 
 function getAssumptions(calc) {
    const assump_url = `https://wealthsurance.com/calculators/?get=assumption&cal=${calc}`;
-   
+
    $.ajax({
       type: "GET",
       url: assump_url,
 
       success: (x) => {
          let result = JSON.parse(x);
-         if (result==0 || result=='' || result ==null ||result ==undefined) {
-            console.log('Assumptions cannot be fetched from the database. (Not available)');
-         }else{
+         if (
+            result == 0 ||
+            result == "" ||
+            result == null ||
+            result == undefined
+         ) {
+            console.log(
+               "Assumptions cannot be fetched from the database. (Not available)"
+            );
+            $(".result-splash-screen").fadeOut(400);
+         } else {
             addAssumptions(result);
          }
       },
@@ -201,8 +213,9 @@ function addAssumptions(assump_arr) {
    });
 
    $(".assumptions ul").html(assump_text);
-}
 
+   $(".result-splash-screen").fadeOut(400);
+}
 
 // ----- Number formatting -----
 // $('#annFormSubmit').on('click',()=>{
@@ -214,16 +227,14 @@ function addAssumptions(assump_arr) {
 
 // function changeText() {
 //    $('#annpg1e2').val('banjo')
-   
+
 // }
 
 // function placeCommas(num) {
 //   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 // }
 
-
-
-// ------Validation functions ------ 
+// ------Validation functions ------
 
 function fValidate(x) {
    $(`span[form~='page${x}Form']`).on("click", () => {
@@ -231,79 +242,76 @@ function fValidate(x) {
    });
 }
 
-function validateFormRecalc(x,y) {
+function validateFormRecalc(x, y) {
    if ($(x).valid()) {
       // $('.error-text-container').removeClass('opacity-in')
       // $('.calculated-result').removeClass('reduce-font')
       storeRecalculate();
-      if (x=='#mortgRecalcForm') {
-         $('#mortgresulte3,#mortgresulte2').removeClass('error')
-         $('#mortgresulte3,#mortgresulte2').addClass('valid')
+      if (x == "#mortgRecalcForm") {
+         $("#mortgresulte3,#mortgresulte2").removeClass("error");
+         $("#mortgresulte3,#mortgresulte2").addClass("valid");
       }
-   }else{
-      $('.error-text-container').addClass('opacity-in')
-      $('.error-text-container').addClass('z-index')
-      $('.ammortization-btn').addClass('d-none')
-      $('.refi-output-table').addClass('d-none')
-      $('.ammortization-table-container,.toggle-btn-grp').addClass('d-none')
-      $('.retire-results-table-container').addClass('d-none')
+   } else {
+      $(".error-text-container").addClass("opacity-in");
+      $(".error-text-container").addClass("z-index");
+      $(".ammortization-btn").addClass("d-none");
+      $(".refi-output-table").addClass("d-none");
+      $(".ammortization-table-container,.toggle-btn-grp").addClass("d-none");
+      $(".retire-results-table-container").addClass("d-none");
       // $('.calculated-result').addClass('reduce-font')
       // $('.calculated-result').text('Incorrect information')
       // $('.calculated-result-2').text('0')
-      let inval_arr = checkInvalid(y)
-      inval_arr.forEach((element)=>{
-      $(`#${element}`).parent().removeClass('d-none')
-      })
+      let inval_arr = checkInvalid(y);
+      inval_arr.forEach((element) => {
+         $(`#${element}`).parent().removeClass("d-none");
+      });
    }
-   let valid_arr = checkValid(y)
-   valid_arr.forEach((element)=>{
-   $(`#${element}`).parent().addClass('d-none')
-   })
-
+   let valid_arr = checkValid(y);
+   valid_arr.forEach((element) => {
+      $(`#${element}`).parent().addClass("d-none");
+   });
 }
 // for networth page2 and page3
-function validateForm2(x,y) {
+function validateForm2(x, y) {
    if ($(x).valid()) {
-      let valid_arr = checkValid(y)
-      valid_arr.forEach((element)=>{
-      $(`#${element}`).parent().addClass('d-none')
-      })
+      let valid_arr = checkValid(y);
+      valid_arr.forEach((element) => {
+         $(`#${element}`).parent().addClass("d-none");
+      });
 
-      if (x=='#page3Form') {
-         next()
-      }else{
+      if (x == "#page3Form") {
+         next();
+      } else {
          return mySiema.next();
       }
+   } else {
+      let inval_arr = checkInvalid(y);
+      inval_arr.forEach((element) => {
+         $(`#${element}`).parent().removeClass("d-none");
+      });
    }
-   else{
-      let inval_arr = checkInvalid(y)
-      inval_arr.forEach((element)=>{
-      $(`#${element}`).parent().removeClass('d-none')
-      })
-   }
-   let valid_arr = checkValid(y)
-   valid_arr.forEach((element)=>{
-   $(`#${element}`).parent().addClass('d-none')
-   })
-
+   let valid_arr = checkValid(y);
+   valid_arr.forEach((element) => {
+      $(`#${element}`).parent().addClass("d-none");
+   });
 }
 
 //Validation functions for reCalc
 function checkInvalid(y) {
-   let z = document.querySelectorAll('input.error')
-   let inval = [] //array containing id's of invalid elements
-   z.forEach(element => {
-      let x  = (element.id).toString().slice(y)
-      inval.push('e'+x);
+   let z = document.querySelectorAll("input.error");
+   let inval = []; //array containing id's of invalid elements
+   z.forEach((element) => {
+      let x = element.id.toString().slice(y);
+      inval.push("e" + x);
    });
-   return inval
+   return inval;
 }
 function checkValid(y) {
-   let z = document.querySelectorAll('input.valid')
-   let valid = [] //array containing id's of valid elements
-   z.forEach(element => {
-      let x  = (element.id).toString().slice(y)
-      valid.push('e'+x);
+   let z = document.querySelectorAll("input.valid");
+   let valid = []; //array containing id's of valid elements
+   z.forEach((element) => {
+      let x = element.id.toString().slice(y);
+      valid.push("e" + x);
    });
-   return valid
+   return valid;
 }

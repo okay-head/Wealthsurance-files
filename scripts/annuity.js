@@ -18,7 +18,7 @@ function pushToDatabase1(ann) {
 
       
       success: (x) => {
-         console.log(x);
+         // console.log(x);
          let result = JSON.parse(x);
          if (result.success) {
             localStorage.setItem("ann_result", JSON.stringify(result.data));
