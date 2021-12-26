@@ -148,6 +148,10 @@ function pgLocalStorage() {
 
 function reCalculate() {
    $("#re-calc").on("click", () => {
+         if (!$("#graph-btn").hasClass("active-btn")) {
+            $("#graph-btn").click();
+         }
+
       validateFormRecalc("#mortgRecalcForm", 5);
       // storeRecalculate();
    });
@@ -284,15 +288,17 @@ function pushToDatabase2(mortg) {
 
             $(".error-text-container").removeClass("opacity-in");
 
-            $("#year-btn").addClass('active-btn')
-            $("#month-btn").removeClass('active-btn')
+            $("#year-btn").addClass("active-btn");
+            $("#month-btn").removeClass("active-btn");
 
-            $(".refi-output-table,.toggle-btn-grp").removeClass('d-none');
-            $("#amm-monthly").addClass('d-none');
+            $(".refi-output-table,.toggle-btn-grp").removeClass("d-none");
+            $("#amm-monthly").addClass("d-none");
             setTimeout(() => {
                $(".error-text-container").removeClass("z-index");
             }, 900);
-            $(".ammortization-btn,.ammortization-table-container").removeClass("d-none");
+            $(".ammortization-btn,.ammortization-table-container").removeClass(
+               "d-none"
+            );
          } else {
             console.log(result + "request not successful");
             let alert_text =
@@ -804,7 +810,7 @@ $("#mortgRecalcForm").validate({
          // required: true,
          number: true,
          min: 0,
-         down_amount2:true,
+         down_amount2: true,
       },
       mortgresulte4: {
          required: true,

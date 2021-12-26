@@ -898,6 +898,63 @@ section.output {
 .mortg-result-container{
    position: relative;
 }
+
+/* Input field specific positioning */
+#fnapg1e1+.error-container,
+#tepg1e1+.error-container,
+#nwpg1e1+.error-container,
+#mortgpg1e5+.error-container,
+#mortgpg1e3+.error-container{
+   left: 18%;
+}
+#fnapg3e2+.error-container{
+   left: 13%;
+}
+#annpg1e1+.error-container,
+#annpg1e3+.error-container,
+#retirepg1e1+.error-container,
+#retirepg1e2+.error-container,
+#retirepg2e1+.error-container,
+#retirepg2e2+.error-container{
+   left: 16.5%;
+}
+#annpg1e2+.error-container{
+   left: 54%;
+}
+#annpg1e4+.error-container,
+#mortgpg1e2+.error-container{
+   left: 47.5%;
+}
+#mortgpg1e1+.error-container,
+#mortgpg1e9+.error-container{
+   left: 14%;
+}
+
+#mortgpg1e7+.error-container{
+left: 31%;
+}
+#clgpg1e2+.error-container,
+#clgpg1e6+.error-container{
+   left: 22.5%;
+}
+#refipg1e1+.error-container,
+#refipg1e5+.error-container{
+   left: 51%;
+}
+#refipg1e12+.error-container{
+   left: 44%;
+}
+#refipg1e8+.error-container{
+   left: 49%;
+}
+
+#refipg1e2+.error-container,
+#refipg1e4+.error-container,
+#refipg1e6+.error-container{
+   left: 14%;
+}
+
+
 .error-text-container{
    z-index: -1;
    position: absolute;
@@ -1514,6 +1571,10 @@ right: 128%; */
 
 /* mobile */
 @media screen and (max-width: 610px) {
+
+   .nw-table{
+      width: 610px;
+   }
    .retire-re-summary p:nth-child(2) {
       width: 85%;
    }
@@ -1585,9 +1646,15 @@ right: 128%; */
    }
    input {
       /* width: 45%; */
-      width: 30%;
+      width: 35%;
       padding: 8px 0px;
       padding-left: 10px;
+   }
+   .large-input{
+      width: 70%;
+   }
+   .med-input{
+      width: 50%;
    }
    table {
       width: 740px;
