@@ -953,6 +953,9 @@ left: 31%;
 #refipg1e6+.error-container{
    left: 14%;
 }
+#retirepg1e3+.error-container{
+   left: -15%;
+}
 
 
 .error-text-container{
@@ -1527,6 +1530,15 @@ right: 128%; */
    border-width: 6px;
    border-style: solid;
    border-color: rgba(0, 0, 0, 0.746) transparent transparent transparent;
+}
+
+.btn-tooltip{
+   display: inline-block;
+}
+
+.btn-tooltip:hover .btn-tooltip .tooltip-text{
+   visibility: visible;
+   opacity: 1;
 }
 
 .load-screen {
