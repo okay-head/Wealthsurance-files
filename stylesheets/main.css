@@ -118,6 +118,102 @@ mt-4 {
    transform: scale(0.5);
 }
 
+/* to hide scrollbar on splash screen */
+.del::-webkit-scrollbar,
+.del::-webkit-scrollbar-button,
+.del::-webkit-scrollbar-track,
+.del::-webkit-scrollbar-track-piece,
+.del::-webkit-scrollbar-thumb,
+.del::-webkit-scrollbar-corner,
+.del::-webkit-resizer{
+   background-color: transparent;
+   background-color: #e5e5e5;
+}
+/* to show scrollbars again */
+/* .enable::-webkit-scrollbar,
+.enable::-webkit-scrollbar-button,
+.enable::-webkit-scrollbar-track,
+.enable::-webkit-scrollbar-track-piece,
+.enable::-webkit-scrollbar-thumb,
+.enable::-webkit-scrollbar-corner,
+.enable::-webkit-resizer{
+   background-color: initial;
+}
+
+.enable::-webkit-scrollbar-button{
+   background-color: gray;
+}
+
+.enable::-webkit-scrollbar-thumb{
+   background-color: rgba(169, 169, 169, 0.541);
+}
+.enable::-webkit-scrollbar-thumb:hover{
+   background-color: rgba(121, 120, 120, 0.609);
+} */
+
+/* .enable::-webkit-scrollbar {
+   width: 16px;
+   height: 16px;
+} */
+
+.enable::-webkit-scrollbar-corner,
+.enable::-webkit-scrollbar-track {
+   background-color:#eee;
+}
+
+.enable::-webkit-scrollbar-thumb {
+   background-color: #8f8e8e;
+   background-clip: padding-box;
+   border: 2px solid transparent;
+}
+
+.enable::-webkit-scrollbar-thumb:hover {
+   background-color: rgb(112, 112, 112);
+}
+
+.enable::-webkit-scrollbar-thumb:active {
+   background-color: rgb(128, 128, 128);
+}
+
+/* Buttons */
+.enable::-webkit-scrollbar-button:single-button {
+   background-color: #eee;
+   display: block;
+   background-size: 10px;
+   background-repeat: no-repeat;
+}
+
+/* Up */
+.enable::-webkit-scrollbar-button:single-button:vertical:decrement {
+   height: 12px;
+   /* width: 16px; */
+   background-position: center 4px;
+   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(73, 73, 73)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+.enable::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+.enable::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(128, 128, 128)'><polygon points='50,00 0,50 100,50'/></svg>");
+}
+
+/* Down */
+.enable::-webkit-scrollbar-button:single-button:vertical:increment {
+   height: 12px;
+   /* width: 16px; */
+   background-position: center 2px;
+   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(73, 73, 73)'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+
+.enable::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='rgb(112, 112, 112)'><polygon points='0,0 100,0 50,50'/></svg>");
+}
+
+/* ::-webkit-scrollbar-button:single-button:vertical:increment:active {
+   background-image */
+
 /* modal chart */
 .element-focus {
    position: absolute;
