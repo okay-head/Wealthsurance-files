@@ -16,11 +16,7 @@ $(".hamburger, .canvas-close-btn,.hide-hamburger-component").on("click", () => {
    $(".offCanvasNav").toggleClass("offCanvasNav-visible");
    $(".shadow-element,.hide-hamburger-component").toggleClass("hidden");
    $("html,body,.container").toggleClass("hide-scroll");
-   if (
-      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-         navigator.userAgent
-      )
-   ) {
+   if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       $("html,body,.container").toggleClass("mr-8");
    }
    resizeComponent();
@@ -40,6 +36,7 @@ if (
    )
 ) {
    flag = false;
+   adjustErrorMessage();
 }
 if (flag) {
    let resizeTimer = undefined;
@@ -153,7 +150,7 @@ function fadeInResult() {
 }
 
 function scrollTop() {
-   root.scrollTop = 95;
+   root.scrollTop = 76;
 }
 
 //behaviour of the reEnter button
@@ -250,8 +247,13 @@ function validateFormRecalc(x, y) {
       if (x == "#mortgRecalcForm") {
          $("#mortgresulte3,#mortgresulte2").removeClass("error");
          $("#mortgresulte3,#mortgresulte2").addClass("valid");
+      } if (x == "#retireRecalcForm"){
+         $('.io-container').attr('id','')
       }
    } else {
+      if (x == "#retireRecalcForm"){
+         $('.io-container').attr('id','extend-retirement-io-container')
+      }
       $(".error-text-container").addClass("opacity-in");
       $(".error-text-container").addClass("z-index");
       $(".ammortization-btn").addClass("d-none");
@@ -315,3 +317,16 @@ function checkValid(y) {
    });
    return valid;
 }
+
+
+// To ensure Responsiveness
+function adjustErrorMessage() {
+   let e_containers = document.getElementsByClassName('error-container')
+
+   for (let i = 0; i < e_containers.length; i++) {
+      let l = parseFloat($(`#${e_containers[i].id}`).css('left'))
+     $(`#${e_containers[i].id}`).css('left',l+15)
+      // console.log(l);
+   }
+}
+
