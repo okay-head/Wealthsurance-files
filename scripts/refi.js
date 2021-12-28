@@ -3,6 +3,7 @@
 let refi = {
    page1: [],
    results: [],
+   new_loan_amount: undefined
 };
 
 let a = [];
@@ -116,6 +117,8 @@ function storeRecalculate() {
    refi.results = [];
    refi.results.push(obj);
 
+   refi.new_loan_amount = $('#refiresulte5').val()
+
    updatePlaceholders(2);
 
    pushToDatabase2(refi);
@@ -127,11 +130,12 @@ function updatePlaceholders(x) {
          const z = JSON.parse(localStorage.getItem("refipg1"));
 
          for (let i = 0; i < 11; i++) {
-            if (i == 4) {
-               continue;
-            } else {
+            // if (i == 4) {
+               // console.log(z[i]);
+               // continue;
+            // } else {
                $("#refiresulte" + (i + 1)).attr("placeholder", z[i]);
-            }
+            // }
          }
          break;
 
@@ -149,6 +153,7 @@ function updatePlaceholders(x) {
                Object.values(refi.results[0])[i]
             );
          }
+         $('#refiresulte5').attr('placeholder',refi.new_loan_amount)
          break;
    }
 }
@@ -236,8 +241,8 @@ function pushToDatabase2(refi) {
       z[i] = Object.values(refi.results[0])[i + 1];
    }
 
-   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${z[0]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=2`;
-   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${z[0]},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=1`;
+   let url_string = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${refi.new_loan_amount},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=2`;
+   let url_string2 = `https://wealthsurance.com/calculators/?calculator=refi&session_id=${session_id}&ip_address=${ip}&data={"amount" : ${z[0]},"interest" : ${z[1]},"duration" : ${z[2]},"yearP" : ${z[3]},"amountN" : ${refi.new_loan_amount},"interestN" : ${z[4]},"durationN" : ${z[5]},"hoaDue" : ${z[7]},"propTax" : ${z[8]},"propIns" : ${z[9]},"costRefinance" : ${z[6]}}&zipcode=${zip}&type=1`;
 
    $.ajax({
       type: "POST",

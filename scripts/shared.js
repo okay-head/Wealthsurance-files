@@ -62,8 +62,8 @@ function homeSplashScreen() {
    }, 400);
    window.setTimeout(() => {
       $(".splash-screen").fadeOut(400);
-      $("body").removeClass("del");
-      $("body").addClass("enable");
+      // $("body").removeClass("del");
+      // $("body").addClass("enable");
    }, 1200);
 }
 
@@ -199,8 +199,8 @@ function getAssumptions(calc) {
             );
             $(".result-splash-screen").fadeOut(400);
 
-            $("body").removeClass("del");
-            $("body").addClass("enable");
+            // $("body").removeClass("del");
+            // $("body").addClass("enable");
       
          } else {
             addAssumptions(result);
@@ -224,8 +224,8 @@ function addAssumptions(assump_arr) {
 
    $(".result-splash-screen").fadeOut(400);
 
-   $("body").removeClass("del");
-   $("body").addClass("enable");
+   // $("body").removeClass("del");
+   // $("body").addClass("enable");
 
 }
 

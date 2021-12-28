@@ -22,15 +22,15 @@ let fna = {
 $(".download").on("click", () => {
    // if ($('#fnaRecalcForm').valid()) {
    $(".pdf-load-screen").addClass("fade-in");
-   console.log("printing pdf");
+   // console.log("printing pdf");
    // window.open('fna_pdf.html','_blank')
    // let print_window = window.open('https://5dec-171-61-28-122.ngrok.io/fna_pdf.html','_blank')
-   let print_window = window.open(
-      "https://okay-head.github.io/Wealthsurance-files/fna_pdf.html",
-      "_blank"
-   );
+   // let print_window = window.open(
+   //    "https://okay-head.github.io/Wealthsurance-files/fna_pdf.html",
+   //    "_blank"
+   // );
 
-   // getPdf();
+   getPdf();
 
    // setTimeout(() => {
    //    print_window.close()
@@ -38,22 +38,24 @@ $(".download").on("click", () => {
    // }else{
    // console.log('trigger tooltip');
    // }
+   // }
 });
 
 //_____ functions
 function getPdf() {
-   let url = window.location.href;
-   let url_string = `https://v2.convertapi.com/convert/web/to/pdf?Secret=KKpF6ONL5EcXiwLY&Url=${url}&StoreFile=true&FileName=Financial_needs_Analysis&Zoom=1.4&PageSize=a4&MarginTop=3&MarginRight=0&MarginBottom=0&MarginLeft=0
+   // let url = window.location.href;
+   let url = `https://okay-head.github.io/Wealthsurance-files/fna_pdf.html`
+   let url_string = `https://v2.convertapi.com/convert/web/to/pdf?Secret=KKpF6ONL5EcXiwLY&Url=${url}&StoreFile=true&FileName=Financial needs Analysis&Zoom=1.4&PageSize=a4&MarginTop=3&MarginRight=0&MarginBottom=0&MarginLeft=0
    `;
 
    $.ajax({
       type: "GET",
       url: url_string,
       success: (x) => {
-         console.log(url_string);
-         console.log(x);
+         // console.log(url_string);
+         // console.log(x);
          // console.log(x.Url);
-         // $(".pdf-load-screen").removeClass("fade-in");
+         $(".pdf-load-screen").removeClass("fade-in");
          window.open(x.Files[0].Url, "_self");
       },
       error: (e) => {
