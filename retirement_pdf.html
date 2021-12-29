@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- jquery -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+
+   <!-- jquery validation -->
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+
+   <!-- number format -->
+   <script src="scripts/jquery/jquery.number.min.js"></script>
+
+
+
+   <!-- jquery transit -->
+   <script src="scripts/jquery/jquery.transit.min.js"></script>
+
+   <!-- google charts -->
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <link rel="stylesheet" href="stylesheets/print.css">
+   <title>Retirement calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="content-container">
+         <div class="pdf-io-container io-container annuity-io-container retirement-io-container">
+
+            <section class="input">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance
+               </h3>
+
+
+               <h1 class="page-heading calculator-title">Retirement calculator</h1>
+               <h4>Input</h4>
+
+               <div class="results-table-container result-table">
+                  <form id="retireRecalcForm">
+                     <table class="annuity-results-table results-table w-100 editable-results-table">
+                        <tr class="result-table-header">
+                           <td>Input</td>
+                           <td>Values</td>
+                        </tr>
+                        <tr>
+                           <td>Current Age,years</td>
+                           <td id="orange-text"><input type="decimal" inputmode="decimal" id="retireresultpg1e1"
+                                 name="retireresultpg1e1" placeholder="35">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e1"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Retirement Age, years</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e2" name="retireresultpg1e2"
+                                 placeholder="55">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e2"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Current income, $</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e3" name="retireresultpg1e3"
+                                 placeholder="40000">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e3"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Post-retirement pre-tax income, $</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e4" name="retireresultpg1e4"
+                                 placeholder="500000">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e4"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Years of retirement income, years</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e5" name="retireresultpg1e5"
+                                 placeholder="20">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e5"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Retirement goal, $</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e6" name="retireresultpg1e6"
+                                 placeholder="97975">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e6"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Expected annual increase in income, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e7" name="retireresultpg1e7"
+                                 placeholder="6">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e7"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td>Pre-retirement investment returns, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e8" name="retireresultpg1e8"
+                                 placeholder="5">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e8"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Post-retirement investment returns, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e9" name="retireresultpg1e9"
+                                 placeholder="8">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e9"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Rate of inflation, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e10"
+                                 name="retireresultpg1e10" placeholder="5">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e10"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Pre-tax savings, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e11"
+                                 name="retireresultpg1e11" placeholder="9">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e11"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Pre-tax savings, $</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e12"
+                                 name="retireresultpg1e12" placeholder="6524">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e12"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Post-tax savings, %</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e13"
+                                 name="retireresultpg1e13" placeholder="11">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e13"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Post-tax savings, $</td>
+                           <td><input type="decimal" inputmode="decimal" id="retireresultpg1e14"
+                                 name="retireresultpg1e14" placeholder="79787">
+                              <div class="tooltip tooltip-left d-none head-tooltip"><img
+                                    src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultpg1e14"></span>
+                              </div>
+
+                           </td>
+                        </tr>
+                     </table>
+                  </form>
+               </div>
+
+
+            </section>
+            <footer class="footer-1">
+               <section>
+                  <div class="a-left">
+                     <p>www.wealthsurance.com</p>
+                     <p>info@wealthsurance.com</p>
+                     <p>620-368-1480</p>
+                  </div>
+                  <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+                  <div class="a-right">RETIREMENT | 1</div>
+               </section>
+            </footer>
+
+            <section class="output retire-output">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance
+               </h3>
+
+               <h1 class="page-heading calculator-title">Retirement  calculator</h1>
+
+               <h4 class="output-header">Output</h4>
+
+               <div class="result">
+
+                  <div class="retire-re-top">
+                     <p>My Retirement Goal:</p>
+                     <p class="orange-text larger-txt"> $ <span id="re-goal"></span></p>
+                  </div>
+                  <div class="legend-text">
+                     <p>You are</p>
+                     <h3 id="legend-txt" class="orange-text">65%</h3>
+                     <p id="legend-text-bottom">of the way there</p>
+                  </div>
+                  <div id="chart_div"></div>
+                  <div class="retire-re-bottom">
+                     <p>My potential nest egg:</p>
+                     <p class="orange-text">$ <span id="nest-egg"> </span></p>
+                  </div>
+                  <div class="retire-re-summary">
+                     <p>You have some catching up to do.</p>
+                     <p>Adjust your savings plan to see how it changes your result</p>
+                  </div>
+               </div>
+
+               <div class="retire-results-table-container  results-table-container result-table overflowing-container">
+                  <table
+                     class="annuity-results-table results-table w-100 editable-results-table retirement-result-table">
+                     <tr class="result-table-header orange-header">
+                        <td>Output</td>
+                        <td>Values</td>
+                     </tr>
+                     <tr>
+                        <td>Retirement goal, $:</td>
+                        <td id="retireresultpg2e1" style="color:#ffa114!important">36000000</td>
+                     </tr>
+                     <tr>
+                        <td>Potential nest egg, $:</td>
+                        <td id="retireresultpg2e2">26000000</td>
+                     </tr>
+                     <tr>
+                        <td>Surplus/(Shortfall), $:</td>
+                        <td id="retireresultpg2e3">-1000000</td>
+                     </tr>
+                  </table>
+               </div>
+
+               
+               <div class="assumptions small">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+            </section>
+            <p class="disclaimer-text">
+               Risk:
+               All financial planning assumes the possibility of loss. There is no guarantee that these numbers will be
+               achieved. This calculator is based on a set of assumptions, given the current economy. This is not a
+               forecast of the future economy or the future gains from any investment. Market conditions can vary over
+               time. This is not intended as a Wealthsurance recommendation.
+            </p>
+
+            <!-- <div class="wealthsurance-header"></div> -->
+
+            <footer class="footer-2">
+               <section>
+                  <div class="a-left">
+                     <p>www.wealthsurance.com</p>
+                     <p>info@wealthsurance.com</p>
+                     <p>620-368-1480</p>
+                  </div>
+                  <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+                  <div class="a-right">RETIREMENT | 2</div>
+               </section>
+            </footer>
+
+         </div>
+         <!-- outside io -->
+      </div>
+
+   </div>
+   <script src="scripts/shared.js"></script>
+   <script src="scripts/retirement.js"></script>
+   <script src="scripts/retire-graph.js"></script>
+   <script>
+      // updateResult(1);
+      getAssumptions('retirement');
+      updateTables(1);
+      // changeMaxWidth();
+      updatePlaceholders(1);
+   </script>
+</body>
+
+</html>

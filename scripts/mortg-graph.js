@@ -157,6 +157,7 @@ function drawGraph(key,data=undefined) {
          isStacked: true,
          legend: {
             position: "top",
+            alignment: "center",
          },
          bar: { groupWidth: "35%" },
          vAxis: {

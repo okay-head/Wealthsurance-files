@@ -2,7 +2,7 @@
 
 // $(".shadow-element").removeClass("hidden");
 
-function drawGraph() {
+function drawGraph(pdf_flag=undefined) {
    
 function updateResultArray(data) {
    let max = Object.values(data).length;
@@ -157,6 +157,10 @@ function drawChart() {
    $('#toggle_modal_chart').one('click',()=>{
       chart2.draw(data2, options2);
    })
+
+   if (pdf_flag) {
+      chart2.draw(data2, options2);
+   }
 }
 
 }

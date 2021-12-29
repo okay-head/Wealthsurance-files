@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- jquery -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+
+   <!-- jquery validation -->
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+   
+
+   <!-- number format -->
+    <script src="scripts/jquery/jquery.number.min.js"></script>
+
+
+
+   <!-- jquery transit -->
+   <script src="scripts/jquery/jquery.transit.min.js"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <link rel="stylesheet" href="stylesheets/print.css">
+   <title>Refi mortgage calculator</title>
+</head>
+
+<body>
+   <div class="container refi-container">
+      <div class="content-container">
+         <div class="pdf-io-container io-container refi-io-container clg-io-container ">
+            
+            <section class="input">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+
+               <h1 class="page-heading calculator-title">Refi mortgage calculator</h1>
+               <h4>Input</h4>
+
+               <div class="results-table-container result-table">
+                  <form id="refiRecalcForm">
+                  <table class="annuity-results-table results-table w-100 editable-results-table">
+                     <tr>
+                        <td>Original Loan Amount, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte1" name="refiresulte1" placeholder="50000">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte1"></span>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Original Loan Rate, %</td>
+                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="refiresulte2" name="refiresulte2"
+                              placeholder="3.500">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte2"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td>Original Loan Duration, years</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte3" name="refiresulte3" placeholder="30">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte3"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td>Years passed, years</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte4" name="refiresulte4" placeholder="10">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte4"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+
+                     <tr>
+                        <td>New Loan Amount, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte5" name="refiresulte5" placeholder="20000">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte5"></span>
+                           </div>
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>New Loan Rate, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte6" name="refiresulte6" placeholder="3.375">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte6"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td>New Loan Duration, years</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte7" name="refiresulte7" placeholder="15">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte7"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td>Closing Cost, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte8" name="refiresulte8" placeholder="3000">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte8"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td>Annual HOA dues, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte9" name="refiresulte9" placeholder="2400">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte9"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td>Annual property Taxes, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte10" name="refiresulte10" placeholder="15000">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte10"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td>Annual property Insurance, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="refiresulte11" name="refiresulte11" placeholder="1500">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte11"></span>
+                           </div>
+                        </td>
+
+                     </tr>
+                  </table>
+                  </form>
+               </div>
+
+            </section>
+            <footer class="footer-1">
+               <section>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+                     <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+                     <div class="a-right">REFI | 1</div>
+                  </section>
+            </footer>
+
+            <section class="output">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+            <h1 class="page-heading calculator-title">Refi mortgage calculator</h1>
+
+               <h4 class="output-header">Output</h4>
+
+               <div class="result">
+
+                  Refi graph
+               </div>
+
+               <div class="results-table-container result-table">
+                  <table class="annuity-results-table results-table w-100 refi-output-table">
+                     <tr>
+                        <td>Output</td>
+                        <td>Current</td>
+                     </tr>
+                     <tr>
+                        <td>Outstanding interest,$</td>
+                        <td id="refiresultr1c1" style="color: #ffa114!important;">500000</td>
+                     </tr>
+                     <tr>
+                        <td>New interest payment, $</td>
+                        <td id="refiresultr2c1">3.500</td>
+                     </tr>
+                     <tr>
+                        <td>Total interest cost saved/(increase), $</td>
+                        <td id="refiresultr3c1">30 </td>
+                     </tr>
+                  </table>
+
+                  <table class="annuity-results-table results-table w-100 refi-output-table mt-4">
+                     <tr>
+                        <td>Output</td>
+                        <td>Current</td>
+                        <td>New</td>
+                     </tr>
+                     <tr>
+                        <td>Current monthly loan re-payment, $</td>
+                        <td id="refiresultr4c1" style="color: #ffa114!important;">2245</td>
+                        <td id="refiresultr4c2">2744</td>
+                     </tr>
+                     <tr>
+                        <td>HOA dues, $</td>
+                        <td id="refiresultr5c1">200</td>
+                        <td id="refiresultr5c2">200</td>
+                     </tr>
+                     <tr>
+                        <td>Property taxes, $</td>
+                        <td id="refiresultr6c1">1250</td>
+                        <td id="refiresultr6c2">1250</td>
+                     </tr>
+                     <tr>
+                        <td>Property insurance, $</td>
+                        <td id="refiresultr7c1">124</td>
+                        <td id="refiresultr7c2">124</td>
+                     </tr>
+                     <tr>
+                        <td>New monthly loan re-payment, $</td>
+                        <td id="refiresultr8c1">3820</td>
+                        <td id="refiresultr8c2">4319</td>
+                     </tr>
+                  </table>
+               </div>
+
+               <!-- if clients need the ammortization table as well, add it here -->
+
+
+               <div class="assumptions small">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+            </section>
+            <p class="disclaimer-text">
+               Risk:
+   All financial planning assumes the possibility of loss. There is no guarantee that these numbers will be achieved. This calculator is based on a set of assumptions, given the current economy. This is not a forecast of the future economy or the future gains from any investment. Market conditions can vary over time. This is not intended as a Wealthsurance recommendation. 
+            </p>
+   
+            <!-- <div class="wealthsurance-header"></div> -->
+            
+            <footer class="footer-2">
+               <section>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+               <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+               <div class="a-right">REFI | 2</div>
+            </section>
+            </footer>
+
+         </div>
+         <!-- outside io -->
+      </div>
+
+   </div>
+   <script src="scripts/shared.js"></script>
+   <script src="scripts/refi.js"></script>
+   <script>
+      getAssumptions('refi');
+      updateTables(1);
+      fadeInResult();
+      updatePlaceholders(1);
+      // createAmmortizationTable(1);
+      // createAmmortizationTable2(1);
+
+   </script> 
+</body>
+
+</html>

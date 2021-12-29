@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- jquery -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+
+   <!-- jquery validation -->
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+   
+
+   <!-- number format -->
+    <script src="scripts/jquery/jquery.number.min.js"></script>
+
+
+
+   <!-- jquery transit -->
+   <script src="scripts/jquery/jquery.transit.min.js"></script>
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <link rel="stylesheet" href="stylesheets/print.css">
+   <title>Annuity calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="content-container">
+         <div class="pdf-io-container io-container">
+            
+            <section class="input">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+
+               <h1 class="page-heading calculator-title">Annuity calculator</h1>
+               <h4>Input</h4>
+
+               <div class="results-table-container result-table">
+                  <form id="annRecalcForm">
+                  <table class="annuity-results-table results-table w-100 editable-results-table">
+                     <tr class="result-table-header">
+                        <td>Parameters</td>
+                        <td>Values</td>
+                     </tr>
+                     <tr>
+                        <td>Current Age, years</td>
+                        <td id="orange-text"><input type="decimal" inputmode="decimal" id="annresulte1"
+                              name="annresulte1" placeholder="45">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte1"></span>
+                           </div>
+
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Age to start payment, years</td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte2" name="annresulte2"
+                              placeholder="65">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte2"></span>
+                           </div>
+                        </td>
+                     </tr>
+                     <!-- <tr>
+                        <td>Length of annuity,years:</td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte3" name="annresulte3" placeholder="20" ></td>
+                     </tr> -->
+                     <tr>
+                        <td>Initial amount, $</td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte3" name="annresulte3"
+                              placeholder="500000">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte3"></span>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Annual growth rate, %</td>
+                        <td><input type="decimal" inputmode="decimal" id="annresulte4" name="annresulte4"
+                              placeholder="6">
+                           <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg"
+                                 alt="alert">
+                              <span class="tooltip-text" id="eresulte4"></span>
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </form>
+               </div>
+</section>
+            <footer class="footer-1">
+               <section>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+                     <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+                     <div class="a-right">ANNUITY | 1</div>
+                  </section>
+            </footer>
+
+            <section class="output">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+            <h1 class="page-heading calculator-title">Annuity calculator</h1>
+
+               <h4 class="output-header">Output</h4>
+
+               <div class="result">
+                  <p>Monthly payment</p>
+                  <p class="calculated-result">$4,250</p>
+               </div>
+
+               <div class="assumptions small">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+            </section>
+            <p class="disclaimer-text">
+               Risk:
+   All financial planning assumes the possibility of loss. There is no guarantee that these numbers will be achieved. This calculator is based on a set of assumptions, given the current economy. This is not a forecast of the future economy or the future gains from any investment. Market conditions can vary over time. This is not intended as a Wealthsurance recommendation. 
+            </p>
+   
+            <!-- <div class="wealthsurance-header"></div> -->
+            
+            <footer class="footer-2">
+               <section>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+               <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+               <div class="a-right">ANNUITY | 2</div>
+            </section>
+            </footer>
+
+         </div>
+         <!-- outside io -->
+      </div>
+
+   </div>
+   <script src="scripts/shared.js"></script>
+   <script src="scripts/annuity.js"></script>
+   <script>
+      updateResult(1);
+      getAssumptions('annuity');
+      fadeInResult();
+      updatePlaceholders(1);
+   </script> 
+</body>
+
+</html>

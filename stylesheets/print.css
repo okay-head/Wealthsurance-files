@@ -44,7 +44,8 @@ body {
 .pdf-io-container .input {
    margin: 0;
 }
-.calculated-result {
+.calculated-result,
+.calculated-result-2 {
    opacity: 1;
    transform: translate(0);
 }
@@ -134,4 +135,36 @@ footer section {
 
 .footer-2{
    margin-top: 24.8em;
+}
+
+
+/* --- networth --- */
+
+.legend,#nw-chart_div,#hAxis-label,#toggle_modal_chart{
+   display: none!important;
+}
+#nw-result-container{
+   min-height: 585px;
+}
+
+
+/* retirement */
+.retire-output .legend-text{
+   right: 44.5%;
+} 
+.overflowing-container{
+   margin-bottom: 7em;
+}
+
+/* refi */
+.refi-container .assumptions{
+   margin-top: 6em;
+}
+
+/* mortgage */
+.mortg-container .output .d-none{ 
+   display: block!important;
+}
+.mortg-container .small-title{
+   margin-left: 2em;
 }

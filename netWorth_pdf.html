@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- jquery -->
+   <script src="scripts/jquery/jquery-3.6.0.min.js"></script>
+
+   <!-- jquery validation -->
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+   
+
+   <!-- number format -->
+    <script src="scripts/jquery/jquery.number.min.js"></script>
+
+   <!-- jquery transit -->
+   <script src="scripts/jquery/jquery.transit.min.js"></script>
+
+   <!-- google charts -->
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+   <!-- stylesheet -->
+   <link rel="stylesheet" href="stylesheets/main.css">
+   <link rel="stylesheet" href="stylesheets/print.css">
+   <title>Net worth calculator</title>
+</head>
+
+<body>
+   <div class="container">
+      <div class="content-container">
+         <div class="pdf-io-container io-container">
+            
+            <section class="input">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+
+               <h1 class="page-heading calculator-title">Net worth calculator</h1>
+               <h4>Input</h4>
+
+               <div class="results-table-container">
+                  <form id="nwRecalcForm">
+                     <table class="results-table nw-table nw-results-table w-100">
+                        <tr>
+                           <td>Assets</td>
+                           <td>Enter Amount, $</td>
+                           <td>Growth Rate, %</td>
+                        </tr>
+                        <tr>
+                           <td>Primary&nbspIncome:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r1c1"
+                                 name="nwresultp1r1c1">
+                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultp1r1c1"></span>
+                              </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r1c2" name="nwresultp1r1c2">
+                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                 <span class="tooltip-text" id="eresultp1r1c2"></span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Bank&nbspAccounts:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r10c1"
+                                 name="nwresultp1r10c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r10c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r10c2" name="nwresultp1r10c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r10c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Cash:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r11c1"
+                                 name="nwresultp1r11c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r11c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r11c2" name="nwresultp1r11c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r11c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td>Other&nbspReal&nbspEstate:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r2c1"
+                                 name="nwresultp1r2c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r2c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r2c2" name="nwresultp1r2c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r2c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Vehicles:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r3c1"
+                                 name="nwresultp1r3c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r3c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r3c2" name="nwresultp1r3c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r3c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Household&nbspItems:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r4c1"
+                                 name="nwresultp1r4c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r4c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r4c2" name="nwresultp1r4c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r4c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Retirement&nbspAccounts:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r5c1"
+                                 name="nwresultp1r5c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r5c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r5c2" name="nwresultp1r5c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r5c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Investment&nbspin&nbspStock:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r6c1"
+                                 name="nwresultp1r6c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r6c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r6c2" name="nwresultp1r6c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r6c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Investment&nbspin&nbspBonds:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r7c1"
+                                 name="nwresultp1r7c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r7c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r7c2" name="nwresultp1r7c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r7c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Life&nbspInsurance&nbspcash&nbspvalue:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r8c1"
+                                 name="nwresultp1r8c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r8c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r8c2" name="nwresultp1r8c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r8c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Annuity:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r9c1"
+                                 name="nwresultp1r9c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r9c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r9c2" name="nwresultp1r9c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r9c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Other:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp1r12c1"
+                                 name="nwresultp1r12c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r12c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp1r12c2" name="nwresultp1r12c2">                              <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp1r12c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                     </table>
+
+                     <table class="results-table nw-table nw-results-table w-100">
+                        <tr>
+                           <td>Liabilities</td>
+                           <td>Enter Amount, $</td>
+                           <td>Interest Rate, %</td>
+                        </tr>
+                        <tr>
+                           <td>Primary&nbspHome&nbspMortgage:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp2r1c1"
+                                 name="nwresultp2r1c1">                              <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r1c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp2r1c2" name="nwresultp2r1c2">  <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r1c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Other&nbspMortgage:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp2r2c1"
+                                 name="nwresultp2r2c1">  <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r2c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp2r2c2" name="nwresultp2r2c2">  <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r2c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Vehicle&nbspLoans:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp2r3c1"
+                                 name="nwresultp2r3c1">  <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r3c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp2r3c2" name="nwresultp2r3c2">  <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r3c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Student&nbspLoans:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp2r4c1"
+                                 name="nwresultp2r4c1">  <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r4c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp2r4c2" name="nwresultp2r4c2">  <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r4c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Credit&nbspCard&nbspdebts:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp2r5c1"
+                                 name="nwresultp2r5c1">  <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r5c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp2r5c2" name="nwresultp2r5c2">  <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r5c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Personal&nbspLoans:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp2r6c1"
+                                 name="nwresultp2r6c1">  <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r6c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp2r6c2" name="nwresultp2r6c2">  <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r6c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Other&nbspLoans:</td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter Amount" id="nwresultp2r7c1"
+                                 name="nwresultp2r7c1">  <div class="tooltip d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r7c1"></span>
+                                 </div>
+                           </td>
+                           <td><input type="decimal" inputmode="decimal" placeholder="Enter percentage"
+                                 id="nwresultp2r7c2" name="nwresultp2r7c2">  <div class="tooltip tooltip-left d-none"><img src="media/images/alert-circle(2).svg" alt="alert">
+                                    <span class="tooltip-text" id="eresultp2r7c2"></span>
+                                 </div>
+                           </td>
+                        </tr>
+                     </table>
+                  </form>
+               </div>
+
+
+
+</section>
+            <footer class="footer-1">
+               <section>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+                     <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+                     <div class="a-right">NETWORTH | 1</div>
+                  </section>
+            </footer>
+
+            <section class="output">
+               <h3 class="wealthsurance-header"><img src="media/images/wealthsurance-logo.svg" alt=""> Wealthsurance</h3>
+
+            <h1 class="page-heading calculator-title">Net worth calculator</h1>
+
+               <h4 class="output-header">Output</h4>
+
+               <div class="result" id="nw-result-container">
+                  <div class="legend"><img src="media/images/nw-label.png" alt="legend"></div>
+                  <div id="nw-chart_div"></div>
+                  <div id="hAxis-label">No. of years</div>
+                  <button id="toggle_modal_chart">See complete graph</button>
+
+                  <div class="enlarged-chart-container">
+                     <div id="nw_enlarged_chart" class="">
+                     </div>
+                  </div>
+   
+               </div>
+
+               <div class="assumptions small">
+                  <span>Assumptions</span>
+                  <ul>
+                     <li>Assumption 1</li>
+                     <li>Assumption 2</li>
+                     <li>Assumption 3</li>
+                  </ul>
+               </div>
+
+            </section>
+            <p class="disclaimer-text">
+               Risk:
+   All financial planning assumes the possibility of loss. There is no guarantee that these numbers will be achieved. This calculator is based on a set of assumptions, given the current economy. This is not a forecast of the future economy or the future gains from any investment. Market conditions can vary over time. This is not intended as a Wealthsurance recommendation. 
+            </p>
+   
+            <!-- <div class="wealthsurance-header"></div> -->
+            
+            <footer class="footer-2">
+               <section>
+               <div class="a-left">
+                  <p>www.wealthsurance.com</p>
+                  <p>info@wealthsurance.com</p>
+                  <p>620-368-1480</p>
+                  </div>
+               <div class="a-center">&copy; Copyright 2021 Wealthsurance. All rights reserved.</div>
+               <div class="a-right">NETWORTH | 2</div>
+            </section>
+            </footer>
+
+         </div>
+         <!-- outside io -->
+      </div>
+
+   </div>
+   <script src="scripts/shared.js"></script>
+   <script src="scripts/nw.js"></script>
+   <script src="scripts/nw-graph.js"></script>
+   <script>
+      getAssumptions('net');
+      drawGraph();
+      drawGraph(1);
+      updatePlaceholders(1);
+
+   </script> 
+</body>
+
+</html>

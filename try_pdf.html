@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <title>Try pdf</title>
+   <style>
+body {
+   background: var(--main-secondary2)
+      url("../media/images/wealthsurance_bg.png") center center scroll;
+   background-size: cover;
+}
+input{
+   width: 80%;
+}
+input,button{
+   font-size: 1.3em;
+}
+.text{
+   margin-top:5%;
+}
+   </style>
+</head>
+<body>
+   <div class="container">
+      <div class="text">
+         <h3>Please wait for a few seconds after hitting submit. </h3>
+         <input type="text" id="input1" placeholder="Enter url">
+         <button>Submit</button>
+      </div>
+   </div>
+
+   <script>
+      $("button").on("click", () => {
+   $(".pdf-load-screen").addClass("fade-in");
+
+   getPdf();
+
+});
+
+//_____ functions
+function getPdf() {
+   // let url = window.location.href;
+   // let url = `https://okay-head.github.io/Wealthsurance-files/fna_pdf.html`
+
+   // let url_string = `https://v2.convertapi.com/convert/web/to/pdf?Secret=KKpF6ONL5EcXiwLY&Url=${url}&StoreFile=true&FileName=Financial needs Analysis&Zoom=1.4&PageSize=a4&MarginTop=3&MarginRight=0&MarginBottom=0&MarginLeft=0
+   // `;
+
+   let url_string = $('#input1').val().toString()
+   $.ajax({
+      type: "GET",
+      url: url_string,
+      success: (x) => {
+         // console.log(url_string);
+         // console.log(x);
+         // console.log(x.Url);
+         $(".pdf-load-screen").removeClass("fade-in");
+         window.open(x.Files[0].Url, "_self");
+      },
+      error: (e) => {
+         console.log(e);
+      },
+   });
+}
+   </script>
+</body>
+</html>

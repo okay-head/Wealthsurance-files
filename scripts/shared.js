@@ -53,7 +53,7 @@ if (flag) {
 }
 
 //Home splash-screen
-$("body").addClass("del");
+// $("body").addClass("del");
 
 function homeSplashScreen() {
    root.scrollTop = 0;
