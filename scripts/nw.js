@@ -73,6 +73,8 @@ function updatePlaceholders(x) {
 
 function pushToDatabase1(nw) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let [a, b] = nw.page1;
    let pg2 = nw.page2[0];
    let pg3 = nw.page3[0];
@@ -368,6 +370,8 @@ function next() {
 
 function pushToDatabase2(arr) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let [a, b] = JSON.parse(localStorage.getItem("nwpg1"));
    let ast = arr[0];
    let lbt = arr[1];

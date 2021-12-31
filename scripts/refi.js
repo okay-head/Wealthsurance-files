@@ -191,6 +191,8 @@ function updateTables(x) {
 
 function pushToDatabase1(refi) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let z = [];
    for (let i = 0; i < 12; i++) {
       z[i] = refi.page1[i];
@@ -235,6 +237,8 @@ function pushToDatabase1(refi) {
 }
 function pushToDatabase2(refi) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let zip = JSON.parse(localStorage.getItem("refipg1"))[11];
    let z = [];
    for (let i = 0; i < 10; i++) {
@@ -501,21 +505,21 @@ $("#refiForm").validate({
    },
    messages: {
       refipg1e1: { min: "Value should be greater than zero" },
-      refipg1e2: { min: "Value should be greater than zero" },
+      // refipg1e2: { min: "Value should be greater than zero" },
       refipg1e3: {
-         min: "Value should be greater than zero",
+         // min: "Value should be greater than zero",
          digits: "Please enter only positive integers",
       },
       refipg1e4: { min: "Value should be greater than zero" },
       refipg1e5: { min: "Value should be greater than zero" },
-      refipg1e6: { min: "Value should be greater than zero" },
+      // refipg1e6: { min: "Value should be greater than zero" },
       refipg1e7: {
-         min: "Value should be greater than zero",
+         // min: "Value should be greater than zero",
          digits: "Please enter only positive integers",
       },
       refipg1e8: { min: "Value should be greater than zero" },
-      refipg1e10: { min: "Value should be greater than zero" },
       refipg1e9: { min: "Please enter only positive numbers" },
+      refipg1e10: { min: "Value should be greater than zero" },
       refipg1e11: {
          min: "Value should be greater than zero",
       },

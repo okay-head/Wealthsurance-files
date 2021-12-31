@@ -11,12 +11,13 @@ let b = [];
 
 function pushToDatabase1(ann) {
    let [a, b, c, d] = ann.page1;
-   
+   createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    $.ajax({
       type: "POST",
       url: `https://wealthsurance.com/calculators/?calculator=annuity&session_id=${session_id}&ip_address=${ip}&start_age=${a}&pay_year=${c}&amount=${b}&growth_rate=${d}`,
 
-      
       success: (x) => {
          // console.log(x);
          let result = JSON.parse(x);
@@ -35,6 +36,8 @@ function pushToDatabase1(ann) {
 function pushToDatabase2(ann) {
    // Create session id only when the user decides to recalculate
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    [
       {
          current_age: b[0],
@@ -220,7 +223,7 @@ $("#annForm").validate({
       annpg1e2: {
          required: true,
          number: true,
-         min: 1,
+         min: 0.1,
       },
       annpg1e3: {
          required: true,
@@ -270,7 +273,7 @@ $("#annRecalcForm").validate({
       annresulte3: {
          required: true,
          number: true,
-         min: 1,
+         min: 0.1,
       },
       annresulte2: {
          required: true,

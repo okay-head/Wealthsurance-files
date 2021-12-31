@@ -14,6 +14,8 @@ let a = [];
 
 function pushToDatabase1(clg) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let [a, b, c, d, e, f, g] = clg.page1;
 
    let url_string = `https://wealthsurance.com/calculators/?calculator=college&session_id=${session_id}&ip_address=${ip}&child_name=${a}&curr_age=${b}&college_year=${c}&year_in_college=${d}&coll_expense=${f}&to_fund_percent=${e}&to_fund_amnt=${(
@@ -44,6 +46,8 @@ function pushToDatabase1(clg) {
 
 function pushToDatabase2(clg) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let [
       {
          name: a,

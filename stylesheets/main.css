@@ -598,7 +598,7 @@ input::-webkit-inner-spin-button {
    margin: 0;
 }
 
-input[type="decimal"] {
+input[type="number" ] {
    -moz-appearance: textfield; /* Firefox */
 }
 
@@ -1004,12 +1004,14 @@ section.output {
    left: 13%;
 }
 #annpg1e1 + .error-container,
-#annpg1e3 + .error-container,
 #retirepg1e1 + .error-container,
 #retirepg1e2 + .error-container,
 #retirepg2e1 + .error-container,
 #retirepg2e2 + .error-container {
    left: 16.5%;
+}
+#annpg1e3 + .error-container{
+   left: 10.5%;
 }
 #annpg1e2 + .error-container {
    left: 54%;

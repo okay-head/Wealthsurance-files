@@ -68,6 +68,8 @@ let t = undefined;
 
 function pushToDatabase1(fna) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let [a, b, c] = fna.page1;
    b = b == "married" ? 1 : 2;
    let [d] = fna.page2;
@@ -204,6 +206,8 @@ function updatePlaceholders(x) {
 
 function pushToDatabase2(fna) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    // get a-g from localstorage
    let [a = 28, b = "married", c = 1] = JSON.parse(
       localStorage.getItem("fnapg1")

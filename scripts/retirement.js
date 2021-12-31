@@ -25,6 +25,8 @@ function changeMaxWidth() {
 
 function pushToDatabase1(a, x = undefined) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
 
    let url_string = `https://wealthsurance.com/calculators/?calculator=retirement&session_id=${session_id}&ip_address=${ip}&current_age=${a[0]}&ret_age=${a[1]}&current_income=${a[2]}&post_ret_pre_tax_income=${a[3]}&ret_year=${a[4]}&ret_goal=${a[5]}&income_growth=${a[6]}&growth_rate=${a[7]}&post_ret_growth_rate=${a[8]}&inflation_rate=${a[9]}&saving_pre_percent=${a[10]}&saving_pre_amount=${a[11]}&saving_post_percent=${a[12]}&saving_post_amount=${a[13]}
    `;
@@ -51,6 +53,8 @@ function pushToDatabase1(a, x = undefined) {
 }
 function pushToDatabase2(a) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
 
    let url_string = `https://wealthsurance.com/calculators/?calculator=retirement&session_id=${session_id}&ip_address=${ip}&current_age=${a[0]}&ret_age=${a[1]}&current_income=${a[2]}&post_ret_pre_tax_income=${a[3]}&ret_year=${a[4]}&ret_goal=${a[5]}&income_growth=${a[6]}&growth_rate=${a[7]}&post_ret_growth_rate=${a[8]}&inflation_rate=${a[9]}&saving_pre_percent=${a[10]}&saving_pre_amount=${a[11]}&saving_post_percent=${a[12]}&saving_post_amount=${a[13]}
    `;
@@ -420,7 +424,7 @@ $("#page1Form").validate({
       retirepg1e3: {
          required: true,
          number: true,
-         min: 1,
+         min: 0.1,
       },
    },
    messages: {
@@ -435,7 +439,7 @@ $("#page1Form").validate({
       },
       retirepg1e3: {
          required: "Please enter your income",
-         // min: "Income should be greater than 0",
+         min: "Income should be greater than 0",
          // min: "Income cannot be negative",
       },
    },
@@ -453,7 +457,7 @@ $("#page2Form").validate({
       retirepg2e1: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
       retirepg2e2: {
          required: true,
@@ -463,19 +467,19 @@ $("#page2Form").validate({
       retirepg2e3: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
    },
    messages: {
       retirepg2e1: {
-         min: "Value should be greater than 1",
+         min: "Value should be greater than 0",
       },
       retirepg2e2: {
          range: "Please enter a value between 1-100",
          digits:"Please enter only positive integers"
       },
       retirepg2e3: {
-         min: "Value should be greater than 1",
+         min: "Value should be greater than 0",
       },
    },
 });
@@ -596,14 +600,14 @@ $("#retireRecalcForm").validate({
       retireresultpg1e3: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
 
 
       retireresultpg1e4: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
       retireresultpg1e5: {
          required: true,
@@ -613,7 +617,7 @@ $("#retireRecalcForm").validate({
       retireresultpg1e6: {
          required: true,
          number: true,
-         min: 1,
+         min: .1,
       },
 
 
@@ -667,6 +671,15 @@ $("#retireRecalcForm").validate({
    messages:{
       retireresultpg1e5:{
          digits:"Please enter only positive integers"
+      },
+      retireresultpg1e3:{
+         min: 'Value should be greater than 0'
+      },
+      retireresultpg1e4:{
+         min: 'Value should be greater than 0'
+      },
+      retireresultpg1e6:{
+         min: 'Value should be greater than 0'
       }
    }
 

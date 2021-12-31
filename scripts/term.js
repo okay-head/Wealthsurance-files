@@ -15,6 +15,8 @@ let te = {
 
 function pushToDatabase1(te) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let [a = 28, b = "married", c = 1] = te.page1;
    b = b == "married" ? 1 : 2;
    let d = te.page2new; 
@@ -114,6 +116,8 @@ function pushToDatabase1(te) {
 
 function pushToDatabase2(te) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    // get a-d from localstorage
    let [a = 28, b = "married", c = 1] = JSON.parse(
       localStorage.getItem("tepg1")

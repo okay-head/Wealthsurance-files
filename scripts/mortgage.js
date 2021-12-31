@@ -193,6 +193,8 @@ function storeRecalculate() {
 
 function pushToDatabase1(mortg) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let z = [];
    for (let i = 0; i < 12; i++) {
       if (i == 7) {
@@ -256,6 +258,8 @@ function pushToDatabase1(mortg) {
 
 function pushToDatabase2(mortg) {
    createSessionId();
+   localStorage.setItem("session", JSON.stringify(session_id));
+
    let zip = JSON.parse(localStorage.getItem("mortgpg1"))[1];
    let z = [];
    for (let i = 0; i < 11; i++) {
@@ -736,7 +740,7 @@ $("#mortgForm").validate({
       mortgpg1e6: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 30],
       },
       mortgpg1e7: {
          required: true,
@@ -745,22 +749,22 @@ $("#mortgForm").validate({
       },
       mortgpg1e9: {
          required: true,
-         number: true,
+         digits: true,
          range: [0, 45],
       },
       mortgpg1e10: {
          required: true,
-         digits: true,
+         number: true,
          min: 0,
       },
       mortgpg1e11: {
          required: true,
-         digits: true,
+         number: true,
          min: 0.1,
       },
       mortgpg1e12: {
          required: true,
-         digits: true,
+         number: true,
          min: 0.1,
       },
    },
@@ -770,15 +774,16 @@ $("#mortgForm").validate({
          require_from_group:
             "Please enter atleast one of the fields: down payment percentage / down payment amount",
       },
-      mortgpg1e10: { digits: "Please enter only positive integers" },
-      mortgpg1e11: {
-         digits: "Please enter only positive integers",
-         min: "Value should be greater than zero",
-      },
-      mortgpg1e12: {
-         digits: "Please enter only positive integers",
-         min: "Value should be greater than zero",
-      },
+      mortgpg1e9: { digits: "Please enter only positive integers" },
+      // mortgpg1e10: { digits: "Please enter only positive integers" },
+      // mortgpg1e11: {
+      //    digits: "Please enter only positive integers",
+      //    min: "Value should be greater than zero",
+      // },
+      // mortgpg1e12: {
+      //    digits: "Please enter only positive integers",
+      //    min: "Value should be greater than zero",
+      // },
    },
 });
 $("#mortgRecalcForm").validate({
@@ -820,7 +825,7 @@ $("#mortgRecalcForm").validate({
       mortgresulte5: {
          required: true,
          number: true,
-         range: [0, 100],
+         range: [0, 30],
       },
       mortgresulte6: {
          required: true,
@@ -829,22 +834,22 @@ $("#mortgRecalcForm").validate({
       },
       mortgresulte8: {
          required: true,
-         number: true,
+         digits: true,
          range: [0, 45],
       },
       mortgresulte9: {
          required: true,
-         digits: true,
+         number: true,
          min: 0,
       },
       mortgresulte10: {
          required: true,
-         digits: true,
+         number: true,
          min: 0.1,
       },
       mortgresulte11: {
          required: true,
-         digits: true,
+         number: true,
          min: 0.1,
       },
    },

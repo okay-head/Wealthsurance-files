@@ -344,3 +344,20 @@ function adjustErrorMessage() {
       // console.log(l);
    }
 }
+
+//customizing error message for HTML5's built in validation
+//not working
+// const deci = document.querySelector('[type=number]');
+// const deci = document.querySelector('#fnapg2e1');
+// const submit=document.querySelector('#newFormSubmit2');
+
+// // console.log(deci,submit);
+
+// submit.addEventListener('click',()=>{
+//     if(deci.validity.stepMismatch){
+//        console.log(deci.validity.stepMismatch);
+//         deci.setCustomValidity('Please limit your input to two decimal places');
+//     }else{
+//         deci.setCustomValidity('');
+//     }
+// })
