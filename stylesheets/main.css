@@ -1694,6 +1694,15 @@ right: 128%; */
 
 /* mobile */
 @media screen and (max-width: 610px) {
+   #adjust_refi_mob{
+      /* for .refi-io-container  */
+      grid-template-rows: 0.78fr 1fr !important;
+   }
+   #adjust_mortg_mob{
+      /* for .mortg-io-container */
+      grid-template-rows: 1.03fr 1.02fr !important;
+   }
+
    .nw-table {
       width: 610px;
    }

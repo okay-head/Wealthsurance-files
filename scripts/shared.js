@@ -262,14 +262,25 @@ function validateFormRecalc(x, y) {
       if (x == "#mortgRecalcForm") {
          $("#mortgresulte3,#mortgresulte2").removeClass("error");
          $("#mortgresulte3,#mortgresulte2").addClass("valid");
+         $('.mortg-io-container').attr('id','')
       }
       if (x == "#retireRecalcForm") {
          $(".io-container").attr("id", "");
+      }
+      if (x == "#refiRecalcForm") {
+         $(".refi-io-container").attr("id", "");
       }
    } else {
       if (x == "#retireRecalcForm") {
          $(".io-container").attr("id", "extend-retirement-io-container");
       }
+      if (x == "#mortgRecalcForm") {
+         $('.mortg-io-container').attr('id','adjust_mortg_mob')
+      }
+      if (x == "#refiRecalcForm") {
+         $(".refi-io-container").attr("id", "adjust_refi_mob");
+      }
+
       $(".error-text-container").addClass("opacity-in");
       $(".error-text-container").addClass("z-index");
       $(".ammortization-btn").addClass("d-none");
